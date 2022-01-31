@@ -1,4 +1,4 @@
-local gcinclude = {};
+local gcinclude = T{};
 gcdisplay = gFunc.LoadFile('common\\gcdisplay.lua');
 gcauto = gFunc.LoadFile('common\\gcauto.lua');
 
@@ -9,21 +9,10 @@ if (not gcauto) then
 end
 
 --[[
---Universal sets here for things like doomed or asleep; avoid main/sub/range/ammo here
---]]
-gcinclude.sets = {
-	Dt = {
-        Head = 'Nyame Helm',
-        Neck = { Name = 'Loricate Torque +1', AugPath='A' },
-        Ear1 = { Name = 'Odnowa Earring +1', AugPath='A' },
-        Ear2 = 'Etiolation Earring',
-        Body = 'Nyame Mail',
-        Hands = 'Nyame Gauntlets',
-        Ring1 = 'Defending Ring',
-        Ring2 = { Name = 'Gelatinous Ring +1', AugPath='A' },
-        Legs = 'Nyame Flanchard',
-        Feet = 'Nyame Sollerets',
-	},
+Universal sets here for things like doomed or asleep; avoid main/sub/range/ammo here, also no augments here due to sugar merge function not accepting.
+For the ring only sets leave them as Ring2 for now, but can change the tele ring to whichever one you have.
+]]
+gcinclude.sets = T{
 	Doomed = {
 		Ring1 = 'Purity Ring',
 		Waist = 'Gishdubar Sash',
@@ -38,14 +27,17 @@ gcinclude.sets = {
 		Head = 'Twilight Helm',
 		Body = 'Twilight Mail',
     },
-	Utsu_Precast = {
-		Neck = 'Magoraga Beads',
+	Warp_Ring = {
+		Ring2 = 'Warp Ring',
+	},
+	Tele_Ring = {
+		Ring2 = 'Dim. Ring (Dem)',
 	},
 };
 
 --[[
---Tables for table type stuffs, best to leave this alone
---]]
+Tables for table type stuffs, best to leave this alone
+]]
 gcinclude.Towns = T{'Tavnazian Safehold','Al Zahbi','Aht Urhgan Whitegate','Nashmau','Southern San d\'Oria [S]','Bastok Markets [S]','Windurst Waters [S]','San d\'Oria-Jeuno Airship','Bastok-Jeuno Airship','Windurst-Jeuno Airship','Kazham-Jeuno Airship','Southern San d\'Oria','Northern San d\'Oria','Port San d\'Oria','Chateau d\'Oraguille','Bastok Mines','Bastok Markets','Port Bastok','Metalworks','Windurst Waters','Windurst Walls','Port Windurst','Windurst Woods','Heavens Tower','Ru\'Lude Gardens','Upper Jeuno','Lower Jeuno','Port Jeuno','Rabao','Selbina','Mhaura','Kazham','Norg','Mog Garden','Celennia Memorial Library','Western Adoulin','Eastern Adoulin'};
 gcinclude.LockingRings = T{'Echad Ring', 'Trizek Ring', 'Endorsement Ring', 'Warp Ring','Facility Ring','Dim. Ring (Dem)','Dim. Ring (Mea)','Dim. Ring (Holla)'};
 gcinclude.DistanceWS = T{'Flamming Arrow','Piercing Arrow','Dulling Arrow','Sidewinder','Blast Arrow','Arching Arrow','Empyreal Arrow','Refulgent Arrow','Apex Arrow','Namas Arrow','Jishnu\'s Randiance','Hot Shot','Split Shot','Sniper Shot','Slug Shot','Blast Shot','Heavy Shot','Detonator','Numbing Shot','Last Stand','Coronach','Wildfire','Trueflight','Leaden Salute','Myrkr','Dagan','Moonlight','Starlight',};
@@ -66,14 +58,17 @@ gcinclude.StormSpells = T{'Thunderstorm', 'Hailstorm', 'Firestorm', 'Sandstorm',
 gcinclude.NinNukes = T{'Katon: Ichi', 'Katon: Ni', 'Katon: San', 'Hyoton: Ichi', 'Hyoton: Ni', 'Hyoton: San', 'Huton: Ichi', 'Huton: Ni', 'Huton: San', 'Doton: Ichi', 'Doton: Ni', 'Doton: San', 'Raiton: Ichi', 'Raiton: Ni', 'Raiton: San', 'Suiton: Ichi', 'Suiton: Ni', 'Suiton: San'};
 
 --[[
---functions for functiony stuffs, definitely leave this stuff alone
---]]
+functions for functiony stuffs, definitely leave this stuff alone
+]]
 function gcinclude.SetAlias()
 	local player = gData.GetPlayer();
 
 	AshitaCore:GetChatManager():QueueCommand(-1, '/alias /dt /lac fwd dt');
 	AshitaCore:GetChatManager():QueueCommand(-1, '/alias /kite /lac fwd kite');
 	AshitaCore:GetChatManager():QueueCommand(-1, '/alias /meleeset /lac fwd meleeset');
+	AshitaCore:GetChatManager():QueueCommand(-1, '/alias /aspir /lac fwd aspir');
+	AshitaCore:GetChatManager():QueueCommand(-1, '/alias /warpring /lac fwd warpring');
+	AshitaCore:GetChatManager():QueueCommand(-1, '/alias /telering /lac fwd telering');
 	if (player.MainJob == 'RDM') or (player.MainJob == 'BLM') or (player.MainJob == 'SCH') or (player.MainJob == 'GEO') then
 		AshitaCore:GetChatManager():QueueCommand(-1, '/alias /nukeset /lac fwd nukeset');
 		AshitaCore:GetChatManager():QueueCommand(-1, '/alias /burst /lac fwd burst');
@@ -148,6 +143,12 @@ function gcinclude.SetCommands(args)
 		gcdisplay.AdvanceCycle('MeleeSet');
 	elseif (args[1] == 'kite') then
 		gcdisplay.AdvanceToggle('Kite');
+	elseif (args[1] == 'aspir') then
+		gcinclude.DoAspir();
+	elseif (args[1] == 'warpring') then
+		gcinclude.DoWarpRing();
+	elseif (args[1] == 'telering') then
+		gcinclude.DoTeleRing();
     end
 	if (player.MainJob == 'RDM') or (player.MainJob == 'BLM') or (player.MainJob == 'SCH') or (player.MainJob == 'GEO') then
 		if (args[1] == 'nukeset') then
@@ -240,12 +241,8 @@ function gcinclude.SetTownGear()
 	local zone = gData.GetEnvironment();
 	local rings = gData.GetEquipment();
 
-	if (zone.Area ~= nil) and (gcinclude.Towns:contains(zone.Area)) then 
-		--if (rings.Ring2 ~= nil) and (rings.Ring2.Name == 'Warp Ring') then --force unequip of warp ring in towns. did it as a check because ForceEquipSet was causing lag hmmm.
-			--gFunc.ForceEquipSet(sets.Town);
-		--else
-			gFunc.EquipSet(sets.Town);
-		--end
+	if (zone.Area ~= nil) and (gcinclude.Towns:contains(zone.Area)) then
+		gFunc.EquipSet(sets.Town);
 	end
 end
 
@@ -259,9 +256,9 @@ function gcinclude.SetRegenRefreshGear()
 		if (player.MPP < 76 ) then
 			gFunc.EquipSet(sets.Idle_Refresh);
 		end
-		if (player.HPP < 50) then
-			gFunc.EquipSet(sets.Dt);
-		end
+	end
+	if (player.HPP < 50) then
+		gFunc.EquipSet(sets.Dt);
 	end
 	if pet ~= nil then
 		if (pet.HPP < 55) then
@@ -270,7 +267,7 @@ function gcinclude.SetRegenRefreshGear()
 	end
 end
 
-function gcinclude.CheckBailout()
+function gcinclude.CheckWsBailout()
 	local player = gData.GetPlayer();
 	local ws = gData.GetAction();
 	local target = gData.GetActionTarget();
@@ -293,9 +290,64 @@ function gcinclude.CheckBailout()
 	end
 end
 
+function gcinclude.CheckSpellBailout()
+	local sleep = gData.GetBuffCount('Sleep');
+	local petrify = gData.GetBuffCount('Petrification');
+	local stun = gData.GetBuffCount('Stun');
+	local terror = gData.GetBuffCount('Terror');
+	local silence = gData.GetBuffCount('Silence');
+
+	if (sleep+petrify+stun+terror+silence >= 1) then
+		return false;
+	else
+		return true;
+	end
+end
+
+function gcinclude.DoWarpRing()
+	AshitaCore:GetChatManager():QueueCommand(1, '/lac set Warp_Ring');
+	local function usering()
+		AshitaCore:GetChatManager():QueueCommand(1, '/item "Warp Ring" <me>');	
+	end
+	usering:once(11);
+end
+
+function gcinclude.DoTeleRing()
+	AshitaCore:GetChatManager():QueueCommand(1, '/lac set Tele_Ring');
+	local function usering()
+		AshitaCore:GetChatManager():QueueCommand(1, '/item "' .. sets.Tele_Ring.Ring2 .. '" <me>');	
+	end
+	usering:once(11);
+end
+
 function gcinclude.DoNukes(tier)
 	local cast = gcdisplay.GetCycle('Element');
 	AshitaCore:GetChatManager():QueueCommand(1, '/ma "' .. cast .. ' ' .. tier .. '" <t>');
+end
+
+function gcinclude.DoAspir()
+	local player = AshitaCore:GetMemoryManager():GetPlayer();
+	local recast1 = AshitaCore:GetMemoryManager():GetRecast():GetSpellTimer(247);
+	local recast2 = AshitaCore:GetMemoryManager():GetRecast():GetSpellTimer(248);
+	local recast3 = AshitaCore:GetMemoryManager():GetRecast():GetSpellTimer(881);
+	
+	if (player:GetMainJob() == 4 and player:GetJobPointsSpent(4) > 550) or (player:GetMainJob() == 21 and player:GetJobPointsSpent(21) > 550) then
+		if (recast3 == 0) then
+			AshitaCore:GetChatManager():QueueCommand(1, '/ma "Aspir III" <t>');
+		elseif (recast2 == 0) then
+			AshitaCore:GetChatManager():QueueCommand(1, '/ma "Aspir II" <t>');
+		elseif (recast1 == 0) then
+			AshitaCore:GetChatManager():QueueCommand(1, '/ma "Aspir" <t>');
+		end
+	elseif (player:GetMainJob() == 4 and player:GetMainJobLevel() >= 83) or (player:GetMainJob() == 8 and player:GetMainJobLevel() >= 78) or (player:GetMainJob() == 20 and player:GetMainJobLevel() >= 97) or (player:GetMainJob() == 21 and player:GetMainJobLevel() >= 90) then
+		if (recast2 == 0) then
+			AshitaCore:GetChatManager():QueueCommand(1, '/ma "Aspir II" <t>');
+		elseif (recast1 == 0) then
+			AshitaCore:GetChatManager():QueueCommand(1, '/ma "Aspir" <t>');
+		end
+	elseif (recast1 == 0) then
+		AshitaCore:GetChatManager():QueueCommand(1, '/ma "Aspir" <t>');
+	end
 end
 
 function gcinclude.DoSCHspells(spell)
@@ -347,7 +399,7 @@ function gcinclude.CheckCancels()
 	local action = gData.GetAction();
 	local sneak = gData.GetBuffCount('Sneak');
 	local stoneskin = gData.GetBuffCount('Stoneskin');
-	--local function calls to be able to use :once delay method easy
+	
 	local function do_jig()
 		AshitaCore:GetChatManager():QueueCommand(1, '/ja "Spectral Jig" <me>');
 	end

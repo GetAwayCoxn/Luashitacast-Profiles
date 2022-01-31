@@ -3,7 +3,7 @@ gcdisplay = gFunc.LoadFile('common\\gcdisplay.lua');
 gcinclude = gFunc.LoadFile('common\\gcinclude.lua');
 
 
-sets = {
+sets = T{
     Idle = {
         Head = 'Mpaca\'s Cap',
         Neck = 'Empath Necklace',
@@ -115,19 +115,20 @@ sets = {
 	Tp_Acc = {},
     -- These following sets are intended for one off items to equip while the pet is engaged (or both of you) based on the PupMode. An example would be Pet HP+ pieces for Tank mode. Can be empty but do not delete.
     Tank = {
-        Range = 'Animator P',
+        Range = 'Animator P +1',
     },
     Melee = {
         Range = 'Neo Animator',
     },
     Ranger = {
-        Range = 'Animator P',
+        Range = 'Animator P +1',
     },
     Mage = {
         Range = 'Neo Animator',
     },
 
     Precast = {
+        Head = 'Haruspex Hat',
         Neck = 'Baetyl Pendant',
         Ear1 = 'Loquac. Earring',
         Ear2 = 'Etiolation Earring',
@@ -189,7 +190,7 @@ sets = {
 	},
 };
 
-profile.Sets = sets;
+sets = sets:merge(gcinclude.sets, false);profile.Sets = sets;
 
 profile.OnLoad = function()
     gSettings.AllowAddSet = false;
@@ -231,11 +232,11 @@ profile.HandleDefault = function()
 	end
 
 	if (gcdisplay.GetToggle('DTset') == true) then
-        gFunc.EquipSet(gcinclude.sets.Dt);
-		gFunc.EquipSet(sets.Dt);
         if (pet ~= nil) then
             gFunc.EquipSet(sets.Pet_Dt);
 		end
+        gFunc.EquipSet(gcinclude.sets.Dt);
+        gFunc.EquipSet(sets.Dt);
 	end
 	if (gcdisplay.GetToggle('Kite') == true) then
 		gFunc.EquipSet(sets.Movement);
@@ -270,11 +271,7 @@ end
 
 profile.HandlePrecast = function()
     local spell = gData.GetAction();
-    gFunc.EquipSet(sets.Precast)
-
-    if string.contains(spell.Name, 'Utsusemi') then
-        gFunc.EquipSet(gcinclude.sets.Utsu_Precast);
-    end
+    gFunc.EquipSet(sets.Precast);
 
     gcinclude.CheckCancels();
 end
@@ -291,7 +288,7 @@ profile.HandleMidshot = function()
 end
 
 profile.HandleWeaponskill = function()
-	local canWS = gcinclude.CheckBailout();
+	local canWS = gcinclude.CheckWsBailout();
     if (canWS == false) then gFunc.CancelAction() return;
     else
         local ws = gData.GetAction();

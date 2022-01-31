@@ -2,7 +2,7 @@ local profile = {};
 gcdisplay = gFunc.LoadFile('common\\gcdisplay.lua');
 gcinclude = gFunc.LoadFile('common\\gcinclude.lua');
 
-sets = {
+sets = T{
     Idle = {
         Main = 'Bolelabunga',
         Sub = 'Genmei Shield',
@@ -13,7 +13,7 @@ sets = {
         Ear2 = 'Etiolation Earring',
         Body = 'Agwu\'s Robe',
         Hands = 'Nyame Gauntlets',
-        Ring1 = 'Defending Ring',
+        Ring1 = 'Stikini Ring +1',
         Ring2 = { Name = 'Metamor. Ring +1', AugPath='A' },
         Back = 'Lugh\'s Cape',
         Waist = 'Gishdubar Sash',
@@ -31,6 +31,7 @@ sets = {
     Idle_Refresh = {
         Ammo = 'Homiliary',
         Head = 'Befouled Crown',
+        Ring1 = 'Stikini Ring +1',
         Waist = 'Fucho-no-Obi',
         Legs = 'Assid. Pants +1',
     },
@@ -110,7 +111,7 @@ sets = {
         Ear2 = 'Regal Earring',
         Body = 'Gende. Bliaut +1',
         Hands = 'Weath. Cuffs +1',
-        Ring1 = 'Rufescent Ring',
+        Ring1 = 'Stikini Ring +1',
         Ring2 = { Name = 'Metamor. Ring +1', AugPath='A' },
         Back = 'Solemnity Cape',
         Waist = 'Rumination Sash',
@@ -142,11 +143,11 @@ sets = {
         Ammo = 'Pemphredo Tathlum',
         Head = 'Befouled Crown',
         Neck = 'Incanter\'s Torque',
-        Ear1 = 'Gifted Earring',
+        Ear1 = 'Mendi. Earring',
         Ear2 = 'Andoaa Earring',
         Body = 'Peda. Gown +3',
         Hands = 'Arbatel Bracers +1',
-        Ring1 = 'Defending Ring',
+        Ring1 = 'Stikini Ring +1',
         Ring2 = { Name = 'Metamor. Ring +1', AugPath='A' },
         Back = 'Solemnity Cape',
         Waist = 'Embla Sash',
@@ -175,7 +176,7 @@ sets = {
         Ear2 = 'Malignance Earring',
         Body = 'Acad. Gown +2',
         Hands = 'Peda. Bracers +2',
-        Ring1 = 'Kishar Ring',
+        Ring1 = 'Stikini Ring +1',
         Ring2 = { Name = 'Metamor. Ring +1', AugPath='A' },
         Back = { Name = 'Aurist\'s Cape +1', AugPath='A' },
         Waist = { Name = 'Acuity Belt +1', AugPath='A' },
@@ -208,14 +209,14 @@ sets = {
         Neck = 'Baetyl Pendant',
         Ear1 = 'Regal Earring',
         Ear2 = 'Malignance Earring',
-        Body = 'Jhakri Robe +2',
-        Hands = 'Merlinic Dastanas',
+        Body = 'Agwu\'s Robe',
+        Hands = 'Amalric Gages +1',
         Ring1 = 'Shiva Ring +1',
         Ring2 = { Name = 'Metamor. Ring +1', AugPath='A' },
         Back = 'Lugh\'s Cape',
         Waist = 'Sacro Cord',
         Legs = 'Jhakri Slops +2',
-        Feet = { Name = 'Merlinic Crackows', Augment = { [1] = 'CHR+10', [2] = 'Mag. Acc.+2', [3] = '"Mag. Atk. Bns."+30' } },
+        Feet = 'Amalric Nails +1',
     },
     NukeACC = {
         Waist = { Name = 'Acuity Belt +1', AugPath='A' },
@@ -223,9 +224,11 @@ sets = {
     Burst = {
         Main = 'Bunzi\'s Rod', -- 10 and 0
         Sub = 'Ammurapi Shield',
+        Ammo = 'Ghastly Tathlum +1',
         Head = 'Peda. M.Board +2', -- 0 and 2
         Neck = 'Argute Stole +1', -- 7 and 0
         Body = 'Agwu\'s Robe', -- 10 and 0
+        Hands = 'Amalric Gages +1', -- 0 and 6
         Ring1 = 'Mujin Band', -- 0 and 5
         Waist = { Name = 'Acuity Belt +1', AugPath='A' },
         Legs = 'Agwu\'s Slops', -- 9 and 0
@@ -234,14 +237,39 @@ sets = {
     Helix = {
         Main = 'Bunzi\'s Rod',
         Sub = 'Ammurapi Shield',
+        Ammo = 'Ghastly Tathlum +1',
         Head = 'Mall. Chapeau +2',
         Neck = 'Argute Stole +1',
         Body = 'Agwu\'s Robe',
-        Hands = 'Mallquis Cuffs +2',
+        Hands = 'Amalric Gages +1',
+        Neck = 'Argute Stole +1',
+        Ring1 = 'Stikini Ring +1',
         Back = 'Lugh\'s Cape',
         Waist = { Name = 'Acuity Belt +1', AugPath='A' },
         Legs = 'Agwu\'s Slops',
-        Feet = 'Agwu\'s Pigaches',
+        Feet = 'Amalric Nails +1',
+    },
+    HelixBurst = {
+        Ear1 = 'Crematio Earring',
+        Feet = 'Amalric Nails +1',
+    },
+    Kaustra = {--need to refine this set
+        Main = 'Marin Staff +1',
+        Sub = 'Enki Strap',
+        Ammo = 'Pemphredo Tathlum',
+        Head = 'Pixie Hairpin +1',--need this
+        Neck = 'Argute Stole +1',
+        Ear1 = 'Regal Earring',
+        Ear2 = 'Malignance Earring',
+        Body = 'Agwu\'s Robe',--seidr cotehardie
+        Hands = 'Amalric Gages +1',
+        Neck = 'Argute Stole +1',
+        Ring1 = 'Stikini Ring +1',--freke ring
+        Ring2 = 'Archon Ring',
+        Back = 'Lugh\'s Cape',
+        Waist = { Name = 'Acuity Belt +1', AugPath='A' },
+        Legs = 'Agwu\'s Slops',
+        Feet = 'Amalric Nails +1',
     },
 
     Preshot = {
@@ -255,8 +283,8 @@ sets = {
         Neck = 'Fotia Gorget',
         Ear1 = 'Brutal Earring',
         Ear2 = 'Moonshade Earring',
-        Body = 'Jhakri Robe +2',
-        Hands = 'Jhakri Cuffs +2',
+        Body = 'Nyame Mail',
+        Hands = 'Nyame Gauntlets',
         Ring1 = 'Rufescent Ring',
         Ring2 = 'Karieyh Ring',
         Back = 'Solemnity Cape',
@@ -274,7 +302,7 @@ sets = {
 	},
 };
 
-profile.Sets = sets;
+sets = sets:merge(gcinclude.sets, false);profile.Sets = sets;
 
 profile.OnLoad = function()
     gSettings.AllowAddSet = false;
@@ -338,7 +366,7 @@ end
 profile.HandlePrecast = function()
     local spell = gData.GetAction();
 
-    gFunc.EquipSet(sets.Precast)
+    gFunc.EquipSet(sets.Precast);
 
     if (spell.Skill == 'Enhancing Magic') then
         gFunc.EquipSet(sets.Enhancing_Precast);
@@ -348,10 +376,6 @@ profile.HandlePrecast = function()
         end
     elseif (spell.Skill == 'Healing Magic') then
         gFunc.EquipSet(sets.Cure_Precast);
-    end
-
-    if string.contains(spell.Name, 'Utsusemi') then
-        gFunc.EquipSet(gcinclude.sets.Utsu_Precast);
     end
 
     gcinclude.CheckCancels();
@@ -410,6 +434,9 @@ profile.HandleMidcast = function()
         end
         if string.match(spell.Name, 'helix') then
             gFunc.EquipSet(sets.Helix);
+            if (gcdisplay.GetToggle('Burst') == true) then
+                gFunc.EquipSet(sets.HelixBurst);
+            end
         end
     elseif (spell.Skill == 'Enfeebling Magic') then
         gFunc.EquipSet(sets.Enfeebling);
@@ -417,6 +444,8 @@ profile.HandleMidcast = function()
         gFunc.EquipSet(sets.Enfeebling); -- mostly macc anyways
         if (string.contains(spell.Name, 'Aspir') or string.contains(spell.Name, 'Drain')) then
             gFunc.EquipSet(sets.Drain);
+        elseif (string.match(spell.Name, 'Kaustra')) then
+            gFunc.EquipSet(sets.Kaustra);
         end
     end
 
@@ -434,7 +463,7 @@ profile.HandleMidshot = function()
 end
 
 profile.HandleWeaponskill = function()
-    local canWS = gcinclude.CheckBailout();
+    local canWS = gcinclude.CheckWsBailout();
     if (canWS == false) then gFunc.CancelAction() return;
     else
         local ws = gData.GetAction();

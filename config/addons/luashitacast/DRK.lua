@@ -2,7 +2,7 @@ local profile = {};
 gcdisplay = gFunc.LoadFile('common\\gcdisplay.lua');
 gcinclude = gFunc.LoadFile('common\\gcinclude.lua');
 
-sets = {
+sets = T{
     Idle = {
         Ammo = 'Staunch Tathlum',
         Head = 'Nyame Helm',
@@ -11,7 +11,7 @@ sets = {
         Ear2 = 'Etiolation Earring',
         Body = 'Nyame Mail',
         Hands = 'Volte Moufles',
-        Ring1 = 'Defending Ring',
+        Ring1 = 'Stikini Ring +1',
         Ring2 = { Name = 'Metamor. Ring +1', AugPath='A' },
         Back = 'Solemnity Cape',
         Waist = 'Gishdubar Sash',
@@ -30,7 +30,7 @@ sets = {
         Sub = 'Utu Grip',
         Ammo = 'Staunch Tathlum',
         Head = 'Cumulus Masque',
-        Body = 'Nyame Mail',
+        Body = 'Hjarrandi Breast.',
         Hands = 'Nyame Gauntlets',
         Legs = { Name = 'Carmine Cuisses +1', AugPath='D' },
         Feet = 'Nyame Sollerets',
@@ -68,6 +68,7 @@ sets = {
         Feet = 'Flam. Gambieras +2',
     },
     Tp_Hybrid = {
+        Body = 'Hjarrandi Breast.',
     },
     Tp_Acc = {
     },
@@ -100,7 +101,7 @@ sets = {
         Ammo = 'Pemphredo Tathlum',
         Head = 'Befouled Crown',
         Neck = 'Incanter\'s Torque',
-        Ear1 = 'Gifted Earring',
+        Ear1 = 'Mendi. Earring',
         Ear2 = 'Andoaa Earring',
         Ring2 = { Name = 'Metamor. Ring +1', AugPath='A' },
     },
@@ -115,6 +116,8 @@ sets = {
         Ammo = 'Pemphredo Tathlum',
         Head = 'Befouled Crown',
         Neck = 'Erra Pendant',
+        Ear1 = 'Crep. Earring',
+        Ear2 = 'Malignance Earring',
         Hands = 'Malignance Gloves',
         Ring1 = 'Kishar Ring',
         Ring2 = { Name = 'Metamor. Ring +1', AugPath='A' },
@@ -123,6 +126,8 @@ sets = {
 
     Drain = {
         Neck = 'Erra Pendant',
+        Ear1 = 'Crep. Earring',
+        Ear2 = 'Malignance Earring',
         Ring1 = 'Kishar Ring',
         Ring2 = { Name = 'Metamor. Ring +1', AugPath='A' },
     },
@@ -152,7 +157,7 @@ sets = {
         Neck = 'Fotia Gorget',
         Ear1 = { Name = 'Moonshade Earring', Augment = { [1] = 'Accuracy+4', [2] = 'TP Bonus +250' } },
         Ear2 = 'Thrud Earring',
-        Body = 'Sulevia\'s Plate. +2', -- af+3
+        Body = 'Hjarrandi Breast.', -- af+3
         Hands = { Name = 'Valorous Mitts', Augment = { [1] = '"Mag. Atk. Bns."+1', [2] = 'Attack+9', [3] = 'Mag. Acc.+1', [4] = 'STR+5', [5] = 'Weapon skill damage +5%', [6] = 'AGI+2', [7] = 'Accuracy+9' } },
         Ring1 = 'Rufescent Ring', --regal ring
         Ring2 = 'Karieyh Ring',
@@ -171,7 +176,7 @@ sets = {
 	},
 };
 
-profile.Sets = sets;
+sets = sets:merge(gcinclude.sets, false);profile.Sets = sets;
 
 profile.OnLoad = function()
     gSettings.AllowAddSet = false;
@@ -231,11 +236,7 @@ end
 
 profile.HandlePrecast = function()
     local spell = gData.GetAction();
-    gFunc.EquipSet(sets.Precast)
-
-    if string.contains(spell.Name, 'Utsusemi') then
-        gFunc.EquipSet(gcinclude.sets.Utsu_Precast);
-    end
+    gFunc.EquipSet(sets.Precast);
 
     gcinclude.CheckCancels();
 end
@@ -275,7 +276,7 @@ profile.HandleMidshot = function()
 end
 
 profile.HandleWeaponskill = function()
-    local canWS = gcinclude.CheckBailout();
+    local canWS = gcinclude.CheckWsBailout();
     if (canWS == false) then gFunc.CancelAction() return;
     else
         local ws = gData.GetAction();

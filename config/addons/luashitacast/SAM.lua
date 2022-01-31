@@ -2,7 +2,7 @@ local profile = {};
 gcdisplay = gFunc.LoadFile('common\\gcdisplay.lua');
 gcinclude = gFunc.LoadFile('common\\gcinclude.lua');
 
-sets = {
+sets = T{
     Idle = {
         Ammo = 'Staunch Tathlum',
         Head = 'Wakido Kabuto +2',
@@ -95,7 +95,7 @@ sets = {
         Body = 'Kasuga Domaru +1',
         Hands = 'Flam. Manopolas +2',
         Ring1 = 'Petrov Ring',
-        Ring2 = 'Flamma Ring',
+        Ring2 = 'Karieyh Ring',
         Back = { Name = 'Smertrios\'s Mantle', Augment = { [1] = 'Damage taken-5%', [2] = 'Accuracy+30', [3] = 'Attack+20', [4] = '"Store TP"+10', [5] = 'DEX+20' } },
         Waist = { Name = 'Sailfi Belt +1', AugPath='A' },
         Legs = { Name = 'Tatena. Haidate +1', AugPath='A' },
@@ -132,7 +132,7 @@ sets = {
         Ammo = 'Pemphredo Tathlum',
         Head = 'Befouled Crown',
         Neck = 'Incanter\'s Torque',
-        Ear1 = 'Gifted Earring',
+        Ear1 = 'Mendi. Earring',
         Ear2 = 'Andoaa Earring',
         Body = 'Lethargy Sayon +1',
         Hands = 'Malignance Gloves',
@@ -180,7 +180,7 @@ sets = {
         Body = 'Kasuga Domaru +1',
         Hands = 'Wakido Kote +3',
         Ring1 = 'Rufescent Ring',
-        Ring2 = 'Flamma Ring',
+        Ring2 = 'Karieyh Ring',
         Back = 'Solemnity Cape',
         Waist = 'Flume Belt +1',
         Legs = 'Mpaca\'s Hose',
@@ -188,19 +188,19 @@ sets = {
     },
 
     Savage_Default = {
-        Ammo = 'Voluspa Tathlum',
-        Head = 'Jhakri Coronal +2',
+        Ammo = 'Knobkierrie',
+        Head = 'Mpaca\'s Cap',
         Neck = 'Fotia Gorget',
         Ear1 = { Name = 'Moonshade Earring', Augment = { [1] = 'Accuracy+4', [2] = 'TP Bonus +250' } },
         Ear2 = 'Brutal Earring',
-        Body = 'Jhakri Robe +2',
-        Hands = 'Jhakri Cuffs +2',
+        Body = { Name = 'Sakonji Domaru +3', AugTrial=5483 },
+        Hands = { Name = 'Valorous Mitts', Augment = { [1] = '"Mag. Atk. Bns."+1', [2] = 'Attack+9', [3] = 'Mag. Acc.+1', [4] = 'STR+5', [5] = 'Weapon skill damage +5%', [6] = 'AGI+2', [7] = 'Accuracy+9' } },
         Ring1 = 'Rufescent Ring',
         Ring2 = 'Karieyh Ring',
         Back = 'Solemnity Cape',
         Waist = { Name = 'Sailfi Belt +1', AugPath='A' },
-        Legs = 'Jhakri Slops +2',
-        Feet = 'Thereoid Greaves',
+        Legs = 'Mpaca\'s Hose',
+        Feet = { Name = 'Valorous Greaves', Augment = { [1] = 'Weapon skill damage +5%', [2] = 'Accuracy+8' } },
     },
     Savage_Hybrid = {},
     Savage_Acc = {},
@@ -227,7 +227,7 @@ sets = {
         Ammo = 'Pemphredo Tathlum',
         Head = 'Nyame Helm',
         Neck = 'Sanctity Necklace',
-        Ear1 = 'Gwati Earring',
+        Ear1 = 'Crep. Earring',
         Ear2 = 'Lugra Earring +1',
         Body = 'Flamma Korazin +2',
         Hands = 'Mpaca\'s Gloves',
@@ -276,7 +276,7 @@ sets = {
 	},
 };
 
-profile.Sets = sets;
+sets = sets:merge(gcinclude.sets, false);profile.Sets = sets;
 
 profile.OnLoad = function()
     gSettings.AllowAddSet = false;
@@ -297,9 +297,8 @@ end
 profile.HandleDefault = function()
     gFunc.EquipSet(sets.Idle);
     local hasso = gData.GetBuffCount('Hasso');
-	
 	local player = gData.GetPlayer();
-    
+
     if (player.Status == 'Engaged') then
         gFunc.EquipSet(sets.Tp_Default);
         if (gcdisplay.GetCycle('MeleeSet') ~= 'Default') then
@@ -342,11 +341,7 @@ end
 
 profile.HandlePrecast = function()
     local spell = gData.GetAction();
-    gFunc.EquipSet(sets.Precast)
-
-    if string.contains(spell.Name, 'Utsusemi') then
-        gFunc.EquipSet(gcinclude.sets.Utsu_Precast);
-    end
+    gFunc.EquipSet(sets.Precast);
 
     gcinclude.CheckCancels();
 end
@@ -370,7 +365,7 @@ profile.HandleMidshot = function()
 end
 
 profile.HandleWeaponskill = function()
-    local canWS = gcinclude.CheckBailout();
+    local canWS = gcinclude.CheckWsBailout();
     if (canWS == false) then gFunc.CancelAction() return;
     elseif (gcdisplay.GetToggle('PROC') == true) then
         gFunc.EquipSet(sets.Ws_Proc);

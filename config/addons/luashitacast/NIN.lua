@@ -2,7 +2,7 @@ local profile = {};
 gcdisplay = gFunc.LoadFile('common\\gcdisplay.lua');
 gcinclude = gFunc.LoadFile('common\\gcinclude.lua');
 
-sets = {
+sets = T{
     Idle = {
         Ammo = 'Staunch Tathlum',
         Head = 'Mpaca\'s Cap',
@@ -94,7 +94,7 @@ sets = {
         Body = 'Kasuga Domaru +1',
         Hands = 'Flam. Manopolas +2',
         Ring1 = 'Petrov Ring',
-        Ring2 = 'Flamma Ring',
+        Ring2 = 'Epona\'s Ring',
         Back = { Name = 'Smertrios\'s Mantle', Augment = { [1] = 'Damage taken-5%', [2] = 'Accuracy+30', [3] = 'Attack+20', [4] = '"Store TP"+10', [5] = 'DEX+20' } },
         Waist = { Name = 'Sailfi Belt +1', AugPath='A' },
         Legs = { Name = 'Tatena. Haidate +1', AugPath='A' },
@@ -258,7 +258,7 @@ sets = {
 	},
 };
 
-profile.Sets = sets;
+sets = sets:merge(gcinclude.sets, false);profile.Sets = sets;
 
 profile.OnLoad = function()
     gSettings.AllowAddSet = false;
@@ -330,11 +330,7 @@ end
 
 profile.HandlePrecast = function()
     local spell = gData.GetAction();
-    gFunc.EquipSet(sets.Precast)
-
-    if string.contains(spell.Name, 'Utsusemi') then
-        gFunc.EquipSet(gcinclude.sets.Utsu_Precast);
-    end
+    gFunc.EquipSet(sets.Precast);
 
     gcinclude.CheckCancels();
 end
@@ -362,7 +358,7 @@ profile.HandleMidshot = function()
 end
 
 profile.HandleWeaponskill = function()
-    local canWS = gcinclude.CheckBailout();
+    local canWS = gcinclude.CheckWsBailout();
     if (canWS == false) then gFunc.CancelAction() return;
     else
         local ws = gData.GetAction();

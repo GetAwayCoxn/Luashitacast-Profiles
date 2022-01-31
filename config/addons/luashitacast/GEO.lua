@@ -2,7 +2,7 @@ local profile = {};
 gcdisplay = gFunc.LoadFile('common\\gcdisplay.lua');
 gcinclude = gFunc.LoadFile('common\\gcinclude.lua');
 
-sets = {
+sets = T{
     Idle = {
         Main = 'Bolelabunga',
         Sub = 'Genmei Shield',
@@ -12,7 +12,7 @@ sets = {
         Ear2 = 'Etiolation Earring',
         Body = 'Agwu\'s Robe',
         Hands = 'Nyame Gauntlets',
-        Ring1 = 'Defending Ring',
+        Ring1 = 'Stikini Ring +1',
         Ring2 = { Name = 'Metamor. Ring +1', AugPath='A' },
         Back = 'Solemnity Cape',
         Waist = 'Gishdubar Sash',
@@ -82,7 +82,7 @@ sets = {
     Precast = {
         Main = 'Solstice',
         Range = 'Dunna',
-        Head = { Name = 'Merlinic Hood', Augment = { [1] = 'Mag. Acc.+7', [2] = 'CHR+5', [3] = 'Magic burst dmg.+6%', [4] = '"Mag. Atk. Bns."+25' } },
+        Head = 'Haruspex Hat',
         Neck = 'Baetyl Pendant',
         Ear1 = 'Etiolation Earring',
         Ear2 = 'Malignance Earring',
@@ -143,7 +143,7 @@ sets = {
         Ammo = 'Pemphredo Tathlum',
         Head = 'Befouled Crown',
         Neck = 'Incanter\'s Torque',
-        Ear1 = 'Gifted Earring',
+        Ear1 = 'Mendi. Earring',
         Ear2 = 'Andoaa Earring',
         Body = 'Telchine Chas.',
         Hands = 'Nyame Gauntlets',
@@ -167,16 +167,18 @@ sets = {
         Range = 'Dunna',
         Head = 'Azimuth Hood +1',
         Neck = 'Incanter\'s Torque',
-        Ear1 = 'Gifted Earring',
+        Ear1 = 'Mendi. Earring',
         Ear2 = 'Mendi. Earring',
         Body = 'Telchine Chas.',
         Hands = 'Geo. Mitaines +1',
+        Ring1 = 'Stikini Ring +1',
         Waist = 'Hachirin-no-Obi',
         Legs = 'Vanya Slops',
         Feet = 'Medium\'s Sabots',
     },
     Indi = {
-        Legs = 'Bagua Pants',
+        Back = 'Nantosuelta\'s Cape',
+        Legs = 'Bagua Pants +1',
         Feet = 'Azimuth Gaiters +1',
     },
 
@@ -188,7 +190,7 @@ sets = {
         Neck = 'Erra Pendant',
         Ear1 = 'Regal Earring',
         Ear2 = 'Malignance Earring',
-        Body = 'Jhakri Robe +2',
+        Body = 'Agwu\'s Robe',
         Hands = 'Nyame Gauntlets',
         Ring1 = 'Kishar Ring',
         Ring2 = { Name = 'Metamor. Ring +1', AugPath='A' },
@@ -233,31 +235,32 @@ sets = {
     },
 
     Nuke = {
-        Main = 'Bunzi\'s Rod',
-        Sub = 'Ammurapi Shield',
+        Main = 'Marin Staff +1',
+        Sub = 'Enki Strap',
         Ammo = 'Pemphredo Tathlum',
         Head = 'Jhakri Coronal +2',
         Neck = 'Baetyl Pendant',
         Ear1 = 'Regal Earring',
         Ear2 = 'Malignance Earring',
-        Body = 'Jhakri Robe +2',
-        Hands = 'Jhakri Cuffs +2',
+        Body = 'Agwu\'s Robe',
+        Hands = 'Amalric Gages +1',
         Ring1 = 'Shiva Ring +1',
         Ring2 = { Name = 'Metamor. Ring +1', AugPath='A' },
         Back = { Name = 'Nantosuelta\'s Cape', Augment = { [1] = '"Mag. Atk. Bns."+10', [2] = 'Mag. Acc+20', [3] = 'Magic Damage +20', [4] = 'INT+20' } },
         Waist = 'Sacro Cord',
         Legs = 'Jhakri Slops +2',
-        Feet = { Name = 'Merlinic Crackows', Augment = { [1] = 'CHR+10', [2] = 'Mag. Acc.+2', [3] = '"Mag. Atk. Bns."+30' } },
+        Feet = 'Amalric Nails +1',
     },
     NukeACC = {
         Waist = { Name = 'Acuity Belt +1', AugPath='A' },
     },
     Burst = {
-        Main = 'Bunzi\'s Rod', -- 10 and 0
+        Main = 'Bunzi\'s Rod', --10 and 0
         Sub = 'Ammurapi Shield',
-        Head = 'Merlinic Hood', -- 6 and 0
-        Body = 'Agwu\'s Robe', -- 10 and 0
-        Hands = 'Ea Cuffs', --5 and 5
+        Head = 'Ea Hat', -- 6 and 6
+        --Body = 'Agwu\'s Robe', -- 10 and 0
+        Body = 'Ea Houppelande', -- 8 and 8
+        Hands = 'Amalric Gages +1', -- 0 and 6
         Ring1 = 'Mujin Band', -- 0 and 5
         Waist = { Name = 'Acuity Belt +1', AugPath='A' },
         Legs = 'Agwu\'s Slops', -- 9 and 0
@@ -275,8 +278,8 @@ sets = {
         Neck = 'Fotia Gorget',
         Ear1 = 'Brutal Earring',
         Ear2 = 'Moonshade Earring',
-        Body = 'Jhakri Robe +2',
-        Hands = 'Jhakri Cuffs +2',
+        Body = 'Nyame Mail',
+        Hands = 'Nyame Gauntlets',
         Ring1 = 'Rufescent Ring',
         Ring2 = 'Karieyh Ring',
         Back = 'Solemnity Cape',
@@ -294,7 +297,7 @@ sets = {
 	},
 };
 
-profile.Sets = sets;
+sets = sets:merge(gcinclude.sets, false);profile.Sets = sets;
 
 profile.OnLoad = function()
     gSettings.AllowAddSet = false;
@@ -373,10 +376,6 @@ profile.HandlePrecast = function()
         gFunc.EquipSet(sets.Cure_Precast);
     end
 
-    if string.contains(spell.Name, 'Utsusemi') then
-        gFunc.EquipSet(gcinclude.sets.Utsu_Precast);
-    end
-
     gcinclude.CheckCancels();
 end
 
@@ -447,7 +446,7 @@ profile.HandleMidshot = function()
 end
 
 profile.HandleWeaponskill = function()
-    local canWS = gcinclude.CheckBailout();
+    local canWS = gcinclude.CheckWsBailout();
     if (canWS == false) then gFunc.CancelAction() return;
     else
         local ws = gData.GetAction();

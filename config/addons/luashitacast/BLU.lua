@@ -3,10 +3,10 @@ gcdisplay = gFunc.LoadFile('common\\gcdisplay.lua');
 gcinclude = gFunc.LoadFile('common\\gcinclude.lua');
 
 
-sets = {
+sets = T{
     Idle = {
         Ammo = 'Staunch Tathlum',
-        Head = 'Rawhide Mask',
+        Head = 'Malignance Chapeau',
         Neck = 'Unmoving Collar +1',
         Ear1 = 'Eabani Earring',
         Ear2 = 'Etiolation Earring',
@@ -20,14 +20,16 @@ sets = {
         Feet = 'Gleti\'s Boots',
     },
 	Resting = {
-        Body = 'Jhakri Robe +2',
+        Body = 'Luhlaza Jubbah +3',
         Waist = 'Fucho-no-Obi',
     },
     Idle_Regen = {
         Neck = 'Bathy Choker +1';
     },
     Idle_Refresh = {
-        Body = 'Jhakri Robe +2',
+        Head = 'Rawhide Mask',
+        Body = 'Luhlaza Jubbah +3',
+        Ring2 = 'Stikini Ring +1',
         Waist = 'Fucho-no-Obi',
     },
 	Town = {
@@ -92,6 +94,7 @@ sets = {
         Ring2 = 'Kishar Ring',
         Back = 'Swith Cape +1',
         Legs = 'Enif Cosciales',
+        Feet = 'Amalric Nails +1',
     },
     Stoneskin_Precast = {
         Waist = 'Siegel Sash'   
@@ -103,20 +106,21 @@ sets = {
         Ear1 = 'Mendi. Earring',
         Body = 'Ayanmo Corazza +2',
         Hands = 'Weath. Cuffs +1',
-        Ring1 = 'Defending Ring',
+        Ring1 = 'Stikini Ring +1',
         Ring2 = 'Metamor. Ring +1',
         Back = 'Solemnity Cape',
     },
     WhiteWind = {
-        Head = 'Pinga Crown',
+        Head = 'Nyame Helm',
         Neck = 'Bathy Choker +1',
-        Ear1 = 'Tuisto Earring',
+        Ear1 = 'Eabani Earring',
         Ear2 = 'Odnowa Earring +1',
-        Body = 'Despair Mail',
-        Ring1 = 'Bomb Queen Ring',
-        Ring2 = 'Meridian Ring',
-        Back = 'Moonbeam Cape',
-        Legs = 'Pinga Pants +1',
+        Body = 'Nyame Mail',
+        Hands = 'Weath. Cuffs +1',
+        Ring1 = 'Stikini Ring +1',
+        Ring2 = 'Vengeful Ring',
+        Back = 'Solemnity Cape',
+        Legs = 'Nyame Flanchard',
         Feet = 'Medium\'s Sabots',
     },
     BluSkill = {
@@ -129,14 +133,14 @@ sets = {
         Neck = 'Baetyl Pendant',
         Ear1 = 'Hecate\'s Earring',
         Ear2 = 'Regal Earring',
-        Body = 'Jhakri Robe +2',
-        Hands = 'Jhakri Cuffs +2',
+        Body = 'Nyame Mail',
+        Hands = 'Amalric Gages +1',
         Ring1 = 'Metamor. Ring +1',
         Ring2 = 'Shiva Ring +1',
         Back = { Name = 'Rosmerta\'s Cape', Augment = { [1] = 'Phys. dmg. taken -10%', [2] = '"Mag. Atk. Bns."+10', [3] = 'Mag. Acc+20', [4] = 'INT+20', [5] = 'Magic Damage +20' } },
         Waist = 'Acuity Belt +1',
         Legs = 'Jhakri Slops +2',
-        Feet = 'Hashi. Basmak +1',
+        Feet = 'Amalric Nails +1',
     },
     BluDark = {
         Ring2 = 'Archon Ring',
@@ -145,10 +149,10 @@ sets = {
         Ammo = 'Pemphredo Tathlum',
         Head = 'Jhakri Coronal +2',
         Neck = 'Erra Pendant',
-        Ear1 = 'Gwati Earring',
+        Ear1 = 'Crep. Earring',
         Ear2 = 'Regal Earring',
-        Body = 'Jhakri Robe +2',
-        Hands = 'Jhakri Cuffs +2',
+        Body = 'Nyame Mail',
+        Hands = 'Nyame Gauntlets',
         Ring1 = 'Metamor. Ring +1',
         Ring2 = 'Crepuscular Ring',
         Back = { Name = 'Rosmerta\'s Cape', Augment = { [1] = 'Phys. dmg. taken -10%', [2] = '"Mag. Atk. Bns."+10', [3] = 'Mag. Acc+20', [4] = 'INT+20', [5] = 'Magic Damage +20' } },
@@ -160,10 +164,10 @@ sets = {
         Ammo = 'Pemphredo Tathlum',
         Head = 'Jhakri Coronal +2',
         Neck = 'Sanctity Necklace',
-        Ear1 = 'Gwati Earring',
+        Ear1 = 'Crep. Earring',
         Ear2 = 'Regal Earring',
-        Body = 'Jhakri Robe +2',
-        Hands = 'Jhakri Cuffs +2',
+        Body = 'Luhlaza Jubbah +3',
+        Hands = 'Nyame Gauntlets',
         Ring1 = 'Metamor. Ring +1',
         Ring2 = 'Crepuscular Ring',
         Back = { Name = 'Rosmerta\'s Cape', Augment = { [1] = 'Phys. dmg. taken -10%', [2] = '"Mag. Atk. Bns."+10', [3] = 'Mag. Acc+20', [4] = 'INT+20', [5] = 'Magic Damage +20' } },
@@ -178,7 +182,7 @@ sets = {
         Ear1 = 'Mache Earring',
         Ear2 = 'Odr Earring',
         Body = 'Gleti\'s Cuirass',
-        Hands = 'Jhakri Cuffs +2',
+        Hands = 'Nyame Gauntlets',
         Ring1 = 'Begrudging Ring',
         Ring2 = 'Petrov Ring',
         Back = { Name = 'Rosmerta\'s Cape', Augment = { [1] = 'Phys. dmg. taken -10%', [2] = '"Mag. Atk. Bns."+10', [3] = 'Mag. Acc+20', [4] = 'INT+20', [5] = 'Magic Damage +20' } },
@@ -191,7 +195,6 @@ sets = {
         Head = 'Ipoca Beret',
         Neck = 'Incanter\'s Torque',
         Ear1 = 'Mendi. Earring',
-        Ear2 = 'Gifted Earring',
         Ring1 = 'Metamor. Ring +1',
         Ring2 = 'Kishar Ring',
         Back = 'Solemnity Cape',
@@ -275,7 +278,7 @@ sets = {
 	},
 };
 
-profile.Sets = sets;
+sets = sets:merge(gcinclude.sets, false);profile.Sets = sets;
 
 profile.OnLoad = function()
     gSettings.AllowAddSet = false;
@@ -375,7 +378,7 @@ profile.HandleMidshot = function()
 end
 
 profile.HandleWeaponskill = function()
-    local canWS = gcinclude.CheckBailout();
+    local canWS = gcinclude.CheckWsBailout();
     if (canWS == false) then gFunc.CancelAction() return;
     else
         local ws = gData.GetAction();

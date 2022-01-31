@@ -3,14 +3,14 @@ gcdisplay = gFunc.LoadFile('common\\gcdisplay.lua');
 gcinclude = gFunc.LoadFile('common\\gcinclude.lua');
 
 
-sets = {
+sets = T{
     Idle = {
         Ammo = 'Staunch Tathlum',
         Head = 'Nyame Helm',
         Neck ='Unmoving Collar +1',
         Ear1 = 'Odnowa Earring +1',
         Ear2 = 'Etoilation Earring',
-        Body = 'Cab. Surcoat +3',
+        Body = 'Hjarrandi Breast.',
         Hands = 'Volte Moufles',
         Ring1 = 'Defending Ring',
         Ring2 = 'Gelatinous Ring +1',
@@ -25,13 +25,14 @@ sets = {
     },
     Idle_Refresh = {
         Ammo = 'Homiliary',
+        Ring2 = 'Stikini Ring +1',
     },
     Town = {
         Main = 'Exalibur',
         Sub = 'Aegis',
         Ammo = 'Staunch Tathlum',
         Head = 'Nyame Helm',
-        Body = 'Cab. Surcoat +3',
+        Body = 'Hjarrandi Breast.',
         Hands = 'Sakpata\'s Gauntlets',
         Legs = 'Carmine Cuisses +1',
         Feet = 'Nyame Sollerets',
@@ -43,7 +44,7 @@ sets = {
         Neck ='Loricate Torque +1',
         Ear1 = 'Odnowa Earring +1',
         Ear2 = 'Etoilation Earring',
-        Body = 'Cab. Surcoat +3',
+        Body = 'Hjarrandi Breast.',
         Hands = 'Sakpata\'s Gauntlets',
         Ring1 = 'Defending Ring',
         Ring2 = 'Gelatinous Ring +1',
@@ -58,10 +59,10 @@ sets = {
         Head ='Nyame Helm',
         Ear1 = 'Brutal Earring',
         Ear2 = 'Cessance Earring',
-        Body = 'Cab. Surcoat +3',
+        Body = 'Hjarrandi Breast.',
         Hands = 'Sakpata\'s Gauntlets',
         Ring1 = 'Petrov Ring',
-        Ring2 = 'Flamma Ring',
+        Ring2 = 'Cacoethic Ring',
         Back = { Name = 'Rudianos\'s Mantle', Augment = { [1] = 'Accuracy+20', [2] = '"Dbl.Atk."+10', [3] = 'Attack+20', [4] = 'DEX+20' } },
         Waist = 'Sailfi Belt +1',
         Legs = 'Sakpata\'s Cuisses',
@@ -76,7 +77,7 @@ sets = {
         Body = 'Flamma Korazin +2',
         Hands = 'Sakpata\'s Gauntlets',
         Ring1 = 'Petrov Ring',
-        Ring2 = 'Flamma Ring',
+        Ring2 = 'Cacoethic Ring',
         Back = { Name = 'Rudianos\'s Mantle', Augment = { [1] = 'Accuracy+20', [2] = '"Dbl.Atk."+10', [3] = 'Attack+20', [4] = 'DEX+20' } },
         Waist = 'Sailfi Belt +1',
         Legs = 'Sakpata\'s Cuisses',
@@ -106,7 +107,7 @@ sets = {
     SIR = {
         Ammo = 'Staunch Tathlum', -- 10
         Neck = 'Loricate Torque +1', -- 5
-        Ear1 = 'Gwati Earring',
+        Ear1 = 'Crep. Earring',
         Back = 'Solemnity Cape',
         Waist = 'Rumination Sash', -- 10
         Legs = 'Carmine Cuisses +1', -- 20
@@ -126,6 +127,7 @@ sets = {
         Ear1 = 'Mendi. Earring', -- 5
         Ear2 = 'Nourish. Earring +1', -- 6
         Hands = 'Macabre Gaunt. +1', -- 11
+        Ring1 = 'Stikini Ring +1',
         Back = 'Solemnity Cape', -- 7
         Legs = 'Flamma Dirs +2', -- 9 on me
         Feet = 'Odyssean Greaves', -- 7
@@ -164,7 +166,7 @@ sets = {
         Head = 'Blistering Sallet +1',
         Ear1 = 'Mache Earring',
         Ear2 = 'Moonshade Earring',
-        Body = 'Nyame Mail',
+        Body = 'Hjarrandi Breast.',
         Hands = 'Flam. Manopolas +2',
         Ring1 = 'Petrov Ring',
         Ring2 = 'Begrudging Ring',
@@ -190,7 +192,7 @@ sets = {
 	},
 };
 
-profile.Sets = sets;
+sets = sets:merge(gcinclude.sets, false);profile.Sets = sets;
 
 profile.OnLoad = function()
     gSettings.AllowAddSet = false;
@@ -263,10 +265,6 @@ profile.HandlePrecast = function()
         gFunc.EquipSet(sets.Cure_Precast);
     end
 
-    if string.contains(spell.Name, 'Utsusemi') then
-        gFunc.EquipSet(gcinclude.sets.Utsu_Precast);
-    end
-
     gcinclude.CheckCancels();
 end
 
@@ -292,7 +290,7 @@ profile.HandleMidshot = function()
 end
 
 profile.HandleWeaponskill = function()
-    local canWS = gcinclude.CheckBailout();
+    local canWS = gcinclude.CheckWsBailout();
     if (canWS == false) then gFunc.CancelAction() return;
     else
         local ws = gData.GetAction();

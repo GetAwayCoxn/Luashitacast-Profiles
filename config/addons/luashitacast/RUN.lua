@@ -3,7 +3,7 @@ gcdisplay = gFunc.LoadFile('common\\gcdisplay.lua');
 gcinclude = gFunc.LoadFile('common\\gcinclude.lua');
 
 
-sets = {
+sets = T{
     Idle = {
         Ammo = 'Staunch Tathlum',
         Head = 'Nyame Helm',
@@ -12,7 +12,7 @@ sets = {
         Ear2 = 'Etoilation Earring',
         Body = 'Nyame Mail',
         Hands = 'Nyame Gauntlets',
-        Ring1 = 'Defending Ring',
+        Ring1 = 'Stikini Ring +1',
         Ring2 = 'Gelatinous Ring +1',
         Back = { Name = 'Ogma\'s Cape', Augment = { [1] = 'Phys. dmg. taken -10%', [2] = 'Mag. Eva.+20', [3] = 'Eva.+20', [4] = 'HP+60', [5] = 'Enmity+10' } },
         Waist = 'Gishdubar Sash',
@@ -113,7 +113,7 @@ sets = {
     SIR = {
         Ammo = 'Staunch Tathlum', -- 10
         Neck = 'Loricate Torque +1', -- 5
-        Ear1 = 'Gwati Earring',
+        Ear1 = 'Crep. Earring',
         Back = 'Solemnity Cape',
         Waist = 'Rumination Sash', -- 10
         Legs = 'Carmine Cuisses +1', -- 20
@@ -132,6 +132,7 @@ sets = {
         Neck = 'Sacro Gorget', -- 10
         Ear1 = 'Mendi. Earring', -- 5
         Hands = 'Macabre Gaunt. +1', -- 11
+        Ring1 = 'Stikini Ring +1',
         Back = 'Solemnity Cape', -- 7
         Legs = 'Futhark Trousers +1', -- this set used for regen too
         Feet = 'Odyssean Greaves', -- 7
@@ -173,11 +174,10 @@ sets = {
 
     Movement = {
         Legs = 'Carmine Cuisses +1',
-        Feet = 'Hermes\' Sandals'
 	},
 };
 
-profile.Sets = sets;
+sets = sets:merge(gcinclude.sets, false);profile.Sets = sets;
 
 profile.OnLoad = function()
     gSettings.AllowAddSet = false;
@@ -243,10 +243,6 @@ profile.HandlePrecast = function()
         gFunc.EquipSet(sets.Cure_Precast);
     end
 
-    if string.contains(spell.Name, 'Utsusemi') then
-        gFunc.EquipSet(gcinclude.sets.Utsu_Precast);
-    end
-
     gcinclude.CheckCancels();
 end
 
@@ -272,7 +268,7 @@ profile.HandleMidshot = function()
 end
 
 profile.HandleWeaponskill = function()
-    local canWS = gcinclude.CheckBailout();
+    local canWS = gcinclude.CheckWsBailout();
     if (canWS == false) then gFunc.CancelAction() return;
     else
         local ws = gData.GetAction();

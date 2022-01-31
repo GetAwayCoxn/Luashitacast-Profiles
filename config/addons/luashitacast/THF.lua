@@ -3,7 +3,7 @@ gcdisplay = gFunc.LoadFile('common\\gcdisplay.lua');
 gcinclude = gFunc.LoadFile('common\\gcinclude.lua');
 
 
-sets = {
+sets = T{
     Idle = {
         Head = 'Malignance Chapeau',
         Neck ='Unmoving Collar +1',
@@ -28,17 +28,17 @@ sets = {
     },
 
     Dt = {
-        Head = 'Malignance Chapeau',
+        Head = 'Nyame Helm',
         Neck ='Bathy Choker +1',
         Ear1 = 'Odnowa Earring +1',
         Ear2 = 'Etiolation Earring',
-        Body = 'Gleti\'s Cuirass',
-        Hands = 'Malignance Gloves',
+        Body = 'Nyame Mail',
+        Hands = 'Nyame Gauntlets',
         Ring1 = 'Defending Ring',
         Ring2 = 'Gelatinous Ring +1',
         Back = { Name = 'Toutatis\'s Cape', Augment = { [1] = 'Damage taken-5%', [2] = 'Accuracy+30', [3] = 'Attack+20', [4] = '"Store TP"+10', [5] = 'DEX+20' } },
         Waist = 'Sailfi Belt +1',
-        Legs = 'Gleti\'s Breeches',
+        Legs = 'Nyame Flanchard',
         Feet = 'Nyame Sollerets',
     },
 
@@ -146,7 +146,7 @@ sets = {
 	},
 };
 
-profile.Sets = sets;
+sets = sets:merge(gcinclude.sets, false);profile.Sets = sets;
 
 profile.OnLoad = function()
     gSettings.AllowAddSet = false;
@@ -220,11 +220,7 @@ end
 
 profile.HandlePrecast = function()
     local spell = gData.GetAction();
-    gFunc.EquipSet(sets.Precast)
-
-    if string.contains(spell.Name, 'Utsusemi') then
-        gFunc.EquipSet(gcinclude.sets.Utsu_Precast);
-    end
+    gFunc.EquipSet(sets.Precast);
 
     gcinclude.CheckCancels();
 end
@@ -244,7 +240,7 @@ profile.HandleMidshot = function()
 end
 
 profile.HandleWeaponskill = function()
-    local canWS = gcinclude.CheckBailout();
+    local canWS = gcinclude.CheckWsBailout();
     if (canWS == false) then gFunc.CancelAction() return;
     else
         local ws = gData.GetAction();

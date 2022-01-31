@@ -2,7 +2,7 @@ local profile = {};
 gcdisplay = gFunc.LoadFile('common\\gcdisplay.lua');
 gcinclude = gFunc.LoadFile('common\\gcinclude.lua');
 
-sets = {
+sets = T{
     Idle = {
         Main = { Name = 'Kali', AugPath='C' },
         Sub = 'Genmei Shield',
@@ -13,11 +13,11 @@ sets = {
         Ear2 = 'Etiolation Earring',
         Body = 'Nyame Mail',
         Hands = 'Fili Manchettes +1',
-        Ring1 = 'Defending Ring',
+        Ring1 = 'Stikini Ring +1',
         Ring2 = { Name = 'Gelatinous Ring +1', AugPath='A' },
         Back = { Name = 'Intarabus\'s Cape', Augment = { [1] = 'Damage taken-5%', [2] = '"Fast Cast"+10', [3] = 'Mag. Acc.+10', [4] = 'Mag. Acc+20', [5] = 'CHR+20', [6] = 'Magic Damage +20' } },
         Waist = 'Fucho-no-Obi',
-        Legs = 'Fili Rhingrave +1',
+        Legs = 'Assid. Pants +1',
         Feet = 'Volte Gaiters',
     },
     Resting = {},
@@ -41,7 +41,7 @@ sets = {
         Ring2 = { Name = 'Gelatinous Ring +1', AugPath='A' },
         Back = { Name = 'Intarabus\'s Cape', Augment = { [1] = 'Damage taken-5%', [2] = '"Fast Cast"+10', [3] = 'Mag. Acc.+10', [4] = 'Mag. Acc+20', [5] = 'CHR+20', [6] = 'Magic Damage +20' } },
         Waist = 'Fucho-no-Obi',
-        Legs = 'Fili Rhingrave +1',
+        Legs = 'Brioso Cannions +2',
         Feet = 'Fili Cothurnes +1',
     },
 
@@ -140,7 +140,7 @@ sets = {
         Ear2 = 'Regal Earring',
         Body = { Name = 'Gende. Bliaut +1', Augment = { [1] = 'Magic dmg. taken -3%', [2] = 'Phys. dmg. taken -3%', [3] = '"Cure" potency +5%' } },
         Hands = 'Weath. Cuffs +1',
-        Ring1 = 'Rufescent Ring',
+        Ring1 = 'Stikini Ring +1',
         Ring2 = { Name = 'Metamor. Ring +1', AugPath='A' },
         Back = 'Solemnity Cape',
         Waist = 'Rumination Sash',
@@ -163,7 +163,7 @@ sets = {
     Enhancing = {
         Head = 'Befouled Crown',
         Neck = 'Incanter\'s Torque',
-        Ear1 = 'Gifted Earring',
+        Ear1 = 'Mendi. Earring',
         Ear2 = 'Andoaa Earring',
         Body = 'Telchine Chas.',
         Hands = 'Chironic Gloves',
@@ -205,7 +205,7 @@ sets = {
         Range = { Name = 'Gjallarhorn', AugTrial=3591 },
         Head = 'Brioso Roundlet +2',
         Neck = 'Moonbow Whistle',
-        Ear1 = 'Gwati Earring',
+        Ear1 = 'Crep. Earring',
         Ear2 = 'Regal Earring',
         Body = 'Brioso Justau. +2',
         Hands = 'Brioso Cuffs +2',
@@ -219,6 +219,7 @@ sets = {
     String = { --need update for harps, mostly for Horde Lullaby
         Range = 'Blurred Harp',
         Ear2 = 'Regal Earring',
+        Legs = 'Inyanga Shalwar +2',
         Feet = 'Brioso Slippers +3',
     },
     Harp = {--use /forcestring in game to lock this on all songs, I personally just use Paeons
@@ -230,7 +231,7 @@ sets = {
         Range = { Name = 'Gjallarhorn', AugTrial=3591 },
         Head = 'Fili Calot +1',
         Neck = 'Moonbow Whistle',
-        Ear1 = 'Gifted Earring',
+        Ear1 = 'Mendi. Earring',
         Ear2 = 'Etiolation Earring',
         Body = 'Fili Hongreline +1',
         Hands = 'Fili Manchettes +1',
@@ -238,20 +239,20 @@ sets = {
         Ring2 = 'Kishar Ring',
         Back = { Name = 'Intarabus\'s Cape', Augment = { [1] = 'Damage taken-5%', [2] = '"Fast Cast"+10', [3] = 'Mag. Acc.+10', [4] = 'Mag. Acc+20', [5] = 'CHR+20', [6] = 'Magic Damage +20' } },
         Waist = 'Fucho-no-Obi',
-        Legs = 'Fili Rhingrave +1',
+        Legs = 'Inyanga Shalwar +2',
         Feet = 'Brioso Slippers +3',
     },
     Paeon = {--I personally force paeons to use my extra song harp, you can also use /forcestring if you want
         Main = { Name = 'Kali', AugPath='C' },
         Sub = 'Culminus',
         Range = 'Blurred Harp',
-        Ear1 = 'Gifted Earring',
+        Ear1 = 'Mendi. Earring',
         Ear2 = 'Etiolation Earring',
         Ring1 = 'Prolix Ring',
         Ring2 = 'Kishar Ring',
         Back = { Name = 'Intarabus\'s Cape', Augment = { [1] = 'Damage taken-5%', [2] = '"Fast Cast"+10', [3] = 'Mag. Acc.+10', [4] = 'Mag. Acc+20', [5] = 'CHR+20', [6] = 'Magic Damage +20' } },
         Waist = 'Fucho-no-Obi',
-        Legs = 'Fili Rhingrave +1',
+        Legs = 'Inyanga Shalwar +2',
         Feet = 'Volte Gaiters',
     },
     March = {
@@ -261,7 +262,7 @@ sets = {
         Head = 'Fili Calot +1',
     },
     Ballad = {--I dont use this
-        --Legs = 'Fili Rhingrave +1',
+        --Legs = 'Inyanga Shalwar +2',
     },
     Scherzo = {
         Feet = 'Fili Cothurnes +1',
@@ -322,7 +323,7 @@ sets = {
 	},
 };
 
-profile.Sets = sets;
+sets = sets:merge(gcinclude.sets, false);profile.Sets = sets;
 
 profile.OnLoad = function()
     gSettings.AllowAddSet = false;
@@ -400,10 +401,6 @@ profile.HandlePrecast = function()
         gFunc.EquipSet(sets.Song_Precast);
     end
 
-    if string.contains(spell.Name, 'Utsusemi') then
-        gFunc.EquipSet(gcinclude.sets.Utsu_Precast);
-    end
-
     gcinclude.CheckCancels();
 end
 
@@ -421,7 +418,7 @@ profile.HandleMidcast = function()
         elseif string.match(spell.Name, 'Stoneskin') then
             gFunc.EquipSet(sets.Stoneskin);
         elseif string.contains(spell.Name, 'Refresh') then
-            gFunc.EquipSet(sets.Refresh);;
+            gFunc.EquipSet(sets.Refresh);
         end
     elseif (spell.Skill == 'Healing Magic') then
         gFunc.EquipSet(sets.Cure);
@@ -483,7 +480,7 @@ profile.HandleMidshot = function()
 end
 
 profile.HandleWeaponskill = function()
-    local canWS = gcinclude.CheckBailout();
+    local canWS = gcinclude.CheckWsBailout();
     if (canWS == false) then gFunc.CancelAction() return;
     else
         local ws = gData.GetAction();
