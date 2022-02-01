@@ -236,7 +236,7 @@ sets = T{
     },
     Helix = {
         Main = 'Bunzi\'s Rod',
-        Sub = 'Ammurapi Shield',
+        Sub = 'Culminus',
         Ammo = 'Ghastly Tathlum +1',
         Head = 'Mall. Chapeau +2',
         Neck = 'Argute Stole +1',
