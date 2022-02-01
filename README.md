@@ -1,7 +1,7 @@
 # Luashitacast-Profiles
 These are my luashitacast profiles for FFXI Ashita v4
 
-I will eventually clean the code/comments/etc and provide a better formatted readme. This is very much in an alpha status however these profiles are able to have the gear sets edited and ran in current retail. Note that a LOT of the gear sets in these job files are copied and pasted and you so will need to edit them for your own use case and gear sets. That is why you might see something like Jhakri gear in the SAM file for example. I edit the sets as I play the jobs and if I do not play it very much it will have very weird looking gear for that job. Along the same lines some jobs I do not play at all the profile will have the bare minimum to work and you will have more things to add to suit your needs. If you do not want to use or do not know how to use a particular set it is best to just leave the set there but remove any/all gear from it. If you delete any set you may get error messages when using the profile.
+I will eventually clean the code/comments/etc and provide a better formatted readme. You can consider these very much in an alpha status however these profiles are able to have the gear sets edited and ran in current retail. Note that a LOT of the gear sets in these job files are copied and pasted and you so will need to edit them for your own use case and gear sets. That is why you might see something like Jhakri gear in the SAM file for example. I edit the sets as I play the jobs and if I do not play it very much it will have very weird looking gear for that job. Along the same lines some jobs I do not play at all the profile will have the bare minimum to work and you will have more things to add to suit your needs. If you do not want to use or do not know how to use a particular set it is best to just leave the set there but remove any/all gear from it. If you delete any set you may get error messages when using the profile.
 
 My intent here is to simply provide a starting point for people to make their own profiles. I created these with MY use in mind but thought to put them out there until someone better with this sort of thing might provide a better structured library of profiles for Ashita v4. So if they are not working for you the way that you want I guess make your own or find another one to use.
 
@@ -11,7 +11,7 @@ The biggest issue at the moment is that the profiles will not always load proper
 
 There are a couple basic settings in the gcinclude file that are detailed in the comments at the top of that file. Also each job lua has the minimum require sets to function properly, if you are unsure if you want or need to use a particular set just leave that set empty and do not simply delete it completely or you will get errors.
 
-Some of the things that my profiles will do is automatically equip idle regen or refresh gear below a predefined (in the gcinclude file) % amount. The same can be done with DT gear or Pet DT gear as well.
+Some of the things that my profiles will do is automatically equip idle regen or refresh gear below a predefined (in the gcinclude file) % amount. The same can be done with DT gear or Pet DT gear as well. It will also auto cancel stoneskin for spell casting and jig. It will also lock in various rings for use such as tele/warp/exp rings.
 
 ### Some of the commands you can use in game:
 
