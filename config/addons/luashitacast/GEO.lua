@@ -345,6 +345,7 @@ profile.HandleDefault = function()
     if (pet ~= nil) then
         gFunc.EquipSet(sets.Idle_Pet);
     end
+    if (gcinclude.RRSET == true) then gFunc.EquipSet(gcinclude.sets.Reraise) end
 end
 
 profile.HandleAbility = function()
