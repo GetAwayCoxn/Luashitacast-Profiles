@@ -280,7 +280,7 @@ sets = T{
 
     Ws_Default = {
         Ammo = 'Voluspa Tathlum',
-        Head = 'Jhakri Coronal +2',
+        Head = 'Nyame Helm',
         Neck = 'Fotia Gorget',
         Ear1 = 'Brutal Earring',
         Ear2 = 'Moonshade Earring',
@@ -290,7 +290,7 @@ sets = T{
         Ring2 = 'Karieyh Ring',
         Back = 'Solemnity Cape',
         Waist = 'Fotia Belt',
-        Legs = 'Jhakri Slops +2',
+        Legs = 'Nyame Flanchard',
         Feet = 'Nyame Sollerets',
     },
     Ws_Hybrid = {
@@ -303,7 +303,7 @@ sets = T{
 	},
 };
 
-sets = sets:merge(gcinclude.sets, false);profile.Sets = sets;
+profile.Sets = sets;
 
 profile.OnLoad = function()
     gSettings.AllowAddSet = false;

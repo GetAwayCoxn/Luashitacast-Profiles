@@ -3,11 +3,11 @@ local gcinclude = T{};
 --[[
 Only edit the next two small sections here. See the readme on my github for more information on usages for my profiles.
 
-These are universal sets for things like doomed or asleep; avoid main/sub/range/ammo here, also only use gear names here, no augments paths/details etc.
+These are universal sets for things like doomed or asleep; avoid main/sub/range/ammo here.
 The second section is a couple basic settings to decide on whether or not to use you the automatic equiping function of idle regen, idle refresh, DT gear etc.
 More details in each section.
 ]]
-gcinclude.sets = T{
+gcinclude.sets = {
 	Doomed = { -- this set will equip any time you have the doom status
 		Ring1 = 'Purity Ring',
 		Waist = 'Gishdubar Sash',
@@ -31,7 +31,7 @@ gcinclude.sets = T{
 		--Ring2 = 'Dim. Ring (Mea)',
 	},
 };
-gcinclude.settings = T{
+gcinclude.settings = {
 	AutoGear = true; --set to false if you dont want DT/Regen/Refresh/PetDT gear to come on automatically at the defined %'s here
 	RegenGearHPP = 75; -- set HPP to have your idle regen set to come on
 	RefreshGearMPP = 70; -- set MPP to have your idle refresh set to come on
@@ -44,6 +44,7 @@ Everything else in this file should not be editted by anyone trying to use my pr
 in each individual job lua file. Unless you know what you're doing then it is best to leave everything below this line alone, 
 the rest here are various functions and arrays etc
 ]]
+gcdisplay = gFunc.LoadFile('common\\gcdisplay.lua');
 
 gcinclude.Towns = T{'Tavnazian Safehold','Al Zahbi','Aht Urhgan Whitegate','Nashmau','Southern San d\'Oria [S]','Bastok Markets [S]','Windurst Waters [S]','San d\'Oria-Jeuno Airship','Bastok-Jeuno Airship','Windurst-Jeuno Airship','Kazham-Jeuno Airship','Southern San d\'Oria','Northern San d\'Oria','Port San d\'Oria','Chateau d\'Oraguille','Bastok Mines','Bastok Markets','Port Bastok','Metalworks','Windurst Waters','Windurst Walls','Port Windurst','Windurst Woods','Heavens Tower','Ru\'Lude Gardens','Upper Jeuno','Lower Jeuno','Port Jeuno','Rabao','Selbina','Mhaura','Kazham','Norg','Mog Garden','Celennia Memorial Library','Western Adoulin','Eastern Adoulin'};
 gcinclude.LockingRings = T{'Echad Ring', 'Trizek Ring', 'Endorsement Ring', 'Warp Ring','Facility Ring','Dim. Ring (Dem)','Dim. Ring (Mea)','Dim. Ring (Holla)'};
@@ -54,6 +55,7 @@ gcinclude.BstPetMagicAccuracy = T{'Toxic Spit','Acid Spray','Leaf Dagger','Venom
 gcinclude.SmnSkill = T{'Shining Ruby','Glittering Ruby','Crimson Howl','Inferno Howl','Frost Armor','Crystal Blessing','Aerial Armor','Hastega II','Fleet Wind','Hastega','Earthen Ward','Earthen Armor','Rolling Thunder','Lightning Armor','Soothing Current','Ecliptic Growl','Heavenward Howl','Ecliptic Howl','Noctoshield','Dream Shroud','Altana\'s Favor','Reraise','Reraise II','Reraise III','Raise','Raise II','Raise III','Wind\'s Blessing'};
 gcinclude.SmnMagical = T{'Searing Light','Meteorite','Holy Mist','Inferno','Fire II','Fire IV','Meteor Strike','Conflag Strike','Diamond Dust','Blizzard II','Blizzard IV','Heavenly Strike','Aerial Blast','Aero II','Aero IV','Wind Blade','Earthen Fury','Stone II','Stone IV','Geocrush','Judgement Bolt','Thunder II','Thunder IV','Thunderstorm','Thunderspark','Tidal Wave','Water II','Water IV','Grand Fall','Howling Moon','Lunar Bay','Ruinous Omen','Somnolence','Nether Blast','Night Terror','Level ? Holy'};
 gcinclude.SmnHealing = T{'Healing Ruby','Whispering Wind','Spring Water'};
+gcinclude.SmnHybrid = T{'Flamming Crush'};
 gcinclude.SmnEnfeebling = T{'Diamond Storm','Sleepga','Shock Squall','Slowga','Tidal Roar','Pavor Nocturnus','Ultimate Terror','Nightmare','Mewing Lullaby','Eerie Eye'};
 gcinclude.BluMagPhys = T{'Foot Kick','Sprout Smack','Wild Oats','Power Attack','Queasyshroom','Battle Dance','Feather Storm','Helldive','Bludgeon','Claw Cyclone','Screwdriver','Grand Slam','Smite of Rage','Pinecone Bomb','Jet Stream','Uppercut','Terror Touch','Mandibular Bite','Sickle Slash','Dimensional Death','Spiral Spin','Death Scissors','Seedspray','Body Slam','Hydro Shot','Frenetic Rip','Spinal Cleave','Hysteric Barrage','Asuran Claws','Cannonball','Disseverment','Ram Charge','Vertical Cleave','Final Sting','Goblin Rush','Vanity Dive','Whirl of Rage','Benthic Typhoon','Quad. Continuum','Empty Thrash','Delta Thrust','Heavy Strike','Quadrastrike','Tourbillion','Amorphic Spikes','Barbed Crescent','Bilgestorm','Bloodrake','Glutinous Dart','Paralyzing Triad','Thrashing Assault','Sinker Drill','Sweeping Gouge','Saurian Slide'};
 gcinclude.BluMagDebuff = T{'Filamented Hold','Cimicine Discharge','Demoralizing Roar','Venom Shell','Light of Penance','Sandspray','Auroral Drape','Frightful Roar','Enervation','Infrasonics','Lowing','CMain Wave','Awful Eye','Voracious Trunk','Sheep Song','Soporific','Yawn','Dream Flower','Chaotic Eye','Sound Blast','Blank Gaze','Stinking Gas','Geist Wall','Feather Tickle','Reaving Wind','Mortal Ray','Absolute Terror','Blistering Roar'};
@@ -298,6 +300,12 @@ function gcinclude.CheckWsBailout()
 
 	if (sleep+petrify+stun+terror+amnesia >= 1) or (player.TP <= 999) then
 		return false;
+	--[[elseif (tonumber(target.Distance) >= 5) then -- 5 yalms can still cause loss of TP on some mobs
+		if (gcinclude.DistanceWS:contains(ws.Name) then
+
+		else
+			return false;
+		end]]
 	else
 		return true;
 	end

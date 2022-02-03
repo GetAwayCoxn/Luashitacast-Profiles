@@ -5,29 +5,19 @@ gcinclude = gFunc.LoadFile('common\\gcinclude.lua');
 
 sets = T{
     Idle = {
-        Head = 'Mpaca\'s Cap',
+        Ammo = 'Staunch Tathlum',
+        Head = 'Taeon Chapeau',
         Neck = 'Empath Necklace',
         Ear1 = 'Odnowa Earring +1',
         Ear2 = 'Etiolation Earring',
-        Body = 'Nyame Mail',
+        Body = 'Gleti\'s Cuirass',
         Hands = 'Nyame Gauntlets',
         Ring1 = 'Defending Ring',
         Ring2 = 'Gelatinous Ring +1',
-        Back = 'Visucius\'s Mantle',
+        Back = { Name = 'Artio\'s Mantle', Augment = { [1] = 'Pet: R.Acc.+20', [2] = 'Pet: R.Atk.+20', [3] = 'Pet: "Regen"+10', [4] = 'Pet: Acc.+20', [5] = 'Pet: Atk.+20' } },
         Waist = 'Gishdubar Sash',
-        Legs = 'Mpaca\'s Hose',
-        Feet = 'Mpaca\'s Boots',
-    },
-    Idle_Pet = {
-        Head = 'Taeon Chapeau',
-        Neck = 'Empath Necklace',
-        Ear1 = 'Burana Earring',
-        Ear2 = 'Handler\'s Earring +1',
-        Body = 'Taeon Tabard',
-        Hands = 'Taeon Gloves',
-        Back = 'Visucius\'s Mantle',
-        Legs = 'Taeon Tights',
-        Feet = 'Telchine Pigaches',
+        Legs = 'Gleti\'s Breeches',
+        Feet = 'Gleti\'s Boots',
     },
 	Resting = {},
     Idle_Regen = {
@@ -35,30 +25,33 @@ sets = T{
     },
     Idle_Refresh = {},
 	Town = {
-        Main = 'Sakpata\'s Fists',
-        Range = 'Neo Animator',
-        Ammo = 'Automat. Oil +3',
-        Head = 'Karagoz Capello +1',
-        Body = 'Pitre Tobe +3',
+        Main = 'Naegling',
+        Ammo = 'Voluspa Tathlum',
+        Head = 'Straw Hat',
+        Neck = 'Empath Necklace',
+        Ear1 = 'Thrud Earring',
+        Ear2 = 'Cessance Earring',
+        Body = 'Gleti\'s Cuirass',
         Hands = 'Malignance Gloves',
         Ring1 = 'Epona\'s Ring',
-        Ring2 = 'Niqmaddu Ring',
-        Back = 'Visucius\'s Mantle',
-        Waist = 'Moonbow Belt',
+        Ring2 = 'Petrov Ring',
+        Back = { Name = 'Artio\'s Mantle', Augment = { [1] = 'Pet: R.Acc.+20', [2] = 'Pet: R.Atk.+20', [3] = 'Pet: "Regen"+10', [4] = 'Pet: Acc.+20', [5] = 'Pet: Atk.+20' } },
+        Waist = 'Flume Belt +1',
         Legs = 'Tali\'ah Sera. +2',
-        Feet = 'Hermes\' Sandals',
+        Feet = 'Gleti\'s Boots',
     },
 	
 	Dt = {
+        Ammo = 'Crepuscular Pebble',
         Head = 'Nyame Helm',
         Neck = 'Empath Necklace',
         Ear1 = 'Odnowa Earring +1',
         Ear2 = 'Handler\'s Earring +1',
-        Body = 'Nyame Mail',
+        Body = 'Gleti\'s Cuirass',
         Hands = 'Nyame Gauntlets',
         Ring1 = 'Defending Ring',
         Ring2 = 'Gelatinous Ring +1',
-        Back = 'Visucius\'s Mantle',
+        Back = { Name = 'Artio\'s Mantle', Augment = { [1] = 'Pet: R.Acc.+20', [2] = 'Pet: R.Atk.+20', [3] = 'Pet: "Regen"+10', [4] = 'Pet: Acc.+20', [5] = 'Pet: Atk.+20' } },
         Waist = 'Gishdubar Sash',
         Legs = 'Nyame Flanchard',
         Feet = 'Nyame Sollerets',
@@ -72,39 +65,26 @@ sets = T{
         Hands = 'Taeon Gloves',
         Ring1 = 'Defending Ring',
         Ring2 = 'Gelatinous Ring +1',
-        Back = 'Visucius\'s Mantle',
+        Back = { Name = 'Artio\'s Mantle', Augment = { [1] = 'Pet: R.Acc.+20', [2] = 'Pet: R.Atk.+20', [3] = 'Pet: "Regen"+10', [4] = 'Pet: Acc.+20', [5] = 'Pet: Atk.+20' } },
         Waist = 'Incarnation Sash',
         Legs = 'Taeon Tights',
-        Feet = 'Mpaca\'s Boots',
+        Feet = 'Gleti\'s Boots',
 	},
 	
-    Pet_Only_Tp_Default = {
-        Neck = 'Shulmanu Collar',
-        Ear1 = 'Rimeice Earring',
-        Ear2 = 'Domes. Earring',
-        Back = 'Visucius\'s Mantle',
-        Waist = 'Incarnation Sash',
-        Legs = 'Taeon Tights',
-        Feet = 'Mpaca\'s Boots',
-    },
-    Pet_Only_Tp_Hybrid = {
-    },
-    Pet_Only_Tp_Acc = {
-    },
-    -- These sets will be for when both you and your pet are engaged
 	Tp_Default = {
-        Head = 'Mpaca\'s Cap',
-        Neck = 'Shulmanu Collar',
-        Ear1 = 'Mache Earring',
+        Ammo = 'Coiste Bodhar',
+        Head = 'Malignance Chapeau',
+        Neck = 'Anu Torque',
+        Ear1 = 'Sherida Earring',
         Ear2 = 'Cessance Earring',
-        Body = 'Pitre Tobe +3',
-        Hands = 'Mpaca\'s Gloves',
+        Body = 'Gleti\'s Cuirass',
+        Hands = 'Meg. Gloves +2',
         Ring1 = 'Epona\'s Ring',
         Ring2 = 'Petrov Ring',
-        Back = 'Visucius\'s Mantle',
-        Waist = 'Moonbow Belt',
-        Legs = 'Mpaca\'s Hose',
-        Feet = 'Mpaca\'s Boots',
+        Back = { Name = 'Artio\'s Mantle', Augment = { [1] = 'Pet: R.Acc.+20', [2] = 'Pet: R.Atk.+20', [3] = 'Pet: "Regen"+10', [4] = 'Pet: Acc.+20', [5] = 'Pet: Atk.+20' } },
+        Waist = 'Sailfi Belt +1',
+        Legs = 'Gleti\'s Breeches',
+        Feet = 'Gleti\'s Boots',
     },
 	Tp_Hybrid = {
         Neck = 'Empath Necklace',
@@ -113,24 +93,19 @@ sets = T{
         Ring1 = 'Cacoethic Ring',
     },
 	Tp_Acc = {},
-    -- These following sets are intended for one off items to equip while the pet is engaged (or both of you) based on the PupMode. An example would be Pet HP+ pieces for Tank mode. Can be empty but do not delete.
-    Tank = {
-        Range = 'Animator P +1',
-    },
-    Melee = {
-        Range = 'Neo Animator',
-    },
-    Ranger = {
-        Range = 'Animator P +1',
-    },
-    Mage = {
-        Range = 'Neo Animator',
+    Pet_Only_Tp = {
+        Ammo = 'Voluspa Tathlum',
+        Neck = 'Shulmanu Collar',
+        Ear1 = 'Rimeice Earring',
+        Ear2 = 'Domes. Earring',
+        Back = { Name = 'Artio\'s Mantle', Augment = { [1] = 'Pet: R.Acc.+20', [2] = 'Pet: R.Atk.+20', [3] = 'Pet: "Regen"+10', [4] = 'Pet: Acc.+20', [5] = 'Pet: Atk.+20' } },
+        Waist = 'Incarnation Sash',
+        Legs = 'Taeon Tights',
+        Feet = 'Gleti\'s Boots',
     },
 
     Precast = {
-        Head = 'Haruspex Hat',
         Neck = 'Baetyl Pendant',
-        Ear1 = 'Loquac. Earring',
         Ear2 = 'Etiolation Earring',
         Body = 'Taeon Tabard',
         Ring2 = 'Prolix Ring',
@@ -142,14 +117,14 @@ sets = T{
         Neck = 'Fotia Gorget',
         Ear1 = 'Thrud Earring',
         Ear2 = 'Moonshade Earring',
-        Body = 'Nyame Mail',
+        Body = 'Gleti\'s Cuirass',
         Hands = 'Meg. Gloves +2',
         Ring1 = 'Karieyh Ring',
         Ring2 = 'Rufescent Ring',
         Back = '',
         Waist = 'Fotia Belt',
-        Legs = 'Mpaca\'s Hose',
-        Feet = 'Mpaca\'s Boots',
+        Legs = 'Gleti\'s Breeches',
+        Feet = 'Gleti\'s Boots',
     },
     Ws_Hybrid = {
         Ammo = 'Voluspa Tathlum',
@@ -157,40 +132,37 @@ sets = T{
     Ws_Acc = {
         Ammo = 'Voluspa Tathlum',
     },
-    Pet_WS = {
-        Head = 'Karagoz Capello +1',
-        Neck = 'Shulmanu Collar',
-        Ear2 = 'Domes. Earring',
-        Body = 'Pitre Tobe +3',
-        Hands = 'Mpaca\'s Gloves',
-        Waist = 'Incarnation Sash',
-        Legs = 'Mpaca\'s Hose',
-        Feet = 'Mpaca\'s Boots',
-	},
-    Pet_RNGWS = {
-        Head = 'Karagoz Capello +1',
-        Neck = 'Shulmanu Collar',
-        Ear2 = 'Domes. Earring',
-        Body = 'Pitre Tobe +3',
-        Hands = 'Mpaca\'s Gloves',
-        Waist = 'Incarnation Sash',
-        Legs = 'Mpaca\'s Hose',
-        Feet = 'Mpaca\'s Boots',
-	},
 	
-	Repair = {
-		Ammo = 'Automat. Oil +3',
-	},
-    Maneuver = {
-	},
-	
+	SmnPhysical = {},
+	SmnMagical = {},
+	SmnSkill = {},
+    SmnHealing = {},
+	SmnEnfeebling = {},
+    SmnHybrid = {}, --special set for flamming crush
 	
 	Movement = {
-        Feet = 'Hermes\' Sandals',
 	},
 };
 
 profile.Sets = sets;
+
+local function HandlePetAction(PetAction)
+    gFunc.EquipSet(sets.PetReadyDefault);
+
+	if (PetAction.Name == SmnSkill) then
+        gFunc.EquipSet(sets.SmnSkill);
+	elseif (PetAction.Name == SmnMagical) then
+        gFunc.EquipSet(sets.SmnMagical);
+    elseif (PetAction.Name == SmnHybrid) then
+        gFunc.EquipSet(sets.SmnHybrid);
+	elseif (PetAction.Name == SmnHealing) then
+        gFunc.EquipSet(sets.SmnHealing);
+    elseif (PetAction.Name == SmnEnfeebling) then
+        gFunc.EquipSet(sets.SmnEnfeebling);
+    else
+        gFunc.EquipSet(sets.SmnPhysical);
+    end
+end
 
 profile.OnLoad = function()
     gSettings.AllowAddSet = false;
@@ -198,7 +170,7 @@ profile.OnLoad = function()
 
     --[[ Set you job macro defaults here]]
     AshitaCore:GetChatManager():QueueCommand(1, '/macro book 9');
-    AshitaCore:GetChatManager():QueueCommand(1, '/macro set 1');
+    AshitaCore:GetChatManager():QueueCommand(1, '/macro set 10');
 end
 
 profile.OnUnload = function()
@@ -210,56 +182,43 @@ profile.HandleCommand = function(args)
 end
 
 profile.HandleDefault = function()
-    local player = gData.GetPlayer();
     local pet = gData.GetPet();
-	
-    gFunc.EquipSet(sets.Idle);
-    if (pet ~= nil) then
-        gFunc.EquipSet(sets.Idle_Pet);
+	local petAction = gData.GetPetAction();
+    if (petAction ~= nil) then
+        HandlePetAction(petAction);
+        return;
     end
 	
-    if (pet ~= nil and pet.Status == 'Engaged') then
-        gFunc.EquipSet('Pet_Only_Tp_' .. gcdisplay.GetCycle('MeleeSet'));
-        if (player.Status == 'Engaged') then
-            gFunc.EquipSet('Tp_' .. gcdisplay.GetCycle('MeleeSet'));
-        end
-            
-        gFunc.EquipSet(gcdisplay.GetCycle('PupMode'));
+	local player = gData.GetPlayer();
+    if (player.Status == 'Engaged') then
+        gFunc.EquipSet('Tp_' .. gcdisplay.GetCycle('MeleeSet'));
+    elseif (pet ~= nil and pet.Status == 'Engaged') then
+        gFunc.EquipSet(sets.Pet_Only_Tp);
     elseif (player.Status == 'Resting') then
         gFunc.EquipSet(sets.Resting);
-    elseif (player.IsMoving == true) then
+    else
+		gFunc.EquipSet(sets.Idle);
+    end
+	
+	if (player.IsMoving == true) then
 		gFunc.EquipSet(sets.Movement);
 	end
-
 	if (gcdisplay.GetToggle('DTset') == true) then
+        gFunc.EquipSet(gcinclude.sets.Dt);
+		gFunc.EquipSet(sets.Dt);
         if (pet ~= nil) then
             gFunc.EquipSet(sets.Pet_Dt);
 		end
-        gFunc.EquipSet(gcinclude.sets.Dt);
-        gFunc.EquipSet(sets.Dt);
 	end
 	if (gcdisplay.GetToggle('Kite') == true) then
 		gFunc.EquipSet(sets.Movement);
 	end
-	
-    gcinclude.CheckDefault ();
-    if (pet ~= nil) and (pet.TP > 950) then 
-        if (gcdisplay.GetCycle('PupMode') == 'Ranger') then
-            gFunc.EquipSet(sets.Pet_RNGWS);
-        else
-            gFunc.EquipSet(sets.Pet_WS);
-        end
-    end
+	gcinclude.CheckDefault ();
     if (gcinclude.RRSET == true) then gFunc.EquipSet(gcinclude.sets.Reraise) end
 end
 
 profile.HandleAbility = function()
 	local ability = gData.GetAction();
-	if (string.match(ability.Name, 'Repair')) or (string.match(ability.Name, 'Maintenance')) then
-		gFunc.EquipSet(sets.Repair);
-    elseif (string.contains(ability.Name, 'Maneuver')) then
-        gFunc.EquipSet(sets.Maneuver);
-	end
 
     gcinclude.CheckCancels();
 end

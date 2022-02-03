@@ -163,7 +163,7 @@ sets = T{
 	},
 };
 
-sets = sets:merge(gcinclude.sets, false);profile.Sets = sets;
+profile.Sets = sets;
 
 local function HandlePetAction(PetAction)
     gFunc.EquipSet(sets.PetReadyDefault);
@@ -197,7 +197,7 @@ end
 profile.HandleDefault = function()
     local pet = gData.GetPet();
 	local petAction = gData.GetPetAction();
-    if (petAction ~= nil) and gcinclude.BstPetAttack:contains(petAction.Name) then
+    if (petAction ~= nil) then
         HandlePetAction(petAction);
         return;
     end

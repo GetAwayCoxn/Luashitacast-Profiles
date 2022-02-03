@@ -163,7 +163,7 @@ sets = T{
 	},
 };
 
-sets = sets:merge(gcinclude.sets, false);profile.Sets = sets;
+profile.Sets = sets;
 
 profile.OnLoad = function()
     gSettings.AllowAddSet = false;

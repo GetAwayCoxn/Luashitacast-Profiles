@@ -259,7 +259,7 @@ sets = T{
 
     Ws_Default = {
         Ammo = 'Voluspa Tathlum',
-        Head = { Name = 'Blistering Sallet +1', AugPath='A' },
+        Head = 'Nyame Helm',
         Neck = 'Fotia Gorget',
         Ear1 = 'Eabani Earring',
         Ear2 = 'Etiolation Earring',
@@ -269,7 +269,7 @@ sets = T{
         Ring2 = 'Karieyh Ring',
         Back = 'Solemnity Cape',
         Waist = 'Fotia Belt',
-        Legs = 'Jhakri Slops +2',
+        Legs = 'Nyame Flanchard',
         Feet = 'Thereoid Greaves',
     },
     Ws_Hybrid = {
@@ -279,7 +279,7 @@ sets = T{
 
     Savage_Default = {
         Ammo = 'Voluspa Tathlum',
-        Head = 'Jhakri Coronal +2',
+        Head = 'Nyame Helm',
         Neck = 'Fotia Gorget',
         Ear1 = { Name = 'Moonshade Earring', Augment = { [1] = 'Accuracy+4', [2] = 'TP Bonus +250' } },
         Ear2 = 'Brutal Earring',
@@ -289,7 +289,7 @@ sets = T{
         Ring2 = 'Karieyh Ring',
         Back = 'Solemnity Cape',
         Waist = { Name = 'Sailfi Belt +1', AugPath='A' },
-        Legs = 'Jhakri Slops +2',
+        Legs = 'Nyame Flanchard',
         Feet = 'Thereoid Greaves',
     },
     Savage_Hybrid = {},
@@ -307,7 +307,7 @@ sets = T{
         Ring2 = 'Begrudging Ring',
         Back = 'Solemnity Cape',
         Waist = 'Fotia Belt',
-        Legs = 'Jhakri Slops +2',
+        Legs = 'Nyame Flanchard',
         Feet = 'Thereoid Greaves',
     },
     Chant_Hybrid = {},
@@ -318,7 +318,7 @@ sets = T{
 	},
 };
 
-sets = sets:merge(gcinclude.sets, false);profile.Sets = sets;
+profile.Sets = sets;
 
 profile.OnLoad = function()
     gSettings.AllowAddSet = false;

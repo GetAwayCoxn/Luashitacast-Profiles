@@ -6,7 +6,8 @@ sets = T{
     Idle = {
         Main = 'Bolelabunga',
         Sub = 'Genmei Shield',
-        Head = 'Nyame Helm',
+        Ammo = 'Staunch Tathlum',
+        Head = 'Befouled Crown',
         Neck = 'Loricate Torque +1',
         Ear1 = 'Eabani Earring',
         Ear2 = 'Etiolation Earring',
@@ -14,45 +15,33 @@ sets = T{
         Hands = 'Nyame Gauntlets',
         Ring1 = 'Stikini Ring +1',
         Ring2 = { Name = 'Metamor. Ring +1', AugPath='A' },
-        Back = 'Solemnity Cape',
+        Back = 'Lugh\'s Cape',
         Waist = 'Gishdubar Sash',
         Legs = 'Agwu\'s Slops',
         Feet = 'Volte Gaiters',
-    },
-    Idle_Pet = {
-        Main = 'Solstice',
-        Sub = 'Genmei Shield',
-        Range = 'Dunna',
-        Head = 'Azimuth Hood +1',
-        Neck = 'Loricate Torque +1',
-        Ear1 = 'Handler\'s Earring +1',
-        Ear2 = 'Rimeice Earring',
-        Body = 'Telchine Chas.',
-        Hands = 'Geo. Mitaines +1',
-        Back = { Name = 'Nantosuelta\'s Cape', Augment = { [1] = 'Eva.+20', [2] = 'Pet: "Regen"+15', [3] = 'Mag. Eva.+20' } },
-        Legs = 'Telchine Braconi',
-        Feet = 'Telchine Pigaches',
     },
     Resting = {},
     Idle_Regen = {
         Neck = 'Bathy Choker +1',
     },
     Idle_Refresh = {
+        Ammo = 'Homiliary',
         Head = 'Befouled Crown',
+        Ring1 = 'Stikini Ring +1',
         Waist = 'Fucho-no-Obi',
         Legs = 'Assid. Pants +1',
     },
     Town = {
         Main = 'Bunzi\'s Rod',
         Sub = 'Culminus',
-        Range = 'Dunna',
-        Head = 'Bagua Galero +1',
+        Ammo = 'Pemphredo Tathlum',
+        Head = 'Acad. Mortar. +2',
         Neck = 'Bathy Choker +1',
         Body = 'Agwu\'s Robe',
-        Hands = 'Geo. Mitaines +1',
-        Back = 'Solemnity Cape',
+        Hands = 'Acad. Bracers +2',
+        Back = 'Lugh\'s Cape',
         Legs = 'Agwu\'s Slops',
-        Feet = 'Herald\'s Gaiters',
+        Feet = 'Volte Gaiters',
     },
 
     Dt = {
@@ -65,7 +54,7 @@ sets = T{
         Hands = 'Nyame Gauntlets',
         Ring1 = 'Defending Ring',
         Ring2 = 'Gelatinous Ring +1',
-        Back = 'Solemnity Cape',
+        Back = 'Lugh\'s Cape',
         Waist = 'Gishdubar Sash',
         Legs = 'Nyame Flanchard',
         Feet = 'Nyame Sollerets',
@@ -80,22 +69,22 @@ sets = T{
 
 
     Precast = {
-        Main = 'Solstice',
-        Range = 'Dunna',
-        Head = 'Haruspex Hat',
+        Ammo = 'Staunch Tathlum',
+        Head = 'Peda. M.Board +2',
         Neck = 'Baetyl Pendant',
         Ear1 = 'Etiolation Earring',
         Ear2 = 'Malignance Earring',
         Body = 'Agwu\'s Robe',
-        Hands = 'Mallquis Cuffs +2',
+        Hands = 'Acad. Bracers +2',
         Ring1 = 'Kishar Ring',
         Ring2 = 'Prolix Ring',
         Back = 'Swith Cape +1',
         Waist = 'Embla Sash',
         Legs = 'Agwu\'s Slops',
-        Feet = 'Volte Gaiters',
+        Feet = 'Acad. Loafers +2',
     },
     Cure_Precast = {
+        Ear1 = 'Mendi. Earring',
         Feet = 'Vanya Clogs',
     },
     Enhancing_Precast = {
@@ -116,8 +105,9 @@ sets = T{
         Neck = 'Nodens Gorget',
         Ear1 = 'Mendi. Earring',
         Ear2 = 'Regal Earring',
+        Body = 'Gende. Bliaut +1',
         Hands = 'Weath. Cuffs +1',
-        Ring1 = 'Rufescent Ring',
+        Ring1 = 'Stikini Ring +1',
         Ring2 = { Name = 'Metamor. Ring +1', AugPath='A' },
         Back = 'Solemnity Cape',
         Waist = 'Rumination Sash',
@@ -130,7 +120,13 @@ sets = T{
     Regen = {
         Main = 'Bolelabunga',
         Sub = 'Ammurapi Shield',
+        Head = 'Arbatel Bonnet +1',
         Body = 'Telchine Chas.',
+        Hands = 'Arbatel Bracers +1',
+        Back = 'Lugh\'s Cape',
+        Waist = 'Embla Sash',
+        Legs = 'Telchine Braconi',
+        Feet = 'Telchine Pigaches',
     },
     Cursna = {
         Ring1 = 'Purity Ring',
@@ -145,15 +141,17 @@ sets = T{
         Neck = 'Incanter\'s Torque',
         Ear1 = 'Mendi. Earring',
         Ear2 = 'Andoaa Earring',
-        Body = 'Telchine Chas.',
-        Hands = 'Nyame Gauntlets',
-        Ring1 = 'Defending Ring',
+        Body = 'Peda. Gown +3',
+        Hands = 'Arbatel Bracers +1',
+        Ring1 = 'Stikini Ring +1',
         Ring2 = { Name = 'Metamor. Ring +1', AugPath='A' },
         Back = 'Solemnity Cape',
         Waist = 'Embla Sash',
         Legs = { Name = 'Telchine Braconi', Augment = { [1] = 'Enh. Mag. eff. dur. +8', [2] = '"Conserve MP"+4' } },
         Feet = 'Telchine Pigaches',
     },
+    Self_Enhancing = {},
+    Skill_Enhancing = {},
     Stoneskin = {
         Neck = 'Nodens Gorget',
         Waist = 'Siegel Sash',
@@ -162,81 +160,46 @@ sets = T{
     Refresh = {
 		Waist = 'Gishdubar Sash',
     },
-    Geomancy = { --900 skill, then indi duration, then CMP
-        Main = 'Solstice',
-        Range = 'Dunna',
-        Head = 'Azimuth Hood +1',
-        Neck = 'Incanter\'s Torque',
-        Ear1 = 'Mendi. Earring',
-        Ear2 = 'Mendi. Earring',
-        Body = 'Telchine Chas.',
-        Hands = 'Geo. Mitaines +1',
-        Ring1 = 'Stikini Ring +1',
-        Waist = 'Hachirin-no-Obi',
-        Legs = 'Vanya Slops',
-        Feet = 'Medium\'s Sabots',
-    },
-    Indi = {
-        Back = 'Nantosuelta\'s Cape',
-        Legs = 'Bagua Pants +1',
-        Feet = 'Azimuth Gaiters +1',
-    },
+    Self_Refresh = {},
 
     Enfeebling = {
         Main = 'Bunzi\'s Rod',
         Sub = 'Ammurapi Shield',
-        Ammo = 'Staunch Tathlum',
+        Ammo = 'Pemphredo Tathlum',
         Head = 'Befouled Crown',
         Neck = 'Erra Pendant',
         Ear1 = 'Regal Earring',
         Ear2 = 'Malignance Earring',
-        Body = 'Agwu\'s Robe',
-        Hands = 'Nyame Gauntlets',
-        Ring1 = 'Kishar Ring',
+        Body = 'Acad. Gown +2',
+        Hands = 'Peda. Bracers +2',
+        Ring1 = 'Stikini Ring +1',
         Ring2 = { Name = 'Metamor. Ring +1', AugPath='A' },
         Back = { Name = 'Aurist\'s Cape +1', AugPath='A' },
         Waist = { Name = 'Acuity Belt +1', AugPath='A' },
-        Legs = 'Jhakri Slops +2',
-        Feet = { Name = 'Medium\'s Sabots', Augment = { [1] = 'MND+6', [2] = '"Conserve MP"+5', [3] = 'MP+40', [4] = '"Cure" potency +3%' } },
-    },
-    Macc = {
-        Main = 'Bunzi\'s Rod',
-        Sub = 'Ammurapi Shield',
-        Ammo = 'Pemphredo Tathlum',
-        Head = 'Nyame Helm',
-        Neck = 'Erra Pendant',
-        Ear1 = 'Regal Earring',
-        Ear2 = 'Malignance Earring',
-        Body = 'Spaekona\'s Coat +2',
-        Hands = 'Nyame Gauntlets',
-        Ring1 = 'Kishar Ring',
-        Ring2 = { Name = 'Metamor. Ring +1', AugPath='A' },
-        Back = { Name = 'Aurist\'s Cape +1', AugPath='A' },
-        Waist = { Name = 'Acuity Belt +1', AugPath='A' },
-        Legs = 'Jhakri Slops +2',
-        Feet = { Name = 'Medium\'s Sabots', Augment = { [1] = 'MND+6', [2] = '"Conserve MP"+5', [3] = 'MP+40', [4] = '"Cure" potency +3%' } },
+        Legs = 'Acad. Pants +2',
+        Feet = 'Acad. Loafers +2',
     },
 
     Drain = {
         Main = 'Bunzi\'s Rod',
         Sub = 'Ammurapi Shield',
         Ammo = 'Pemphredo Tathlum',
-        Head = 'Bagua Galero +1',
+        Head = 'Acad. Mortar. +2',
         Neck = 'Erra Pendant',
         Ear1 = 'Regal Earring',
         Ear2 = 'Malignance Earring',
-        Body = 'Spaekona\'s Coat +2',
+        Body = 'Acad. Gown +2',
         Ring1 = 'Kishar Ring',
         Ring2 = 'Metamor. Ring +1',
         Back = 'Aurist\'s Cape +1',
         Waist = 'Fucho-no-Obi',
-        Legs = 'Jhakri Slops +2',
+        Legs = 'Acad. Pants +2',
         Feet = 'Agwu\'s Pigaches',
     },
 
     Nuke = {
-        Main = 'Marin Staff +1',
-        Sub = 'Enki Strap',
+        Main = 'Bunzi\'s Rod',
+        Sub = 'Ammurapi Shield',
         Ammo = 'Pemphredo Tathlum',
         Head = 'Jhakri Coronal +2',
         Neck = 'Baetyl Pendant',
@@ -246,25 +209,13 @@ sets = T{
         Hands = 'Amalric Gages +1',
         Ring1 = 'Shiva Ring +1',
         Ring2 = { Name = 'Metamor. Ring +1', AugPath='A' },
-        Back = { Name = 'Nantosuelta\'s Cape', Augment = { [1] = '"Mag. Atk. Bns."+10', [2] = 'Mag. Acc+20', [3] = 'Magic Damage +20', [4] = 'INT+20' } },
+        Back = 'Lugh\'s Cape',
         Waist = 'Sacro Cord',
         Legs = 'Jhakri Slops +2',
         Feet = 'Amalric Nails +1',
     },
     NukeACC = {
         Waist = { Name = 'Acuity Belt +1', AugPath='A' },
-    },
-    Burst = {
-        Main = 'Bunzi\'s Rod', --10 and 0
-        Sub = 'Ammurapi Shield',
-        Head = 'Ea Hat', -- 6 and 6
-        --Body = 'Agwu\'s Robe', -- 10 and 0
-        Body = 'Ea Houppelande', -- 8 and 8
-        Hands = 'Amalric Gages +1', -- 0 and 6
-        Ring1 = 'Mujin Band', -- 0 and 5
-        Waist = { Name = 'Acuity Belt +1', AugPath='A' },
-        Legs = 'Agwu\'s Slops', -- 9 and 0
-        Feet = 'Ea Pigaches', -- 4 and 4
     },
 
     Preshot = {
@@ -303,8 +254,8 @@ profile.OnLoad = function()
     gSettings.AllowAddSet = false;
     gcinclude.Initialize:once(3);
 
-    AshitaCore:GetChatManager():QueueCommand(1, '/macro book 14');
-    AshitaCore:GetChatManager():QueueCommand(1, '/macro set 1');
+    AshitaCore:GetChatManager():QueueCommand(1, '/macro book 8');
+    AshitaCore:GetChatManager():QueueCommand(1, '/macro set 2');
 end
 
 profile.OnUnload = function()
@@ -317,7 +268,6 @@ end
 
 profile.HandleDefault = function()
     local player = gData.GetPlayer();
-    local pet = gData.GetPet();
 
     gFunc.EquipSet(sets.Idle);
 
@@ -342,16 +292,11 @@ profile.HandleDefault = function()
 	end
 
     gcinclude.CheckDefault ();
-    if (pet ~= nil) then
-        gFunc.EquipSet(sets.Idle_Pet);
-    end
     if (gcinclude.RRSET == true) then gFunc.EquipSet(gcinclude.sets.Reraise) end
 end
 
 profile.HandleAbility = function()
     local ability = gData.GetAction();
-
-    if string.match(ability.Name, 'Full Circle') then gFunc.EquipSet(sets.Geomancy) end --lazy way to ensure the empy head piece is in on use
 
     gcinclude.CheckCancels();
 end
@@ -365,7 +310,7 @@ end
 profile.HandlePrecast = function()
     local spell = gData.GetAction();
 
-    gFunc.EquipSet(sets.Precast)
+    gFunc.EquipSet(sets.Precast);
 
     if (spell.Skill == 'Enhancing Magic') then
         gFunc.EquipSet(sets.Enhancing_Precast);
@@ -389,13 +334,21 @@ profile.HandleMidcast = function()
 
     if (spell.Skill == 'Enhancing Magic') then
         gFunc.EquipSet(sets.Enhancing);
+        if (target.Name == me) then
+            gFunc.EquipSet(sets.Self_Enhancing);
+        end
 
         if string.match(spell.Name, 'Phalanx') then
             gFunc.EquipSet(sets.Phalanx);
         elseif string.match(spell.Name, 'Stoneskin') then
             gFunc.EquipSet(sets.Stoneskin);
+        elseif string.contains(spell.Name, 'Temper') then
+            gFunc.EquipSet(sets.Skill_Enhancing);
         elseif string.contains(spell.Name, 'Refresh') then
             gFunc.EquipSet(sets.Refresh);
+            if (target.Name == me) then
+                gFunc.EquipSet(sets.Self_Refresh);
+            end
         end
     elseif (spell.Skill == 'Healing Magic') then
         gFunc.EquipSet(sets.Cure);
@@ -414,26 +367,15 @@ profile.HandleMidcast = function()
         if (gcdisplay.GetCycle('NukeSet') == 'Macc') then
             gFunc.EquipSet(sets.NukeACC);
         end
-        if (gcdisplay.GetToggle('Burst') == true) then
-            gFunc.EquipSet(sets.Burst);
-        end
         if (spell.Element == weather.WeatherElement) or (spell.Element == weather.DayElement) then
             gFunc.Equip('Waist', 'Hachirin-no-Obi');
         end
     elseif (spell.Skill == 'Enfeebling Magic') then
         gFunc.EquipSet(sets.Enfeebling);
-        if (gcdisplay.GetCycle('NukeSet') == 'Macc') then
-            gFunc.EquipSet(sets.Macc);
-        end
     elseif (spell.Skill == 'Dark Magic') then
-        gFunc.EquipSet(sets.Macc);
+        gFunc.EquipSet(sets.Enfeebling); -- mostly macc anyways
         if (string.contains(spell.Name, 'Aspir') or string.contains(spell.Name, 'Drain')) then
             gFunc.EquipSet(sets.Drain);
-        end
-    elseif (spell.Skill == 'Geomancy') then
-        gFunc.EquipSet(sets.Geomancy);
-        if (string.contains(spell.Name, 'Indi')) then
-            gFunc.EquipSet(sets.Indi);
         end
     end
 end

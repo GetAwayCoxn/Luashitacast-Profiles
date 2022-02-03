@@ -109,6 +109,7 @@ sets = T{
         Ring1 = 'Stikini Ring +1',
         Ring2 = 'Metamor. Ring +1',
         Back = 'Solemnity Cape',
+        Feet = 'Medium\'s Sabots',
     },
     WhiteWind = {
         Head = 'Nyame Helm',
@@ -200,6 +201,7 @@ sets = T{
         Back = 'Solemnity Cape',
         Waist = 'Hachirin-no-Obi',
         Legs = 'Augury Cuisses +1',
+        Feet = 'Amalric Nails +1',
     },
 
     Preshot = {
@@ -278,7 +280,7 @@ sets = T{
 	},
 };
 
-sets = sets:merge(gcinclude.sets, false);profile.Sets = sets;
+profile.Sets = sets;
 
 profile.OnLoad = function()
     gSettings.AllowAddSet = false;
