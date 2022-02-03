@@ -163,7 +163,7 @@ sets = T{
 	},
 };
 
-profile.Sets = sets;
+sets = sets:merge(gcinclude.sets, false);profile.Sets = sets;
 
 local function HandlePetAction(PetAction)
     gFunc.EquipSet(sets.PetReadyDefault);

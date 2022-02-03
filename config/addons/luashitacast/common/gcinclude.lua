@@ -3,7 +3,7 @@ local gcinclude = T{};
 --[[
 Only edit the next two small sections here. See the readme on my github for more information on usages for my profiles.
 
-These are universal sets for things like doomed or asleep; avoid main/sub/range/ammo here.
+These are universal sets for things like doomed or asleep; avoid main/sub/range/ammo here. Also avoid calling out any specific augments on gear in here, merge function doesnt play nice with augments.
 The second section is a couple basic settings to decide on whether or not to use you the automatic equiping function of idle regen, idle refresh, DT gear etc.
 More details in each section.
 ]]
@@ -25,10 +25,14 @@ gcinclude.sets = {
 	Warp_Ring = { -- leave alone
 		Ring2 = 'Warp Ring',
 	},
-	Tele_Ring = { -- only uncomment the ring you actually own/use, leave it on Ring2
+	Tele_Ring1 = {
 		Ring2 = 'Dim. Ring (Dem)',
-		--Ring2 = 'Dim. Ring (Holla)',
-		--Ring2 = 'Dim. Ring (Mea)',
+	},
+	Tele_Ring2 = {
+		Ring2 = 'Dim. Ring (Holla)',
+	},
+	Tele_Ring3 = {
+		Ring2 = 'Dim. Ring (Mea)',
 	},
 };
 gcinclude.settings = {
@@ -45,9 +49,16 @@ in each individual job lua file. Unless you know what you're doing then it is be
 the rest here are various functions and arrays etc
 ]]
 gcdisplay = gFunc.LoadFile('common\\gcdisplay.lua');
+gcauto = gFunc.LoadFile('common\\gcauto.lua');
+
+if (not gcauto) then
+	print(chat.header('GCinclude'):append(chat.message('You dont have access to the GCauto file, I have not made this public.')));
+	print(chat.header('GCinclude'):append(chat.message('Everything else will work fine. Check the readme.md  file or my github for')));
+	print(chat.header('GCinclude'):append(chat.message('more information on functions/uses for these luashitacast profiles.')));
+end
 
 gcinclude.Towns = T{'Tavnazian Safehold','Al Zahbi','Aht Urhgan Whitegate','Nashmau','Southern San d\'Oria [S]','Bastok Markets [S]','Windurst Waters [S]','San d\'Oria-Jeuno Airship','Bastok-Jeuno Airship','Windurst-Jeuno Airship','Kazham-Jeuno Airship','Southern San d\'Oria','Northern San d\'Oria','Port San d\'Oria','Chateau d\'Oraguille','Bastok Mines','Bastok Markets','Port Bastok','Metalworks','Windurst Waters','Windurst Walls','Port Windurst','Windurst Woods','Heavens Tower','Ru\'Lude Gardens','Upper Jeuno','Lower Jeuno','Port Jeuno','Rabao','Selbina','Mhaura','Kazham','Norg','Mog Garden','Celennia Memorial Library','Western Adoulin','Eastern Adoulin'};
-gcinclude.LockingRings = T{'Echad Ring', 'Trizek Ring', 'Endorsement Ring', 'Warp Ring','Facility Ring','Dim. Ring (Dem)','Dim. Ring (Mea)','Dim. Ring (Holla)'};
+gcinclude.LockingRings = T{'Echad Ring', 'Trizek Ring', 'Endorsement Ring', 'Capacity Ring', 'Warp Ring','Facility Ring','Dim. Ring (Dem)','Dim. Ring (Mea)','Dim. Ring (Holla)'};
 gcinclude.DistanceWS = T{'Flamming Arrow','Piercing Arrow','Dulling Arrow','Sidewinder','Blast Arrow','Arching Arrow','Empyreal Arrow','Refulgent Arrow','Apex Arrow','Namas Arrow','Jishnu\'s Randiance','Hot Shot','Split Shot','Sniper Shot','Slug Shot','Blast Shot','Heavy Shot','Detonator','Numbing Shot','Last Stand','Coronach','Wildfire','Trueflight','Leaden Salute','Myrkr','Dagan','Moonlight','Starlight'};
 gcinclude.BstPetAttack = T{'Foot Kick','Whirl Claws','Big Scissors','Tail Blow','Blockhead','Sensilla Blades','Tegmina Buffet','Lamb Chop','Sheep Charge','Pentapeck','Recoil Dive','Frogkick','Queasyshroom','Numbshroom','Shakeshroom','Nimble Snap','Cyclotail','Somersault','Tickling Tendrils','Sweeping Gouge','Grapple','Double Claw','Spinning Top','Suction','Tortoise Stomp','Power Attack','Rhino Attack','Razor Fang','Claw Cyclone','Crossthrash','Scythe Tail','Ripper Fang','Chomp Rush','Pecking Flurry','Sickle Slash','Mandibular Bite','Wing Slap','Beak Lunge','Head Butt','Wild Oats','Needle Shot','Disembowel','Extirpating Salvo','Mega Scissors','Back Heel','Hoof Volley','Fluid Toss','Fluid Spread'};
 gcinclude.BstPetMagicAttack = T{'Gloom Spray','Fireball','Acid Spray','Molting Plumage','Cursed Sphere','Nectarous Deluge','Charged Whisker','Nepenthic Plunge'};
@@ -231,6 +242,8 @@ function gcinclude.SetCommands(args)
 			gcdisplay.AdvanceToggle('String');
 		end
 	end
+	
+	if (gcauto ~= nil) then gcauto.SetCommands(args) end
 end
 
 function gcinclude.CheckCommonDebuffs()
@@ -334,9 +347,13 @@ function gcinclude.DoWarpRing()
 end
 
 function gcinclude.DoTeleRing()
-	AshitaCore:GetChatManager():QueueCommand(1, '/lac set Tele_Ring');
+	AshitaCore:GetChatManager():QueueCommand(1, '/lac set Tele_Ring1');
+	AshitaCore:GetChatManager():QueueCommand(1, '/lac set Tele_Ring2');
+	AshitaCore:GetChatManager():QueueCommand(1, '/lac set Tele_Ring3');
+
+	local ring = gData.GetEquipment();
 	local function usering()
-		AshitaCore:GetChatManager():QueueCommand(1, '/item "' .. sets.Tele_Ring.Ring2 .. '" <me>');	
+		AshitaCore:GetChatManager():QueueCommand(1, '/item "' .. ring.Ring2.Name .. '" <me>');	
 	end
 	usering:once(11);
 end
@@ -463,6 +480,7 @@ function gcinclude.CheckCancels()
 end
 
 function gcinclude.CheckDefault()
+	if (gcauto ~= nil) then gcauto.Default() end
 
 	gcinclude.SetRegenRefreshGear();
 	gcinclude.SetTownGear();
@@ -478,6 +496,7 @@ function gcinclude.Initialize()
 	gcdisplay.Initialize();
 	gcinclude.SetVariables();
 	gcinclude.SetAlias();
+	if (gcauto ~= nil) then gcauto.Initialize:once(10) end --maybe sort out a better solution with a while loop
 end
 
 return gcinclude;
