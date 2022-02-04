@@ -4,7 +4,6 @@ gcinclude = gFunc.LoadFile('common\\gcinclude.lua');
 
 sets = T{
     Idle = {
-        Ammo = { Name = 'Coiste Bodhar', AugPath='A' },
         Head = 'Flam. Zucchetto +2',
         Neck = 'Anu Torque',
         Ear1 = 'Mache Earring',
@@ -24,9 +23,8 @@ sets = T{
     },
     Idle_Refresh = {},
     Town = {
-        Main = 'Shining One',
-        Sub = 'Utu Grip',
-        Ammo = { Name = 'Coiste Bodhar', AugPath='A' },
+        Main = 'Naegling',
+        Sub = 'Nusku Shield',
         Head = 'Flam. Zucchetto +2',
         Neck = 'Anu Torque',
         Ear1 = 'Mache Earring',
@@ -34,7 +32,7 @@ sets = T{
         Body = 'Hjarrandi Breast.',
         Hands = 'Flam. Manopolas +2',
         Ring1 = 'Petrov Ring',
-        Ring2 = 'Niqmaddu Ring',
+        Ring2 = 'Ilabrat Ring',
         Back = { Name = 'Brigantia\'s Mantle', Augment = { [1] = 'STR+30', [2] = '"Dbl.Atk."+10', [3] = 'Attack+20', [4] = 'Accuracy+20' } },
         Waist = { Name = 'Sailfi Belt +1', AugPath='A' },
         Legs = 'Gleti\'s Breeches',
@@ -42,7 +40,6 @@ sets = T{
     },
 
     Dt = {
-        Ammo = 'Staunch Tathlum',
         Head = 'Nyame Helm',
         Neck = { Name = 'Loricate Torque +1', AugPath='A' },
         Ear1 = { Name = 'Odnowa Earring +1', AugPath='A' },
@@ -58,7 +55,6 @@ sets = T{
     },
 
     Tp_Default = {
-        Ammo = { Name = 'Coiste Bodhar', AugPath='A' },
         Head = 'Flam. Zucchetto +2',
         Neck = 'Anu Torque',
         Ear1 = 'Sherida Earring',
@@ -66,7 +62,7 @@ sets = T{
         Body = 'Gleti\'s Cuirass',
         Hands = 'Flam. Manopolas +2',
         Ring1 = 'Petrov Ring',
-        Ring2 = 'Niqmaddu Ring',
+        Ring2 = 'Ilabrat Ring',
         Back = { Name = 'Brigantia\'s Mantle', Augment = { [1] = 'STR+30', [2] = '"Dbl.Atk."+10', [3] = 'Attack+20', [4] = 'Accuracy+20' } },
         Waist = { Name = 'Sailfi Belt +1', AugPath='A' },
         Legs = 'Gleti\'s Breeches',
@@ -89,7 +85,6 @@ sets = T{
 
 
     Cure = {
-        Ammo = 'Pemphredo Tathlum',
         Neck = 'Incanter\'s Torque',
         Ear1 = 'Mendi. Earring',
         Ring1 = 'Rufescent Ring',
@@ -99,7 +94,6 @@ sets = T{
     },
 
     Enhancing = {
-        Ammo = 'Pemphredo Tathlum',
         Neck = 'Incanter\'s Torque',
         Ear1 = 'Mendi. Earring',
         Ear2 = 'Andoaa Earring',
@@ -107,7 +101,6 @@ sets = T{
     },
 
     Enfeebling = {
-        Ammo = 'Pemphredo Tathlum',
         Neck = 'Erra Pendant',
         Ring2 = { Name = 'Metamor. Ring +1', AugPath='A' },
     },
@@ -119,7 +112,6 @@ sets = T{
     },
 
     Nuke = {
-        Ammo = 'Pemphredo Tathlum',
         Head = 'Nyame Helm',
         Neck = 'Baetyl Pendant',
         Ear1 = 'Hecate\'s Earring',
@@ -175,6 +167,8 @@ profile.OnLoad = function()
 
     AshitaCore:GetChatManager():QueueCommand(1, '/macro book 10');
     AshitaCore:GetChatManager():QueueCommand(1, '/macro set 10');
+
+    gcinclude.CORmsg = true; -- set this to false if you do not want to see lucky/unlucky # messages, can also do /cormsg in game to change on the fly
 end
 
 profile.OnUnload = function()
@@ -214,6 +208,10 @@ end
 
 profile.HandleAbility = function()
     local ability = gData.GetAction();
+
+    if (ability.Name:contains('Roll')) then
+        gcinclude.DoCORmsg(ability.Name);
+    end
 
     gcinclude.CheckCancels();
 end

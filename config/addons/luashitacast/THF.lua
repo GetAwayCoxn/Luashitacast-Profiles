@@ -175,6 +175,7 @@ profile.HandleDefault = function()
         gFunc.EquipSet(sets.Tp_Default)
         if (gcdisplay.GetCycle('MeleeSet') ~= 'Default') then
         gFunc.EquipSet('Tp_' .. gcdisplay.GetCycle('MeleeSet')); end
+        if (gcdisplay.GetToggle('TH') == true) then gFunc.EquipSet(sets.TH); end
     elseif (player.Status == 'Resting') then
         gFunc.EquipSet(sets.Resting);
     elseif (player.IsMoving == true) then
@@ -193,9 +194,7 @@ profile.HandleDefault = function()
     elseif (ta == 1) then
         gFunc.EquipSet('TA');
     end
-    if (gcdisplay.GetToggle('TH') == true) then
-		gFunc.EquipSet(sets.TH);
-	end
+    
 	if (gcdisplay.GetToggle('Kite') == true) then
 		gFunc.EquipSet(sets.Movement);
 	end
@@ -238,6 +237,10 @@ end
 
 profile.HandleMidshot = function()
     gFunc.EquipSet(sets.Midshot);
+    
+    if (gcdisplay.GetToggle('TH') == true) then
+		gFunc.EquipSet(sets.TH);
+	end
 end
 
 profile.HandleWeaponskill = function()
