@@ -22,6 +22,13 @@ gcinclude.sets = {
 		Head = 'Twilight Helm',
 		Body = 'Twilight Mail',
     },
+	Crafting = { -- this set is meant as a default set for crafting, equip using /craftset, be sure to dbl check what rings you want to use
+		Head = 'Midras\'s Helm +1',
+		Body = 'Tanner\'s Apron',
+		Hands = 'Tanner\'s Gloves',
+		Ring1 = 'Artificer\'s Ring',
+		Ring2 = 'Craftmaster\'s Ring',
+    },
 	Warp_Ring = { -- leave alone
 		Ring2 = 'Warp Ring',
 	},
@@ -81,6 +88,7 @@ gcinclude.HelixSpells = T{'Ionohelix', 'Cryohelix', 'Pyrohelix', 'Geohelix', 'An
 gcinclude.StormSpells = T{'Thunderstorm', 'Hailstorm', 'Firestorm', 'Sandstorm', 'Windstorm', 'Rainstorm', 'Aurorastorm', 'Voidstorm'};
 gcinclude.NinNukes = T{'Katon: Ichi', 'Katon: Ni', 'Katon: San', 'Hyoton: Ichi', 'Hyoton: Ni', 'Hyoton: San', 'Huton: Ichi', 'Huton: Ni', 'Huton: San', 'Doton: Ichi', 'Doton: Ni', 'Doton: San', 'Raiton: Ichi', 'Raiton: Ni', 'Raiton: San', 'Suiton: Ichi', 'Suiton: Ni', 'Suiton: San'};
 gcinclude.RRSET = false;
+gcinclude.CraftSet = false;
 gcinclude.CORmsg = true;
 
 function gcinclude.SetAlias()
@@ -94,6 +102,7 @@ function gcinclude.SetAlias()
 	AshitaCore:GetChatManager():QueueCommand(-1, '/alias /warpring /lac fwd warpring');
 	AshitaCore:GetChatManager():QueueCommand(-1, '/alias /telering /lac fwd telering');
 	AshitaCore:GetChatManager():QueueCommand(-1, '/alias /rrset /lac fwd rrset');
+	AshitaCore:GetChatManager():QueueCommand(-1, '/alias /craftset /lac fwd craftset');
 	AshitaCore:GetChatManager():QueueCommand(-1, '/alias /cormsg /lac fwd cormsg');
 	if (player.MainJob == 'RDM') or (player.MainJob == 'BLM') or (player.MainJob == 'SCH') or (player.MainJob == 'GEO') then
 		AshitaCore:GetChatManager():QueueCommand(-1, '/alias /nukeset /lac fwd nukeset');
@@ -182,6 +191,12 @@ function gcinclude.SetCommands(args)
 			gcinclude.RRSET = false;
 		else
 			gcinclude.RRSET = true;
+		end
+	elseif (args[1] == 'craftset') then
+		if gcinclude.CraftSet == true then
+			gcinclude.CraftSet = false;
+		else
+			gcinclude.CraftSet = true;
 		end
 	elseif (args[1] == 'cormsg') then
 		if gcinclude.CORmsg == true then
@@ -513,6 +528,8 @@ function gcinclude.CheckDefault()
 	gcinclude.SetTownGear();
     gcinclude.CheckCommonDebuffs();
 	gcinclude.CheckLockingRings();
+	if (gcinclude.CraftSet == true) then gFunc.EquipSet(gcinclude.sets.Crafting) end
+	if (gcinclude.RRSET == true) then gFunc.EquipSet(gcinclude.sets.Reraise) end
 end
 
 function gcinclude.Unload()
@@ -523,7 +540,7 @@ function gcinclude.Initialize()
 	gcdisplay.Initialize();
 	gcinclude.SetVariables();
 	gcinclude.SetAlias();
-	if (gcauto ~= nil) then gcauto.Initialize:once(10) end --maybe sort out a better solution with a while loop
+	if (gcauto ~= nil) then gcauto.Initialize:once(8) end --maybe sort out a better solution with a while loop
 end
 
 return gcinclude;
