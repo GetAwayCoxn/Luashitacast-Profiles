@@ -227,7 +227,7 @@ sets = T{
         Ammo = 'Voluspa Tathlum',
         Head = 'Nyame Helm',
         Neck = 'Fotia Gorget',
-        Ear1 = 'Brutal Earring',
+        Ear1 = 'Telos Earring',
         Ear2 = 'Moonshade Earring',
         Body = 'Nyame Mail',
         Hands = 'Nyame Gauntlets',
@@ -292,7 +292,7 @@ profile.HandleDefault = function()
 	end
 
     gcinclude.CheckDefault ();
-    if (gcinclude.RRSET == true) then gFunc.EquipSet(gcinclude.sets.Reraise) end
+     
 end
 
 profile.HandleAbility = function()

@@ -74,7 +74,7 @@ sets = T{
 
     Precast = {
         Ammo = 'Staunch Tathlum',
-        Head = 'Peda. M.Board +2',
+        Head = 'Peda. M.Board +3',
         Neck = 'Baetyl Pendant',
         Ear1 = 'Etiolation Earring',
         Ear2 = 'Malignance Earring',
@@ -205,7 +205,7 @@ sets = T{
         Main = 'Bunzi\'s Rod',
         Sub = 'Ammurapi Shield',
         Ammo = 'Pemphredo Tathlum',
-        Head = 'Jhakri Coronal +2',
+        Head = 'Peda. M.Board +3',
         Neck = 'Baetyl Pendant',
         Ear1 = 'Regal Earring',
         Ear2 = 'Malignance Earring',
@@ -225,7 +225,7 @@ sets = T{
         Main = 'Bunzi\'s Rod', -- 10 and 0
         Sub = 'Ammurapi Shield',
         Ammo = 'Ghastly Tathlum +1',
-        Head = 'Peda. M.Board +2', -- 0 and 2
+        Head = 'Peda. M.Board +3', -- 0 and 2
         Neck = 'Argute Stole +1', -- 7 and 0
         Body = 'Agwu\'s Robe', -- 10 and 0
         Hands = 'Amalric Gages +1', -- 0 and 6
@@ -281,7 +281,7 @@ sets = T{
         Ammo = 'Voluspa Tathlum',
         Head = 'Nyame Helm',
         Neck = 'Fotia Gorget',
-        Ear1 = 'Brutal Earring',
+        Ear1 = 'Telos Earring',
         Ear2 = 'Moonshade Earring',
         Body = 'Nyame Mail',
         Hands = 'Nyame Gauntlets',
@@ -349,7 +349,7 @@ profile.HandleDefault = function()
     if (gcdisplay.GetCycle('Weapon') == 'Staff') then
         gFunc.EquipSet(sets.Idle_Staff);
     end
-    if (gcinclude.RRSET == true) then gFunc.EquipSet(gcinclude.sets.Reraise) end
+     
 end
 
 profile.HandleAbility = function()

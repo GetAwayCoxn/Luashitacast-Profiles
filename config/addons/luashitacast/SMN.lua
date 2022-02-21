@@ -16,7 +16,7 @@ sets = T{
         Ring2 = 'Gelatinous Ring +1',
         Back = { Name = 'Artio\'s Mantle', Augment = { [1] = 'Pet: R.Acc.+20', [2] = 'Pet: R.Atk.+20', [3] = 'Pet: "Regen"+10', [4] = 'Pet: Acc.+20', [5] = 'Pet: Atk.+20' } },
         Waist = 'Gishdubar Sash',
-        Legs = 'Gleti\'s Breeches',
+        Legs = 'Assid. Pants +1',
         Feet = 'Gleti\'s Boots',
     },
 	Resting = {},
@@ -100,7 +100,7 @@ sets = T{
         Ear2 = 'Domes. Earring',
         Back = { Name = 'Artio\'s Mantle', Augment = { [1] = 'Pet: R.Acc.+20', [2] = 'Pet: R.Atk.+20', [3] = 'Pet: "Regen"+10', [4] = 'Pet: Acc.+20', [5] = 'Pet: Atk.+20' } },
         Waist = 'Incarnation Sash',
-        Legs = 'Taeon Tights',
+        Legs = 'Assid. Pants +1',
         Feet = 'Gleti\'s Boots',
     },
 
@@ -138,7 +138,7 @@ sets = T{
 	SmnSkill = {},
     SmnHealing = {},
 	SmnEnfeebling = {},
-    SmnHybrid = {}, --special set for flamming crush
+    SmnHybrid = {}, --special set for flamming crush and burning strike (for now)
 	
 	Movement = {
 	},
@@ -169,8 +169,8 @@ profile.OnLoad = function()
 	gcinclude.Initialize:once(3);
 
     --[[ Set you job macro defaults here]]
-    AshitaCore:GetChatManager():QueueCommand(1, '/macro book 9');
-    AshitaCore:GetChatManager():QueueCommand(1, '/macro set 10');
+    AshitaCore:GetChatManager():QueueCommand(1, '/macro book 6');
+    AshitaCore:GetChatManager():QueueCommand(1, '/macro set 1');
 end
 
 profile.OnUnload = function()
@@ -214,7 +214,7 @@ profile.HandleDefault = function()
 		gFunc.EquipSet(sets.Movement);
 	end
 	gcinclude.CheckDefault ();
-    if (gcinclude.RRSET == true) then gFunc.EquipSet(gcinclude.sets.Reraise) end
+     
 end
 
 profile.HandleAbility = function()

@@ -63,7 +63,7 @@ sets = T{
         Ammo = { Name = 'Coiste Bodhar', AugPath='A' },
         Head = 'Flam. Zucchetto +2',
         Neck = { Name = 'Sam. Nodowa +1', AugPath='A' },
-        Ear1 = 'Brutal Earring',
+        Ear1 = 'Telos Earring',
         Ear2 = 'Cessance Earring',
         Body = 'Kasuga Domaru +1',
         Hands = 'Flam. Manopolas +2',
@@ -90,7 +90,7 @@ sets = T{
         Ammo = { Name = 'Coiste Bodhar', AugPath='A' },
         Head = 'Flam. Zucchetto +2',
         Neck = { Name = 'Sam. Nodowa +1', AugPath='A' },
-        Ear1 = 'Brutal Earring',
+        Ear1 = 'Telos Earring',
         Ear2 = 'Cessance Earring',
         Body = 'Kasuga Domaru +1',
         Hands = 'Flam. Manopolas +2',
@@ -175,7 +175,7 @@ sets = T{
         Ammo = 'Staunch Tathlum',
         Head = 'Flam. Zucchetto +2',
         Neck = { Name = 'Loricate Torque +1', AugPath='A' },
-        Ear1 = 'Brutal Earring',
+        Ear1 = 'Telos Earring',
         Ear2 = 'Cessance Earring',
         Body = 'Kasuga Domaru +1',
         Hands = 'Wakido Kote +3',
@@ -192,7 +192,7 @@ sets = T{
         Head = 'Mpaca\'s Cap',
         Neck = 'Fotia Gorget',
         Ear1 = { Name = 'Moonshade Earring', Augment = { [1] = 'Accuracy+4', [2] = 'TP Bonus +250' } },
-        Ear2 = 'Brutal Earring',
+        Ear2 = 'Telos Earring',
         Body = { Name = 'Sakonji Domaru +3', AugTrial=5483 },
         Hands = { Name = 'Valorous Mitts', Augment = { [1] = '"Mag. Atk. Bns."+1', [2] = 'Attack+9', [3] = 'Mag. Acc.+1', [4] = 'STR+5', [5] = 'Weapon skill damage +5%', [6] = 'AGI+2', [7] = 'Accuracy+9' } },
         Ring1 = 'Rufescent Ring',
@@ -322,7 +322,7 @@ profile.HandleDefault = function()
 	end
 
     gcinclude.CheckDefault ();
-    if (gcinclude.RRSET == true) then gFunc.EquipSet(gcinclude.sets.Reraise) end
+     
 end
 
 profile.HandleAbility = function()

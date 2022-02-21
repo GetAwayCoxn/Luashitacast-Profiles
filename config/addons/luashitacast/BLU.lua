@@ -55,7 +55,7 @@ sets = T{
         Ammo = 'Coiste Bodhar',
         Head = 'Adhemar Bonnet +1',
         Neck = 'Sanctity Necklace',
-        Ear1 = 'Brutal Earring',
+        Ear1 = 'Telos Earring',
         Ear2 = 'Cessance Earring',
         Body = 'Herculean Vest',
         Hands = 'Adhemar Wrist. +1',
@@ -213,7 +213,7 @@ sets = T{
         Ammo = 'Ginsen',
         Head = 'Adhemar Bonnet +1',
         Neck = 'Fotia Gorget',
-        Ear1 = 'Brutal Earring',
+        Ear1 = 'Telos Earring',
         Ear2 = 'Moonshade Earring',
         Body = 'Assim. Jubbah +2',
         Hands = 'Adhemar Wrist. +1',
@@ -235,7 +235,7 @@ sets = T{
     Chant_Default = {
         Ammo = 'Jukukik Feather',
         Head = 'Adhemar Bonnet +1',
-        Ear1 = 'Brutal Earring',
+        Ear1 = 'Telos Earring',
         Ear2 = 'Moonshade Earring',
         Body = 'Gleti\'s Cuirass',
         Hands = 'Adhemar Wrist. +1',
@@ -254,7 +254,7 @@ sets = T{
     Savage_Default = {
         Ammo = 'Ginsen',
         Head = 'Adhemar Bonnet +1',
-        Ear1 = 'Brutal Earring',
+        Ear1 = 'Telos Earring',
         Ear2 = 'Moonshade Earring',
         Body = 'Assim. Jubbah +2',
         Hands = 'Adhemar Wrist. +1',
@@ -322,7 +322,7 @@ profile.HandleDefault = function()
 	end
 
     gcinclude.CheckDefault ();
-    if (gcinclude.RRSET == true) then gFunc.EquipSet(gcinclude.sets.Reraise) end
+     
 end
 
 profile.HandleAbility = function()

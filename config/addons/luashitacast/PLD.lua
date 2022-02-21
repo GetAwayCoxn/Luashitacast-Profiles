@@ -57,7 +57,7 @@ sets = T{
     Tp_Default = {
         Ammo = 'Ginsen',
         Head ='Nyame Helm',
-        Ear1 = 'Brutal Earring',
+        Ear1 = 'Telos Earring',
         Ear2 = 'Cessance Earring',
         Body = 'Hjarrandi Breast.',
         Hands = 'Sakpata\'s Gauntlets',
@@ -72,7 +72,7 @@ sets = T{
         Ammo = 'Coiste Bodhar',
         Head = 'Flam. Zucchetto +2',
         Neck ='Sanctity Necklace',
-        Ear1 = 'Brutal Earring',
+        Ear1 = 'Telos Earring',
         Ear2 = 'Cessance Earring',
         Body = 'Flamma Korazin +2',
         Hands = 'Sakpata\'s Gauntlets',
@@ -237,7 +237,7 @@ profile.HandleDefault = function()
 	end
 
     gcinclude.CheckDefault ();
-    if (gcinclude.RRSET == true) then gFunc.EquipSet(gcinclude.sets.Reraise) end
+     
 end
 
 profile.HandleAbility = function()

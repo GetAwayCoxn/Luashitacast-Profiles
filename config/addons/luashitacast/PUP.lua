@@ -95,7 +95,7 @@ sets = T{
 	Tp_Default = {
         Head = 'Mpaca\'s Cap',
         Neck = 'Shulmanu Collar',
-        Ear1 = 'Mache Earring',
+        Ear1 = 'Telos Earring',
         Ear2 = 'Cessance Earring',
         Body = 'Pitre Tobe +3',
         Hands = 'Mpaca\'s Gloves',
@@ -108,7 +108,6 @@ sets = T{
     },
 	Tp_Hybrid = {
         Neck = 'Empath Necklace',
-        Ear1 = 'Mache Earring',
         Hands = 'Malignance Gloves',
         Ring1 = 'Cacoethic Ring',
     },
@@ -183,6 +182,9 @@ sets = T{
 	},
     Maneuver = {
 	},
+    Overdrive = {
+        Body = 'Pitre Tobe +3',
+    },
 	
 	
 	Movement = {
@@ -250,7 +252,7 @@ profile.HandleDefault = function()
             gFunc.EquipSet(sets.Pet_WS);
         end
     end
-    if (gcinclude.RRSET == true) then gFunc.EquipSet(gcinclude.sets.Reraise) end
+     
 end
 
 profile.HandleAbility = function()
@@ -259,6 +261,8 @@ profile.HandleAbility = function()
 		gFunc.EquipSet(sets.Repair);
     elseif (string.contains(ability.Name, 'Maneuver')) then
         gFunc.EquipSet(sets.Maneuver);
+    elseif (string.match(ability.Name, 'Overdrive')) then
+        gFunc.EquipSet(sets.Overdrive);
 	end
 
     gcinclude.CheckCancels();

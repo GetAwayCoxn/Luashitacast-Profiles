@@ -89,7 +89,7 @@ sets = T{
         Ammo = { Name = 'Coiste Bodhar', AugPath='A' },
         Head = 'Flam. Zucchetto +2',
         Neck = { Name = 'Sam. Nodowa +1', AugPath='A' },
-        Ear1 = 'Brutal Earring',
+        Ear1 = 'Telos Earring',
         Ear2 = 'Cessance Earring',
         Body = 'Kasuga Domaru +1',
         Hands = 'Flam. Manopolas +2',
@@ -161,7 +161,7 @@ sets = T{
         Ammo = 'Date Shuriken',
         Head = { Name = 'Adhemar Bonnet +1', AugPath='B' },
         Neck = { Name = 'Ninja Nodowa +1', AugPath='A' },
-        Ear1 = 'Brutal Earring',
+        Ear1 = 'Telos Earring',
         Ear2 = { Name = 'Moonshade Earring', Augment = { [1] = 'Accuracy+4', [2] = 'TP Bonus +250' } },
         Body = 'Hiza. Haramaki +2',
         Hands = { Name = 'Adhemar Wrist. +1', AugPath='B' },
@@ -183,7 +183,7 @@ sets = T{
         Ammo = 'Yetshila',
         Head = 'Mummu Bonnet +2',
         Neck = { Name = 'Ninja Nodowa +1', AugPath='A' },
-        Ear1 = 'Brutal Earring',
+        Ear1 = 'Telos Earring',
         Ear2 = 'Odr Earring',
         Body = 'Mummu Jacket +2',
         Hands = 'Mummu Wrists +2',
@@ -201,7 +201,7 @@ sets = T{
         Ammo = 'Voluspa Tathlum',
         Head = { Name = 'Adhemar Bonnet +1', AugPath='B' },
         Neck = { Name = 'Ninja Nodowa +1', AugPath='A' },
-        Ear1 = 'Brutal Earring',
+        Ear1 = 'Telos Earring',
         Ear2 = 'Odr Earring',
         Body = 'Hiza. Haramaki +2',
         Hands = { Name = 'Adhemar Wrist. +1', AugPath='B' },
@@ -314,7 +314,7 @@ profile.HandleDefault = function()
 	end
 
     gcinclude.CheckDefault ();
-    if (gcinclude.RRSET == true) then gFunc.EquipSet(gcinclude.sets.Reraise) end
+     
 end
 
 profile.HandleAbility = function()

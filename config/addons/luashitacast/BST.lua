@@ -232,7 +232,7 @@ profile.HandleDefault = function()
             AshitaCore:GetChatManager():QueueCommand(1, '/ja "Fight" <t>');
         end
     end
-    if (gcinclude.RRSET == true) then gFunc.EquipSet(gcinclude.sets.Reraise) end
+     
 end
 
 profile.HandleAbility = function()

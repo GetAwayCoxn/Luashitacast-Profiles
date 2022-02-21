@@ -5,39 +5,38 @@ gcinclude = gFunc.LoadFile('common\\gcinclude.lua');
 sets = T{
     Idle = {
         Ammo = { Name = 'Coiste Bodhar', AugPath='A' },
-        Head = 'Flam. Zucchetto +2',
-        Neck = 'Anu Torque',
-        Ear1 = 'Mache Earring',
+        Head = 'Nyame Helm',
+        Neck = 'Loricate Torque +1',
+        Ear1 = 'Telos Earring',
         Ear2 = 'Cessance Earring',
-        Body = 'Gleti\'s Cuirass',
-        Hands = 'Flam. Manopolas +2',
+        Body = 'Hjarrandi Breast.',
+        Hands = 'Volte Moufles',
         Ring1 = 'Petrov Ring',
         Ring2 = 'Karieyh Ring',
         Back = { Name = 'Brigantia\'s Mantle', Augment = { [1] = 'STR+30', [2] = '"Dbl.Atk."+10', [3] = 'Attack+20', [4] = 'Accuracy+20' } },
         Waist = { Name = 'Sailfi Belt +1', AugPath='A' },
-        Legs = 'Gleti\'s Breeches',
-        Feet = 'Gleti\'s Boots',
+        Legs = 'Sakpata\'s Cuisses',
+        Feet = 'Nyame Sollerets',
     },
     Resting = {},
     Idle_Regen = {
         Neck = 'Bathy Choker +1',
+        Hands = 'Volte Moufles',
     },
     Idle_Refresh = {},
     Town = {
-        Main = 'Shining One',
-        Sub = 'Utu Grip',
         Ammo = { Name = 'Coiste Bodhar', AugPath='A' },
         Head = 'Flam. Zucchetto +2',
         Neck = 'Anu Torque',
-        Ear1 = 'Mache Earring',
+        Ear1 = 'Telos Earring',
         Ear2 = 'Cessance Earring',
         Body = 'Hjarrandi Breast.',
-        Hands = 'Flam. Manopolas +2',
-        Ring1 = 'Petrov Ring',
-        Ring2 = 'Niqmaddu Ring',
+        Hands = 'Volte Moufles',
+        Ring1 = 'Defending Ring',
+        Ring2 = 'Gelatinous Ring +1',
         Back = { Name = 'Brigantia\'s Mantle', Augment = { [1] = 'STR+30', [2] = '"Dbl.Atk."+10', [3] = 'Attack+20', [4] = 'Accuracy+20' } },
         Waist = { Name = 'Sailfi Belt +1', AugPath='A' },
-        Legs = 'Gleti\'s Breeches',
+        Legs = 'Sakpata\'s Cuisses',
         Feet = 'Gleti\'s Boots',
     },
 
@@ -60,32 +59,35 @@ sets = T{
     Tp_Default = {
         Ammo = { Name = 'Coiste Bodhar', AugPath='A' },
         Head = 'Flam. Zucchetto +2',
-        Neck = 'Anu Torque',
-        Ear1 = 'Sherida Earring',
+        Neck = 'Sanctity Necklace',
+        Ear1 = 'Telos Earring',
         Ear2 = 'Cessance Earring',
-        Body = 'Gleti\'s Cuirass',
+        Body = 'Flamma Korazin +2',
         Hands = 'Flam. Manopolas +2',
         Ring1 = 'Petrov Ring',
         Ring2 = 'Niqmaddu Ring',
         Back = { Name = 'Brigantia\'s Mantle', Augment = { [1] = 'STR+30', [2] = '"Dbl.Atk."+10', [3] = 'Attack+20', [4] = 'Accuracy+20' } },
         Waist = { Name = 'Sailfi Belt +1', AugPath='A' },
-        Legs = 'Gleti\'s Breeches',
-        Feet = 'Gleti\'s Boots',
+        Legs = 'Sakpata\'s Cuisses',
+        Feet = 'Tatena. Sune. +1',
     },
     Tp_Hybrid = {
+        Ammo = 'Crepuscular Pebble',
         Body = 'Hjarrandi Breast.',
+        Hands = 'Sakpata\'s Gauntlets',
     },
     Tp_Acc = {
+        Ammo = 'Seeth. Bomblet +1',
+        Hands = 'Tatena. Gote +1',
+        Legs = 'Tatena. Haidate +1',
     },
 
 
     Precast = {
         Neck = 'Baetyl Pendant',
-        Ear1 = 'Malignance Earring',
         Ear2 = 'Etiolation Earring',
-        Body = 'Taeon Tabard',
         Ring1 = 'Prolix Ring',
-        Legs = 'Enif Cosciales',
+        Feet = 'Odyssean Greaves',
     },
 
 
@@ -96,7 +98,7 @@ sets = T{
         Ring1 = 'Rufescent Ring',
         Ring2 = { Name = 'Metamor. Ring +1', AugPath='A' },
         Back = 'Solemnity Cape',
-        Legs = 'Carmine Cuisses +1',
+        Feet = 'Odyssean Greaves',
     },
 
     Enhancing = {
@@ -143,13 +145,13 @@ sets = T{
         Neck = 'Fotia Gorget',
         Ear1 = 'Thrud Earring',
         Ear2 = { Name = 'Moonshade Earring', Augment = { [1] = 'Accuracy+4', [2] = 'TP Bonus +250' } },
-        Body = 'Gleti\'s Cuirass',
+        Body = 'Hjarrandi Breast.',
         Hands = { Name = 'Valorous Mitts', Augment = { [1] = '"Mag. Atk. Bns."+1', [2] = 'Attack+9', [3] = 'Mag. Acc.+1', [4] = 'STR+5', [5] = 'Weapon skill damage +5%', [6] = 'AGI+2', [7] = 'Accuracy+9' } },
         Ring1 = 'Rufescent Ring',
         Ring2 = 'Karieyh Ring',
         Back = { Name = 'Brigantia\'s Mantle', Augment = { [1] = 'STR+30', [2] = '"Dbl.Atk."+10', [3] = 'Attack+20', [4] = 'Accuracy+20' } },
         Waist = 'Fotia Belt',
-        Legs = 'Gleti\'s Breeches',
+        Legs = 'Sakpata\'s Cuisses',
         Feet = { Name = 'Valorous Greaves', Augment = { [1] = 'Weapon skill damage +5%', [2] = 'Accuracy+8' } },
     },
     Ws_Hybrid = {
@@ -159,7 +161,7 @@ sets = T{
     },
 
     Movement = {
-        Legs = 'Carmine Cuisses +1',
+        Feet = 'Hermes\' Sandals',
 	},
 };
 
@@ -169,8 +171,8 @@ profile.OnLoad = function()
     gSettings.AllowAddSet = false;
     gcinclude.Initialize:once(3);
 
-    AshitaCore:GetChatManager():QueueCommand(1, '/macro book 7');
-    AshitaCore:GetChatManager():QueueCommand(1, '/macro set 1');
+    AshitaCore:GetChatManager():QueueCommand(1, '/macro book 3');
+    AshitaCore:GetChatManager():QueueCommand(1, '/macro set 10');
 end
 
 profile.OnUnload = function()
@@ -205,7 +207,7 @@ profile.HandleDefault = function()
 	end
 
     gcinclude.CheckDefault ();
-    if (gcinclude.RRSET == true) then gFunc.EquipSet(gcinclude.sets.Reraise) end
+     
 end
 
 profile.HandleAbility = function()

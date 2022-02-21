@@ -67,7 +67,7 @@ sets = T{
         Range = { Name = 'Gjallarhorn', AugTrial=3591 },
         Head = 'Nyame Helm',
         Neck = { Name = 'Bard\'s Charm +1', AugPath='A' },
-        Ear1 = 'Brutal Earring',
+        Ear1 = 'Telos Earring',
         Ear2 = 'Cessance Earring',
         Body = { Name = 'Bihu Jstcorps. +3', AugTrial=5481 },
         Hands = 'Nyame Gauntlets',
@@ -369,7 +369,7 @@ profile.HandleDefault = function()
 	end
 
     gcinclude.CheckDefault ();
-    if (gcinclude.RRSET == true) then gFunc.EquipSet(gcinclude.sets.Reraise) end
+     
 end
 
 profile.HandleAbility = function()

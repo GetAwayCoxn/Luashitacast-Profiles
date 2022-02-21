@@ -7,7 +7,7 @@ sets = T{
         Ammo = 'Staunch Tathlum',
         Head = 'Malignance Chapeau',
         Neck = 'Sanctity Necklace',
-        Ear1 = 'Brutal Earring',
+        Ear1 = 'Telos Earring',
         Ear2 = 'Eabani Earring',
         Body = 'Hiza. Haramaki +2',
         Hands = 'Malignance Gloves',
@@ -177,7 +177,7 @@ profile.HandleDefault = function()
 	end
 
     gcinclude.CheckDefault ();
-    if (gcinclude.RRSET == true) then gFunc.EquipSet(gcinclude.sets.Reraise) end
+     
 end
 
 profile.HandleAbility = function()

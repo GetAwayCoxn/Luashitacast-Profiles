@@ -28,7 +28,7 @@ sets = T{
     Idle_Refresh = {
         Ammo = 'Homiliary',
         Head = 'Befouled Crown',
-        Body = 'Atrophy Tabard +1',
+        Body = 'Atrophy Tabard +2',
         Feet = 'Volte Gaiters',
     },
     Town = {
@@ -39,7 +39,7 @@ sets = T{
         Neck = 'Bathy Choker +1',
         Ear1 = 'Eabani Earring',
         Ear2 = 'Etiolation Earring',
-        Body = 'Atrophy Tabard +1',
+        Body = 'Atrophy Tabard +2',
         Hands = 'Malignance Gloves',
         Ring1 = 'Defending Ring',
         Ring2 = { Name = 'Metamor. Ring +1', AugPath='A' },
@@ -159,7 +159,7 @@ sets = T{
         Ear1 = 'Mendi. Earring',
         Ear2 = 'Andoaa Earring',
         Body = 'Telchine Chas.',
-        Hands = 'Malignance Gloves',
+        Hands = 'Atrophy Gloves +2',
         Ring1 = 'Stikini Ring +1',
         Ring2 = { Name = 'Metamor. Ring +1', AugPath='A' },
         Back = { Name = 'Sucellos\'s Cape', Augment = { [1] = 'Accuracy+20', [2] = 'Attack+20', [3] = 'DEX+20' } },
@@ -175,6 +175,7 @@ sets = T{
     },
     Phalanx = {},
     Refresh = {
+        Body = 'Atrophy Tabard +2',
 		Waist = 'Gishdubar Sash',
     },
     Self_Refresh = {},
@@ -183,7 +184,7 @@ sets = T{
         Main = 'Bunzi\'s Rod',
         Sub = 'Ammurapi Shield',
         Ammo = 'Pemphredo Tathlum',
-        Head = { Name = 'Viti. Chapeau +1', AugTrial=5250 },
+        Head = 'Viti. Chapeau +1',
         Neck = 'Erra Pendant',
         Ear1 = 'Snotra Earring',
         Ear2 = 'Malignance Earring',
@@ -197,6 +198,10 @@ sets = T{
         Feet = { Name = 'Medium\'s Sabots', Augment = { [1] = 'MND+6', [2] = '"Conserve MP"+5', [3] = 'MP+40', [4] = '"Cure" potency +3%' } },
     },
     EnfeeblingACC = {
+        Ear1 = 'Snotra Earring',
+        Ear2 = 'Regal Earring',
+        Body = 'Atrophy Tabard +2',
+        Hands = 'Atrophy Gloves +2',
         Ring1 = 'Stikini Ring +1',
     },
     Mind_Enfeebling = {
@@ -211,10 +216,10 @@ sets = T{
         Ammo = 'Pemphredo Tathlum',
         Head = { Name = 'Viti. Chapeau +1', AugTrial=5250 },
         Neck = 'Erra Pendant',
-        Ear1 = 'Snotra Earring',
+        Ear1 = 'Regal Earring',
         Ear2 = 'Malignance Earring',
-        Body = 'Nyame Mail',
-        Hands = 'Malignance Gloves',
+        Body = 'Atrophy Tabard +2',
+        Hands = 'Atrophy Gloves +2',
         Ring1 = 'Kishar Ring',
         Ring2 = { Name = 'Metamor. Ring +1', AugPath='A' },
         Back = { Name = 'Aurist\'s Cape +1', AugPath='A' },
@@ -282,9 +287,9 @@ sets = T{
         Head = 'Nyame Helm',
         Neck = 'Fotia Gorget',
         Ear1 = { Name = 'Moonshade Earring', Augment = { [1] = 'Accuracy+4', [2] = 'TP Bonus +250' } },
-        Ear2 = 'Brutal Earring',
+        Ear2 = 'Telos Earring',
         Body = 'Nyame Mail',
-        Hands = 'Nyame Gauntlets',
+        Hands = 'Atrophy Gloves +2',
         Ring1 = 'Rufescent Ring',
         Ring2 = 'Karieyh Ring',
         Back = 'Solemnity Cape',
@@ -364,7 +369,7 @@ profile.HandleDefault = function()
 	end
 
     gcinclude.CheckDefault ();
-    if (gcinclude.RRSET == true) then gFunc.EquipSet(gcinclude.sets.Reraise) end
+     
 end
 
 profile.HandleAbility = function()
