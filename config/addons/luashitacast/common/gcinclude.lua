@@ -495,6 +495,7 @@ function gcinclude.CheckCancels()
 	local action = gData.GetAction();
 	local sneak = gData.GetBuffCount('Sneak');
 	local stoneskin = gData.GetBuffCount('Stoneskin');
+	local me = AshitaCore:GetMemoryManager():GetParty():GetMemberName(0);
 	
 	local function do_jig()
 		AshitaCore:GetChatManager():QueueCommand(1, '/ja "Spectral Jig" <me>');
@@ -510,7 +511,7 @@ function gcinclude.CheckCancels()
 		gFunc.CancelAction();
 		AshitaCore:GetChatManager():QueueCommand(1, '/cancel Sneak');
 		do_jig:once(1);
-	elseif (action.Name == 'Sneak' and sneak ~= 0) then
+	elseif (action.Name == 'Sneak' and sneak ~= 0 and target.Name == me) then
 		gFunc.CancelAction();
 		AshitaCore:GetChatManager():QueueCommand(1, '/cancel Sneak');
 		do_sneak:once(1);
