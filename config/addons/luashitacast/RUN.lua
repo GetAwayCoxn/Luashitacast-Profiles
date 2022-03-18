@@ -9,8 +9,8 @@ sets = T{
         Head = 'Nyame Helm',
         Neck ='Unmoving Collar +1',
         Ear1 = 'Odnowa Earring +1',
-        Ear2 = 'Etoilation Earring',
-        Body = 'Nyame Mail',
+        Ear2 = 'Etiolation Earring',
+        Body = 'Agwu\'s Robe',
         Hands = 'Nyame Gauntlets',
         Ring1 = 'Stikini Ring +1',
         Ring2 = 'Gelatinous Ring +1',
@@ -46,7 +46,7 @@ sets = T{
         Head = 'Nyame Helm',
         Neck ='Loricate Torque +1',
         Ear1 = 'Odnowa Earring +1',
-        Ear2 = 'Etoilation Earring',
+        Ear2 = 'Etiolation Earring',
         Body = 'Agwu\'s Robe',
         Hands = 'Nyame Gauntlets',
         Ring1 = 'Defending Ring',
@@ -62,7 +62,7 @@ sets = T{
         Head ='Nyame Helm',
         Neck = 'Unmoving Collar +1',
         Ear1 = 'Odnowa Earring +1',
-        Ear2 = 'Etoilation Earring',
+        Ear2 = 'Etiolation Earring',
         Body = 'Nyame Mail',
         Hands = 'Turms Mittens',
         Ring1 = 'Defending Ring',
@@ -210,7 +210,7 @@ profile.HandleDefault = function()
     end
 	
 	if (gcdisplay.GetToggle('DTset') == true) then
-		gFunc.EquipSet(gcinclude.sets.Dt);
+		 
 		gFunc.EquipSet(sets.Dt);
 	end
 	if (gcdisplay.GetToggle('Kite') == true) then

@@ -50,7 +50,6 @@ sets = T{
     },
 
     Dt = {
-        Main = 'Sakpata\'s Sword',
         Sub = 'Genmei Shield',
         Ammo = 'Staunch Tathlum',
         Head = 'Malignance Chapeau',
@@ -68,7 +67,7 @@ sets = T{
     },
 
     Tp_Default = {
-        Main = 'Sakpata\'s Sword',
+        Main = 'Excalibur',
         Sub = 'Genmei Shield',
         Ammo = { Name = 'Coiste Bodhar', AugPath='A' },
         Head = 'Malignance Chapeau',
@@ -361,7 +360,7 @@ profile.HandleDefault = function()
 	
 	
 	if (gcdisplay.GetToggle('DTset') == true) then
-		gFunc.EquipSet(gcinclude.sets.Dt);
+		 
 		gFunc.EquipSet(sets.Dt);
 	end
 	if (gcdisplay.GetToggle('Kite') == true) then

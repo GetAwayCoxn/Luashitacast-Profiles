@@ -56,7 +56,7 @@ sets = T{
         Ammo = { Name = 'Coiste Bodhar', AugPath='A' },
         Head = 'Flam. Zucchetto +2',
         Neck = 'Sanctity Necklace',
-        Ear1 = 'Mache Earring',
+        Ear1 = 'Mache Earring +1',
         Ear2 = 'Cessance Earring',
         Body = 'Flamma Korazin +2',
         Hands = 'Sakpata\'s Gauntlets',
@@ -212,7 +212,7 @@ profile.HandleDefault = function()
 	
 	
 	if (gcdisplay.GetToggle('DTset') == true) then
-		gFunc.EquipSet(gcinclude.sets.Dt);
+		 
 		gFunc.EquipSet(sets.Dt);
 	end
 	if (gcdisplay.GetToggle('Kite') == true) then

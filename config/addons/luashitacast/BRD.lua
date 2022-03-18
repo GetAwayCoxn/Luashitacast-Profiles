@@ -282,7 +282,7 @@ sets = T{
     Ws_Default = {
         Head = 'Nyame Helm',
         Neck = 'Fotia Gorget',
-        Ear1 = 'Mache Earring',
+        Ear1 = 'Mache Earring +1',
         Ear2 = 'Cessance Earring',
         Body = 'Bihu Jstcorps. +3',
         Hands = 'Nyame Gauntlets',
@@ -361,7 +361,7 @@ profile.HandleDefault = function()
 	
 	
 	if (gcdisplay.GetToggle('DTset') == true) then
-		gFunc.EquipSet(gcinclude.sets.Dt);
+		 
 		gFunc.EquipSet(sets.Dt);
 	end
 	if (gcdisplay.GetToggle('Kite') == true) then

@@ -88,7 +88,7 @@ sets = T{
     },
 	Tp_Hybrid = {
         Neck = 'Empath Necklace',
-        Ear1 = 'Mache Earring',
+        Ear1 = 'Mache Earring +1',
         Hands = 'Malignance Gloves',
         Ring1 = 'Cacoethic Ring',
     },
@@ -204,7 +204,7 @@ profile.HandleDefault = function()
 		gFunc.EquipSet(sets.Movement);
 	end
 	if (gcdisplay.GetToggle('DTset') == true) then
-        gFunc.EquipSet(gcinclude.sets.Dt);
+         
 		gFunc.EquipSet(sets.Dt);
         if (pet ~= nil) then
             gFunc.EquipSet(sets.Pet_Dt);

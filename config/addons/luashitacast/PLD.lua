@@ -9,7 +9,7 @@ sets = T{
         Head = 'Nyame Helm',
         Neck ='Unmoving Collar +1',
         Ear1 = 'Odnowa Earring +1',
-        Ear2 = 'Etoilation Earring',
+        Ear2 = 'Etiolation Earring',
         Body = 'Hjarrandi Breast.',
         Hands = 'Volte Moufles',
         Ring1 = 'Defending Ring',
@@ -43,7 +43,7 @@ sets = T{
         Head = 'Nyame Helm',
         Neck ='Loricate Torque +1',
         Ear1 = 'Odnowa Earring +1',
-        Ear2 = 'Etoilation Earring',
+        Ear2 = 'Etiolation Earring',
         Body = 'Hjarrandi Breast.',
         Hands = 'Sakpata\'s Gauntlets',
         Ring1 = 'Defending Ring',
@@ -164,7 +164,7 @@ sets = T{
     Chant_Default = {
         Ammo = 'Jukukik Feather',
         Head = 'Blistering Sallet +1',
-        Ear1 = 'Mache Earring',
+        Ear1 = 'Mache Earring +1',
         Ear2 = 'Moonshade Earring',
         Body = 'Hjarrandi Breast.',
         Hands = 'Flam. Manopolas +2',
@@ -229,7 +229,7 @@ profile.HandleDefault = function()
 		gFunc.EquipSet(sets.Fealty); -- same set as fealty
 	end
 	if (gcdisplay.GetToggle('DTset') == true) then
-		gFunc.EquipSet(gcinclude.sets.Dt);
+		 
 		gFunc.EquipSet(sets.Dt);
 	end
 	if (gcdisplay.GetToggle('Kite') == true) then

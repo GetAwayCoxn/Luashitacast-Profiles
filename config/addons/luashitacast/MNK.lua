@@ -74,7 +74,7 @@ sets = T{
     },
     Tp_Acc = {
         Ammo = 'Ginsen',
-        Ear1 = 'Mache Earring',
+        Ear1 = 'Mache Earring +1',
         Hands = 'Tatena. Gote +1',
         Ring1 = 'Cacoethic Ring',
         Feet = 'Tatena. Sune. +1',
@@ -169,7 +169,7 @@ profile.HandleDefault = function()
 	
 	
 	if (gcdisplay.GetToggle('DTset') == true) then
-		gFunc.EquipSet(gcinclude.sets.Dt);
+		 
 		gFunc.EquipSet(sets.Dt);
 	end
 	if (gcdisplay.GetToggle('Kite') == true) then

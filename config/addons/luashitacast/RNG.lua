@@ -7,7 +7,7 @@ sets = T{
         Ammo = { Name = 'Coiste Bodhar', AugPath='A' },
         Head = 'Flam. Zucchetto +2',
         Neck = 'Anu Torque',
-        Ear1 = 'Mache Earring',
+        Ear1 = 'Mache Earring +1',
         Ear2 = 'Cessance Earring',
         Body = 'Gleti\'s Cuirass',
         Hands = 'Flam. Manopolas +2',
@@ -29,7 +29,7 @@ sets = T{
         Ammo = { Name = 'Coiste Bodhar', AugPath='A' },
         Head = 'Flam. Zucchetto +2',
         Neck = 'Anu Torque',
-        Ear1 = 'Mache Earring',
+        Ear1 = 'Mache Earring +1',
         Ear2 = 'Cessance Earring',
         Body = 'Hjarrandi Breast.',
         Hands = 'Flam. Manopolas +2',
@@ -201,7 +201,7 @@ profile.HandleDefault = function()
 	
 	
 	if (gcdisplay.GetToggle('DTset') == true) then
-		gFunc.EquipSet(gcinclude.sets.Dt);
+		 
 		gFunc.EquipSet(sets.Dt);
 	end
 	if (gcdisplay.GetToggle('Kite') == true) then

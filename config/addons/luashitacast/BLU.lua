@@ -77,7 +77,7 @@ sets = T{
         Ammo = 'Ginsen',
         Head = 'Blistering Sallet +1',
         Neck = 'Sanctity Necklace',
-        Ear1 = 'Mache Earring',
+        Ear1 = 'Mache Earring +1',
         Body = 'Luhlaza Jubbah +3',
         Hands = 'Malignance Gloves',
         Ring1 = 'Cacoethic Ring'
@@ -180,7 +180,7 @@ sets = T{
         Ammo = 'Pemphredo Tathlum',
         Head = 'Adhemar Bonnet +1',
         Neck = 'Sanctity Necklace',
-        Ear1 = 'Mache Earring',
+        Ear1 = 'Mache Earring +1',
         Ear2 = 'Odr Earring',
         Body = 'Gleti\'s Cuirass',
         Hands = 'Nyame Gauntlets',
@@ -314,7 +314,7 @@ profile.HandleDefault = function()
 	
 	
 	if (gcdisplay.GetToggle('DTset') == true) then
-        gFunc.EquipSet(gcinclude.sets.Dt);
+         
 		gFunc.EquipSet(sets.Dt);
 	end
 	if (gcdisplay.GetToggle('Kite') == true) then

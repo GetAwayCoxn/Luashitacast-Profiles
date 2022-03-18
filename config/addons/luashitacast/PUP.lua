@@ -82,6 +82,7 @@ sets = T{
         Neck = 'Shulmanu Collar',
         Ear1 = 'Rimeice Earring',
         Ear2 = 'Domes. Earring',
+        Ring2 = 'Varar Ring +1',
         Back = 'Visucius\'s Mantle',
         Waist = 'Incarnation Sash',
         Legs = 'Taeon Tights',
@@ -109,21 +110,25 @@ sets = T{
 	Tp_Hybrid = {
         Neck = 'Empath Necklace',
         Hands = 'Malignance Gloves',
-        Ring1 = 'Cacoethic Ring',
+        Ring2 = 'Varar Ring +1',
     },
 	Tp_Acc = {},
     -- These following sets are intended for one off items to equip while the pet is engaged (or both of you) based on the PupMode. An example would be Pet HP+ pieces for Tank mode. Can be empty but do not delete.
     Tank = {
         Range = 'Animator P +1',
+        Ring2 = 'Varar Ring +1',
     },
     Melee = {
         Range = 'Neo Animator',
+        Ring2 = 'Varar Ring +1',
     },
     Ranger = {
         Range = 'Animator P +1',
+        Ring2 = 'Varar Ring +1',
     },
     Mage = {
         Range = 'Neo Animator',
+        Ear2 = 'Burana Earring',
     },
 
     Precast = {
@@ -136,12 +141,12 @@ sets = T{
     },
 
 	Ws_Default = {
-        Ammo = 'Coiste Bodhar',
-        Head = 'Valorous Mask',
+        Head = 'Blistering Sallet +1',
         Neck = 'Fotia Gorget',
-        Ear1 = 'Thrud Earring',
+        Ear1 = 'Schere Earring',
         Ear2 = 'Moonshade Earring',
-        Body = 'Nyame Mail',
+        --Body = 'Mpaca\'s Doublet',
+        Body = 'Herculean Vest',
         Hands = 'Meg. Gloves +2',
         Ring1 = 'Karieyh Ring',
         Ring2 = 'Rufescent Ring',
@@ -151,17 +156,37 @@ sets = T{
         Feet = 'Mpaca\'s Boots',
     },
     Ws_Hybrid = {
-        Ammo = 'Voluspa Tathlum',
     },
     Ws_Acc = {
-        Ammo = 'Voluspa Tathlum',
     },
+
+    Shijin_Default = {
+        Head = 'Malignance Chapeau',
+        Neck = 'Fotia Gorget',
+        Ear1 = 'Schere Earring',
+        Ear2 = 'Mache Earring +1',
+        Body = 'Herculean Vest',
+        Hands = 'Malignance Gloves',
+        Ring1 = 'Karieyh Ring',
+        Ring2 = 'Niqmaddu Ring',
+        Back = '',
+        Waist = 'Moonbow Belt',
+        Legs = 'Samnuha Tights',
+        Feet = { Name = 'Herculean Boots', Augment = { [1] = 'Accuracy+20', [2] = 'Attack+6', [3] = 'AGI+1', [4] = '"Triple Atk."+3' } },
+    },
+    Shijin_Hybrid = {
+    },
+    Shijin_Acc = {
+    },
+
     Pet_WS = {
         Head = 'Karagoz Capello +1',
         Neck = 'Shulmanu Collar',
+        Ear1 = 'Burana Earring',
         Ear2 = 'Domes. Earring',
         Body = 'Pitre Tobe +3',
         Hands = 'Mpaca\'s Gloves',
+        Ring2 = 'Varar Ring +1',
         Waist = 'Incarnation Sash',
         Legs = 'Mpaca\'s Hose',
         Feet = 'Mpaca\'s Boots',
@@ -169,9 +194,11 @@ sets = T{
     Pet_RNGWS = {
         Head = 'Karagoz Capello +1',
         Neck = 'Shulmanu Collar',
-        Ear2 = 'Domes. Earring',
+        Ear1 = 'Burana Earring',
+        Ear2 = 'Crep. Earring',
         Body = 'Pitre Tobe +3',
         Hands = 'Mpaca\'s Gloves',
+        Ring2 = 'Varar Ring +1',
         Waist = 'Incarnation Sash',
         Legs = 'Mpaca\'s Hose',
         Feet = 'Mpaca\'s Boots',
@@ -181,6 +208,7 @@ sets = T{
 		Ammo = 'Automat. Oil +3',
 	},
     Maneuver = {
+        Ear2 = 'Burana Earring',
 	},
     Overdrive = {
         Body = 'Pitre Tobe +3',
@@ -237,7 +265,7 @@ profile.HandleDefault = function()
         if (pet ~= nil) then
             gFunc.EquipSet(sets.Pet_Dt);
 		end
-        gFunc.EquipSet(gcinclude.sets.Dt);
+         
         gFunc.EquipSet(sets.Dt);
 	end
 	if (gcdisplay.GetToggle('Kite') == true) then
@@ -245,7 +273,7 @@ profile.HandleDefault = function()
 	end
 	
     gcinclude.CheckDefault ();
-    if (pet ~= nil) and (pet.TP > 950) then 
+    if (pet ~= nil) and (pet.TP > 950) and (pet.Status == 'Engaged') then 
         if (gcdisplay.GetCycle('PupMode') == 'Ranger') then
             gFunc.EquipSet(sets.Pet_RNGWS);
         else
@@ -301,6 +329,12 @@ profile.HandleWeaponskill = function()
         gFunc.EquipSet(sets.Ws_Default)
         if (gcdisplay.GetCycle('MeleeSet') ~= 'Default') then
         gFunc.EquipSet('Ws_' .. gcdisplay.GetCycle('MeleeSet')) end
+
+        if string.match(ws.Name, 'Shijin Spiral') then
+            gFunc.EquipSet(sets.Shijin_Default)
+            if (gcdisplay.GetCycle('MeleeSet') ~= 'Default') then
+            gFunc.EquipSet('Shijin_' .. gcdisplay.GetCycle('MeleeSet')); end
+        end
     end
 end
 

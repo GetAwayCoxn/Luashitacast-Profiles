@@ -44,19 +44,19 @@ sets = T{
     },
 
     Dt = {
-        Ammo = 'Crepuscular Pebble',
-        Head = 'Nyame Helm',
-        Neck = { Name = 'Loricate Torque +1', AugPath='A' },
-        Ear1 = { Name = 'Odnowa Earring +1', AugPath='A' },
-        Ear2 = 'Etiolation Earring',
-        Body = { Name = 'Sakonji Domaru +3', AugTrial=5483 },
-        Hands = 'Nyame Gauntlets',
-        Ring1 = 'Defending Ring',
-        Ring2 = { Name = 'Gelatinous Ring +1', AugPath='A' },
+        Ammo = 'Crepuscular Pebble',--3
+        Head = 'Nyame Helm',--7
+        Neck = { Name = 'Loricate Torque +1', AugPath='A' },--6
+        Ear1 = { Name = 'Odnowa Earring +1', AugPath='A' },--1
+        Ear2 = 'Schere Earring',
+        Body = 'Kasuga Domaru +1',
+        Hands = 'Nyame Gauntlets',--7
+        Ring1 = 'Defending Ring',--10
+        Ring2 = { Name = 'Gelatinous Ring +1', AugPath='A' },--7
         Back = { Name = 'Smertrios\'s Mantle', Augment = { [1] = 'Damage taken-5%', [2] = 'Accuracy+30', [3] = 'Attack+20', [4] = '"Store TP"+10', [5] = 'DEX+20' } },
-        Waist = 'Flume Belt +1',
-        Legs = 'Nyame Flanchard',
-        Feet = 'Nyame Sollerets',
+        Waist = 'Ioskeha Belt',
+        Legs = 'Nyame Flanchard',--8
+        Feet = 'Nyame Sollerets',--7
     },
 
     Tp_Default = {
@@ -64,13 +64,13 @@ sets = T{
         Head = 'Flam. Zucchetto +2',
         Neck = { Name = 'Sam. Nodowa +1', AugPath='A' },
         Ear1 = 'Telos Earring',
-        Ear2 = 'Cessance Earring',
+        Ear2 = 'Schere Earring',
         Body = 'Kasuga Domaru +1',
         Hands = 'Flam. Manopolas +2',
         Ring1 = 'Ilabrat Ring',
         Ring2 = 'Niqmaddu Ring',
         Back = { Name = 'Smertrios\'s Mantle', Augment = { [1] = 'Damage taken-5%', [2] = 'Accuracy+30', [3] = 'Attack+20', [4] = '"Store TP"+10', [5] = 'DEX+20' } },
-        Waist = { Name = 'Sailfi Belt +1', AugPath='A' },
+        Waist = 'Ioskeha Belt',
         Legs = { Name = 'Tatena. Haidate +1', AugPath='A' },
         Feet = { Name = 'Tatena. Sune. +1', AugPath='A' },
     },
@@ -81,7 +81,7 @@ sets = T{
         Feet = 'Mpaca\'s Boots',
     },
     Tp_Acc = {
-        Ear1 = 'Mache Earring',
+        Ear1 = 'Mache Earring +1',
         Hands = 'Tatena. Gote +1',
         Ring1 = 'Cacoethic Ring',
         Feet = 'Tatena. Sune. +1',
@@ -91,13 +91,13 @@ sets = T{
         Head = 'Flam. Zucchetto +2',
         Neck = { Name = 'Sam. Nodowa +1', AugPath='A' },
         Ear1 = 'Telos Earring',
-        Ear2 = 'Cessance Earring',
+        Ear2 = 'Schere Earring',
         Body = 'Kasuga Domaru +1',
         Hands = 'Flam. Manopolas +2',
         Ring1 = 'Petrov Ring',
         Ring2 = 'Karieyh Ring',
         Back = { Name = 'Smertrios\'s Mantle', Augment = { [1] = 'Damage taken-5%', [2] = 'Accuracy+30', [3] = 'Attack+20', [4] = '"Store TP"+10', [5] = 'DEX+20' } },
-        Waist = { Name = 'Sailfi Belt +1', AugPath='A' },
+        Waist = 'Ioskeha Belt',
         Legs = { Name = 'Tatena. Haidate +1', AugPath='A' },
         Feet = 'Flam. Gambieras +2',
     },
@@ -202,15 +202,19 @@ sets = T{
         Legs = 'Mpaca\'s Hose',
         Feet = { Name = 'Valorous Greaves', Augment = { [1] = 'Weapon skill damage +5%', [2] = 'Accuracy+8' } },
     },
-    Savage_Hybrid = {},
+    Savage_Hybrid = {
+        Body = 'Nyame Mail',
+        Legs = 'Nyame Flanchard',
+        Feet = 'Nyame Sollerets',
+    },
     Savage_Acc = {},
 
     Jinpu_Default = {
         Ammo = 'Knobkierrie',
         Head = 'Nyame Helm',
         Neck = { Name = 'Sam. Nodowa +1', AugPath='A' },
-        Ear1 = 'Hecate\'s Earring',
-        Ear2 = 'Lugra Earring +1',
+        Ear1 = 'Friomisi Earring',
+        Ear2 = { Name = 'Moonshade Earring', Augment = { [1] = 'Accuracy+4', [2] = 'TP Bonus +250' } },
         Body = { Name = 'Sakonji Domaru +3', AugTrial=5483 },
         Hands = { Name = 'Valorous Mitts', Augment = { [1] = '"Mag. Atk. Bns."+1', [2] = 'Attack+9', [3] = 'Mag. Acc.+1', [4] = 'STR+5', [5] = 'Weapon skill damage +5%', [6] = 'AGI+2', [7] = 'Accuracy+9' } },
         Ring1 = 'Karieyh Ring',
@@ -220,7 +224,11 @@ sets = T{
         Legs = 'Hiza. Hizayoroi +2',
         Feet = 'Nyame Sollerets',
     },
-    Jinpu_Hybrid = {},
+    Jinpu_Hybrid = {
+        Body = 'Nyame Mail',
+        Legs = 'Nyame Flanchard',
+        Feet = 'Nyame Sollerets',
+    },
     Jinpu_Acc = {},
 
     Ageha_Default = {
@@ -229,16 +237,20 @@ sets = T{
         Neck = 'Sanctity Necklace',
         Ear1 = 'Crep. Earring',
         Ear2 = 'Lugra Earring +1',
-        Body = 'Flamma Korazin +2',
+        Body = 'Nyame Mail',
         Hands = 'Mpaca\'s Gloves',
         Ring1 = { Name = 'Metamor. Ring +1', AugPath='A' },
-        Ring2 = 'Rufescent Ring',
+        Ring2 = 'Stikini Ring +1',
         Back = { Name = 'Smertrios\'s Mantle', Augment = { [1] = 'STR+20', [2] = 'Weapon skill damage +10%', [3] = 'Attack+20', [4] = 'Accuracy+20' } },
         Waist = 'Flume Belt +1',
         Legs = 'Mpaca\'s Hose',
         Feet = 'Nyame Sollerets',
     },
-    Ageha_Hybrid = {},
+    Ageha_Hybrid = {
+        Body = 'Nyame Mail',
+        Legs = 'Nyame Flanchard',
+        Feet = 'Nyame Sollerets',
+    },
     Ageha_Acc = {},
 
     Stardiver_Default = {
@@ -250,13 +262,17 @@ sets = T{
         Body = { Name = 'Sakonji Domaru +3', AugTrial=5483 },
         Hands = 'Mpaca\'s Gloves',
         Ring1 = 'Rufescent Ring',
-        Ring2 = { Name = 'Gelatinous Ring +1', AugPath='A' },
+        Ring2 = 'Karieyh Ring',
         Back = { Name = 'Smertrios\'s Mantle', Augment = { [1] = 'STR+20', [2] = 'Weapon skill damage +10%', [3] = 'Attack+20', [4] = 'Accuracy+20' } },
         Waist = 'Fotia Belt',
         Legs = 'Mpaca\'s Hose',
         Feet = { Name = 'Valorous Greaves', Augment = { [1] = 'Weapon skill damage +5%', [2] = 'Accuracy+8' } },
     },
-    Stardiver_Hybrid = {},
+    Stardiver_Hybrid = {
+        Body = 'Nyame Mail',
+        Legs = 'Nyame Flanchard',
+        Feet = 'Nyame Sollerets',
+    },
     Stardiver_Acc = {},
 
     Hasso = {
@@ -314,7 +330,7 @@ profile.HandleDefault = function()
 	
 	
 	if (gcdisplay.GetToggle('DTset') == true) then
-		gFunc.EquipSet(gcinclude.sets.Dt);
+		 
 		gFunc.EquipSet(sets.Dt);
 	end
 	if (gcdisplay.GetToggle('Kite') == true) then
