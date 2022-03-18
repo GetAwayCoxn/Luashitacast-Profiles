@@ -19,6 +19,8 @@ Some of the things that my profiles will do is automatically equip idle regen or
 
 /craftset - Will force the Crafting set defined in gcinclude to equip
 
+/fishset - Will force the Fishing set defined in gcinclude to equip
+
 /drain - Will use Drain II if you have access to it and its not on cool down, else it will cast Drain if you have it and not on cooldown. This really just saves you one in game macro as I chose to not include Drain III here because that has very specific timing uses.
 
 /aspir - Same as /drain but for aspir spells, order in which it will try and use is Aspir III > Aspir II > Aspir checking for availability and cooldown for each
@@ -58,3 +60,5 @@ Some of the things that my profiles will do is automatically equip idle regen or
 /pupmode - Will cycle through my tank, melee, rng, mage gear TP sets on PUP main
 
 /forcestring - Will force harp on BRD although I just use paeon for my dummy songs I left this variable available
+
+/cormsg - When playing cor messages will appear telling you lucky/unlucky, use this to toggle off or can set to off as default inside the COR.lua
