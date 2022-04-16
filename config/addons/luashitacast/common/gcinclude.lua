@@ -375,9 +375,15 @@ end
 function gcinclude.DoWarpRing()
 	AshitaCore:GetChatManager():QueueCommand(1, '/lac set Warp_Ring');
 	local function usering()
-		AshitaCore:GetChatManager():QueueCommand(1, '/item "Warp Ring" <me>');	
+		local function forceidleset()
+			AshitaCore:GetChatManager():QueueCommand(1, '/lac set Idle');
+		end
+		AshitaCore:GetChatManager():QueueCommand(1, '/item "Warp Ring" <me>');
+		forceidleset:once(8);
 	end
+	
 	usering:once(11);
+	
 end
 
 function gcinclude.DoTeleRing()
@@ -387,7 +393,11 @@ function gcinclude.DoTeleRing()
 	
 	local function usering()
 		local ring = gData.GetEquipment();
+		local function forceidleset()
+			AshitaCore:GetChatManager():QueueCommand(1, '/lac set Idle');
+		end
 		AshitaCore:GetChatManager():QueueCommand(1, '/item "' .. ring.Ring2.Name .. '" <me>');	
+		forceidleset:once(8);
 	end
 	usering:once(11);
 end
@@ -545,7 +555,7 @@ function gcinclude.Initialize()
 	gcdisplay.Initialize();
 	gcinclude.SetVariables();
 	gcinclude.SetAlias();
-	if (gcauto ~= nil) then gcauto.Initialize:once(10) end
+	if (gcauto ~= nil) then gcauto.Initialize:once(6) end
 end
 
 return gcinclude;
