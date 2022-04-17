@@ -130,6 +130,9 @@ function gcinclude.SetAlias()
 	if (player.MainJob == 'RDM') or (player.MainJob == 'BRD') then
 		AshitaCore:GetChatManager():QueueCommand(-1, '/alias /fight /lac fwd fight');
 	end
+	if (player.MainJob == 'PLD') or (player.MainJob == 'RUN') then
+		AshitaCore:GetChatManager():QueueCommand(-1, '/alias /sir /lac fwd sir');
+	end
 	if (player.MainJob == 'THF') then
 		AshitaCore:GetChatManager():QueueCommand(-1, '/alias /th /lac fwd th');
 	end
@@ -163,6 +166,9 @@ function gcinclude.SetVariables()
 	end
 	if (player.MainJob == 'RDM') or (player.MainJob == 'BRD') then
 		gcdisplay.CreateToggle('Fight', false);
+	end
+	if (player.MainJob == 'PLD') or (player.MainJob == 'RUN') then
+		gcdisplay.CreateToggle('SIR', true);
 	end
 	if (player.MainJob == 'THF') then
 		gcdisplay.CreateToggle('TH', true);
@@ -260,6 +266,11 @@ function gcinclude.SetCommands(args)
 				if (player.MainJob == 'RDM') then AshitaCore:GetChatManager():QueueCommand(-1, '/lac enable Range') end
 				gcdisplay.AdvanceToggle('Fight');
 			end
+		end
+	end
+	if (player.MainJob == 'PLD') or (player.MainJob == 'RUN') then
+		if (args[1] == 'sir') then
+			gcdisplay.AdvanceToggle('SIR');
 		end
 	end
 	if (player.MainJob == 'THF') then
