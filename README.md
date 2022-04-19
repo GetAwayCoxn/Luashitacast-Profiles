@@ -39,6 +39,8 @@ Some of the things that my profiles will do is automatically equip idle regen or
 
 /meleeset - Each of my job files have a default, hybrid, and acc TP and WS set. This will cycle through which one you want to use
 
+/tankset - For RUN and PLD only right now, allows a tank set to over right the meleeset you may be using for more specific tanking set control
+
 /nukeset - Each of my job files have a default and acc nuking set. This will cycle through which one you want to use
 
 /elecycle - This will cycle a variable through all the elements and allow me to cast a nuke/weather/helix of that same element very easily using the same macro

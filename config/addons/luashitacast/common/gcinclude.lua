@@ -93,7 +93,7 @@ gcinclude.StormSpells = T{'Thunderstorm', 'Hailstorm', 'Firestorm', 'Sandstorm',
 gcinclude.NinNukes = T{'Katon: Ichi', 'Katon: Ni', 'Katon: San', 'Hyoton: Ichi', 'Hyoton: Ni', 'Hyoton: San', 'Huton: Ichi', 'Huton: Ni', 'Huton: San', 'Doton: Ichi', 'Doton: Ni', 'Doton: San', 'Raiton: Ichi', 'Raiton: Ni', 'Raiton: San', 'Suiton: Ichi', 'Suiton: Ni', 'Suiton: San'};
 gcinclude.Rolls = T{{'Fighter\'s Roll',5,9}, {'Monk\'s Roll',3,7}, {'Healer\'s Roll',3,7}, {'Corsair\'s Roll',5,9}, {'Ninja Roll',4,8},{'Hunter\'s Roll',4,8}, {'Chaos Roll',4,8}, {'Magus\'s Roll',2,6}, {'Drachen Roll',4,8}, {'Choral Roll',2,6},{'Beast Roll',4,8}, {'Samurai Roll',2,6}, {'Evoker\'s Roll',5,9}, {'Rogue\'s Roll',5,9}, {'Warlock\'s Roll',4,8},
 	{'Puppet Roll',3,7}, {'Gallant\'s Roll',3,7}, {'Wizard\'s Roll',5,9}, {'Dancer\'s Roll',3,7}, {'Scholar\'s Roll',2,6},{'Naturalist\'s Roll',3,7}, {'Runeist\'s Roll',4,8}, {'Bolter\'s Roll',3,9}, {'Caster\'s Roll',2,7}, {'Courser\'s Roll',3,9},{'Blitzer\'s Roll',4,9}, {'Tactician\'s Roll',5,8}, {'Allies\' Roll',3,10}, {'Miser\'s Roll',5,7},
-	{'Companion\'s Roll',2,10},{'Avernger\'s Roll',4,8},}; -- {name,lucky,unlucky}
+	{'Companion\'s Roll',2,10},{'Avenger\'s Roll',4,8},}; -- {name,lucky,unlucky}
 gcinclude.RRSET = false;
 gcinclude.CraftSet = false;
 gcinclude.FishSet = false;
@@ -132,6 +132,7 @@ function gcinclude.SetAlias()
 	end
 	if (player.MainJob == 'PLD') or (player.MainJob == 'RUN') then
 		AshitaCore:GetChatManager():QueueCommand(-1, '/alias /sir /lac fwd sir');
+		AshitaCore:GetChatManager():QueueCommand(-1, '/alias /tankset /lac fwd tankset');
 	end
 	if (player.MainJob == 'THF') then
 		AshitaCore:GetChatManager():QueueCommand(-1, '/alias /th /lac fwd th');
@@ -144,6 +145,9 @@ function gcinclude.SetAlias()
 	end
 	if (player.MainJob == 'BRD') then
 		AshitaCore:GetChatManager():QueueCommand(-1, '/alias /forcestring /lac fwd forcestring');
+	end
+	if (player.MainJob == 'COR') then
+		AshitaCore:GetChatManager():QueueCommand(-1, '/alias /tpgun /lac fwd tpgun');
 	end
 end
 
@@ -168,7 +172,8 @@ function gcinclude.SetVariables()
 		gcdisplay.CreateToggle('Fight', false);
 	end
 	if (player.MainJob == 'PLD') or (player.MainJob == 'RUN') then
-		gcdisplay.CreateToggle('SIR', true);
+		gcdisplay.CreateToggle('SIR', false);
+		gcdisplay.CreateCycle('TankSet', {[1] = 'Main', [2] = 'MEVA', [3] = 'None'});
 	end
 	if (player.MainJob == 'THF') then
 		gcdisplay.CreateToggle('TH', true);
@@ -181,6 +186,9 @@ function gcinclude.SetVariables()
 	end
 	if (player.MainJob == 'BRD') then
 		gcdisplay.CreateToggle('String', false);
+	end
+	if (player.MainJob == 'COR') then
+		gcdisplay.CreateToggle('TPgun', false);
 	end
 end
 
@@ -272,6 +280,9 @@ function gcinclude.SetCommands(args)
 		if (args[1] == 'sir') then
 			gcdisplay.AdvanceToggle('SIR');
 		end
+		if (args[1] == 'tankset') then
+			gcdisplay.AdvanceCycle('TankSet');
+		end
 	end
 	if (player.MainJob == 'THF') then
 		if (args[1] == 'th') then
@@ -291,6 +302,11 @@ function gcinclude.SetCommands(args)
 	if (player.MainJob == 'BRD') then
 		if (args[1] == 'forcestring') then
 			gcdisplay.AdvanceToggle('String');
+		end
+	end
+	if (player.MainJob == 'COR') then
+		if (args[1] == 'tpgun') then
+			gcdisplay.AdvanceToggle('TPgun');
 		end
 	end
 	
