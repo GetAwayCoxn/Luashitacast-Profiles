@@ -11,7 +11,7 @@ sets = T{
         Ear2 = 'Etiolation Earring',
         Body = 'Gleti\'s Cuirass',
         Hands = 'Malignance Gloves',
-        Ring1 = 'Defending Ring',
+        Ring1 = 'Moonbeam Ring',
         Ring2 = 'Gelatinous Ring +1',
         Back = 'Solemnity Cape',
         Waist = 'Flume Belt +1',
@@ -20,7 +20,11 @@ sets = T{
     },
     Resting = {},
     Idle_Regen = {
+        Head = 'Meghanada Visor +2',
+        Neck = 'Bathy Choker +1',
         Hands = 'Meg. Gloves +2',
+        Ring2 = 'Chirich Ring +1',
+        Feet = 'Meg. Jam. +2',
     },
     Idle_Refresh = {},
     Town = {
@@ -34,7 +38,7 @@ sets = T{
         Ear2 = 'Etiolation Earring',
         Body = 'Nyame Mail',
         Hands = 'Nyame Gauntlets',
-        Ring1 = 'Defending Ring',
+        Ring1 = 'Moonbeam Ring',
         Ring2 = 'Gelatinous Ring +1',
         Back = { Name = 'Toutatis\'s Cape', Augment = { [1] = 'Damage taken-5%', [2] = 'Accuracy+30', [3] = 'Attack+20', [4] = '"Store TP"+10', [5] = 'DEX+20' } },
         Waist = 'Sailfi Belt +1',
@@ -46,7 +50,7 @@ sets = T{
         Head = { Name = 'Adhemar Bonnet +1', AugPath='B' },
         Neck = 'Anu Torque',
         Ear1 = 'Sherida Earring',
-        Ear2 = 'Cessance Earring',
+        Ear2 = 'Telos Earring',
         Body = { Name = 'Plunderer\'s Vest +3', AugTrial=5477 },
         Hands = { Name = 'Adhemar Wrist. +1', AugPath='B' },
         Ring1 = 'Petrov Ring',
@@ -64,6 +68,15 @@ sets = T{
         Feet = 'Gleti\'s Boots',
     },
     Tp_Acc = {
+        Head = 'Malignance Chapeau',
+        Neck = 'Sanctity Necklace',
+        Ear1 = 'Mache Earring +1',
+        Body = 'Gleti\'s Cuirass',
+        Hands = 'Malignance Gloves',
+        Ring1 = 'Cacoethic Ring +1',
+        Ring2 = 'Chirich Ring +1',
+        Legs = 'Gleti\'s Breeches',
+        Feet = 'Gleti\'s Boots',
     },
 
 
@@ -72,11 +85,9 @@ sets = T{
         Neck = 'Baetyl Pendant',
         Ear2 = 'Etiolation Earring',
         Body = 'Taeon Tabard',
+        Hands = 'Leyline Gloves',
         Ring1 = 'Prolix Ring',
         Legs = 'Enif Cosciales',
-    },
-    SIR = {
-
     },
 
     Preshot = {
@@ -87,6 +98,7 @@ sets = T{
         Body = 'Mummu Jacket +2',
         Hands = 'Plun. Armlets +3',
         Ring2 = 'Dingir Ring',
+        Waist = 'Eschan Stone',
     },
 
     Ws_Default = {
@@ -97,7 +109,7 @@ sets = T{
         Body = { Name = 'Plunderer\'s Vest +3', AugTrial=5477 },
         Hands = 'Meg. Gloves +2',
         Ring1 = 'Rufescent Ring',
-        Ring2 = 'Karieyh Ring',
+        Ring2 = 'Karieyh Ring +1',
         Back = { Name = 'Toutatis\'s Cape', Augment = { [1] = 'Accuracy+20', [2] = 'Weapon skill damage +10%', [3] = 'Attack+20', [4] = 'DEX+20' } },
         Waist = 'Fotia Belt',
         Legs = 'Gleti\'s Breeches',
@@ -123,6 +135,38 @@ sets = T{
     Ws_Acc_SA = {},
     Ws_Acc_TA = {},
     Ws_Acc_SATA = {},
+
+    Evis_Default = {
+        Head = { Name = 'Adhemar Bonnet +1', AugPath='B' },
+        Neck = 'Fotia Gorget',
+        Ear1 = 'Odr Earring',
+        Ear2 = 'Moonshade Earring',
+        Body = { Name = 'Plunderer\'s Vest +3', AugTrial=5477 },
+        Hands = 'Meg. Gloves +2',
+        Ring1 = 'Rufescent Ring',
+        Ring2 = 'Karieyh Ring +1',
+        Back = { Name = 'Toutatis\'s Cape', Augment = { [1] = 'Accuracy+20', [2] = 'Weapon skill damage +10%', [3] = 'Attack+20', [4] = 'DEX+20' } },
+        Waist = 'Fotia Belt',
+        Legs = 'Gleti\'s Breeches',
+        Feet = { Name = 'Herculean Boots', Augment = { [1] = 'Accuracy+30', [2] = 'Weapon skill damage +8%', [3] = 'Attack+6', [4] = 'Mag. Acc.+2' } },
+    },
+    Evis_Default_SA = {
+    },
+    Evis_Default_TA = {
+        
+    },
+    Evis_Default_SATA = {
+    },
+    Evis_Hybrid = {
+    },
+    Evis_Hybrid_SA = {},
+    Evis_Hybrid_TA = {},
+    Evis_Hybrid_SATA = {},
+    Evis_Acc = {
+    },
+    Evis_Acc_SA = {},
+    Evis_Acc_TA = {},
+    Evis_Acc_SATA = {},
 
 
     SATA = {
@@ -260,6 +304,19 @@ profile.HandleWeaponskill = function()
             gFunc.EquipSet('Ws_' .. gcdisplay.GetCycle('MeleeSet') .. '_SA');
         elseif (ta == 1) then
             gFunc.EquipSet('Ws_' .. gcdisplay.GetCycle('MeleeSet') .. '_TA');
+        end
+
+        if string.match(ws.Name, 'Evisceration') then
+            gFunc.EquipSet(sets.Evis_Default)
+            if (gcdisplay.GetCycle('MeleeSet') ~= 'Default') then
+            gFunc.EquipSet('Evis_' .. gcdisplay.GetCycle('MeleeSet')); end
+            if (sa == 1) and (ta == 1) then
+                gFunc.EquipSet('Evis_' .. gcdisplay.GetCycle('MeleeSet') .. '_SATA');
+            elseif (sa == 1) then
+                gFunc.EquipSet('Evis_' .. gcdisplay.GetCycle('MeleeSet') .. '_SA');
+            elseif (ta == 1) then
+                gFunc.EquipSet('Evis_' .. gcdisplay.GetCycle('MeleeSet') .. '_TA');
+            end
         end
     end
 end
