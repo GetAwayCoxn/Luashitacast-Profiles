@@ -24,7 +24,7 @@ sets = T{
         Sub = 'Genmei Shield',
         Range = 'Dunna',
         Head = 'Azimuth Hood +1',
-        Neck = 'Loricate Torque +1',
+        Neck = 'Bagua Charm',
         Ear1 = 'Handler\'s Earring +1',
         Ear2 = 'Rimeice Earring',
         Body = 'Telchine Chas.',
@@ -36,6 +36,7 @@ sets = T{
     Resting = {},
     Idle_Regen = {
         Neck = 'Bathy Choker +1',
+        Ring2 = 'Chirich Ring +1',
     },
     Idle_Refresh = {
         Head = 'Befouled Crown',
@@ -56,7 +57,6 @@ sets = T{
     },
 
     Dt = {
-        Ammo = 'Staunch Tathlum',
         Head = 'Nyame Helm',
         Neck = 'Loricate Torque +1',
         Ear1 = 'Odnowa Earring +1',
@@ -72,10 +72,28 @@ sets = T{
     },
 
     Tp_Default = {
+        Main = 'Malevolence',
+        Sub = 'Genmei Shield',
+        Head = 'Blistering Sallet +1',
+        Neck = 'Sanctity Necklace',
+        Ear1 = 'Cessance Earring',
+        Ear2 = 'Telos Earring',
+        Body = 'Jhakri Robe +2',
+        Hands = 'Jhakri Cuffs +2',
+        Ring1 = 'Petrov Ring',
+        Ring2 = 'Chirich Ring +1',
+        Back = { Name = 'Nantosuelta\'s Cape', Augment = { [1] = 'Eva.+20', [2] = 'Pet: "Regen"+15', [3] = 'Mag. Eva.+20' } },
+        Waist = 'Eschan Stone',
+        Legs = 'Jhakri Slops +2',
+        Feet = 'Jhakri Pigaches +2',
     },
     Tp_Hybrid = {
     },
     Tp_Acc = {
+        Ear1 = 'Mache Earring +1',
+        Ring1 = 'Cacoethic Ring +1',
+        Ring2 = 'Chirich Ring +1',
+        Back = 'Aurist\'s Cape +1',
     },
 
 
@@ -165,16 +183,16 @@ sets = T{
     Geomancy = { --900 skill, then indi duration, then CMP
         Main = 'Solstice',
         Range = 'Dunna',
-        Head = 'Azimuth Hood +1',
-        Neck = 'Incanter\'s Torque',
+        Head = 'Agwu\'s Cap',--sir
+        Neck = 'Bagua Charm',
         Ear1 = 'Mendi. Earring',
-        Ear2 = 'Mendi. Earring',
         Body = 'Telchine Chas.',
-        Hands = 'Geo. Mitaines +1',
-        Ring1 = 'Stikini Ring +1',
+        Hands = 'Geo. Mitaines +1',--15
+        Ring1 = 'Stikini Ring +1',--8
+        Ring2 = { Name = 'Metamor. Ring +1', AugPath='A' },
         Waist = 'Hachirin-no-Obi',
         Legs = 'Vanya Slops',
-        Feet = 'Medium\'s Sabots',
+        Feet = 'Medium\'s Sabots',--5
     },
     Indi = {
         Back = 'Nantosuelta\'s Cape',
@@ -196,7 +214,7 @@ sets = T{
         Ring2 = { Name = 'Metamor. Ring +1', AugPath='A' },
         Back = { Name = 'Aurist\'s Cape +1', AugPath='A' },
         Waist = { Name = 'Acuity Belt +1', AugPath='A' },
-        Legs = 'Jhakri Slops +2',
+        Legs = 'Agwu\'s Slops',
         Feet = { Name = 'Medium\'s Sabots', Augment = { [1] = 'MND+6', [2] = '"Conserve MP"+5', [3] = 'MP+40', [4] = '"Cure" potency +3%' } },
     },
     Macc = {
@@ -207,13 +225,13 @@ sets = T{
         Neck = 'Erra Pendant',
         Ear1 = 'Regal Earring',
         Ear2 = 'Malignance Earring',
-        Body = 'Spaekona\'s Coat +2',
+        Body = 'Agwu\'s Robe',
         Hands = 'Nyame Gauntlets',
         Ring1 = 'Kishar Ring',
         Ring2 = { Name = 'Metamor. Ring +1', AugPath='A' },
         Back = { Name = 'Aurist\'s Cape +1', AugPath='A' },
         Waist = { Name = 'Acuity Belt +1', AugPath='A' },
-        Legs = 'Jhakri Slops +2',
+        Legs = 'Agwu\'s Slops',
         Feet = { Name = 'Medium\'s Sabots', Augment = { [1] = 'MND+6', [2] = '"Conserve MP"+5', [3] = 'MP+40', [4] = '"Cure" potency +3%' } },
     },
 
@@ -225,12 +243,12 @@ sets = T{
         Neck = 'Erra Pendant',
         Ear1 = 'Regal Earring',
         Ear2 = 'Malignance Earring',
-        Body = 'Spaekona\'s Coat +2',
+        Body = 'Agwu\'s Robe',
         Ring1 = 'Kishar Ring',
         Ring2 = 'Metamor. Ring +1',
         Back = 'Aurist\'s Cape +1',
         Waist = 'Fucho-no-Obi',
-        Legs = 'Jhakri Slops +2',
+        Legs = 'Agwu\'s Slops',
         Feet = 'Agwu\'s Pigaches',
     },
 
@@ -248,7 +266,7 @@ sets = T{
         Ring2 = { Name = 'Metamor. Ring +1', AugPath='A' },
         Back = { Name = 'Nantosuelta\'s Cape', Augment = { [1] = '"Mag. Atk. Bns."+10', [2] = 'Mag. Acc+20', [3] = 'Magic Damage +20', [4] = 'INT+20' } },
         Waist = 'Sacro Cord',
-        Legs = 'Jhakri Slops +2',
+        Legs = 'Amalric Slops +1',
         Feet = 'Amalric Nails +1',
     },
     NukeACC = {
@@ -266,6 +284,7 @@ sets = T{
         Legs = 'Agwu\'s Slops', -- 9 and 0
         Feet = 'Ea Pigaches', -- 4 and 4
     },
+    Mp_Body = {Body = 'Seidr Cotehardie',},
 
     Preshot = {
     },
@@ -281,7 +300,7 @@ sets = T{
         Body = 'Nyame Mail',
         Hands = 'Nyame Gauntlets',
         Ring1 = 'Rufescent Ring',
-        Ring2 = 'Karieyh Ring',
+        Ring2 = 'Karieyh Ring +1',
         Back = 'Solemnity Cape',
         Waist = 'Fotia Belt',
         Legs = 'Nyame Flanchard',
@@ -290,6 +309,25 @@ sets = T{
     Ws_Hybrid = {
     },
     Ws_Acc = {
+    },
+    Aedge_Default = {
+        Ammo = 'Pemphredo Tathlum',
+        Head = 'Jhakri Coronal +2',
+        Neck = 'Baetyl Pendant',
+        Ear1 = 'Regal Earring',
+        Ear2 = 'Malignance Earring',
+        Body = 'Agwu\'s Robe',
+        Hands = 'Jhakri Cuffs +2',
+        Ring1 = 'Shiva Ring +1',
+        Ring2 = 'Karieyh Ring +1',
+        Back = { Name = 'Nantosuelta\'s Cape', Augment = { [1] = '"Mag. Atk. Bns."+10', [2] = 'Mag. Acc+20', [3] = 'Magic Damage +20', [4] = 'INT+20' } },
+        Waist = 'Sacro Cord',
+        Legs = 'Nyame Flanchard',
+        Feet = 'Nyame Sollerets',
+    },
+    Aedge_Hybrid = {
+    },
+    Aedge_Acc = {
     },
 
     Movement = {
@@ -326,6 +364,9 @@ profile.HandleDefault = function()
         if (gcdisplay.GetCycle('MeleeSet') ~= 'Default') then
             gFunc.EquipSet('Tp_' .. gcdisplay.GetCycle('MeleeSet'));
         end
+        if (gcdisplay.GetToggle('Fight') == false) then
+            AshitaCore:GetChatManager():QueueCommand(1, '/fight');
+        end
     elseif (player.Status == 'Resting') then
         gFunc.EquipSet(sets.Resting);
     elseif (player.IsMoving == true) then
@@ -334,7 +375,6 @@ profile.HandleDefault = function()
 	
 	
 	if (gcdisplay.GetToggle('DTset') == true) then
-         
 		gFunc.EquipSet(sets.Dt);
 	end
 	if (gcdisplay.GetToggle('Kite') == true) then
@@ -342,7 +382,7 @@ profile.HandleDefault = function()
 	end
 
     gcinclude.CheckDefault ();
-    if (pet ~= nil) then
+    if (pet ~= nil) and (player.Status ~= 'Engaged') then
         gFunc.EquipSet(sets.Idle_Pet);
     end
      
@@ -420,6 +460,9 @@ profile.HandleMidcast = function()
         if (spell.Element == weather.WeatherElement) or (spell.Element == weather.DayElement) then
             gFunc.Equip('Waist', 'Hachirin-no-Obi');
         end
+        if (player.MPP <= 40) then
+            gFunc.EquipSet(sets.Mp_Body);
+        end
     elseif (spell.Skill == 'Enfeebling Magic') then
         gFunc.EquipSet(sets.Enfeebling);
         if (gcdisplay.GetCycle('NukeSet') == 'Macc') then
@@ -455,6 +498,12 @@ profile.HandleWeaponskill = function()
         gFunc.EquipSet(sets.Ws_Default)
         if (gcdisplay.GetCycle('MeleeSet') ~= 'Default') then
         gFunc.EquipSet('Ws_' .. gcdisplay.GetCycle('MeleeSet')) end
+
+        if string.match(ws.Name, 'Aeolian Edge') then
+            gFunc.EquipSet(sets.Aedge_Default)
+            if (gcdisplay.GetCycle('MeleeSet') ~= 'Default') then
+            gFunc.EquipSet('Aedge_' .. gcdisplay.GetCycle('MeleeSet')); end
+        end
     end
 end
 
