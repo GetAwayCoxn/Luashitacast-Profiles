@@ -7,7 +7,7 @@ These are universal sets for things like doomed or asleep; avoid main/sub/range/
 The second section is a couple basic settings to decide on whether or not to use you the automatic equiping function of idle regen, idle refresh, DT gear etc.
 More details in each section.
 ]]
-gcinclude.sets = {
+gcinclude.sets = T{
 	Doomed = { -- this set will equip any time you have the doom status
 		Ring1 = 'Purity Ring',
 		Waist = 'Gishdubar Sash',
@@ -104,6 +104,7 @@ function gcinclude.SetAlias()
 
 	AshitaCore:GetChatManager():QueueCommand(-1, '/alias /dt /lac fwd dt');
 	AshitaCore:GetChatManager():QueueCommand(-1, '/alias /kite /lac fwd kite');
+	AshitaCore:GetChatManager():QueueCommand(-1, '/alias /th /lac fwd th');
 	AshitaCore:GetChatManager():QueueCommand(-1, '/alias /meleeset /lac fwd meleeset');
 	AshitaCore:GetChatManager():QueueCommand(-1, '/alias /aspir /lac fwd aspir');
 	AshitaCore:GetChatManager():QueueCommand(-1, '/alias /drain /lac fwd drain');
@@ -134,9 +135,6 @@ function gcinclude.SetAlias()
 		AshitaCore:GetChatManager():QueueCommand(-1, '/alias /sir /lac fwd sir');
 		AshitaCore:GetChatManager():QueueCommand(-1, '/alias /tankset /lac fwd tankset');
 	end
-	if (player.MainJob == 'THF') then
-		AshitaCore:GetChatManager():QueueCommand(-1, '/alias /th /lac fwd th');
-	end
 	if (player.MainJob == 'SAM') or (player.MainJob == 'NIN') then
 		AshitaCore:GetChatManager():QueueCommand(-1, '/alias /proc /lac fwd proc');
 	end
@@ -148,6 +146,9 @@ function gcinclude.SetAlias()
 	end
 	if (player.MainJob == 'COR') then
 		AshitaCore:GetChatManager():QueueCommand(-1, '/alias /tpgun /lac fwd tpgun');
+	end
+	if (player.MainJob == 'BLU') then
+		AshitaCore:GetChatManager():QueueCommand(-1, '/alias /cjmode /lac fwd cj');
 	end
 end
 
@@ -189,6 +190,9 @@ function gcinclude.SetVariables()
 	end
 	if (player.MainJob == 'COR') then
 		gcdisplay.CreateToggle('TPgun', false);
+	end
+	if (player.MainJob == 'BLU') then
+		gcdisplay.CreateToggle('CJmode', false);
 	end
 end
 
@@ -284,9 +288,11 @@ function gcinclude.SetCommands(args)
 			gcdisplay.AdvanceCycle('TankSet');
 		end
 	end
-	if (player.MainJob == 'THF') then
-		if (args[1] == 'th') then
+	if (args[1] == 'th') then
+		if (player.MainJob == 'THF') then
 			gcdisplay.AdvanceToggle('TH');
+		else
+			AshitaCore:GetChatManager():QueueCommand(-1, '/lac set TH 10');
 		end
 	end
 	if (player.MainJob == 'SAM') or (player.MainJob == 'NIN') then
@@ -307,6 +313,11 @@ function gcinclude.SetCommands(args)
 	if (player.MainJob == 'COR') then
 		if (args[1] == 'tpgun') then
 			gcdisplay.AdvanceToggle('TPgun');
+		end
+	end
+	if (player.MainJob == 'BLU') then
+		if (args[1] == 'cj') then
+			gcdisplay.AdvanceToggle('CJmode');
 		end
 	end
 	

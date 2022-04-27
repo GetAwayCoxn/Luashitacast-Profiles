@@ -12,7 +12,7 @@ sets = T{
         Body = 'Hjarrandi Breast.',
         Hands = 'Volte Moufles',
         Ring1 = 'Petrov Ring',
-        Ring2 = 'Karieyh Ring',
+        Ring2 = 'Karieyh Ring +1',
         Back = { Name = 'Brigantia\'s Mantle', Augment = { [1] = 'STR+30', [2] = '"Dbl.Atk."+10', [3] = 'Attack+20', [4] = 'Accuracy+20' } },
         Waist = { Name = 'Sailfi Belt +1', AugPath='A' },
         Legs = 'Sakpata\'s Cuisses',
@@ -22,6 +22,7 @@ sets = T{
     Idle_Regen = {
         Neck = 'Bathy Choker +1',
         Hands = 'Volte Moufles',
+        Ring2 = 'Chirich Ring +1',
     },
     Idle_Refresh = {},
     Town = {
@@ -79,6 +80,8 @@ sets = T{
     Tp_Acc = {
         Ammo = 'Seeth. Bomblet +1',
         Hands = 'Tatena. Gote +1',
+        Ring1 = 'Cacoethic Ring +1',
+        Ring2 = 'Chirich Ring +1',
         Legs = 'Tatena. Haidate +1',
     },
 
@@ -148,7 +151,7 @@ sets = T{
         Body = 'Hjarrandi Breast.',
         Hands = { Name = 'Valorous Mitts', Augment = { [1] = '"Mag. Atk. Bns."+1', [2] = 'Attack+9', [3] = 'Mag. Acc.+1', [4] = 'STR+5', [5] = 'Weapon skill damage +5%', [6] = 'AGI+2', [7] = 'Accuracy+9' } },
         Ring1 = 'Rufescent Ring',
-        Ring2 = 'Karieyh Ring',
+        Ring2 = 'Karieyh Ring +1',
         Back = { Name = 'Brigantia\'s Mantle', Augment = { [1] = 'STR+30', [2] = '"Dbl.Atk."+10', [3] = 'Attack+20', [4] = 'Accuracy+20' } },
         Waist = 'Fotia Belt',
         Legs = 'Sakpata\'s Cuisses',
@@ -160,6 +163,9 @@ sets = T{
     Ws_Acc = {
     },
 
+    TH = {--/th will force this set to equip for 10 seconds
+		Waist = 'Chaac Belt',
+	},
     Movement = {
         Feet = 'Hermes\' Sandals',
 	},

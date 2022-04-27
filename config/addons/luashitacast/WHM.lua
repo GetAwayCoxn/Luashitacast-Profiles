@@ -23,6 +23,7 @@ sets = T{
     Resting = {},
     Idle_Regen = {
         Neck = 'Bathy Choker +1',
+        Ring2 = 'Chirich Ring +1',
     },
     Idle_Refresh = {
         Ammo = 'Homiliary',
@@ -65,23 +66,25 @@ sets = T{
     Tp_Hybrid = {
     },
     Tp_Acc = {
+        Ring1 = 'Cacoethic Ring +1',
+        Ring2 = 'Chirich Ring +1',
     },
 
 
     Precast = {
-        Ammo = 'Staunch Tathlum',
-        Head = 'Peda. M.Board +2',
+        Ammo = 'Sapience Orb',
+        Head = 'Haruspex Hat',
         Neck = 'Baetyl Pendant',
         Ear1 = 'Etiolation Earring',
         Ear2 = 'Malignance Earring',
-        Body = 'Agwu\'s Robe',
-        Hands = 'Acad. Bracers +2',
+        --Body = '',
+        Hands = 'Gende. Gages +1',
         Ring1 = 'Kishar Ring',
         Ring2 = 'Prolix Ring',
         Back = 'Swith Cape +1',
         Waist = 'Embla Sash',
-        Legs = 'Agwu\'s Slops',
-        Feet = 'Acad. Loafers +2',
+        Legs = 'Lengo Pants',
+        Feet = 'Volte Gaiters',
     },
     Cure_Precast = {
         Ear1 = 'Mendi. Earring',
@@ -211,7 +214,7 @@ sets = T{
         Ring2 = { Name = 'Metamor. Ring +1', AugPath='A' },
         Back = 'Lugh\'s Cape',
         Waist = 'Sacro Cord',
-        Legs = 'Jhakri Slops +2',
+        Legs = 'Amalric Slops +1',
         Feet = 'Amalric Nails +1',
     },
     NukeACC = {
@@ -232,7 +235,7 @@ sets = T{
         Body = 'Nyame Mail',
         Hands = 'Nyame Gauntlets',
         Ring1 = 'Rufescent Ring',
-        Ring2 = 'Karieyh Ring',
+        Ring2 = 'Karieyh Ring +1',
         Back = 'Solemnity Cape',
         Waist = 'Fotia Belt',
         Legs = 'Nyame Flanchard',
@@ -243,6 +246,9 @@ sets = T{
     Ws_Acc = {
     },
 
+    TH = {--/th will force this set to equip for 10 seconds
+		Waist = 'Chaac Belt',
+	},
     Movement = {
         Feet = 'Herald\'s Gaiters',
 	},

@@ -12,7 +12,7 @@ sets = T{
         Body = 'Gleti\'s Cuirass',
         Hands = 'Malignance Gloves',
         Ring1 = 'Defending Ring',
-        Ring2 = 'Karieyh Ring',
+        Ring2 = 'Karieyh Ring +1',
         Back = 'Solemnity Cape',
         Waist = 'Gishdubar Sash',
         Legs = 'Gleti\'s Breeches',
@@ -21,6 +21,7 @@ sets = T{
     Resting = {},
     Idle_Regen = {
         Neck = 'Bathy Choker +1',
+        Ring2 = 'Chirich Ring +1',
     },
     Idle_Refresh = {},
     Town = {
@@ -55,12 +56,12 @@ sets = T{
         Head = { Name = 'Adhemar Bonnet +1', AugPath='B' },
         Neck = 'Anu Torque',
         Ear1 = 'Sherida Earring',
-        Ear2 = 'Cessance Earring',
+        Ear2 = 'Telos Earring',
         Body = 'Gleti\'s Cuirass',
         Hands = 'Malignance Gloves',
         Ring1 = 'Ilabrat Ring',
         Ring2 = 'Epona\'s Ring',
-        Back = { Name = 'Mecisto. Mantle', Augment = { [1] = 'DEF+3', [2] = 'Cap. Point+32%', [3] = 'MP+20', [4] = '"Mag. Atk. Bns."+4' } },
+        Back = 'Mecisto. Mantle',
         Waist = { Name = 'Sailfi Belt +1', AugPath='A' },
         Legs = 'Gleti\'s Breeches',
         Feet = { Name = 'Herculean Boots', Augment = { [1] = 'Accuracy+20', [2] = 'Attack+6', [3] = 'AGI+1', [4] = '"Triple Atk."+3' } },
@@ -72,7 +73,8 @@ sets = T{
     Tp_Acc = {
         Ammo = 'Yamarang',
         Ear1 = 'Mache Earring +1',
-        Ring2 = 'Cacoethic Ring',
+        Ring1 = 'Cacoethic Ring +1',
+        Ring2 = 'Chirich Ring +1',
     },
 
 
@@ -81,6 +83,7 @@ sets = T{
         Neck = 'Baetyl Pendant',
         Ear1 = 'Loquac. Earring',
         Ear2 = 'Etiolation Earring',
+        Hands = 'Leyline Gloves',
         Ring2 = 'Prolix Ring',
     },
 
@@ -93,13 +96,13 @@ sets = T{
         Ammo = 'Voluspa Tathlum',
         Head = { Name = 'Adhemar Bonnet +1', AugPath='B' },
         Neck = 'Fotia Gorget',
-        Ear1 = { Name = 'Moonshade Earring', Augment = { [1] = 'Accuracy+4', [2] = 'TP Bonus +250' } },
-        Ear2 = 'Odr Earring',
+        Ear1 = 'Odr Earring',
+        Ear2 = { Name = 'Moonshade Earring', Augment = { [1] = 'Accuracy+4', [2] = 'TP Bonus +250' } },
         Body = 'Nyame Mail',
         Hands = 'Malignance Gloves',
         Ring1 = 'Ilabrat Ring',
-        Ring2 = 'Karieyh Ring',
-        Waist = 'Moonbow Belt',
+        Ring2 = 'Karieyh Ring +1',
+        Waist = 'Fotia Belt',
         Legs = 'Nyame Flanchard',
         Feet = { Name = 'Herculean Boots', Augment = { [1] = 'Accuracy+30', [2] = 'Weapon skill damage +8%', [3] = 'Attack+6', [4] = 'Mag. Acc.+2' } },
     },
@@ -108,20 +111,30 @@ sets = T{
     Ws_Acc = {
     },
 
-    Victory_Default = {
+    Aedge_Default = {
+        Ammo = 'Pemphredo Tathlum',
+        Head = 'Nyame Helm',
+        Neck = 'Baetyl Necklace',
+        Ear1 = 'Friomisi Earring',
+        Ear2 = 'Moonshade Earring',
+        Body = 'Nyame Mail',
+        Hands = 'Nyame Gauntlets',
+        Ring1 = 'Shiva Ring +1',
+        Ring2 = 'Karieyh Ring +1',
+        Waist = 'Eschan Stone',
+        Legs = 'Nyame Flanchard',
+        Feet = 'Nyame Sollerets',
     },
-    Victory_Hybrid = {},
-    Victory_Acc = {},
-
-    Shijin_Default = {
-    },
-    Shijin_Hybrid = {},
-    Shijin_Acc = {},
+    Aedge_Hybrid = {},
+    Aedge_Acc = {},
 
     Waltz = {
         Ammo = 'Yamarang',
     },
 
+    TH = {--/th will force this set to equip for 10 seconds
+		Waist = 'Chaac Belt',
+	},
     Movement = {
         Feet = 'Herald\'s Gaiters',
 	},
@@ -221,14 +234,10 @@ profile.HandleWeaponskill = function()
         if (gcdisplay.GetCycle('MeleeSet') ~= 'Default') then
         gFunc.EquipSet('Ws_' .. gcdisplay.GetCycle('MeleeSet')) end
 
-	    if string.match(ws.Name, 'Victory Smite') then
-            gFunc.EquipSet(sets.Victory_Default)
+	    if string.match(ws.Name, 'Aedge Smite') then
+            gFunc.EquipSet(sets.Aedge_Default)
             if (gcdisplay.GetCycle('MeleeSet') ~= 'Default') then
-            gFunc.EquipSet('Victory_' .. gcdisplay.GetCycle('MeleeSet')); end
-        elseif string.match(ws.Name, 'Shijin Spiral') then
-            gFunc.EquipSet(sets.Shijin_Default)
-            if (gcdisplay.GetCycle('MeleeSet') ~= 'Default') then
-            gFunc.EquipSet('Shijin_' .. gcdisplay.GetCycle('MeleeSet')); end
+            gFunc.EquipSet('Aedge_' .. gcdisplay.GetCycle('MeleeSet')); end
         end
     end
 end

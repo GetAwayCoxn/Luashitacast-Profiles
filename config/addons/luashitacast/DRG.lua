@@ -8,11 +8,11 @@ sets = T{
         Head = 'Flam. Zucchetto +2',
         Neck = 'Anu Torque',
         Ear1 = 'Mache Earring +1',
-        Ear2 = 'Cessance Earring',
+        Ear2 = 'Telos Earring',
         Body = 'Gleti\'s Cuirass',
         Hands = 'Flam. Manopolas +2',
         Ring1 = 'Petrov Ring',
-        Ring2 = 'Karieyh Ring',
+        Ring2 = 'Karieyh Ring +1',
         Back = { Name = 'Brigantia\'s Mantle', Augment = { [1] = 'STR+30', [2] = '"Dbl.Atk."+10', [3] = 'Attack+20', [4] = 'Accuracy+20' } },
         Waist = { Name = 'Sailfi Belt +1', AugPath='A' },
         Legs = 'Gleti\'s Breeches',
@@ -21,8 +21,12 @@ sets = T{
     Resting = {},
     Idle_Regen = {
         Neck = 'Bathy Choker +1',
+        Ring2 = 'Chirich Ring +1',
     },
-    Idle_Refresh = {},
+    Idle_Refresh = {
+        Head = 'Jumalik Helm',
+        Ring1 = 'Stikini Ring +1',
+    },
     Town = {
         Main = 'Shining One',
         Sub = 'Utu Grip',
@@ -30,7 +34,7 @@ sets = T{
         Head = 'Flam. Zucchetto +2',
         Neck = 'Anu Torque',
         Ear1 = 'Mache Earring +1',
-        Ear2 = 'Cessance Earring',
+        Ear2 = 'Telos Earring',
         Body = 'Hjarrandi Breast.',
         Hands = 'Flam. Manopolas +2',
         Ring1 = 'Petrov Ring',
@@ -62,7 +66,7 @@ sets = T{
         Head = 'Flam. Zucchetto +2',
         Neck = 'Anu Torque',
         Ear1 = 'Sherida Earring',
-        Ear2 = 'Cessance Earring',
+        Ear2 = 'Telos Earring',
         Body = 'Gleti\'s Cuirass',
         Hands = 'Flam. Manopolas +2',
         Ring1 = 'Petrov Ring',
@@ -76,6 +80,8 @@ sets = T{
         Body = 'Hjarrandi Breast.',
     },
     Tp_Acc = {
+        Ring1 = 'Cacoethic Ring +1',
+        Ring2 = 'Chirich Ring +1',
     },
 
 
@@ -84,6 +90,7 @@ sets = T{
         Ear1 = 'Malignance Earring',
         Ear2 = 'Etiolation Earring',
         Body = 'Taeon Tabard',
+        Hands = 'Leyline Gloves',
         Ring1 = 'Prolix Ring',
         Legs = 'Enif Cosciales',
     },
@@ -146,7 +153,7 @@ sets = T{
         Body = 'Gleti\'s Cuirass',
         Hands = { Name = 'Valorous Mitts', Augment = { [1] = '"Mag. Atk. Bns."+1', [2] = 'Attack+9', [3] = 'Mag. Acc.+1', [4] = 'STR+5', [5] = 'Weapon skill damage +5%', [6] = 'AGI+2', [7] = 'Accuracy+9' } },
         Ring1 = 'Rufescent Ring',
-        Ring2 = 'Karieyh Ring',
+        Ring2 = 'Karieyh Ring +1',
         Back = { Name = 'Brigantia\'s Mantle', Augment = { [1] = 'STR+30', [2] = '"Dbl.Atk."+10', [3] = 'Attack+20', [4] = 'Accuracy+20' } },
         Waist = 'Fotia Belt',
         Legs = 'Gleti\'s Breeches',
@@ -158,6 +165,9 @@ sets = T{
     Ws_Acc = {
     },
 
+    TH = {--/th will force this set to equip for 10 seconds
+		Waist = 'Chaac Belt',
+	},
     Movement = {
         Legs = 'Carmine Cuisses +1',
 	},

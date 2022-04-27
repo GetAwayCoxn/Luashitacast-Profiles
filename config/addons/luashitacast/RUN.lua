@@ -134,8 +134,9 @@ sets = T{
         Hands = 'Leyline Gloves', -- 6
         Ring1 = 'Prolix Ring', -- 2
         Ring2 = 'Kishar Ring', -- 4
+        Waist = 'Kasiri Belt',
         Legs = 'Aya. Cosciales +2', -- 6
-        Feet = 'Agwu\'s Pigaches', -- 4
+        Feet = 'Carmine Greaves +1',--7
     },
     Precast_Inspiration = {--this set I use for when my 5/5 inspire merits kicking in with val/vall up
         Ammo = 'Staunch Tathlum',
@@ -145,8 +146,9 @@ sets = T{
         Ear2 = 'Etiolation Earring',
         Body = 'Nyame Mail',
         Hands = 'Nyame Gauntlets',
-        Ring1 = 'Moonbeam Ring',
+        Ring1 = 'Eihwaz Ring',
         Ring2 = 'Gelatinous Ring +1',
+        Waist = 'Kasiri Belt',
         Legs = 'Futhark Trousers +1',
         Feet = 'Agwu\'s Pigaches',
     },
@@ -157,22 +159,24 @@ sets = T{
         Waist = 'Siegel Sash', -- 8
         Legs = 'Futhark Trousers +1', -- 13
     },
-    SIR = {--10 merits + 65 
+    SIR = {--10 merits + 73 
         Ammo = 'Staunch Tathlum', -- 10
         Head = 'Agwu\'s Cap', -- 10
         Neck = 'Moonbeam Necklace', -- 10
         Hands = 'Rawhide Gloves', -- 15
         Waist = 'Audumbla Sash', -- 10
         Legs = 'Carmine Cuisses +1', -- 20
+        Feet = 'Taeon Boots', -- 8
     },
     Enmity = {
         Neck = 'Unmoving Collar +1',
         Ear1 = 'Odnowa Earring +1',
         Ear2 = 'Cryptic Earring',
         Body = 'Emet Harness +1',
-        Ring1 = 'Begrudging Ring',
-        Ring2 = 'Vengeful Ring',
+        Ring1 = 'Eihwaz Ring',
+        Ring2 = 'Supershear Ring',
         Back = { Name = 'Ogma\'s Cape', Augment = { [1] = 'Parrying rate+5%', [2] = 'Mag. Eva.+20', [3] = 'Eva.+20', [4] = 'HP+80', [5] = 'Enmity+10' } },
+        Waist = 'Kasiri Belt',
         Legs = 'Eri. Leg Guards +1',
         Feet = 'Erilaz Greaves +1',
     },
@@ -181,7 +185,6 @@ sets = T{
         Neck = 'Sacro Gorget', -- 10
         Ear1 = 'Mendi. Earring', -- 5
         Hands = 'Weath. Cuffs +1', -- 9
-        Ring1 = 'Stikini Ring +1',
         Back = 'Solemnity Cape', -- 7
         Waist = 'Gishdubar Sash', --10rec
     },
@@ -305,6 +308,9 @@ sets = T{
         Head = 'Fu. Bandeau +1',
     },
 
+    TH = {--/th will force this set to equip for 10 seconds
+		Waist = 'Chaac Belt',
+	},
     Movement = {
         Legs = 'Carmine Cuisses +1',
 	},

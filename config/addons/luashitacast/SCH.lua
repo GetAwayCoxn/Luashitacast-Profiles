@@ -7,7 +7,7 @@ sets = T{
         Main = 'Bolelabunga',
         Sub = 'Genmei Shield',
         Ammo = 'Staunch Tathlum',
-        Head = 'Befouled Crown',
+        Head = 'Agwu\'s Cap',
         Neck = 'Loricate Torque +1',
         Ear1 = 'Eabani Earring',
         Ear2 = 'Etiolation Earring',
@@ -27,6 +27,7 @@ sets = T{
     Resting = {},
     Idle_Regen = {
         Neck = 'Bathy Choker +1',
+        Ring2 = 'Chirich Ring +1',
     },
     Idle_Refresh = {
         Ammo = 'Homiliary',
@@ -42,10 +43,10 @@ sets = T{
         Head = 'Acad. Mortar. +2',
         Neck = 'Bathy Choker +1',
         Body = 'Agwu\'s Robe',
-        Hands = 'Acad. Bracers +2',
+        Hands = 'Acad. Bracers +3',
         Back = 'Lugh\'s Cape',
         Legs = 'Agwu\'s Slops',
-        Feet = 'Volte Gaiters',
+        Feet = 'Herald\'s Gaiters',
     },
 
     Dt = {
@@ -69,17 +70,19 @@ sets = T{
     Tp_Hybrid = {
     },
     Tp_Acc = {
+        Ring1 = 'Cacoethic Ring +1',
+        Ring2 = 'Chirich Ring +1',
     },
 
 
     Precast = {
-        Ammo = 'Staunch Tathlum',
+        Ammo = 'Sapience Orb',
         Head = 'Peda. M.Board +3',
         Neck = 'Baetyl Pendant',
         Ear1 = 'Etiolation Earring',
         Ear2 = 'Malignance Earring',
         Body = 'Agwu\'s Robe',
-        Hands = 'Acad. Bracers +2',
+        Hands = 'Acad. Bracers +3',
         Ring1 = 'Kishar Ring',
         Ring2 = 'Prolix Ring',
         Back = 'Swith Cape +1',
@@ -110,7 +113,7 @@ sets = T{
         Ear1 = 'Mendi. Earring',
         Ear2 = 'Regal Earring',
         Body = 'Gende. Bliaut +1',
-        Hands = 'Weath. Cuffs +1',
+        Hands = 'Peda. Bracers +2',
         Ring1 = 'Stikini Ring +1',
         Ring2 = { Name = 'Metamor. Ring +1', AugPath='A' },
         Back = 'Solemnity Cape',
@@ -188,11 +191,12 @@ sets = T{
         Main = 'Bunzi\'s Rod',
         Sub = 'Ammurapi Shield',
         Ammo = 'Pemphredo Tathlum',
-        Head = 'Acad. Mortar. +2',
+        Head = 'Pixie Hairpin +1',
         Neck = 'Erra Pendant',
         Ear1 = 'Regal Earring',
         Ear2 = 'Malignance Earring',
         Body = 'Acad. Gown +2',
+        Hands = 'Acad. Bracers +3',
         Ring1 = 'Kishar Ring',
         Ring2 = 'Metamor. Ring +1',
         Back = 'Aurist\'s Cape +1',
@@ -215,7 +219,7 @@ sets = T{
         Ring2 = { Name = 'Metamor. Ring +1', AugPath='A' },
         Back = 'Lugh\'s Cape',
         Waist = 'Sacro Cord',
-        Legs = 'Jhakri Slops +2',
+        Legs = 'Amalric Slops +1',
         Feet = 'Amalric Nails +1',
     },
     NukeACC = {
@@ -233,25 +237,29 @@ sets = T{
         Ring1 = 'Mujin Band', -- 0 and 5
         Waist = { Name = 'Acuity Belt +1', AugPath='A' },
         Legs = 'Agwu\'s Slops', -- 9 and 0
-        Feet = 'Agwu\'s Pigaches', -- 6 and 0
+        --Feet = 'Agwu\'s Pigaches', -- 6 and 0
+        Feet = 'Merlinic Crackows', -- 10 and 0
     },
     Helix = {
         Main = 'Bunzi\'s Rod',
         Sub = 'Culminus',
         Ammo = 'Ghastly Tathlum +1',
-        Head = 'Mall. Chapeau +2',
+        Head = 'Agwu\'s Cap',
         Neck = 'Argute Stole +1',
+        Ear1 = 'Regal Earring',
+        Ear2 = 'Malignance Earring',
         Body = 'Agwu\'s Robe',
         Hands = 'Amalric Gages +1',
-        Neck = 'Argute Stole +1',
-        Ring1 = 'Stikini Ring +1',
+        Ring1 = 'Shiva Ring +1',
+        Ring2 = 'Mallquis Ring',
         Back = 'Lugh\'s Cape',
-        Waist = { Name = 'Acuity Belt +1', AugPath='A' },
+        Waist = 'Sacro COrd',
         Legs = 'Agwu\'s Slops',
         Feet = 'Amalric Nails +1',
     },
     HelixBurst = {
         Ear1 = 'Crematio Earring',
+        Ring1 = 'Mujin Band',
         Feet = 'Amalric Nails +1',
     },
     Storm = {
@@ -261,46 +269,49 @@ sets = T{
         Main = 'Marin Staff +1',
         Sub = 'Enki Strap',
         Ammo = 'Pemphredo Tathlum',
-        Head = 'Pixie Hairpin +1',--need this
+        Head = 'Pixie Hairpin +1',
         Neck = 'Argute Stole +1',
         Ear1 = 'Regal Earring',
         Ear2 = 'Malignance Earring',
-        Body = 'Agwu\'s Robe',--seidr cotehardie
+        Body = 'Seidr Cotehardie',
         Hands = 'Amalric Gages +1',
-        Neck = 'Argute Stole +1',
         Ring1 = 'Stikini Ring +1',--freke ring
         Ring2 = 'Archon Ring',
         Back = 'Lugh\'s Cape',
         Waist = { Name = 'Acuity Belt +1', AugPath='A' },
-        Legs = 'Agwu\'s Slops',
+        Legs = 'Amalric Slops +1',
         Feet = 'Amalric Nails +1',
     },
+    Mp_Body = {Body = 'Seidr Cotehardie',},
 
     Preshot = {
     },
     Midshot = {
     },
 
-    Ws_Default = {
-        Ammo = 'Voluspa Tathlum',
-        Head = 'Nyame Helm',
-        Neck = 'Fotia Gorget',
-        Ear1 = 'Telos Earring',
-        Ear2 = 'Moonshade Earring',
-        Body = 'Nyame Mail',
+    Ws_Default = {--for me this is basically just mykyr
+        Ammo = 'Ghastly Tathlum +1',
+        Head = 'Pixie Hairpin +1',
+        Neck = 'Sanctity Necklace',
+        Ear1 = 'Mendi. Earring',
+        Ear2 = 'Etiolation Earring',
+        Body = 'Acad. Gown +2',
         Hands = 'Nyame Gauntlets',
         Ring1 = 'Rufescent Ring',
-        Ring2 = 'Karieyh Ring',
-        Back = 'Solemnity Cape',
-        Waist = 'Fotia Belt',
-        Legs = 'Nyame Flanchard',
-        Feet = 'Nyame Sollerets',
+        Ring2 = 'Metamor. Ring +1',
+        Back = 'Aurist\'s Cape +1',
+        Waist = 'Fucho-no-Obi',
+        Legs = 'Amalric Slops +1',
+        Feet = 'Arbatel Loafers +1',
     },
     Ws_Hybrid = {
     },
     Ws_Acc = {
     },
 
+    TH = {--/th will force this set to equip for 10 seconds
+		Waist = 'Chaac Belt',
+	},
     Movement = {
         Feet = 'Herald\'s Gaiters',
 	},
@@ -437,11 +448,17 @@ profile.HandleMidcast = function()
         if (spell.Element == weather.WeatherElement) or (spell.Element == weather.DayElement) then
             gFunc.Equip('Waist', 'Hachirin-no-Obi');
         end
-        if string.match(spell.Name, 'helix') then
+        if string.contains(spell.Name, 'helix') then
             gFunc.EquipSet(sets.Helix);
             if (gcdisplay.GetToggle('Burst') == true) then
                 gFunc.EquipSet(sets.HelixBurst);
             end
+            if string.contains(spell.Name, 'Nocto') then
+                gFunc.Equip('Head', 'Pixie Hairpin +1');
+            end
+        end
+        if (player.MPP <= 40) then
+            gFunc.EquipSet(sets.Mp_Body);
         end
     elseif (spell.Skill == 'Enfeebling Magic') then
         gFunc.EquipSet(sets.Enfeebling);

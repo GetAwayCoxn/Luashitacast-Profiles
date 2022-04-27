@@ -7,7 +7,7 @@ sets = T{
         Main = 'Bolelabunga',
         Sub = 'Genmei Shield',
         Ammo = 'Staunch Tathlum',
-        Head = 'Befouled Crown',
+        Head = 'Agwu\'s Cap',
         Neck = 'Loricate Torque +1',
         Ear1 = 'Eabani Earring',
         Ear2 = 'Etiolation Earring',
@@ -27,6 +27,7 @@ sets = T{
     Resting = {},
     Idle_Regen = {
         Neck = 'Bathy Choker +1',
+        Ring2 = 'Chirich Ring +1',
     },
     Idle_Refresh = {
         Head = 'Befouled Crown',
@@ -37,13 +38,13 @@ sets = T{
         Main = 'Bunzi\'s Rod',
         Sub = 'Culminus',
         Ammo = 'Pemphredo Tathlum',
-        Head = 'Nyame Helm',
+        Head = 'Agwu\'s Cap',
         Neck = 'Bathy Choker +1',
         Body = 'Agwu\'s Robe',
         Hands = 'Amalric Gages +1',
         Back = 'Solemnity Cape',
         Legs = 'Agwu\'s Slops',
-        Feet = 'Volte Gaiters',
+        Feet = 'Herald\'s Gaiters',
     },
 
     Dt = {
@@ -67,11 +68,13 @@ sets = T{
     Tp_Hybrid = {
     },
     Tp_Acc = {
+        Ring1 = 'Cacoethic Ring +1',
+        Ring2 = 'Chirich Ring +1',
     },
 
 
     Precast = {
-        Ammo = 'Staunch Tathlum',
+        Ammo = 'Sapience Orb',
         Head = 'Haruspex Hat',
         Neck = 'Baetyl Pendant',
         Ear1 = 'Etiolation Earring',
@@ -173,7 +176,7 @@ sets = T{
         Ring2 = { Name = 'Metamor. Ring +1', AugPath='A' },
         Back = { Name = 'Aurist\'s Cape +1', AugPath='A' },
         Waist = { Name = 'Acuity Belt +1', AugPath='A' },
-        Legs = 'Jhakri Slops +2',
+        Legs = 'Agwu\'s Slops',
         Feet = { Name = 'Medium\'s Sabots', Augment = { [1] = 'MND+6', [2] = '"Conserve MP"+5', [3] = 'MP+40', [4] = '"Cure" potency +3%' } },
     },
     Macc = {
@@ -190,7 +193,7 @@ sets = T{
         Ring2 = { Name = 'Metamor. Ring +1', AugPath='A' },
         Back = { Name = 'Aurist\'s Cape +1', AugPath='A' },
         Waist = { Name = 'Acuity Belt +1', AugPath='A' },
-        Legs = 'Jhakri Slops +2',
+        Legs = 'Agwu\'s Slops',
         Feet = { Name = 'Medium\'s Sabots', Augment = { [1] = 'MND+6', [2] = '"Conserve MP"+5', [3] = 'MP+40', [4] = '"Cure" potency +3%' } },
     },
 
@@ -206,7 +209,7 @@ sets = T{
         Ring2 = 'Metamor. Ring +1',
         Back = 'Aurist\'s Cape +1',
         Waist = 'Fucho-no-Obi',
-        Legs = 'Jhakri Slops +2',
+        Legs = 'Agwu\'s Slops',
         Feet = 'Agwu\'s Pigaches',
     },
 
@@ -224,7 +227,7 @@ sets = T{
         Ring2 = { Name = 'Metamor. Ring +1', AugPath='A' },
         Back = 'Taranus\'s Cape',
         Waist = 'Sacro Cord',
-        Legs = 'Jhakri Slops +2',
+        Legs = 'Amalric Slops +1',
         Feet = 'Amalric Nails +1',
     },
     NukeACC = {
@@ -258,9 +261,9 @@ sets = T{
         Main = 'Marin Staff +1',
         Sub = 'Enki Strap',
         Ammo = 'Ghastly Tathlum +1',
-        Head = 'Nyame Helm',
+        Head = 'Pixie Hairpin +1',
         Neck = 'Sanctity Necklace',
-        Ear1 = 'Evans Earring',
+        Ear1 = 'Mendi. Earring',
         Ear2 = 'Etiolation Earring',
         Body = 'Agwu\'s Robe',
         Hands = 'Nyame Gauntlets',
@@ -272,25 +275,26 @@ sets = T{
         Feet = 'Agwu\'s Pigaches',
     },
     Af_Body = {Body = 'Spaekona\'s Coat +2'},
+    EmpyLegs = {Legs ='Wicce Chausses +1'},
 
     Preshot = {
     },
     Midshot = {
     },
 
-    Ws_Default = {
-        Ammo = 'Voluspa Tathlum',
-        Head = 'Nyame Helm',
-        Neck = 'Fotia Gorget',
-        Ear1 = 'Telos Earring',
-        Ear2 = 'Moonshade Earring',
-        Body = 'Nyame Mail',
+    Ws_Default = {--myrkr mostly
+        Ammo = 'Ghastly Tathlum +1',
+        Head = 'Pixie Hairpin +1',
+        Neck = 'Sanctity Necklace',
+        Ear1 = 'Mendi. Earring',
+        Ear2 = 'Etiolation Earring',
+        Body = 'Ea Houppelande',
         Hands = 'Nyame Gauntlets',
-        Ring1 = 'Rufescent Ring',
-        Ring2 = 'Karieyh Ring',
-        Back = 'Solemnity Cape',
-        Waist = 'Fotia Belt',
-        Legs = 'Nyame Flanchard',
+        Ring1 = 'Sangoma Ring',
+        Ring2 = 'Metamor. Ring +1',
+        Back = 'Aurist\'s Cape +1',
+        Waist = 'Shinjutsu-no-Obi',
+        Legs = 'Amalric Slops +1',
         Feet = 'Nyame Sollerets',
     },
     Ws_Hybrid = {
@@ -298,6 +302,9 @@ sets = T{
     Ws_Acc = {
     },
 
+    TH = {--/th will force this set to equip for 10 seconds
+		Waist = 'Chaac Belt',
+	},
     Movement = {
         Feet = 'Herald\'s Gaiters',
 	},
@@ -459,7 +466,7 @@ profile.HandleMidcast = function()
                 gFunc.EquipSet(sets.Af_Body);
             end
             if string.contains(spell.Name, 'ja') then
-                gFunc.Equip('Legs', 'Wicce Chausses +1');
+                gFunc.EquipSet(sets.EmpyLegs);
             end
         elseif (spell.Skill == 'Enfeebling Magic') then
             gFunc.EquipSet(sets.Enfeebling);

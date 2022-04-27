@@ -22,6 +22,7 @@ sets = T{
 	Resting = {},
     Idle_Regen = {
         Neck = 'Bathy Choker +1',
+        Ring2 = 'Chirich Ring +1',
     },
     Idle_Refresh = {},
 	Town = {
@@ -30,7 +31,7 @@ sets = T{
         Head = 'Straw Hat',
         Neck = 'Empath Necklace',
         Ear1 = 'Thrud Earring',
-        Ear2 = 'Cessance Earring',
+        Ear2 = 'Telos Earring',
         Body = 'Gleti\'s Cuirass',
         Hands = 'Malignance Gloves',
         Ring1 = 'Epona\'s Ring',
@@ -76,7 +77,7 @@ sets = T{
         Head = 'Malignance Chapeau',
         Neck = 'Anu Torque',
         Ear1 = 'Sherida Earring',
-        Ear2 = 'Cessance Earring',
+        Ear2 = 'Telos Earring',
         Body = 'Gleti\'s Cuirass',
         Hands = 'Meg. Gloves +2',
         Ring1 = 'Epona\'s Ring',
@@ -90,9 +91,12 @@ sets = T{
         Neck = 'Empath Necklace',
         Ear1 = 'Mache Earring +1',
         Hands = 'Malignance Gloves',
-        Ring1 = 'Cacoethic Ring',
+        Ring1 = 'Cacoethic Ring +1',
     },
-	Tp_Acc = {},
+	Tp_Acc = {
+        Ring1 = 'Cacoethic Ring +1',
+        Ring2 = 'Chirich Ring +1',
+    },
     Pet_Only_Tp = {
         Ammo = 'Voluspa Tathlum',
         Neck = 'Shulmanu Collar',
@@ -105,6 +109,7 @@ sets = T{
     },
 
     Precast = {
+        Ammo = 'Sapience Orb',
         Neck = 'Baetyl Pendant',
         Ear2 = 'Etiolation Earring',
         Body = 'Taeon Tabard',
@@ -119,7 +124,7 @@ sets = T{
         Ear2 = 'Moonshade Earring',
         Body = 'Gleti\'s Cuirass',
         Hands = 'Meg. Gloves +2',
-        Ring1 = 'Karieyh Ring',
+        Ring1 = 'Karieyh Ring +1',
         Ring2 = 'Rufescent Ring',
         Back = '',
         Waist = 'Fotia Belt',
@@ -140,6 +145,9 @@ sets = T{
 	SmnEnfeebling = {},
     SmnHybrid = {}, --special set for flamming crush and burning strike (for now)
 	
+    TH = {--/th will force this set to equip for 10 seconds
+		Waist = 'Chaac Belt',
+	},
 	Movement = {
 	},
 };

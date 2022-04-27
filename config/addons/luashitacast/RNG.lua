@@ -8,11 +8,11 @@ sets = T{
         Head = 'Flam. Zucchetto +2',
         Neck = 'Anu Torque',
         Ear1 = 'Mache Earring +1',
-        Ear2 = 'Cessance Earring',
+        Ear2 = 'Telos Earring',
         Body = 'Gleti\'s Cuirass',
         Hands = 'Flam. Manopolas +2',
         Ring1 = 'Petrov Ring',
-        Ring2 = 'Karieyh Ring',
+        Ring2 = 'Karieyh Ring +1',
         Back = { Name = 'Brigantia\'s Mantle', Augment = { [1] = 'STR+30', [2] = '"Dbl.Atk."+10', [3] = 'Attack+20', [4] = 'Accuracy+20' } },
         Waist = { Name = 'Sailfi Belt +1', AugPath='A' },
         Legs = 'Gleti\'s Breeches',
@@ -21,6 +21,7 @@ sets = T{
     Resting = {},
     Idle_Regen = {
         Neck = 'Bathy Choker +1',
+        Ring2 = 'Chirich Ring +1',
     },
     Idle_Refresh = {},
     Town = {
@@ -30,7 +31,7 @@ sets = T{
         Head = 'Flam. Zucchetto +2',
         Neck = 'Anu Torque',
         Ear1 = 'Mache Earring +1',
-        Ear2 = 'Cessance Earring',
+        Ear2 = 'Telos Earring',
         Body = 'Hjarrandi Breast.',
         Hands = 'Flam. Manopolas +2',
         Ring1 = 'Petrov Ring',
@@ -62,7 +63,7 @@ sets = T{
         Head = 'Flam. Zucchetto +2',
         Neck = 'Anu Torque',
         Ear1 = 'Sherida Earring',
-        Ear2 = 'Cessance Earring',
+        Ear2 = 'Telos Earring',
         Body = 'Gleti\'s Cuirass',
         Hands = 'Flam. Manopolas +2',
         Ring1 = 'Petrov Ring',
@@ -75,6 +76,8 @@ sets = T{
     Tp_Hybrid = {
     },
     Tp_Acc = {
+        Ring1 = 'Cacoethic Ring +1',
+        Ring2 = 'Chirich Ring +1',
     },
 
 
@@ -162,6 +165,9 @@ sets = T{
     Savage_Acc = {
     },
 
+    TH = {--/th will force this set to equip for 10 seconds
+		Waist = 'Chaac Belt',
+	},
     Movement = {
         Legs = 'Carmine Cuisses +1',
 	},

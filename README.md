@@ -27,7 +27,7 @@ Some of the things that my profiles will do is automatically equip idle regen or
 
 /proc - I have specific low dmg output sets for SAM and NIN that are activated with this toggle, intended to kill things slowly for procs like in abyssea or vagary
 
-/th - Turn TH gear lock on and off for THF (only thf, I dont currently TH on other jobs)
+/th - Turn TH gear lock on and off for THF TH gear set found in the job lua. For any other job it will look for a TH gear set inside that job lua and equip it for 10 seconds.
 
 /dt - Will equip the dt set you define in the individual job file
 

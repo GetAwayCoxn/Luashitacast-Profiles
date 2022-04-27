@@ -74,6 +74,7 @@ sets = T{
     Tp_Default = {
         Main = 'Malevolence',
         Sub = 'Genmei Shield',
+        --Head = 'Jhakri Coronal +2',
         Head = 'Blistering Sallet +1',
         Neck = 'Sanctity Necklace',
         Ear1 = 'Cessance Earring',
@@ -90,6 +91,7 @@ sets = T{
     Tp_Hybrid = {
     },
     Tp_Acc = {
+        Head = 'Blistering Sallet +1',
         Ear1 = 'Mache Earring +1',
         Ring1 = 'Cacoethic Ring +1',
         Ring2 = 'Chirich Ring +1',
@@ -330,6 +332,9 @@ sets = T{
     Aedge_Acc = {
     },
 
+    TH = {--/th will force this set to equip for 10 seconds
+		Waist = 'Chaac Belt',
+	},
     Movement = {
         Feet = 'Herald\'s Gaiters',
 	},

@@ -7,11 +7,11 @@ sets = T{
         Main = 'Bolelabunga',
         Sub = 'Genmei Shield',
         Ammo = 'Staunch Tathlum',
-        Head = 'Nyame Helm',
+        Head = 'Malignance Chapeau',
         Neck = 'Loricate Torque +1',
         Ear1 = 'Eabani Earring',
         Ear2 = 'Etiolation Earring',
-        Body = 'Nyame Mail',
+        Body = 'Atrophy Tabard +2',
         Hands = 'Nyame Gauntlets',
         Ring1 = 'Stikini Ring +1',
         Ring2 = { Name = 'Metamor. Ring +1', AugPath='A' },
@@ -24,6 +24,7 @@ sets = T{
     Idle_Regen = {
         Head = 'Befouled Crown',
         Neck = 'Bathy Choker +1',
+        Ring2 = 'Chirich Ring +1',
     },
     Idle_Refresh = {
         Ammo = 'Homiliary',
@@ -73,26 +74,29 @@ sets = T{
         Head = 'Malignance Chapeau',
         Neck = 'Anu Torque',
         Ear1 = 'Sherida Earring',
-        Ear2 = 'Cessance Earring',
+        Ear2 = 'Telos Earring',
         Body = 'Nyame Mail',
         Hands = 'Malignance Gloves',
-        Ring1 = 'Defending Ring',
+        Ring1 = 'Ilabrat Ring',
         Ring2 = 'Petrov Ring',
         Back = { Name = 'Sucellos\'s Cape', Augment = { [1] = 'Accuracy+20', [2] = 'Attack+20', [3] = 'DEX+20' } },
         Waist = { Name = 'Sailfi Belt +1', AugPath='A' },
-        Legs = 'Jhakri Slops +2',
+        Legs = 'Carmine Cuisses +1',
         Feet = 'Nyame Sollerets',
     },
     Tp_Hybrid = {
+        Ring1 = 'Defending Ring',
     },
     Tp_Acc = {
+        Ring1 = 'Cacoethic Ring +1',
+        Ring2 = 'Chirich Ring +1',
     },
 
 
     Precast = {
         Main = 'Sakpata\'s Sword',
         Sub = 'Ammurapi Shield',
-        Ammo = 'Staunch Tathlum',
+        Ammo = 'Sapience Orb',
         Head = 'Haruspex Hat',
         Neck = 'Baetyl Pendant',
         Ear1 = 'Etiolation Earring',
@@ -193,7 +197,7 @@ sets = T{
         Ring2 = { Name = 'Metamor. Ring +1', AugPath='A' },
         Back = { Name = 'Aurist\'s Cape +1', AugPath='A' },
         Waist = { Name = 'Acuity Belt +1', AugPath='A' },
-        Legs = 'Jhakri Slops +2',
+        Legs = 'Nyame Flanchard',
         Feet = { Name = 'Medium\'s Sabots', Augment = { [1] = 'MND+6', [2] = '"Conserve MP"+5', [3] = 'MP+40', [4] = '"Cure" potency +3%' } },
     },
     EnfeeblingACC = {
@@ -223,7 +227,7 @@ sets = T{
         Ring2 = { Name = 'Metamor. Ring +1', AugPath='A' },
         Back = { Name = 'Aurist\'s Cape +1', AugPath='A' },
         Waist = 'Fucho-no-Obi',
-        Legs = 'Jhakri Slops +2',
+        Legs = 'Nyame Flanchard',
         Feet = 'Amalric Nails +1',
     },
 
@@ -241,7 +245,7 @@ sets = T{
         Ring2 = { Name = 'Metamor. Ring +1', AugPath='A' },
         Back = 'Aurist\'s Cape +1',
         Waist = { Name = 'Acuity Belt +1', AugPath='A' },
-        Legs = 'Jhakri Slops +2',
+        Legs = 'Amalric Slops +1',
         Feet = 'Amalric Nails +1',
     },
     NukeACC = {};
@@ -255,6 +259,7 @@ sets = T{
         Feet = 'Ea Pigaches', -- 4 and 4
     },
     Helix = {},
+    Mp_Body = {Body = 'Seidr Cotehardie',},
 
     Preshot = {
     },
@@ -270,7 +275,7 @@ sets = T{
         Body = 'Nyame Mail',
         Hands = 'Nyame Gauntlets',
         Ring1 = 'Rufescent Ring',
-        Ring2 = 'Karieyh Ring',
+        Ring2 = 'Karieyh Ring +1',
         Back = 'Solemnity Cape',
         Waist = 'Fotia Belt',
         Legs = 'Nyame Flanchard',
@@ -290,7 +295,7 @@ sets = T{
         Body = 'Nyame Mail',
         Hands = 'Atrophy Gloves +2',
         Ring1 = 'Rufescent Ring',
-        Ring2 = 'Karieyh Ring',
+        Ring2 = 'Karieyh Ring +1',
         Back = 'Solemnity Cape',
         Waist = { Name = 'Sailfi Belt +1', AugPath='A' },
         Legs = 'Nyame Flanchard',
@@ -300,7 +305,7 @@ sets = T{
     Savage_Acc = {},
 
     Chant_Default = {
-        Ammo = 'Yetshila',
+        Ammo = 'Voluspa Tathlum',
         Head = { Name = 'Blistering Sallet +1', AugPath='A' },
         Neck = 'Fotia Gorget',
         Ear1 = 'Eabani Earring',
@@ -317,6 +322,9 @@ sets = T{
     Chant_Hybrid = {},
     Chant_Acc = {},
 
+    TH = {--/th will force this set to equip for 10 seconds
+		Waist = 'Chaac Belt',
+	},
     Movement = {
         Legs = 'Carmine Cuisses +1',
 	},
@@ -451,6 +459,9 @@ profile.HandleMidcast = function()
         end
         if string.match(spell.Name, 'helix') then
             gFunc.EquipSet(sets.Helix);
+        end
+        if (player.MPP <= 40) then
+            gFunc.EquipSet(sets.Mp_Body);
         end
     elseif (spell.Skill == 'Enfeebling Magic') then
         gFunc.EquipSet(sets.Enfeebling);

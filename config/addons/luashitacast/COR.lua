@@ -4,41 +4,47 @@ gcinclude = gFunc.LoadFile('common\\gcinclude.lua');
 
 sets = T{
     Idle = {
+        Main = 'Naegling',
         Range = 'Holliday',
+        Ammo = 'Decimating Bullet',
         Head = 'Malignance Chapeau',
-        Neck = 'Bathy Choker +1',
+        Neck = 'Comm. Charm +1',
         Ear1 = 'Odnowa Earring +1',
         Ear2 = 'Etiolation Earring',
         Body = 'Nyame Mail',
         Hands = 'Malignance Gloves',
         Ring1 = 'Defending Ring',
-        Ring2 = 'Karieyh Ring',
-        Back = { Name = 'Brigantia\'s Mantle', Augment = { [1] = 'STR+30', [2] = '"Dbl.Atk."+10', [3] = 'Attack+20', [4] = 'Accuracy+20' } },
+        Ring2 = 'Karieyh Ring +1',
+        Back = 'Mecisto. Mantle',
         Waist = 'Flume Belt +1',
         Legs = 'Ikenga\'s Trousers',
-        Feet = 'Lanun Bottes +2',
+        Feet = 'Lanun Bottes +3',
     },
+    Idle_TPgun = {Range = 'Anarchy +2',},
     Resting = {},
     Idle_Regen = {
-        Neck = 'Bathy Choker +1',
+        Head = 'Meghanada Visor +2',
+        Neck = 'Comm. Charm +1',
+        --Neck = 'Bathy Choker +1',
+        Hands = 'Meg. Gloves +2',
+        Ring2 = 'Chirich Ring +1',
+        Feet = 'Meg. Jam. +2',
     },
-    Idle_Refresh = {},
+    Idle_Refresh = {
+        Head = 'Rawhide Mask',
+        Ring1 = 'Stikini Ring +1',
+    },
     Town = {
         Main = 'Naegling',
         Sub = 'Nusku Shield',
         Range = 'Holliday',
-        Head = 'Cumulus Masque',
-        Neck = 'Anu Torque',
-        Ear1 = 'Mache Earring +1',
-        Ear2 = 'Cessance Earring',
-        Body = 'Tanner\'s Apron',
+        Head = 'Chass. Tricorne +1',
+        Body = 'Laksa. Frac +2',
         Hands = 'Malignance Gloves',
         Ring1 = 'Petrov Ring',
         Ring2 = 'Ilabrat Ring',
-        Back = { Name = 'Brigantia\'s Mantle', Augment = { [1] = 'STR+30', [2] = '"Dbl.Atk."+10', [3] = 'Attack+20', [4] = 'Accuracy+20' } },
-        Waist = { Name = 'Sailfi Belt +1', AugPath='A' },
-        Legs = 'Ikenga\'s Trousers',
-        Feet = 'Lanun Bottes +2',
+        Legs = 'Carmine Cuisses +1',
+        Feet = 'Chass. Bottes +1',
     },
 
     Dt = {
@@ -57,8 +63,9 @@ sets = T{
     },
 
     Tp_Default = {
-        Range = 'Holliday',
+        Ammo = 'Decimating Bullet',
         Head = 'Adhemar Bonnet +1',
+        --Neck = 'Comm. Charm +1',
         Neck = 'Sanctity Necklace',
         Ear1 = 'Telos Earring',
         Ear2 = 'Cessance Earring',
@@ -66,16 +73,22 @@ sets = T{
         Hands = 'Adhemar Wrist. +1',
         Ring1 = 'Petrov Ring',
         Ring2 = 'Ilabrat Ring',
-        Back = { Name = 'Brigantia\'s Mantle', Augment = { [1] = 'STR+30', [2] = '"Dbl.Atk."+10', [3] = 'Attack+20', [4] = 'Accuracy+20' } },
+        Back = 'Solemnity Cape',
         Waist = { Name = 'Sailfi Belt +1', AugPath='A' },
         Legs = 'Carmine Cuisses +1',
         Feet = { Name = 'Herculean Boots', Augment = { [1] = 'Accuracy+20', [2] = 'Attack+6', [3] = 'AGI+1', [4] = '"Triple Atk."+3' } },
     },
     Tp_Hybrid = {
         Head = 'Malignance Chapeau',
+        Neck = 'Comm. Charm +1',
         Hands = 'Malignance Gloves',
     },
     Tp_Acc = {
+        Head = 'Malignance Chapeau',
+        Body = 'Nyame Mail',
+        Hands = 'Malignance Gloves',
+        Ring1 = 'Cacoethic Ring +1',
+        Ring2 = 'Chirich Ring +1',
     },
 
 
@@ -84,8 +97,10 @@ sets = T{
         Ear1 = 'Malignance Earring',
         Ear2 = 'Etiolation Earring',
         Body = 'Taeon Tabard',
+        Hands = 'Leyline Gloves',
         Ring1 = 'Prolix Ring',
         Legs = 'Enif Cosciales',
+        Feet = 'Carmine Greaves +1',--7
     },
 
 
@@ -128,41 +143,58 @@ sets = T{
         Feet = 'Nyame Sollerets',
     },
 
-    Preshot = {--base preshot, no flurry
-        Waist = 'Impulse Belt',
-        Legs = 'Adhemar Kecks +1',
+    Preshot = {--base preshot, no flurry, 70cap, 10 from gifts (only 1200 JP needed)
+        Head = 'Chass. Tricorne +1',
+        Neck = 'Comm. Charm +1',
+        Body = 'Laksa. Frac +2',
+        Hands = 'Lanun Gants +2',--11
+        Back = { Name = 'Camulus\'s Mantle', Augment = '"Snapshot"+10' },--10
+        Waist = 'Impulse Belt',--3
+        Legs = 'Ikenga\'s Trousers',--8
+        Feet = 'Meg. Jam. +2',--10
     },
-    Preshot_FlurryI = {--with flurry I on
+    Preshot_FlurryI = {--with flurry I on, gives 15
     },
-    Preshot_FlurryII = {--with flurry II on
+    Preshot_FlurryII = {--with flurry II on, gives 30
+        Hands = 'Carmine Fin. Ga. +1',
     },
     Midshot = {
+        Ammo = 'Decimating Bullet',
         Head = 'Malignance Chapeau',
-        Neck = 'Marked Gorget',
+        Neck = 'Comm. Charm +1',
         Ear1 = 'Telos Earring',
         Ear2 = 'Enervating Earring',
+        Body = 'Laksa. Frac +2',
         Hands = 'Malignance Gloves',
         Ring1 = 'Dingir Ring',
         Ring2 = 'Ilabrat Ring',
-        Waist = 'Aquiline Belt',
+        Back = { Name = 'Camulus\'s Mantle', Augment = { [1] = 'Rng.Acc.+20', [2] = '"Store TP"+10', [3] = 'AGI+20', [4] = 'Rng.Atk.+20' } },
+        Waist = 'Eschan Stone',
         Legs = 'Ikenga\'s Trousers',
         Feet = 'Nyame Sollerets',
     },
     Midshot_Acc = {
         Ear2 = 'Crep. Earring',
+        Ring2 = 'Crepuscular Ring',
         Legs = 'Ikenga\'s Trousers',
     },
     TripleShot = {
+        Ammo = 'Decimating Bullet',
+        Body = 'Chasseur\'s Frac +1',
+        Hands = 'Lanun Gants +2',
     },
 
     Ws_Default = {
         Head = 'Nyame Helm',
+        Neck = 'Fotia Gorget',
         Body = 'Nyame Mail',
         Hands = 'Nyame Gauntlets',
         Ring1 = 'Rufescent Ring',
-        Ring2 = 'Karieyh Ring',
+        Ring2 = 'Karieyh Ring +1',
+        Back = { Name = 'Camulus\'s Mantle', Augment = { [1] = 'Weapon skill damage +10%', [2] = 'Mag. Acc+20', [3] = 'AGI+30', [4] = 'Magic Damage +20' } },
+        Waist = 'Fotia Belt',
         Legs = 'Nyame Flanchard',
-        Feet = { Name = 'Herculean Boots', Augment = { [1] = 'Accuracy+30', [2] = 'Weapon skill damage +8%', [3] = 'Attack+6', [4] = 'Mag. Acc.+2' } },
+        Feet = 'Lanun Bottes +3',
     },
     Ws_Hybrid = {
     },
@@ -175,10 +207,10 @@ sets = T{
         Ear2 = 'Moonshade Earring',
         Hands = 'Meg. Gloves +2',
         Ring1 = 'Rufescent Ring',
-        Ring2 = 'Karieyh Ring',
+        Ring2 = 'Karieyh Ring +1',
         Waist = 'Sailfi Belt +1',
         Legs = 'Mummu Kecks +2',
-        Feet = { Name = 'Herculean Boots', Augment = { [1] = 'Accuracy+30', [2] = 'Weapon skill damage +8%', [3] = 'Attack+6', [4] = 'Mag. Acc.+2' } },
+        Feet = 'Lanun Bottes +3',
     },
     Savage_Hybrid = {
     },
@@ -187,11 +219,11 @@ sets = T{
     },
 
     Evisceration_Default = {
-        Head = 'Adhemar Bonnet +1', 
+        Head = 'Adhemar Bonnet +1',
         Neck = 'Fotia Gorget',
         Ear1 = 'Odr Earring',
         Ear2 = 'Moonshade Earring',
-        Body = 'Mummu Jacket +2',
+        Body = 'Laksa. Frac +2',
         Hands = 'Mummu Wrists +2',
         Ring1 = 'Rufescent Ring',
         Ring2 = 'Begrudging Ring',
@@ -205,18 +237,19 @@ sets = T{
     },
 
     Aedge_Default = {
-        Head = 'Adhemar Bonnet +1', 
+        Ammo = 'Animikii Bullet',
+        Head = 'Nyame Helm',
         Neck = 'Baetyl Pendant',
         Ear1 = 'Friomisi Earring',
         Ear2 = 'Moonshade Earring',
-        Body = 'Mummu Jacket +2',
-        Hands = 'Meg. Gloves +2',
+        Body = 'Laksa. Frac +2',
+        Hands = 'Carmine Fin. Ga. +1',
         Ring1 = 'Dingir Ring',
-        Ring2 = 'Shiva Ring +1',
-        Back = 'Gunslinger\'s Cape',
-        Waist = 'Fotia Belt',
-        Legs = 'Mummu Kecks +2',
-        Feet = 'Lanun Bottes +2',
+        Ring2 = 'Karieyh Ring +1',
+        Back = { Name = 'Camulus\'s Mantle', Augment = { [1] = 'Weapon skill damage +10%', [2] = 'Mag. Acc+20', [3] = 'AGI+30', [4] = 'Magic Damage +20' } },
+        Waist = 'Eschan Stone',
+        Legs = 'Nyame Flanchard',
+        Feet = 'Lanun Bottes +3',
     },
     Aedge_Hybrid = {
     },
@@ -224,17 +257,17 @@ sets = T{
     },
 
     Laststand_Default = {
-        Head = 'Adhemar Bonnet +1', 
+        Head = 'Lanun Tricorne +2',
         Neck = 'Fotia Gorget',
         Ear1 = 'Telos Earring',
         Ear2 = 'Moonshade Earring',
-        Body = 'Mummu Jacket +2',
+        Body = 'Laksa. Frac +2',
         Hands = 'Meg. Gloves +2',
         Ring1 = 'Rufescent Ring',
-        Ring2 = 'Karieyh Ring',
+        Ring2 = 'Karieyh Ring +1',
         Waist = 'Fotia Belt',
         Legs = 'Mummu Kecks +2',
-        Feet = 'Lanun Bottes +2',
+        Feet = 'Lanun Bottes +3',
     },
     Laststand_Hybrid = {
     },
@@ -242,55 +275,58 @@ sets = T{
     },
 
     Wildfire_Default = {
-        Head = 'Adhemar Bonnet +1', 
+        Head = 'Adhemar Bonnet +1',
         Neck = 'Baetyl Pendant',
         Ear1 = 'Friomisi Earring',
         Ear2 = 'Crematio Earring',
-        Body = 'Mummu Jacket +2',
-        Hands = 'Meg. Gloves +2',
+        Body = 'Laksa. Frac +2',
+        Hands = 'Carmine Fin. Ga. +1',
         Ring1 = 'Dingir Ring',
         Ring2 = 'Ilabrat Ring',
-        Back = 'Gunslinger\'s Cape',
-        Waist = 'Aquiline Belt',
-        Legs = 'Mummu Kecks +2',
-        Feet = 'Lanun Bottes +2',
+        Back = { Name = 'Camulus\'s Mantle', Augment = { [1] = 'Weapon skill damage +10%', [2] = 'Mag. Acc+20', [3] = 'AGI+30', [4] = 'Magic Damage +20' } },
+        Waist = 'Eschan Stone',
+        Legs = 'Nyame Flanchard',
+        Feet = 'Lanun Bottes +3',
     },
     Wildfire_Hybrid = {
+        Neck = 'Sanctity Necklace',
     },
     Wildfire_Acc = {
     },
 
     Leaden_Default = {
-        Head = 'Adhemar Bonnet +1', 
+        Head = 'Pixie Hairpin +1',
         Neck = 'Baetyl Pendant',
         Ear1 = 'Friomisi Earring',
         Ear2 = 'Moonshade Earring',
-        Body = 'Mummu Jacket +2',
-        Hands = 'Meg. Gloves +2',
+        Body = 'Laksa. Frac +2',
+        Hands = 'Carmine Fin. Ga. +1',
         Ring1 = 'Dingir Ring',
         Ring2 = 'Archon Ring',
-        Back = 'Gunslinger\'s Cape',
-        Waist = 'Aquiline Belt',
-        Legs = 'Mummu Kecks +2',
-        Feet = 'Lanun Bottes +2',
+        Back = { Name = 'Camulus\'s Mantle', Augment = { [1] = 'Weapon skill damage +10%', [2] = 'Mag. Acc+20', [3] = 'AGI+30', [4] = 'Magic Damage +20' } },
+        Waist = 'Eschan Stone',
+        Legs = 'Nyame Flanchard',
+        Feet = 'Lanun Bottes +3',
     },
     Leaden_Hybrid = {
+        Neck = 'Sanctity Necklace',
     },
     Leaden_Acc = {
     },
 
     QD = {
         Ammo = 'Animikii Bullet',
+        Head = 'Laksa. Tricorne +1',
         Neck = 'Baetyl Pendant',
         Ear1 = 'Friomisi Earring',
         Ear2 = 'Crematio Earring',
-        Body = 'Rawhide Vest',
+        Body = 'Samnuha Coat',
         Ring1 = 'Dingir Ring',
         Ring2 = 'Shiva Ring +1',
-        Back = 'Gunslinger\'s Cape',
-        Waist = 'Aquiline Belt',
+        Back = { Name = 'Camulus\'s Mantle', Augment = { [1] = 'Weapon skill damage +10%', [2] = 'Mag. Acc+20', [3] = 'AGI+30', [4] = 'Magic Damage +20' } },
+        Waist = 'Eschan Stone',
         Legs = 'Ikenga\'s Trousers',
-        Feet = 'Lanun Bottes +2',
+        Feet = 'Chass. Bottes +1',
     },
     QD_Acc = {
         Head = 'Malignance Chapeau',
@@ -301,15 +337,22 @@ sets = T{
         Ring1 = 'Crepuscular Ring',
         Ring2 = 'Metamor. Ring +1',
         Legs = 'Ikenga\'s Trousers',
-        Feet = 'Nyame Sollerets',
+        Feet = 'Chass. Bottes +1',
     },
-    Rolls = {
+    Rolls = { -- it will put on ur DT gear set first then layer this set on for phantom roll (not dbl up), use /dt if you think you need to lock dt set while rolling
+        Main = 'Lanun Knife',
         Range = 'Compensator',
+        Head = 'Lanun Tricorne +2',
+        Hands = 'Chasseur\'s Gants +1',
+        Back = 'Camulus\'s Mantle',
+        Ring2 = 'Barataria Ring',
     },
-    WildCard = {Feet = 'Lanun Bottes +2'},
-    Movement = {
-        Legs = 'Carmine Cuisses +1',
+    Fold = {Hands = 'Lanun Gants +2'},
+    WildCard = {Feet = 'Lanun Bottes +2'}, 
+    TH = {--/th will force this set to equip for 10 seconds
+		Waist = 'Chaac Belt',
 	},
+    Movement = {Legs = 'Carmine Cuisses +1'},
 };
 
 sets = sets:merge(gcinclude.sets, false);profile.Sets = sets;
@@ -334,6 +377,9 @@ end
 
 profile.HandleDefault = function()
     gFunc.EquipSet(sets.Idle);
+    if gcdisplay.GetToggle('TPgun') == true then
+        gFunc.EquipSet(sets.Idle_TPgun);
+    end
 	
 	local player = gData.GetPlayer();
     if (player.Status == 'Engaged') then
@@ -368,7 +414,9 @@ profile.HandleAbility = function()
         gcinclude.DoCORmsg(ability.Name);
     elseif (ability.Name == 'Wild Card') then
         gFunc.EquipSet(sets.WildCard);
-    elseif (ability.Name:contains('Shot')) then
+    elseif (ability.Name == 'Fold') then
+        gFunc.EquipSet(sets.Fold);
+    elseif (ability.Name:contains('Shot')) and (ability.Name ~= 'Triple Shot') then
         gFunc.EquipSet(sets.QD);
         if (gcdisplay.GetCycle('Melee') == 'Acc') or (ability.Name == 'Dark Shot') or (ability.Name == 'Light Shot') then
             gFunc.EquipSet(sets.QD_Acc);

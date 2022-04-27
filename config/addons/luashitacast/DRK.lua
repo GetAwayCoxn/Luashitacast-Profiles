@@ -21,9 +21,11 @@ sets = T{
     Resting = {},
     Idle_Regen = {
         Neck = 'Bathy Choker +1',
+        Ring2 = 'Chirich Ring +1',
     },
     Idle_Refresh = {
-        Head = 'Befouled Crown',
+        Head = 'Jumalik Helm',
+        Ring1 = 'Stikini Ring +1',
     },
     Town = {
         Main = 'Apocalypse',
@@ -56,7 +58,7 @@ sets = T{
         Ammo = { Name = 'Coiste Bodhar', AugPath='A' },
         Head = 'Flam. Zucchetto +2',
         Neck = 'Sanctity Necklace',
-        Ear1 = 'Mache Earring +1',
+        Ear1 = 'Telos Earring',
         Ear2 = 'Cessance Earring',
         Body = 'Flamma Korazin +2',
         Hands = 'Sakpata\'s Gauntlets',
@@ -71,18 +73,22 @@ sets = T{
         Body = 'Hjarrandi Breast.',
     },
     Tp_Acc = {
+        Ring1 = 'Cacoethic Ring +1',
+        Ring2 = 'Chirich Ring +1',
     },
 
 
     Precast = {
+        Ammo = 'Sapience Orb',
         Head = 'Haruspex Hat',
         Neck = 'Baetyl Pendant',
+        Hands = 'Leyline Gloves',
         Ear1 = 'Malignance Earring',
         Ear2 = 'Etiolation Earring',
         Ring1 = 'Prolix Ring',
         Ring2 = 'Kishar Ring',
         Legs = 'Enif Cosciales',
-        Feet = { Name = 'Odyssean Greaves', Augment = { [1] = 'Damage taken-4%', [2] = 'Attack+8', [3] = 'Accuracy+2' } },
+        Feet = 'Carmine Greaves +1',--7
     },
 
 
@@ -100,6 +106,7 @@ sets = T{
     Enhancing = {
         Ammo = 'Pemphredo Tathlum',
         Head = 'Befouled Crown',
+        Body = 'Shabti Cuirass',
         Neck = 'Incanter\'s Torque',
         Ear1 = 'Mendi. Earring',
         Ear2 = 'Andoaa Earring',
@@ -160,7 +167,7 @@ sets = T{
         Body = 'Hjarrandi Breast.', -- af+3
         Hands = { Name = 'Valorous Mitts', Augment = { [1] = '"Mag. Atk. Bns."+1', [2] = 'Attack+9', [3] = 'Mag. Acc.+1', [4] = 'STR+5', [5] = 'Weapon skill damage +5%', [6] = 'AGI+2', [7] = 'Accuracy+9' } },
         Ring1 = 'Rufescent Ring', --regal ring
-        Ring2 = 'Karieyh Ring',
+        Ring2 = 'Karieyh Ring +1',
         Back = { Name = 'Ankou\'s Mantle', Augment = { [1] = 'Accuracy+20', [2] = '"Dbl.Atk."+10', [3] = 'Attack+20', [4] = 'DEX+20' } },
         Waist = 'Fotia Belt',
         Legs = 'Sakpata\'s Cuisses', -- relic +3
@@ -171,6 +178,9 @@ sets = T{
     Ws_Acc = {
     },
 
+    TH = {--/th will force this set to equip for 10 seconds
+		Waist = 'Chaac Belt',
+	},
     Movement = {
         Legs = 'Carmine Cuisses +1',
 	},
