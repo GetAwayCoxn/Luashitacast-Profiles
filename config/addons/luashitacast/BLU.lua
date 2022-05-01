@@ -25,6 +25,7 @@ sets = T{
     },
     Idle_Regen = {
         Neck = 'Bathy Choker +1';
+        Ear1 = 'Infused Earring',
         Ring2 = 'Chirich Ring +1',
     },
     Idle_Refresh = {
@@ -34,7 +35,6 @@ sets = T{
         Waist = 'Fucho-no-Obi',
     },
 	Town = {
-        Head = 'Cumulus Masque',
     },
 
     Evasion = {--this set will be my idle set when in /cj mode for evasion pulling
@@ -50,8 +50,8 @@ sets = T{
         Body = 'Nyame Mail',
         Hands = 'Malignance Gloves',
         Ring1 = 'Vengeful Ring',
-        Ring2 = 'Gelatinous Ring +1',
-		Back = { Name = 'Rosmerta\'s Cape', Augment = { [1] = 'Damage taken-5%', [2] = '"Dbl.Atk."+10', [3] = 'Accuracy+30', [4] = 'Attack+20', [5] = 'DEX+20' } },
+        Ring2 = 'Ilabrat Ring',--revisit this
+		Back = { Name = 'Rosmerta\'s Cape', Augment = { [1] = '"Fast Cast"+10', [2] = 'Evasion+15' } },
         Waist = 'Kasiri Belt',
         Legs = 'Nyame Flanchard',
         Feet = 'Nyame Sollerets',
@@ -115,7 +115,7 @@ sets = T{
         Hands = 'Leyline Gloves',--6
         Ring1 = 'Prolix Ring',--2
         Ring2 = 'Kishar Ring',--4
-        Back = 'Swith Cape +1',--4
+        Back = { Name = 'Rosmerta\'s Cape', Augment = { [1] = '"Fast Cast"+10', [2] = 'Evasion+15' } },---10
         Waist = 'Kasiri Belt',
         Legs = 'Enif Cosciales',--8
         Feet = 'Carmine Greaves +1',--7
@@ -158,14 +158,14 @@ sets = T{
         Ammo = 'Ghastly Tathlum +1',
         Head = 'Jhakri Coronal +2',
         Neck = 'Baetyl Pendant',
-        Ear1 = 'Hecate\'s Earring',
+        Ear1 = 'Crematio Earring',
         Ear2 = 'Regal Earring',
         Body = 'Jhakri Robe +2',
         Hands = 'Amalric Gages +1',
         Ring1 = 'Metamor. Ring +1',
         Ring2 = 'Shiva Ring +1',
         Back = { Name = 'Rosmerta\'s Cape', Augment = { [1] = 'Phys. dmg. taken -10%', [2] = '"Mag. Atk. Bns."+10', [3] = 'Mag. Acc+20', [4] = 'INT+20', [5] = 'Magic Damage +20' } },
-        Waist = 'Sacro Cord',
+        Waist = 'Eschan Stone',
         Legs = 'Amalric Slops +1',
         Feet = 'Amalric Nails +1',
     },
@@ -234,6 +234,8 @@ sets = T{
     Preshot = {
     },
     Midshot = {
+        Ear1 = 'Telos Earring',
+        Ear2 = 'Enervating Earring',
     },
 
     Ws_Default = {
@@ -244,8 +246,8 @@ sets = T{
         Ear2 = 'Moonshade Earring',
         Body = 'Assim. Jubbah +2',
         Hands = 'Jhakri Cuffs +2',
-        Ring1 = 'Karieyh Ring +1',
-        Ring2 = 'Rufescent Ring',
+        Ring2 = 'Karieyh Ring +1',
+        Ring1 = 'Petrov Ring',
         Back = { Name = 'Rosmerta\'s Cape', Augment = { [1] = 'Damage taken-5%', [2] = '"Dbl.Atk."+10', [3] = 'Accuracy+30', [4] = 'Attack+20', [5] = 'DEX+20' } },
         Waist = 'Fotia Belt',
         Legs = 'Gleti\'s Breeches',
@@ -291,7 +293,7 @@ sets = T{
         Feet = 'Herculean Boots',
     },
     Savage_Hybrid = {
-        Ammo = 'Crepuscular Pebble',
+        Ammo = 'Staunch Tathlum',
     },
     Savage_Acc = {
     },
@@ -411,6 +413,10 @@ profile.HandleMidcast = function()
     if (ca>=1) then gFunc.EquipSet(sets.Ca) end
     if (ba>=1) then gFunc.EquipSet(sets.Ba) end
     if (diff>=1) then gFunc.EquipSet(sets.Diffusion) end
+    
+    if (gcinclude.BluMagTH:contains(spell.Name)) and (gcdisplay.GetToggle('TH') == true) then
+        gFunc.EquipSet(sets.TH);
+    end
 end
 
 profile.HandlePreshot = function()
@@ -419,6 +425,8 @@ end
 
 profile.HandleMidshot = function()
     gFunc.EquipSet(sets.Midshot);
+
+    if (gcdisplay.GetToggle('TH') == true) then gFunc.EquipSet(sets.TH) end;
 end
 
 profile.HandleWeaponskill = function()

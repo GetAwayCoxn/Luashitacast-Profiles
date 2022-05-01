@@ -87,6 +87,7 @@ gcinclude.BluMagSkill = T{'Metallic Body','Diamondhide','Magic Barrier','Occulta
 gcinclude.BluMagDiffus = T{'Erratic Flutter','Carcharian Verve','Harden Shell','Mighty Guard'};
 gcinclude.BluMagCure = T{'Pollen','Healing Breeze','Wild Carrot','Magic Fruit','Plenilune Embrace'};
 gcinclude.BluMagEnmity = T{'Actinic Burst','Exuviation','Fantod','Jettatura','Temporal Shift'};
+gcinclude.BluMagTH = T{'Actinic Burst','Dream Flower','Subduction'};
 gcinclude.Elements = T{'Thunder', 'Blizzard', 'Fire', 'Stone', 'Aero', 'Water', 'Light', 'Dark'};
 gcinclude.HelixSpells = T{'Ionohelix', 'Cryohelix', 'Pyrohelix', 'Geohelix', 'Anemohelix', 'Hydrohelix', 'Luminohelix', 'Noctohelix'};
 gcinclude.StormSpells = T{'Thunderstorm', 'Hailstorm', 'Firestorm', 'Sandstorm', 'Windstorm', 'Rainstorm', 'Aurorastorm', 'Voidstorm'};
@@ -176,8 +177,8 @@ function gcinclude.SetVariables()
 		gcdisplay.CreateToggle('SIR', false);
 		gcdisplay.CreateCycle('TankSet', {[1] = 'Main', [2] = 'MEVA', [3] = 'None'});
 	end
-	if (player.MainJob == 'THF') then
-		gcdisplay.CreateToggle('TH', true);
+	if (player.MainJob == 'THF') or (player.MainJob == 'BLU') then
+		gcdisplay.CreateToggle('TH', false);
 	end
 	if (player.MainJob == 'SAM') or (player.MainJob == 'NIN') then
 		gcdisplay.CreateToggle('PROC', false);
@@ -289,7 +290,7 @@ function gcinclude.SetCommands(args)
 		end
 	end
 	if (args[1] == 'th') then
-		if (player.MainJob == 'THF') then
+		if (player.MainJob == 'THF') or (player.MainJob == 'BLU') then
 			gcdisplay.AdvanceToggle('TH');
 		else
 			AshitaCore:GetChatManager():QueueCommand(-1, '/lac set TH 10');
