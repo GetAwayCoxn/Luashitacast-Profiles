@@ -23,6 +23,7 @@ sets = T{
     Resting = {},
     Idle_Regen = {
         Neck = 'Bathy Choker +1',
+        Ear1 = 'Infused Earring',
         Ring2 = 'Chirich Ring +1',
     },
     Idle_Refresh = {
@@ -280,6 +281,8 @@ sets = T{
     Preshot = {
     },
     Midshot = {
+        Ear1 = 'Telos Earring',
+        Ear2 = 'Enervating Earring',
     },
 
     Ws_Default = {
@@ -289,7 +292,7 @@ sets = T{
         Ear2 = 'Telos Earring',
         Body = 'Bihu Jstcorps. +3',
         Hands = 'Nyame Gauntlets',
-        Ring1 = 'Rufescent Ring',
+        Ring1 = 'Petrov Ring',
         Ring2 = 'Karieyh Ring +1',
         Back = { Name = 'Intarabus\'s Cape', Augment = { [1] = 'Accuracy+20', [2] = '"Store TP"+10', [3] = 'Attack+20', [4] = 'DEX+20' } },
         Waist = 'Fotia Belt',
@@ -302,8 +305,8 @@ sets = T{
     },
 
     Savage_Default = {
-        Ear1 = { Name = 'Moonshade Earring', Augment = { [1] = 'Accuracy+4', [2] = 'TP Bonus +250' } },
-        Ring1 = 'Rufescent Ring',
+        Ear1 = 'Moonshade Earring',
+        Ring1 = 'Petrov Ring',
         Ring2 = 'Karieyh Ring +1',
         Waist = { Name = 'Sailfi Belt +1', AugPath='A' },
     },
@@ -427,14 +430,13 @@ profile.HandleMidcast = function()
             gFunc.EquipSet(sets.Stoneskin);
         elseif string.contains(spell.Name, 'Refresh') then
             gFunc.EquipSet(sets.Refresh);
+        elseif string.contains(spell.Name, 'Regen') then
+            gFunc.EquipSet(sets.Regen);
         end
     elseif (spell.Skill == 'Healing Magic') then
         gFunc.EquipSet(sets.Cure);
         if (target.Name == me) then
             gFunc.EquipSet(sets.Self_Cure);
-        end
-        if string.contains(spell.Name, 'Regen') then
-            gFunc.EquipSet(sets.Regen);
         end
         if string.match(spell.Name, 'Cursna') then
             gFunc.EquipSet(sets.Cursna);

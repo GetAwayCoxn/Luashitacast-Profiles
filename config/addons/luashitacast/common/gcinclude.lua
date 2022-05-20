@@ -60,13 +60,6 @@ in each individual job lua file. Unless you know what you're doing then it is be
 the rest here are various functions and arrays etc
 ]]
 gcdisplay = gFunc.LoadFile('common\\gcdisplay.lua');
-gcauto = gFunc.LoadFile('common\\gcauto.lua');
-
-if (not gcauto) then
-	print(chat.header('GCinclude'):append(chat.message('You dont have access to the GCauto file, I have not made this public.')));
-	print(chat.header('GCinclude'):append(chat.message('Everything else will work fine. Check the readme.md  file or my github for')));
-	print(chat.header('GCinclude'):append(chat.message('more information on functions/uses for these luashitacast profiles.')));
-end
 
 gcinclude.Towns = T{'Tavnazian Safehold','Al Zahbi','Aht Urhgan Whitegate','Nashmau','Southern San d\'Oria [S]','Bastok Markets [S]','Windurst Waters [S]','San d\'Oria-Jeuno Airship','Bastok-Jeuno Airship','Windurst-Jeuno Airship','Kazham-Jeuno Airship','Southern San d\'Oria','Northern San d\'Oria','Port San d\'Oria','Chateau d\'Oraguille','Bastok Mines','Bastok Markets','Port Bastok','Metalworks','Windurst Waters','Windurst Walls','Port Windurst','Windurst Woods','Heavens Tower','Ru\'Lude Gardens','Upper Jeuno','Lower Jeuno','Port Jeuno','Rabao','Selbina','Mhaura','Kazham','Norg','Mog Garden','Celennia Memorial Library','Western Adoulin','Eastern Adoulin'};
 gcinclude.LockingRings = T{'Echad Ring', 'Trizek Ring', 'Endorsement Ring', 'Capacity Ring', 'Warp Ring','Facility Ring','Dim. Ring (Dem)','Dim. Ring (Mea)','Dim. Ring (Holla)'};
@@ -321,8 +314,6 @@ function gcinclude.SetCommands(args)
 			gcdisplay.AdvanceToggle('CJmode');
 		end
 	end
-	
-	if (gcauto ~= nil) then gcauto.SetCommands(args) end
 end
 
 function gcinclude.CheckCommonDebuffs()
@@ -422,7 +413,6 @@ function gcinclude.DoWarpRing()
 	end
 	
 	usering:once(11);
-	
 end
 
 function gcinclude.DoTeleRing()
@@ -575,8 +565,6 @@ function gcinclude.CheckCancels()
 end
 
 function gcinclude.CheckDefault()
-	if (gcauto ~= nil) then gcauto.Default() end
-
 	gcinclude.SetRegenRefreshGear();
 	gcinclude.SetTownGear();
     gcinclude.CheckCommonDebuffs();
@@ -594,7 +582,6 @@ function gcinclude.Initialize()
 	gcdisplay.Initialize();
 	gcinclude.SetVariables();
 	gcinclude.SetAlias();
-	if (gcauto ~= nil) then gcauto.Initialize:once(6) end
 end
 
 return gcinclude;

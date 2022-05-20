@@ -36,6 +36,7 @@ sets = T{
     Resting = {},
     Idle_Regen = {
         Neck = 'Bathy Choker +1',
+        Ear1 = 'Infused Earring',
         Ring2 = 'Chirich Ring +1',
     },
     Idle_Refresh = {
@@ -109,7 +110,7 @@ sets = T{
         Body = 'Agwu\'s Robe',
         Hands = 'Mallquis Cuffs +2',
         Ring1 = 'Kishar Ring',
-        Ring2 = 'Prolix Ring',
+        Ring2 = 'Mallquis Ring',
         Back = 'Swith Cape +1',
         Waist = 'Embla Sash',
         Legs = 'Agwu\'s Slops',
@@ -137,7 +138,7 @@ sets = T{
         Ear1 = 'Mendi. Earring',
         Ear2 = 'Regal Earring',
         Hands = 'Weath. Cuffs +1',
-        Ring1 = 'Rufescent Ring',
+        Ring1 = 'Stikini Ring +1',
         Ring2 = { Name = 'Metamor. Ring +1', AugPath='A' },
         Back = 'Solemnity Cape',
         Waist = 'Rumination Sash',
@@ -205,14 +206,15 @@ sets = T{
     Enfeebling = {
         Main = 'Bunzi\'s Rod',
         Sub = 'Ammurapi Shield',
-        Ammo = 'Staunch Tathlum',
+        Ammo = 'Pemphredo Tathlum',
         Head = 'Befouled Crown',
         Neck = 'Erra Pendant',
-        Ear1 = 'Regal Earring',
+        --Ear1 = 'Regal Earring',--use this when u upgrade the AF
+        Ear1 = 'Digni. Earring',
         Ear2 = 'Malignance Earring',
         Body = 'Agwu\'s Robe',
         Hands = 'Nyame Gauntlets',
-        Ring1 = 'Kishar Ring',
+        Ring1 = 'Stikini Ring +1',
         Ring2 = { Name = 'Metamor. Ring +1', AugPath='A' },
         Back = { Name = 'Aurist\'s Cape +1', AugPath='A' },
         Waist = { Name = 'Acuity Belt +1', AugPath='A' },
@@ -225,16 +227,17 @@ sets = T{
         Ammo = 'Pemphredo Tathlum',
         Head = 'Nyame Helm',
         Neck = 'Erra Pendant',
-        Ear1 = 'Regal Earring',
+        --Ear1 = 'Regal Earring',--use this when u upgrade the AF
+        Ear1 = 'Digni. Earring',
         Ear2 = 'Malignance Earring',
         Body = 'Agwu\'s Robe',
         Hands = 'Nyame Gauntlets',
-        Ring1 = 'Kishar Ring',
+        Ring1 = 'Stikini Ring +1',
         Ring2 = { Name = 'Metamor. Ring +1', AugPath='A' },
         Back = { Name = 'Aurist\'s Cape +1', AugPath='A' },
         Waist = { Name = 'Acuity Belt +1', AugPath='A' },
         Legs = 'Agwu\'s Slops',
-        Feet = { Name = 'Medium\'s Sabots', Augment = { [1] = 'MND+6', [2] = '"Conserve MP"+5', [3] = 'MP+40', [4] = '"Cure" potency +3%' } },
+        Feet = 'Agwu\'s Pigaches',
     },
 
     Drain = {
@@ -267,7 +270,7 @@ sets = T{
         Ring1 = 'Shiva Ring +1',
         Ring2 = { Name = 'Metamor. Ring +1', AugPath='A' },
         Back = { Name = 'Nantosuelta\'s Cape', Augment = { [1] = '"Mag. Atk. Bns."+10', [2] = 'Mag. Acc+20', [3] = 'Magic Damage +20', [4] = 'INT+20' } },
-        Waist = 'Sacro Cord',
+        Waist = 'Eschan Stone',
         Legs = 'Amalric Slops +1',
         Feet = 'Amalric Nails +1',
     },
@@ -291,6 +294,8 @@ sets = T{
     Preshot = {
     },
     Midshot = {
+        Ear1 = 'Telos Earring',
+        Ear2 = 'Enervating Earring',
     },
 
     Ws_Default = {
@@ -301,7 +306,7 @@ sets = T{
         Ear2 = 'Moonshade Earring',
         Body = 'Nyame Mail',
         Hands = 'Nyame Gauntlets',
-        Ring1 = 'Rufescent Ring',
+        Ring1 = 'Petrov Ring',
         Ring2 = 'Karieyh Ring +1',
         Back = 'Solemnity Cape',
         Waist = 'Fotia Belt',
@@ -323,7 +328,7 @@ sets = T{
         Ring1 = 'Shiva Ring +1',
         Ring2 = 'Karieyh Ring +1',
         Back = { Name = 'Nantosuelta\'s Cape', Augment = { [1] = '"Mag. Atk. Bns."+10', [2] = 'Mag. Acc+20', [3] = 'Magic Damage +20', [4] = 'INT+20' } },
-        Waist = 'Sacro Cord',
+        Waist = 'Eschan Stone',
         Legs = 'Nyame Flanchard',
         Feet = 'Nyame Sollerets',
     },
@@ -439,6 +444,8 @@ profile.HandleMidcast = function()
             gFunc.EquipSet(sets.Phalanx);
         elseif string.match(spell.Name, 'Stoneskin') then
             gFunc.EquipSet(sets.Stoneskin);
+        elseif string.contains(spell.Name, 'Regen') then
+            gFunc.EquipSet(sets.Regen);
         elseif string.contains(spell.Name, 'Refresh') then
             gFunc.EquipSet(sets.Refresh);
         end
@@ -446,9 +453,6 @@ profile.HandleMidcast = function()
         gFunc.EquipSet(sets.Cure);
         if (target.Name == me) then
             gFunc.EquipSet(sets.Self_Cure);
-        end
-        if string.contains(spell.Name, 'Regen') then
-            gFunc.EquipSet(sets.Regen);
         end
         if string.match(spell.Name, 'Cursna') then
             gFunc.EquipSet(sets.Cursna);

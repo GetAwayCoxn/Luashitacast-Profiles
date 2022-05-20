@@ -24,6 +24,7 @@ sets = T{
     Idle_Regen = {
         Head = 'Befouled Crown',
         Neck = 'Bathy Choker +1',
+        Ear1 = 'Infused Earring',
         Ring2 = 'Chirich Ring +1',
     },
     Idle_Refresh = {
@@ -40,7 +41,7 @@ sets = T{
         Neck = 'Bathy Choker +1',
         Ear1 = 'Eabani Earring',
         Ear2 = 'Etiolation Earring',
-        Body = 'Atrophy Tabard +2',
+        Body = 'Viti. Tabard +2',
         Hands = 'Malignance Gloves',
         Ring1 = 'Defending Ring',
         Ring2 = { Name = 'Metamor. Ring +1', AugPath='A' },
@@ -101,7 +102,7 @@ sets = T{
         Neck = 'Baetyl Pendant',
         Ear1 = 'Etiolation Earring',
         Ear2 = 'Malignance Earring',
-        Body = 'Taeon Tabard',
+        Body = 'Viti. Tabard +2',
         Hands = { Name = 'Gende. Gages +1', Augment = { [1] = 'Phys. dmg. taken -4%', [2] = 'Song spellcasting time -5%' } },
         Ring1 = 'Kishar Ring',
         Ring2 = 'Prolix Ring',
@@ -146,7 +147,7 @@ sets = T{
     Regen = {
         Main = 'Bolelabunga',
         Sub = 'Ammurapi Shield',
-        Body = 'Telchine Chas.',
+        Body = 'Viti. Tabard +2',
     },
     Cursna = {
         Ring1 = 'Purity Ring',
@@ -161,7 +162,7 @@ sets = T{
         Neck = 'Incanter\'s Torque',
         Ear1 = 'Mendi. Earring',
         Ear2 = 'Andoaa Earring',
-        Body = 'Telchine Chas.',
+        Body = 'Viti. Tabard +2',
         Hands = 'Atrophy Gloves +2',
         Ring1 = 'Stikini Ring +1',
         Ring2 = { Name = 'Metamor. Ring +1', AugPath='A' },
@@ -264,6 +265,8 @@ sets = T{
     Preshot = {
     },
     Midshot = {
+        Ear1 = 'Telos Earring',
+        Ear2 = 'Enervating Earring',
     },
 
     Ws_Default = {
@@ -274,7 +277,7 @@ sets = T{
         Ear2 = 'Etiolation Earring',
         Body = 'Nyame Mail',
         Hands = 'Nyame Gauntlets',
-        Ring1 = 'Rufescent Ring',
+        Ring1 = 'Ilabrat Ring',
         Ring2 = 'Karieyh Ring +1',
         Back = 'Solemnity Cape',
         Waist = 'Fotia Belt',
@@ -290,11 +293,11 @@ sets = T{
         Ammo = 'Voluspa Tathlum',
         Head = 'Nyame Helm',
         Neck = 'Fotia Gorget',
-        Ear1 = { Name = 'Moonshade Earring', Augment = { [1] = 'Accuracy+4', [2] = 'TP Bonus +250' } },
+        Ear1 = 'Moonshade Earring',
         Ear2 = 'Telos Earring',
         Body = 'Nyame Mail',
         Hands = 'Atrophy Gloves +2',
-        Ring1 = 'Rufescent Ring',
+        Ring1 = 'Petrov Ring',
         Ring2 = 'Karieyh Ring +1',
         Back = 'Solemnity Cape',
         Waist = { Name = 'Sailfi Belt +1', AugPath='A' },
@@ -312,7 +315,7 @@ sets = T{
         Ear2 = 'Etiolation Earring',
         Body = 'Nyame Mail',
         Hands = 'Nyame Gauntlets',
-        Ring1 = 'Rufescent Ring',
+        Ring1 = 'Petrov Ring',
         Ring2 = 'Begrudging Ring',
         Back = 'Solemnity Cape',
         Waist = 'Fotia Belt',
@@ -413,6 +416,7 @@ profile.HandleMidcast = function()
     local spell = gData.GetAction();
     local target = gData.GetActionTarget();
     local me = AshitaCore:GetMemoryManager():GetParty():GetMemberName(0);
+    local player = gData.GetPlayer();
 
     if (spell.Skill == 'Enhancing Magic') then
         gFunc.EquipSet(sets.Enhancing);
@@ -426,6 +430,8 @@ profile.HandleMidcast = function()
             gFunc.EquipSet(sets.Stoneskin);
         elseif string.contains(spell.Name, 'Temper') then
             gFunc.EquipSet(sets.Skill_Enhancing);
+        elseif string.contains(spell.Name, 'Regen') then
+            gFunc.EquipSet(sets.Regen);
         elseif string.contains(spell.Name, 'Refresh') then
             gFunc.EquipSet(sets.Refresh);
             if (target.Name == me) then
@@ -438,9 +444,6 @@ profile.HandleMidcast = function()
         gFunc.EquipSet(sets.Cure);
         if (target.Name == me) then
             gFunc.EquipSet(sets.Self_Cure);
-        end
-        if string.contains(spell.Name, 'Regen') then
-            gFunc.EquipSet(sets.Regen);
         end
         if string.match(spell.Name, 'Cursna') then
             gFunc.EquipSet(sets.Cursna);

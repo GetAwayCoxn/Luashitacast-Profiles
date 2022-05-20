@@ -27,6 +27,7 @@ sets = T{
     Resting = {},
     Idle_Regen = {
         Neck = 'Bathy Choker +1',
+        Ear1 = 'Infused Earring',
         Ring2 = 'Chirich Ring +1',
     },
     Idle_Refresh = {
@@ -79,12 +80,12 @@ sets = T{
         Ammo = 'Sapience Orb',
         Head = 'Peda. M.Board +3',
         Neck = 'Baetyl Pendant',
-        Ear1 = 'Etiolation Earring',
+        Ear1 = 'Loquac. Earring',
         Ear2 = 'Malignance Earring',
         Body = 'Agwu\'s Robe',
         Hands = 'Acad. Bracers +3',
         Ring1 = 'Kishar Ring',
-        Ring2 = 'Prolix Ring',
+        Ring2 = 'Mallquis Ring',
         Back = 'Swith Cape +1',
         Waist = 'Embla Sash',
         Legs = 'Agwu\'s Slops',
@@ -218,7 +219,7 @@ sets = T{
         Ring1 = 'Shiva Ring +1',
         Ring2 = { Name = 'Metamor. Ring +1', AugPath='A' },
         Back = 'Lugh\'s Cape',
-        Waist = 'Sacro Cord',
+        Waist = 'Eschan Stone',
         Legs = 'Amalric Slops +1',
         Feet = 'Amalric Nails +1',
     },
@@ -253,7 +254,7 @@ sets = T{
         Ring1 = 'Shiva Ring +1',
         Ring2 = 'Mallquis Ring',
         Back = 'Lugh\'s Cape',
-        Waist = 'Sacro COrd',
+        Waist = 'Eschan Stone',
         Legs = 'Agwu\'s Slops',
         Feet = 'Amalric Nails +1',
     },
@@ -287,6 +288,8 @@ sets = T{
     Preshot = {
     },
     Midshot = {
+        Ear1 = 'Telos Earring',
+        Ear2 = 'Enervating Earring',
     },
 
     Ws_Default = {--for me this is basically just mykyr
@@ -297,16 +300,35 @@ sets = T{
         Ear2 = 'Etiolation Earring',
         Body = 'Acad. Gown +2',
         Hands = 'Nyame Gauntlets',
-        Ring1 = 'Rufescent Ring',
+        Ring1 = 'Sangoma Ring',
         Ring2 = 'Metamor. Ring +1',
         Back = 'Aurist\'s Cape +1',
-        Waist = 'Fucho-no-Obi',
+        Waist = 'Shinjutsu-no-Obi +1',
         Legs = 'Amalric Slops +1',
         Feet = 'Arbatel Loafers +1',
     },
     Ws_Hybrid = {
     },
     Ws_Acc = {
+    },
+    Cataclysm_Default = {
+        Ammo = 'Pemphredo Tathlum',
+        Head = 'Pixie Hairpin +1',
+        Neck = 'Sanctity Necklace',
+        Ear1 = 'Moonshade Earring',
+        Ear2 = 'Malignance Earring',
+        Body = 'Nyame Mail',
+        Hands = 'Nyame Gauntlets',
+        Ring1 = 'Shiva Ring +1',
+        Ring2 = 'Karieyh Ring +1',
+        Back = 'Lugh\'s Cape',
+        Waist = 'Eschan Stone',
+        Legs = 'Nyame Flanchard',
+        Feet = 'Nyame Sollerets',
+    },
+    Cataclysm_Hybrid = {
+    },
+    Cataclysm_Acc = {
     },
 
     TH = {--/th will force this set to equip for 10 seconds
@@ -417,8 +439,8 @@ profile.HandleMidcast = function()
             gFunc.EquipSet(sets.Phalanx);
         elseif string.match(spell.Name, 'Stoneskin') then
             gFunc.EquipSet(sets.Stoneskin);
-        elseif string.contains(spell.Name, 'Temper') then
-            gFunc.EquipSet(sets.Skill_Enhancing);
+        elseif string.contains(spell.Name, 'Regen') then
+            gFunc.EquipSet(sets.Regen);
         elseif string.contains(spell.Name, 'Refresh') then
             gFunc.EquipSet(sets.Refresh);
             if (target.Name == me) then
@@ -429,9 +451,6 @@ profile.HandleMidcast = function()
         gFunc.EquipSet(sets.Cure);
         if (target.Name == me) then
             gFunc.EquipSet(sets.Self_Cure);
-        end
-        if string.contains(spell.Name, 'Regen') then
-            gFunc.EquipSet(sets.Regen);
         end
         if string.match(spell.Name, 'Cursna') then
             gFunc.EquipSet(sets.Cursna);
@@ -493,6 +512,12 @@ profile.HandleWeaponskill = function()
         gFunc.EquipSet(sets.Ws_Default)
         if (gcdisplay.GetCycle('MeleeSet') ~= 'Default') then
         gFunc.EquipSet('Ws_' .. gcdisplay.GetCycle('MeleeSet')) end
+
+        if string.match(ws.Name, 'Cataclysm') then
+            gFunc.EquipSet(sets.Cataclysm_Default)
+            if (gcdisplay.GetCycle('MeleeSet') ~= 'Default') then
+            gFunc.EquipSet('Cataclysm_' .. gcdisplay.GetCycle('MeleeSet')); end
+        end
     end
 end
 

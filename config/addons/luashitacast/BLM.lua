@@ -27,6 +27,7 @@ sets = T{
     Resting = {},
     Idle_Regen = {
         Neck = 'Bathy Choker +1',
+        Ear1 = 'Infused Earring',
         Ring2 = 'Chirich Ring +1',
     },
     Idle_Refresh = {
@@ -82,7 +83,7 @@ sets = T{
         Body = 'Agwu\'s Robe',
         Hands = 'Mallquis Cuffs +2',
         Ring1 = 'Kishar Ring',
-        Ring2 = 'Prolix Ring',
+        Ring2 = 'Mallquis Ring',
         Back = 'Swith Cape +1',
         Waist = 'Embla Sash',
         Legs = 'Agwu\'s Slops',
@@ -226,7 +227,7 @@ sets = T{
         Ring1 = 'Shiva Ring +1',
         Ring2 = { Name = 'Metamor. Ring +1', AugPath='A' },
         Back = 'Taranus\'s Cape',
-        Waist = 'Sacro Cord',
+        Waist = 'Eschan Stone',
         Legs = 'Amalric Slops +1',
         Feet = 'Amalric Nails +1',
     },
@@ -280,6 +281,8 @@ sets = T{
     Preshot = {
     },
     Midshot = {
+        Ear1 = 'Telos Earring',
+        Ear2 = 'Enervating Earring',
     },
 
     Ws_Default = {--myrkr mostly
@@ -293,7 +296,7 @@ sets = T{
         Ring1 = 'Sangoma Ring',
         Ring2 = 'Metamor. Ring +1',
         Back = 'Aurist\'s Cape +1',
-        Waist = 'Shinjutsu-no-Obi',
+        Waist = 'Shinjutsu-no-Obi +1',
         Legs = 'Amalric Slops +1',
         Feet = 'Nyame Sollerets',
     },
@@ -425,8 +428,8 @@ profile.HandleMidcast = function()
                 gFunc.EquipSet(sets.Phalanx);
             elseif string.match(spell.Name, 'Stoneskin') then
                 gFunc.EquipSet(sets.Stoneskin);
-            elseif string.contains(spell.Name, 'Temper') then
-                gFunc.EquipSet(sets.Skill_Enhancing);
+            elseif string.contains(spell.Name, 'Regen') then
+            gFunc.EquipSet(sets.Regen);
             elseif string.contains(spell.Name, 'Refresh') then
                 gFunc.EquipSet(sets.Refresh);
                 if (target.Name == me) then
@@ -437,9 +440,6 @@ profile.HandleMidcast = function()
             gFunc.EquipSet(sets.Cure);
             if (target.Name == me) then
                 gFunc.EquipSet(sets.Self_Cure);
-            end
-            if string.contains(spell.Name, 'Regen') then
-                gFunc.EquipSet(sets.Regen);
             end
             if string.match(spell.Name, 'Cursna') then
                 gFunc.EquipSet(sets.Cursna);
