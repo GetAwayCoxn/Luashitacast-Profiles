@@ -19,8 +19,8 @@ gcinclude.sets = T{
 	Sleeping = { -- this set will auto equip if you are asleep
     },
 	Reraise = { -- this set will try to equip when weakened if AutoGear variable is true below or you can force it with /rrset in game
-		Head = 'Twilight Helm',
-		Body = 'Twilight Mail',
+		Head = 'Crepuscular Helm',
+		Body = 'Crepuscular Mail',
     },
 	Crafting = { -- this set is meant as a default set for crafting, equip using /craftset, be sure to dbl check what rings you want to use
 		Head = 'Midras\'s Helm +1',
@@ -144,6 +144,9 @@ function gcinclude.SetAlias()
 	if (player.MainJob == 'BLU') then
 		AshitaCore:GetChatManager():QueueCommand(-1, '/alias /cjmode /lac fwd cj');
 	end
+	if (player.MainJob == 'SMN') then
+		AshitaCore:GetChatManager():QueueCommand(-1, '/alias /siphon /lac fwd siphon');
+	end
 end
 
 function gcinclude.SetVariables()
@@ -170,7 +173,7 @@ function gcinclude.SetVariables()
 		gcdisplay.CreateToggle('SIR', false);
 		gcdisplay.CreateCycle('TankSet', {[1] = 'Main', [2] = 'MEVA', [3] = 'None'});
 	end
-	if (player.MainJob == 'THF') or (player.MainJob == 'BLU') then
+	if (player.MainJob == 'THF') or (player.MainJob == 'BLU') or (player.MainJob == 'NIN') then
 		gcdisplay.CreateToggle('TH', false);
 	end
 	if (player.MainJob == 'SAM') or (player.MainJob == 'NIN') then
@@ -283,7 +286,7 @@ function gcinclude.SetCommands(args)
 		end
 	end
 	if (args[1] == 'th') then
-		if (player.MainJob == 'THF') or (player.MainJob == 'BLU') then
+		if (player.MainJob == 'THF') or (player.MainJob == 'BLU') or (player.MainJob == 'NIN') then
 			gcdisplay.AdvanceToggle('TH');
 		else
 			AshitaCore:GetChatManager():QueueCommand(-1, '/lac set TH 10');
@@ -314,6 +317,12 @@ function gcinclude.SetCommands(args)
 			gcdisplay.AdvanceToggle('CJmode');
 		end
 	end
+	if (player.MainJob == 'SMN') then
+		if (args[1] == 'siphon') then
+			gcinclude.DoSiphon();
+		end
+	end
+
 end
 
 function gcinclude.CheckCommonDebuffs()
@@ -325,6 +334,25 @@ function gcinclude.CheckCommonDebuffs()
 	if (sleep >= 1) then gFunc.EquipSet(gcinclude.sets.Sleeping) end
 	if (doom >= 1) then	gFunc.EquipSet(gcinclude.sets.Doomed) end
 	if (weakened >= 1) then gFunc.EquipSet(gcinclude.sets.Reraise) end
+end
+
+function gcinclude.CheckAbilityRecast(check)
+	local RecastTime = 0;
+
+	for x = 0, 31 do
+		local id = AshitaCore:GetMemoryManager():GetRecast():GetAbilityTimerId(x);
+		local timer = AshitaCore:GetMemoryManager():GetRecast():GetAbilityTimer(x);
+
+		if ((id ~= 0 or x == 0) and timer > 0) then
+			local ability = AshitaCore:GetResourceManager():GetAbilityByTimerId(id);
+			if ability == nil then return end
+			if (ability.Name[1] == check) and (ability.Name[1] ~= 'Unknown') then
+				RecastTime = timer;
+			end
+		end
+	end
+
+	return RecastTime;
 end
 
 function gcinclude.CheckLockingRings()
@@ -413,6 +441,7 @@ function gcinclude.DoWarpRing()
 	end
 	
 	usering:once(11);
+	
 end
 
 function gcinclude.DoTeleRing()
@@ -532,6 +561,51 @@ function gcinclude.DoSCHspells(spell)
 	end
 end
 
+function gcinclude.DoSiphon()
+	local recast = gcinclude.CheckAbilityRecast('Elemental Siphon');
+	if recast ~= 0 then 
+		print(chat.header('GCinclude'):append(chat.warning('Elemental Siphon not available yet!')));
+		return;
+	end
+	local pet = gData.GetPet();
+	local oldpet = 'none';
+	local spirit = 'none';
+	local spirits = {['Firesday'] = 'Fire Spirit', ['Earthsday'] = 'Earth Spirit', ['Watersday'] = 'Water Spirit', ['Windsday'] = 'Air Spirit', ['Iceday'] = 'Ice Spirit', ['Lightningday'] = 'Thunder Spirit', ['Lightsday'] = 'Light Spirit', ['Darksday'] = 'Dark Spirit'};
+	local e = gData.GetEnvironment();
+	
+	local function release()
+		AshitaCore:GetChatManager():QueueCommand(1, '/ja "Release" <me>');
+	end
+	local function siphon()
+		AshitaCore:GetChatManager():QueueCommand(1, '/ja "Elemental Siphon" <me>');
+	end
+	local function castavatar()
+		AshitaCore:GetChatManager():QueueCommand(1, '/ma "' .. oldpet .. '" <me>');
+	end
+	local function castspirit()
+		AshitaCore:GetChatManager():QueueCommand(1, '/ma "' .. spirit .. '" <me>');
+		siphon:once(4);
+		release:once(6);
+		if oldpet ~= 'none' then
+			castavatar:once(8);
+		end
+	end
+
+	if pet ~= nil then
+		oldpet = pet.Name;
+		release:once(1);
+	end
+
+	for k,v in pairs(spirits) do
+		if k == e.Day then
+			if v ~= nil then
+				spirit = v;
+				castspirit:once(3);
+			end
+		end
+	end
+end
+
 function gcinclude.CheckCancels()
 	local action = gData.GetAction();
 	local sneak = gData.GetBuffCount('Sneak');
@@ -565,6 +639,7 @@ function gcinclude.CheckCancels()
 end
 
 function gcinclude.CheckDefault()
+
 	gcinclude.SetRegenRefreshGear();
 	gcinclude.SetTownGear();
     gcinclude.CheckCommonDebuffs();
