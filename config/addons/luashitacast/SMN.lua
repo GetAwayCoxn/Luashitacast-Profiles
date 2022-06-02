@@ -256,7 +256,7 @@ sets = T{
         Body = 'Shomonjijoe +1',--I 8
         Ring1 = 'Evoker\'s Ring',
         Ring2 = 'Stikini Ring +1',
-        Feet = 'Inyan. Crackows +2',
+        Back = 'Samanisi Cape',--I 3
     },
     Siphon = {
         Neck = 'Incanter\'s Torque',
@@ -274,6 +274,7 @@ sets = T{
         Ear2 = 'Lugalbanda Earring',
         Ring1 = 'Varar Ring +1',
         Waist = 'Incarnation Sash',
+        Feet = 'Inyan. Crackows +2',
     },
 	SmnMagical = {
         Neck = 'Adad Amulet',
@@ -282,6 +283,7 @@ sets = T{
         Hands = 'Asteria Mitts',
         Ring1 = 'Varar Ring +1',
         Legs = 'Enticer\'s Pants',
+        Feet = 'Inyan. Crackows +2',
     },
 	SmnSkill = {
         Neck = 'Incanter\'s Torque',
@@ -291,13 +293,26 @@ sets = T{
         Ring2 = 'Stikini Ring +1',
         Back = 'Astute Cape',
     },
-    SmnHealing = {},
+    SmnAttributes = {--mostly for Wind's Blessing'
+        Neck = 'Incanter\'s Torque',
+        Ear1 = 'Andoaa Earring',
+        Body = 'Shomonjijoe +1',--need to Augment
+        Hands = 'Lamassu Mitts +1',
+        Ring1 = 'Evoker\'s Ring',
+        Ring2 = 'Stikini Ring +1',
+        Back = 'Astute Cape',
+        Legs = 'Assid. Pants +1',--need to Augment
+    },
+    SmnHealing = {--avatar HP+
+        
+    },
 	SmnEnfeebling = {},
     SmnHybrid = {--special set for flamming crush and burning strike (for now)
         Neck = 'Adad Amulet',
         Ear2 = 'Lugalbanda Earring',
         Ring1 = 'Varar Ring +1',
         Waist = 'Incarnation Sash',
+        Feet = 'Inyan. Crackows +2',
     },
 	
     TH = {--/th will force this set to equip for 10 seconds
@@ -311,17 +326,18 @@ sets = T{
 sets = sets:merge(gcinclude.sets, false);profile.Sets = sets;
 
 local function HandlePetAction(PetAction)
-    gFunc.EquipSet(sets.PetReadyDefault);
-
-	if (PetAction.Name == SmnSkill) then
+	if (gcinclude.SmnSkill:contains(PetAction.Name) then
         gFunc.EquipSet(sets.SmnSkill);
-	elseif (PetAction.Name == SmnMagical) then
+        if PetAction.Name == 'Wind\'s Blessing' then
+            gFunc.EquipSet(sets.SmnAttributes);
+        end
+	elseif (gcinclude.SmnMagical:contains(PetAction.Name) then
         gFunc.EquipSet(sets.SmnMagical);
-    elseif (PetAction.Name == SmnHybrid) then
+    elseif (gcinclude.SmnHybrid:contains(PetAction.Name) then
         gFunc.EquipSet(sets.SmnHybrid);
-	elseif (PetAction.Name == SmnHealing) then
+	elseif (gcinclude.SmnHealing:contains(PetAction.Name) then
         gFunc.EquipSet(sets.SmnHealing);
-    elseif (PetAction.Name == SmnEnfeebling) then
+    elseif (gcinclude.SmnEnfeebling:contains(PetAction.Name) then
         gFunc.EquipSet(sets.SmnEnfeebling);
     else
         gFunc.EquipSet(sets.SmnPhysical);

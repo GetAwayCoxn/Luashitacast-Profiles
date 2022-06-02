@@ -21,7 +21,9 @@ sets = T{
     },
 	Resting = {},
     Idle_Regen = {
+        Head = 'Crepuscular Helm',
         Neck = 'Bathy Choker +1',
+        Ear1 = 'Infused Earring',
         Ring2 = 'Chirich Ring +1',
     },
     Idle_Refresh = {
@@ -47,7 +49,7 @@ sets = T{
     },
 	
 	Dt = {
-        Ammo = 'Crepuscular Pebble',
+        Ammo = 'Staunch Tathlum',
         Head = 'Nyame Helm',
         Neck = 'Empath Necklace',
         Ear1 = 'Odnowa Earring +1',
@@ -85,7 +87,7 @@ sets = T{
         Body = 'Gleti\'s Cuirass',
         Hands = 'Meg. Gloves +2',
         Ring1 = 'Epona\'s Ring',
-        Ring2 = 'Petrov Ring',
+        Ring2 = 'Gere Ring',
         Back = { Name = 'Artio\'s Mantle', Augment = { [1] = 'Pet: R.Acc.+20', [2] = 'Pet: R.Atk.+20', [3] = 'Pet: "Regen"+10', [4] = 'Pet: Acc.+20', [5] = 'Pet: Atk.+20' } },
         Waist = 'Sailfi Belt +1',
         Legs = 'Gleti\'s Breeches',
@@ -123,14 +125,14 @@ sets = T{
 
 	Ws_Default = {
         Ammo = 'Coiste Bodhar',
-        Head = 'Valorous Mask',
+        Head = { Name = 'Valorous Mask', Augment = { [1] = 'Attack+16', [2] = 'Weapon skill damage +10%', [3] = 'Accuracy+16', [4] = 'Pet: Mag. Acc.+1', [5] = 'Pet: STR+4' } },
         Neck = 'Fotia Gorget',
         Ear1 = 'Thrud Earring',
         Ear2 = 'Moonshade Earring',
         Body = 'Gleti\'s Cuirass',
         Hands = 'Meg. Gloves +2',
-        Ring1 = 'Karieyh Ring +1',
-        Ring2 = 'Rufescent Ring',
+        Ring2 = 'Karieyh Ring +1',
+        Ring1 = 'Petrov Ring',
         Back = '',
         Waist = 'Fotia Belt',
         Legs = 'Gleti\'s Breeches',
@@ -181,11 +183,11 @@ sets = sets:merge(gcinclude.sets, false);profile.Sets = sets;
 local function HandlePetAction(PetAction)
     gFunc.EquipSet(sets.PetReadyDefault);
 
-	if (PetAction.Name == BstPetAttack) then
+	if (gcinclude.BstPetAttack:contains(PetAction.Name) then
         gFunc.EquipSet(sets.PetAttack);
-	elseif (PetAction.Name == BstMagicAttack) then
+	elseif (gcinclude.BstPetMagicAttack:contains(PetAction.Name) then
         gFunc.EquipSet(sets.PetMagicAttack);
-	elseif (PetAction.Name == BstMagicAccuracy) then
+	elseif (gcinclude.BstPetMagicAccuracy:contains(PetAction.Name) then
         gFunc.EquipSet(sets.PetMagicAccuracy);
     end
 end
