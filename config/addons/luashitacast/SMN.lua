@@ -21,17 +21,17 @@ sets = T{
         Legs = 'Assid. Pants +1',
         Feet = 'Volte Gaiters',
     },
-    Pet_Idle = {
-        Main = 'Gridarvor',
+    Pet_Idle = {--only need 14, rest refresh
+        Main = 'Gridarvor',--5
         Sub = 'Enki Strap',
         Ammo = 'Epitaph',
         Head = 'Beckoner\'s Horn +1',
-        Neck = 'Caller\'s Pendant',
-        Ear1 = 'Evans Earring',
+        Neck = 'Caller\'s Pendant',--1,
+        Ear1 = 'Evans Earring',--2
         Ear2 = 'Odnowa Earring +1',
-        Body = 'Shomonjijoe +1',
-        Hands = 'Nyame Gauntlets',
-        Ring1 = 'Evoker\'s Ring',
+        Body = 'Beck. Doublet +1',--6
+        Hands = 'Asteria Mitts +1',
+        Ring1 = 'Evoker\'s Ring',--1
         Ring2 = 'Stikini Ring +1',
         Back = 'Mecisto. Mantle',
         Waist = 'Gishdubar Sash',
@@ -45,9 +45,9 @@ sets = T{
         Ring2 = 'Chirich Ring +1',
     },
     Idle_Refresh = {
-        Head = 'Befouled Crown',
+        Head = 'Beckoner\'s Horn +1',
         Body = 'Shomonjijoe +1',
-        Hands = 'Asteria Mitts',
+        Hands = 'Asteria Mitts +1',
         Ring2 = 'Stikini Ring +1',
         Waist = 'Fucho-no-Obi',
         Legs = 'Assid. Pants +1',
@@ -59,7 +59,7 @@ sets = T{
         Ammo = 'Epitaph',
         Head = 'Beckoner\'s Horn +1',
         Body = 'Shomonjijoe +1',
-        Hands = 'Lamassu Mitts +1',
+        Hands = 'Asteria Mitts +1',
         Ring1 = 'Evoker\'s Ring',
         Ring2 = 'Stikini Ring +1',
         Back = 'Solemnity Cape',
@@ -122,14 +122,15 @@ sets = T{
         Main = 'Gridarvor',
         Sub = 'Enki Strap',
         Ammo = 'Epitaph',
+        Head = 'Beckoner\'s Horn +1',
         Neck = 'Shulmanu Collar',
-        Ear1 = 'Rimeice Earring',
-        Ear2 = 'Domes. Earring',
-        Hands = 'Asteria Mitts',
-        Ring1 = 'Varar Ring +1',
-        Back = { Name = 'Artio\'s Mantle', Augment = { [1] = 'Pet: R.Acc.+20', [2] = 'Pet: R.Atk.+20', [3] = 'Pet: "Regen"+10', [4] = 'Pet: Acc.+20', [5] = 'Pet: Atk.+20' } },
+        Ear1 = 'Evans Earring',
+        Ear2 = 'Lugalbanda Earring',
+        Hands = 'Asteria Mitts +1',
+        Ring1 = 'Evoker\'s Ring',
+        Ring2 = 'Varar Ring +1',
         Waist = 'Incarnation Sash',
-        Legs = 'Assid. Pants +1',
+        Legs = 'Enticer\'s Pants',
         Feet = 'Gleti\'s Boots',
     },
 
@@ -249,6 +250,7 @@ sets = T{
     },
 	
     BP = {--I/II cap at 15
+        Ammo = 'Epitaph',--II 5
         Head = 'Beckoner\'s Horn +1',
         Neck = 'Incanter\'s Torque',
         Ear1 = 'Evans Earring',--I 2
@@ -259,41 +261,55 @@ sets = T{
         Back = 'Samanisi Cape',--I 3
     },
     Siphon = {
+        Ammo = 'Epitaph',
+        Head = 'Beckoner\'s Horn +1',
         Neck = 'Incanter\'s Torque',
         Ear1 = 'Andoaa Earring',
+        Body = 'Beck. Doublet +1',
         Hands = 'Lamassu Mitts +1',
         Ring1 = 'Evoker\'s Ring',
         Ring2 = 'Stikini Ring +1',
         Back = 'Astute Cape',
+        Legs = 'Beckoner\'s Spats',
+        Feet = 'Beck. Pigaches +1',
     },
 
 	SmnPhysical = {
         Main = 'Gridarvor',
         Sub = 'Enki Strap',
+        Ammo = 'Epitaph',
         Neck = 'Shulmanu Collar',
         Ear2 = 'Lugalbanda Earring',
-        Ring1 = 'Varar Ring +1',
+        Body = 'Beck. Doublet +1',
+        Ring2 = 'Varar Ring +1',
         Waist = 'Incarnation Sash',
+        Legs = 'Enticer\'s Pants',
         Feet = 'Inyan. Crackows +2',
     },
 	SmnMagical = {
+        Ammo = 'Epitaph',
         Neck = 'Adad Amulet',
         Ear2 = 'Lugalbanda Earring',
         Body = 'Shomonjijoe +1',
-        Hands = 'Asteria Mitts',
-        Ring1 = 'Varar Ring +1',
+        Hands = 'Asteria Mitts +1',
+        Ring2 = 'Varar Ring +1',
         Legs = 'Enticer\'s Pants',
         Feet = 'Inyan. Crackows +2',
     },
 	SmnSkill = {
+        Ammo = 'Epitaph',
+        Head = 'Beckoner\'s Horn +1',
         Neck = 'Incanter\'s Torque',
         Ear1 = 'Andoaa Earring',
+        Body = 'Beck. Doublet +1',
         Hands = 'Lamassu Mitts +1',
         Ring1 = 'Evoker\'s Ring',
         Ring2 = 'Stikini Ring +1',
         Back = 'Astute Cape',
+        Legs = 'Beckoner\'s Spats',
     },
     SmnAttributes = {--mostly for Wind's Blessing'
+        Ammo = 'Epitaph',
         Neck = 'Incanter\'s Torque',
         Ear1 = 'Andoaa Earring',
         Body = 'Shomonjijoe +1',--need to Augment
@@ -304,13 +320,16 @@ sets = T{
         Legs = 'Assid. Pants +1',--need to Augment
     },
     SmnHealing = {--avatar HP+
-        
+        Ammo = 'Epitaph',
     },
-	SmnEnfeebling = {},
+	SmnEnfeebling = {
+        Ammo = 'Epitaph',
+    },
     SmnHybrid = {--special set for flamming crush and burning strike (for now)
+        Ammo = 'Epitaph',
         Neck = 'Adad Amulet',
         Ear2 = 'Lugalbanda Earring',
-        Ring1 = 'Varar Ring +1',
+        Ring2 = 'Varar Ring +1',
         Waist = 'Incarnation Sash',
         Feet = 'Inyan. Crackows +2',
     },
@@ -326,18 +345,18 @@ sets = T{
 sets = sets:merge(gcinclude.sets, false);profile.Sets = sets;
 
 local function HandlePetAction(PetAction)
-	if (gcinclude.SmnSkill:contains(PetAction.Name) then
+	if (gcinclude.SmnSkill:contains(PetAction.Name)) then
         gFunc.EquipSet(sets.SmnSkill);
         if PetAction.Name == 'Wind\'s Blessing' then
             gFunc.EquipSet(sets.SmnAttributes);
         end
-	elseif (gcinclude.SmnMagical:contains(PetAction.Name) then
+	elseif (gcinclude.SmnMagical:contains(PetAction.Name)) then
         gFunc.EquipSet(sets.SmnMagical);
-    elseif (gcinclude.SmnHybrid:contains(PetAction.Name) then
+    elseif (gcinclude.SmnHybrid:contains(PetAction.Name)) then
         gFunc.EquipSet(sets.SmnHybrid);
-	elseif (gcinclude.SmnHealing:contains(PetAction.Name) then
+	elseif (gcinclude.SmnHealing:contains(PetAction.Name)) then
         gFunc.EquipSet(sets.SmnHealing);
-    elseif (gcinclude.SmnEnfeebling:contains(PetAction.Name) then
+    elseif (gcinclude.SmnEnfeebling:contains(PetAction.Name)) then
         gFunc.EquipSet(sets.SmnEnfeebling);
     else
         gFunc.EquipSet(sets.SmnPhysical);
@@ -408,7 +427,7 @@ profile.HandleAbility = function()
     local ac = gData.GetBuffCount('Astral Conduit');
     if ac > 0 then return end
 
-    if (ability.Name == 'Release') or (ability.Name == 'Assault') or (ability.Name == 'Retreat') or (ability.Name == 'Apogee') then return end
+    if (ability.Name == 'Release') or (ability.Name == 'Avatar\'s Favor') or (ability.Name == 'Assault') or (ability.Name == 'Retreat') or (ability.Name == 'Apogee') then return end
 
     gFunc.EquipSet(sets.BP);
 

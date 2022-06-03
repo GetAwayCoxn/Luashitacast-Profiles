@@ -183,11 +183,11 @@ sets = sets:merge(gcinclude.sets, false);profile.Sets = sets;
 local function HandlePetAction(PetAction)
     gFunc.EquipSet(sets.PetReadyDefault);
 
-	if (gcinclude.BstPetAttack:contains(PetAction.Name) then
+	if (gcinclude.BstPetAttack:contains(PetAction.Name)) then
         gFunc.EquipSet(sets.PetAttack);
-	elseif (gcinclude.BstPetMagicAttack:contains(PetAction.Name) then
+	elseif (gcinclude.BstPetMagicAttack:contains(PetAction.Name)) then
         gFunc.EquipSet(sets.PetMagicAttack);
-	elseif (gcinclude.BstPetMagicAccuracy:contains(PetAction.Name) then
+	elseif (gcinclude.BstPetMagicAccuracy:contains(PetAction.Name)) then
         gFunc.EquipSet(sets.PetMagicAccuracy);
     end
 end
