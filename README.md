@@ -27,7 +27,7 @@ Some of the things that my profiles will do is automatically equip idle regen or
 
 /proc - I have specific low dmg output sets for SAM and NIN that are activated with this toggle, intended to kill things slowly for procs like in abyssea or vagary
 
-/th - Turn TH gear lock on and off for THF/BLU/NIN TH gear set found in the job lua. For any other job it will look for a TH gear set inside that job lua and equip it for 10 seconds.
+/th - Turn TH gear lock on and off for THF/NIN TH gear set found in the job lua, for BLU it will put TH gear on for Dream Flower, Subduction and A. Burst. For any other job it will look for a TH gear set inside that job lua and equip it for 10 seconds.
 
 /dt - Will equip the dt set you define in the individual job file
 
@@ -64,3 +64,5 @@ Some of the things that my profiles will do is automatically equip idle regen or
 /forcestring - Will force harp on BRD although I just use paeon for my dummy songs I left this variable available
 
 /cormsg - When playing cor messages will appear telling you lucky/unlucky, use this to toggle off or can set to off as default inside the COR.lua
+
+/siphon - When on SMN this will cast the spirit matching the day and use siphon, if you had an avatar out to start with it will recast that avatar
