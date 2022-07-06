@@ -41,7 +41,7 @@ sets = T{
         Neck = 'Bathy Choker +1',
         Ear1 = 'Eabani Earring',
         Ear2 = 'Etiolation Earring',
-        Body = 'Viti. Tabard +2',
+        Body = 'Viti. Tabard +3',
         Hands = 'Malignance Gloves',
         Ring1 = 'Defending Ring',
         Ring2 = { Name = 'Metamor. Ring +1', AugPath='A' },
@@ -102,7 +102,7 @@ sets = T{
         Neck = 'Baetyl Pendant',
         Ear1 = 'Etiolation Earring',
         Ear2 = 'Malignance Earring',
-        Body = 'Viti. Tabard +2',
+        Body = 'Viti. Tabard +3',
         Hands = { Name = 'Gende. Gages +1', Augment = { [1] = 'Phys. dmg. taken -4%', [2] = 'Song spellcasting time -5%' } },
         Ring1 = 'Kishar Ring',
         Ring2 = 'Prolix Ring',
@@ -147,7 +147,7 @@ sets = T{
     Regen = {
         Main = 'Bolelabunga',
         Sub = 'Ammurapi Shield',
-        Body = 'Viti. Tabard +2',
+        Body = 'Viti. Tabard +3',
     },
     Cursna = {
         Ring1 = 'Purity Ring',
@@ -162,7 +162,7 @@ sets = T{
         Neck = 'Incanter\'s Torque',
         Ear1 = 'Mendi. Earring',
         Ear2 = 'Andoaa Earring',
-        Body = 'Viti. Tabard +2',
+        Body = 'Viti. Tabard +3',
         Hands = 'Atrophy Gloves +2',
         Ring1 = 'Stikini Ring +1',
         Ring2 = { Name = 'Metamor. Ring +1', AugPath='A' },
@@ -325,6 +325,9 @@ sets = T{
     Chant_Hybrid = {},
     Chant_Acc = {},
 
+    CS = {
+		Body = 'Viti. Tabard +3',
+	},
     TH = {--/th will force this set to equip for 10 seconds
 		Waist = 'Chaac Belt',
 	},
@@ -384,6 +387,10 @@ end
 
 profile.HandleAbility = function()
     local ability = gData.GetAction();
+
+    if ability.Name == 'Chainspell' then
+        gFunc.EquipSet(sets.CS);
+    end
 
     gcinclude.CheckCancels();
 end

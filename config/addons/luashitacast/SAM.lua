@@ -20,6 +20,7 @@ sets = T{
     },
     Resting = {},
     Idle_Regen = {
+        Head = 'Crepuscular Helm',
         Neck = 'Bathy Choker +1',
         Ear1 = 'Infused Earring',
         Body = 'Hiza. Haramaki +2',

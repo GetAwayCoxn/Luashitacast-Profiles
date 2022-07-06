@@ -5,7 +5,7 @@ gcinclude = gFunc.LoadFile('common\\gcinclude.lua');
 sets = T{
     Idle = {
         Ammo = { Name = 'Coiste Bodhar', AugPath='A' },
-        Head = 'Nyame Helm',
+        Head = 'Valorous Mask',
         Neck = 'Loricate Torque +1',
         Ear1 = 'Telos Earring',
         Ear2 = 'Cessance Earring',
@@ -13,32 +13,33 @@ sets = T{
         Hands = 'Volte Moufles',
         Ring1 = 'Petrov Ring',
         Ring2 = 'Karieyh Ring +1',
-        Back = { Name = 'Brigantia\'s Mantle', Augment = { [1] = 'STR+30', [2] = '"Dbl.Atk."+10', [3] = 'Attack+20', [4] = 'Accuracy+20' } },
         Waist = { Name = 'Sailfi Belt +1', AugPath='A' },
         Legs = 'Sakpata\'s Cuisses',
         Feet = 'Nyame Sollerets',
     },
     Resting = {},
     Idle_Regen = {
+        Head = 'Crepuscular Helm',
         Neck = 'Bathy Choker +1',
+        Ear1 = 'Infused Earring',
         Hands = 'Volte Moufles',
         Ring2 = 'Chirich Ring +1',
     },
     Idle_Refresh = {},
     Town = {
         Ammo = { Name = 'Coiste Bodhar', AugPath='A' },
-        Head = 'Flam. Zucchetto +2',
-        Neck = 'Anu Torque',
+        Head = 'Hjarrandi Helm',
+        Neck = 'Bathy Choker +1',
         Ear1 = 'Telos Earring',
         Ear2 = 'Cessance Earring',
         Body = 'Hjarrandi Breast.',
         Hands = 'Volte Moufles',
         Ring1 = 'Defending Ring',
         Ring2 = 'Gelatinous Ring +1',
-        Back = { Name = 'Brigantia\'s Mantle', Augment = { [1] = 'STR+30', [2] = '"Dbl.Atk."+10', [3] = 'Attack+20', [4] = 'Accuracy+20' } },
+        Back = 'Cichol\'s Mantle',
         Waist = { Name = 'Sailfi Belt +1', AugPath='A' },
         Legs = 'Sakpata\'s Cuisses',
-        Feet = 'Gleti\'s Boots',
+        Feet = 'Hermes\'s Sandals',
     },
 
     Dt = {
@@ -67,13 +68,13 @@ sets = T{
         Hands = 'Flam. Manopolas +2',
         Ring1 = 'Petrov Ring',
         Ring2 = 'Niqmaddu Ring',
-        Back = { Name = 'Brigantia\'s Mantle', Augment = { [1] = 'STR+30', [2] = '"Dbl.Atk."+10', [3] = 'Attack+20', [4] = 'Accuracy+20' } },
+        Back = 'Cichol\'s Mantle',
         Waist = { Name = 'Sailfi Belt +1', AugPath='A' },
         Legs = 'Sakpata\'s Cuisses',
         Feet = 'Tatena. Sune. +1',
     },
     Tp_Hybrid = {
-        Ammo = 'Crepuscular Pebble',
+        Ammo = 'Staunch Tathlum',
         Body = 'Hjarrandi Breast.',
         Hands = 'Sakpata\'s Gauntlets',
     },
@@ -83,6 +84,7 @@ sets = T{
         Ring1 = 'Cacoethic Ring +1',
         Ring2 = 'Chirich Ring +1',
         Legs = 'Tatena. Haidate +1',
+        Waist = 'Ioskeha Belt +1',
     },
 
 
@@ -98,7 +100,7 @@ sets = T{
         Ammo = 'Pemphredo Tathlum',
         Neck = 'Incanter\'s Torque',
         Ear1 = 'Mendi. Earring',
-        Ring1 = 'Rufescent Ring',
+        Ring1 = 'Stikini Ring +1',
         Ring2 = { Name = 'Metamor. Ring +1', AugPath='A' },
         Back = 'Solemnity Cape',
         Feet = 'Odyssean Greaves',
@@ -128,7 +130,7 @@ sets = T{
         Ammo = 'Pemphredo Tathlum',
         Head = 'Nyame Helm',
         Neck = 'Baetyl Pendant',
-        Ear1 = 'Hecate\'s Earring',
+        Ear1 = 'Crematio Earring',
         Body = 'Nyame Mail',
         Hands = 'Nyame Gauntlets',
         Ring1 = 'Shiva Ring +1',
@@ -140,17 +142,19 @@ sets = T{
     Preshot = {
     },
     Midshot = {
+        Ear1 = 'Telos Earring',
+        Ear2 = 'Enervating Earring',
     },
 
     Ws_Default = {
         Ammo = 'Knobkierrie',
-        Head = { Name = 'Valorous Mask', Augment = { [1] = 'Weapon skill damage +4%', [2] = 'Accuracy+13', [3] = '"Mag. Atk. Bns."+8' } },
+        Head = { Name = 'Valorous Mask', Augment = { [1] = 'Attack+16', [2] = 'Weapon skill damage +10%', [3] = 'Accuracy+16', [4] = 'Pet: Mag. Acc.+1', [5] = 'Pet: STR+4' } },
         Neck = 'Fotia Gorget',
         Ear1 = 'Thrud Earring',
-        Ear2 = { Name = 'Moonshade Earring', Augment = { [1] = 'Accuracy+4', [2] = 'TP Bonus +250' } },
+        Ear2 = 'Moonshade Earring',
         Body = 'Hjarrandi Breast.',
         Hands = { Name = 'Valorous Mitts', Augment = { [1] = '"Mag. Atk. Bns."+1', [2] = 'Attack+9', [3] = 'Mag. Acc.+1', [4] = 'STR+5', [5] = 'Weapon skill damage +5%', [6] = 'AGI+2', [7] = 'Accuracy+9' } },
-        Ring1 = 'Rufescent Ring',
+        Ring1 = 'Petrov Ring',
         Ring2 = 'Karieyh Ring +1',
         Back = { Name = 'Brigantia\'s Mantle', Augment = { [1] = 'STR+30', [2] = '"Dbl.Atk."+10', [3] = 'Attack+20', [4] = 'Accuracy+20' } },
         Waist = 'Fotia Belt',
@@ -161,6 +165,26 @@ sets = T{
         Body = 'Hjarrandi Breast.',
     },
     Ws_Acc = {
+    },
+    Aedge_Default = {
+        Ammo = 'Knobkierrie',
+        Head = { Name = 'Valorous Mask', Augment = { [1] = 'Attack+16', [2] = 'Weapon skill damage +10%', [3] = 'Accuracy+16', [4] = 'Pet: Mag. Acc.+1', [5] = 'Pet: STR+4' } },
+        --Head = 'Nyame Helm',
+        Neck = 'Baetyl Pendant',
+        Ear1 = 'Thrud Earring',
+        Ear2 = 'Friomisi Earring',
+        Body = 'Nyame Mail',
+        Hands = 'Nyame Gauntlets',
+        Ring1 = 'Shiva Ring +1',
+        Ring2 = 'Karieyh Ring +1',
+        Back = { Name = 'Ankou\'s Mantle', Augment = { [1] = 'Accuracy+20', [2] = '"Dbl.Atk."+10', [3] = 'Attack+20', [4] = 'DEX+20' } },
+        Waist = 'Eschan Stone',
+        Legs = 'Nyame Flanchard',
+        Feet = 'Nyame Sollerets',
+    },
+    Aedge_Hybrid = {
+    },
+    Aedge_Acc = {
     },
 
     TH = {--/th will force this set to equip for 10 seconds
@@ -276,7 +300,12 @@ profile.HandleWeaponskill = function()
         gFunc.EquipSet(sets.Ws_Default)
         if (gcdisplay.GetCycle('MeleeSet') ~= 'Default') then
         gFunc.EquipSet('Ws_' .. gcdisplay.GetCycle('MeleeSet')) end
-   
+        
+        if string.match(ws.Name, 'Aeolian Edge') then
+            gFunc.EquipSet(sets.Aedge_Default)
+            if (gcdisplay.GetCycle('MeleeSet') ~= 'Default') then
+            gFunc.EquipSet('Aedge_' .. gcdisplay.GetCycle('MeleeSet')); end
+        end
     end
 end
 

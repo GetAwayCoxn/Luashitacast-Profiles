@@ -21,6 +21,7 @@ sets = T{
     Resting = {},
     Idle_Regen = {
         Neck = 'Bathy Choker +1',
+        Ear1 = 'Infused Earring',
         Ring2 = 'Chirich Ring +1',
     },
     Idle_Refresh = {},
@@ -28,7 +29,6 @@ sets = T{
         Main = 'Acrontica',
         Sub = 'Tauret',
         Ammo = 'Yamarang',
-        Head = 'Cumulus Masque',
         Body = 'Gleti\'s Cuirass',
         Hands = 'Malignance Gloves',
         Legs = 'Gleti\'s Breeches',
@@ -36,7 +36,7 @@ sets = T{
     },
 
     Dt = {
-        Ammo = 'Crepuscular Pebble',
+        Ammo = 'Staunch Tathlum',
         Head = 'Nyame Helm',
         Neck = { Name = 'Loricate Torque +1', AugPath='A' },
         Ear1 = { Name = 'Odnowa Earring +1', AugPath='A' },
@@ -59,7 +59,7 @@ sets = T{
         Ear2 = 'Telos Earring',
         Body = 'Gleti\'s Cuirass',
         Hands = 'Malignance Gloves',
-        Ring1 = 'Ilabrat Ring',
+        Ring1 = 'Gere Ring',
         Ring2 = 'Epona\'s Ring',
         Back = 'Mecisto. Mantle',
         Waist = { Name = 'Sailfi Belt +1', AugPath='A' },
@@ -90,6 +90,8 @@ sets = T{
     Preshot = {
     },
     Midshot = {
+        Ear1 = 'Telos Earring',
+        Ear2 = 'Enervating Earring',
     },
 
     Ws_Default = {
@@ -97,9 +99,9 @@ sets = T{
         Head = { Name = 'Adhemar Bonnet +1', AugPath='B' },
         Neck = 'Fotia Gorget',
         Ear1 = 'Odr Earring',
-        Ear2 = { Name = 'Moonshade Earring', Augment = { [1] = 'Accuracy+4', [2] = 'TP Bonus +250' } },
+        Ear2 = 'Moonshade Earring',
         Body = 'Nyame Mail',
-        Hands = 'Malignance Gloves',
+        Hands = 'Meg. Gloves +2',
         Ring1 = 'Ilabrat Ring',
         Ring2 = 'Karieyh Ring +1',
         Waist = 'Fotia Belt',
@@ -116,7 +118,7 @@ sets = T{
         Head = 'Nyame Helm',
         Neck = 'Baetyl Necklace',
         Ear1 = 'Friomisi Earring',
-        Ear2 = 'Moonshade Earring',
+        Ear2 = 'Crematio Earring',
         Body = 'Nyame Mail',
         Hands = 'Nyame Gauntlets',
         Ring1 = 'Shiva Ring +1',
@@ -234,7 +236,7 @@ profile.HandleWeaponskill = function()
         if (gcdisplay.GetCycle('MeleeSet') ~= 'Default') then
         gFunc.EquipSet('Ws_' .. gcdisplay.GetCycle('MeleeSet')) end
 
-	    if string.match(ws.Name, 'Aedge Smite') then
+	    if string.match(ws.Name, 'Aeolian Edge') then
             gFunc.EquipSet(sets.Aedge_Default)
             if (gcdisplay.GetCycle('MeleeSet') ~= 'Default') then
             gFunc.EquipSet('Aedge_' .. gcdisplay.GetCycle('MeleeSet')); end

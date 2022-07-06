@@ -22,6 +22,7 @@ sets = T{
     Resting = {},
     Idle_Regen = {
         Neck = 'Bathy Choker +1',
+        Ear1 = 'Infused Earring',
         Body = 'Futhark Coat +3',
         Hands = 'Turms Mittens',
         Ring2 = 'Chirich Ring +1',
@@ -110,7 +111,7 @@ sets = T{
         --Neck = 'Unmoving Collar +1',
         Neck = 'Loricate Torque +1',
         Ear1 = 'Odnowa Earring +1',--2
-        Ear2 = 'Etiolation Earring',--3mdt
+        Ear2 = 'Ethereal Earring',--3kinda
         --Ear2 = 'Hermodr Earring',--dragon points, 10 parry skill
         Body = 'Futhark Coat +3',--9
         Hands = 'Turms Mittens',
@@ -159,10 +160,10 @@ sets = T{
         Waist = 'Siegel Sash', -- 8
         Legs = 'Futhark Trousers +1', -- 13
     },
-    SIR = {--10 merits + 73 
+    SIR = {--10 merits + 88 
         Ammo = 'Staunch Tathlum', -- 10
         Head = 'Agwu\'s Cap', -- 10
-        Neck = 'Moonbeam Necklace', -- 10
+        Neck = 'Moonlight Necklace', -- 15
         Hands = 'Rawhide Gloves', -- 15
         Waist = 'Audumbla Sash', -- 10
         Legs = 'Carmine Cuisses +1', -- 20
@@ -179,6 +180,21 @@ sets = T{
         Waist = 'Kasiri Belt',
         Legs = 'Eri. Leg Guards +1',
         Feet = 'Erilaz Greaves +1',
+    },
+    SIRenmity = { -- Foil and blue spells mostly
+        Ammo = 'Staunch Tathlum', -- 10
+        Head = 'Agwu\'s Cap', -- 10
+        Neck = 'Moonlight Necklace', -- 15
+        Ear1 = 'Odnowa Earring +1',
+        Ear2 = 'Cryptic Earring',
+        Body = 'Emet Harness +1',
+        Hands = 'Rawhide Gloves', -- 15
+        Ring1 = 'Eihwaz Ring',
+        Ring2 = 'Supershear Ring',
+        Back = { Name = 'Ogma\'s Cape', Augment = { [1] = 'Parrying rate+5%', [2] = 'Mag. Eva.+20', [3] = 'Eva.+20', [4] = 'HP+80', [5] = 'Enmity+10' } },
+        Waist = 'Audumbla Sash', -- 10
+        Legs = 'Carmine Cuisses +1', -- 20
+        Feet = 'Taeon Boots', -- 8
     },
 
     Cure = {
@@ -213,7 +229,10 @@ sets = T{
     },
 
     Preshot = {},
-    Midshot = {},
+    Midshot = {
+        Ear1 = 'Telos Earring',
+        Ear2 = 'Enervating Earring',
+    },
 
     Ws_Default = {
         Ammo = 'Knobkierrie',
@@ -231,9 +250,11 @@ sets = T{
     },
     Dimi_Default = {
         Ammo = 'Knobkierrie',
+        Head = 'Adhemar Bonnet +1',
         Neck = 'Fotia Gorget',
         Ear1 = 'Sherida Earring',
         Ear2 = 'Moonshade Earring',
+        Body = 'Nyame Mail',
         Hands = 'Meg. Gloves +2',
         Ring1 = 'Ilabrat Ring',
         Ring2 = 'Karieyh Ring +1',
@@ -246,11 +267,13 @@ sets = T{
     Dimi_Acc = {
     },
     Reso_Default = {
-        Ammo = 'Coiste Bodhar',
+        Ammo = 'Seeth. Bomblet +1',
         Head = 'Lustratio Cap',
         Neck = 'Fotia Gorget',
         Ear1 = 'Sherida Earring',
         Ear2 = 'Moonshade Earring',
+        Body = 'Nyame Mail',
+        Hands = 'Adhemar Wrist. +1',
         Ring1 = 'Niqmaddu Ring',
         Ring2 = 'Epona\'s Ring',
         Back = { Name = 'Ogma\'s Cape', Augment = { [1] = '"Dbl.Atk."+10', [2] = 'Phys. dmg. taken -10%', [3] = 'Accuracy+20', [4] = 'Attack+20', [5] = 'DEX+20' } },--str better
@@ -265,14 +288,14 @@ sets = T{
     Shockwave_Default = {
         Ammo = 'Seeth. Bomblet +1',
         Head = 'Nyame Helm',
-        Neck = 'Fotia Gorget',
+        Neck = 'Sanctity Necklace',
         Ear1 = 'Friomisi Earring',
-        Ear2 = 'Hecate\'s Earring',
+        Ear2 = 'Crematio Earring',
         Body = 'Nyame Mail',
-        Ring1 = 'Niqmaddu Ring',
-        Ring2 = 'Epona\'s Ring',
+        Ring1 = 'Shiva Ring +1',
+        Ring2 = 'Karieyh Ring +1',
         Back = { Name = 'Ogma\'s Cape', Augment = { [1] = '"Dbl.Atk."+10', [2] = 'Phys. dmg. taken -10%', [3] = 'Accuracy+20', [4] = 'Attack+20', [5] = 'DEX+20' } },--str better
-        Waist = 'Fotia Belt',
+        Waist = 'Acuity Belt +1',
         Legs = 'Nyame Flanchard',
         Feet = 'Nyame Sollerets',
     },
@@ -289,12 +312,12 @@ sets = T{
         Head = 'Agwu\'s Cap',
         Neck = 'Baetyl Pendant',
         Ear1 = 'Crematio Earring',
-        Ear2 = 'Hecate\'s Earring',
+        Ear2 = 'Crematio Earring',
         Body = 'Agwu\'s Robe',
         Hands = 'Nyame Gauntlets',
         Ring1 = 'Shiva Ring +1',
         Ring2 = { Name = 'Metamor. Ring +1', AugPath='A' },
-        Waist = 'Sacro Cord',
+        Waist = 'Eschan Stone',
         Legs = 'Agwu\'s Slops',
         Feet = 'Agwu\'s Pigaches',
     },
@@ -407,6 +430,7 @@ end
 
 profile.HandleMidcast = function()--sloppy set handling here, need to clean this up
     local spell = gData.GetAction();
+    local bat = gData.GetBuffCount('Battuta');
     gFunc.EquipSet(sets.SIR);
     gFunc.EquipSet(sets.Enhancing);
 
@@ -420,9 +444,11 @@ profile.HandleMidcast = function()--sloppy set handling here, need to clean this
         gFunc.EquipSet(sets.Stoneskin);
     elseif string.match(spell.Name, 'Temper') then
         gFunc.EquipSet(sets.Temper);
+    elseif string.match(spell.Name, 'Foil') or (spell.Skill == 'Blue Magic') then
+        gFunc.EquipSet(sets.SIRenmity);
     end
 
-    if (gcdisplay.GetToggle('SIR') == true) then
+    if (bat == 0) and (gcdisplay.GetToggle('SIR') == true) then
         gFunc.EquipSet(sets.SIR);
     end
 end

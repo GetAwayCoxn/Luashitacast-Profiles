@@ -4,8 +4,8 @@ gcinclude = gFunc.LoadFile('common\\gcinclude.lua');
 
 sets = T{
     Idle = {
-        Main = 'Bolelabunga',
-        Sub = 'Genmei Shield',
+        Main = 'Idris',
+        Sub = 'Ammurapi Shield',
         Head = 'Nyame Helm',
         Neck = 'Loricate Torque +1',
         Ear1 = 'Eabani Earring',
@@ -20,16 +20,19 @@ sets = T{
         Feet = 'Volte Gaiters',
     },
     Idle_Pet = {
-        Main = 'Solstice',
+        Main = 'Idris',
         Sub = 'Genmei Shield',
         Range = 'Dunna',
         Head = 'Azimuth Hood +1',
-        Neck = 'Bagua Charm',
-        Ear1 = 'Handler\'s Earring +1',
-        Ear2 = 'Rimeice Earring',
+        Neck = 'Loricate Torque +1',
+        Ear1 = 'Ethereal Earring',
+        Ear2 = 'Etiolation Earring',
         Body = 'Telchine Chas.',
-        Hands = 'Geo. Mitaines +1',
+        Hands = 'Geo. Mitaines +2',
+        Ring1 = 'Stikini Ring +1',
+        Ring2 = 'Defending Ring',
         Back = { Name = 'Nantosuelta\'s Cape', Augment = { [1] = 'Eva.+20', [2] = 'Pet: "Regen"+15', [3] = 'Mag. Eva.+20' } },
+        Waist = 'Isa Belt',
         Legs = 'Telchine Braconi',
         Feet = 'Telchine Pigaches',
     },
@@ -40,19 +43,21 @@ sets = T{
         Ring2 = 'Chirich Ring +1',
     },
     Idle_Refresh = {
+        Main = 'Bolelabunga',
         Head = 'Befouled Crown',
+        Body = 'Jhakri Robe +2',
+        Hands = 'Bagua Mitaines +1',
         Waist = 'Fucho-no-Obi',
         Legs = 'Assid. Pants +1',
+        Feet = 'Volte Gaiters',
     },
     Town = {
-        Main = 'Bunzi\'s Rod',
+        Main = 'Idris',
         Sub = 'Culminus',
         Range = 'Dunna',
         Head = 'Bagua Galero +1',
-        Neck = 'Bathy Choker +1',
         Body = 'Agwu\'s Robe',
-        Hands = 'Geo. Mitaines +1',
-        Back = 'Solemnity Cape',
+        Hands = 'Geo. Mitaines +2',
         Legs = 'Agwu\'s Slops',
         Feet = 'Herald\'s Gaiters',
     },
@@ -73,8 +78,9 @@ sets = T{
     },
 
     Tp_Default = {
-        Main = 'Malevolence',
-        Sub = 'Genmei Shield',
+        Main = 'Idris',
+        Sub = 'Ammurapi Shield',
+        Range = 'Dunna',
         --Head = 'Jhakri Coronal +2',
         Head = 'Blistering Sallet +1',
         Neck = 'Sanctity Necklace',
@@ -108,7 +114,7 @@ sets = T{
         Ear1 = 'Etiolation Earring',
         Ear2 = 'Malignance Earring',
         Body = 'Agwu\'s Robe',
-        Hands = 'Mallquis Cuffs +2',
+        Hands = 'Bagua Mitaines +1',
         Ring1 = 'Kishar Ring',
         Ring2 = 'Mallquis Ring',
         Back = 'Swith Cape +1',
@@ -184,13 +190,13 @@ sets = T{
 		Waist = 'Gishdubar Sash',
     },
     Geomancy = { --900 skill, then indi duration, then CMP
-        Main = 'Solstice',
+        Main = 'Idris',
         Range = 'Dunna',
         Head = 'Agwu\'s Cap',--sir
         Neck = 'Bagua Charm',
         Ear1 = 'Mendi. Earring',
         Body = 'Telchine Chas.',
-        Hands = 'Geo. Mitaines +1',--15
+        Hands = 'Geo. Mitaines +2',--15
         Ring1 = 'Stikini Ring +1',--8
         Ring2 = { Name = 'Metamor. Ring +1', AugPath='A' },
         Waist = 'Hachirin-no-Obi',
@@ -198,6 +204,7 @@ sets = T{
         Feet = 'Medium\'s Sabots',--5
     },
     Indi = {
+        Main = 'Solstice',
         Back = 'Nantosuelta\'s Cape',
         Legs = 'Bagua Pants +1',
         Feet = 'Azimuth Gaiters +1',
@@ -337,6 +344,7 @@ sets = T{
     Aedge_Acc = {
     },
 
+    Bolster = {Body = 'Bagua Tunic +1'},
     TH = {--/th will force this set to equip for 10 seconds
 		Waist = 'Chaac Belt',
 	},
@@ -402,6 +410,7 @@ profile.HandleAbility = function()
     local ability = gData.GetAction();
 
     if string.match(ability.Name, 'Full Circle') then gFunc.EquipSet(sets.Geomancy) end --lazy way to ensure the empy head piece is in on use
+    if string.match(ability.Name, 'Bolster') then gFunc.EquipSet(sets.Bolster) end
 
     gcinclude.CheckCancels();
 end

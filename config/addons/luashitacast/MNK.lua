@@ -21,6 +21,7 @@ sets = T{
     Resting = {},
     Idle_Regen = {
         Neck = 'Bathy Choker +1',
+        Ear1 = 'Infused Earring',
         Body = 'Hiza. Haramaki +2',
         Hands = 'Rao Kote',
         Ring2 = 'Chirich Ring +1',
@@ -28,7 +29,7 @@ sets = T{
     Idle_Refresh = {},
     Town = {
         Main = 'Sakpata\'s Fists',
-        Ammo = 'Crepuscular Pebble',
+        Ammo = 'Staunch Tathlum',
         Head = 'Wakido Kabuto +2',
         Body = 'Hiza. Haramaki +2',
         Hands = 'Flam. Manopolas +2',
@@ -38,7 +39,7 @@ sets = T{
     },
 
     Dt = {
-        Ammo = 'Crepuscular Pebble',
+        Ammo = 'Staunch Tathlum',
         Head = 'Nyame Helm',
         Neck = { Name = 'Loricate Torque +1', AugPath='A' },
         Ear1 = { Name = 'Odnowa Earring +1', AugPath='A' },
@@ -61,7 +62,7 @@ sets = T{
         Body = 'Hiza. Haramaki +2',
         Hands = { Name = 'Adhemar Wrist. +1', AugPath='B' },
         Ring1 = 'Niqmaddu Ring',
-        Ring2 = 'Epona\'s Ring',
+        Ring2 = 'Gere Ring',
         Back = { Name = 'Segomo\'s Mantle', Augment = { [1] = 'Accuracy+20', [2] = '"Dbl.Atk."+10', [3] = 'Attack+20', [4] = 'DEX+20' } },
         Waist = 'Moonbow Belt',
         Legs = { Name = 'Tatena. Haidate +1', AugPath='A' },
@@ -95,13 +96,15 @@ sets = T{
     Preshot = {
     },
     Midshot = {
+        Ear1 = 'Telos Earring',
+        Ear2 = 'Enervating Earring',
     },
 
     Ws_Default = {
         Ammo = 'Knobkierrie',
         Head = 'Mpaca\'s Cap',
         Neck = 'Fotia Gorget',
-        Ear1 = { Name = 'Moonshade Earring', Augment = { [1] = 'Accuracy+4', [2] = 'TP Bonus +250' } },
+        Ear1 = 'Moonshade Earring',
         Ear2 = 'Odr Earring',
         Body = 'Mummu Jacket +2',
         Hands = 'Malignance Gloves',

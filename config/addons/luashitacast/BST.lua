@@ -44,7 +44,7 @@ sets = T{
         Ring2 = 'Petrov Ring',
         Back = { Name = 'Artio\'s Mantle', Augment = { [1] = 'Pet: R.Acc.+20', [2] = 'Pet: R.Atk.+20', [3] = 'Pet: "Regen"+10', [4] = 'Pet: Acc.+20', [5] = 'Pet: Atk.+20' } },
         Waist = 'Flume Belt +1',
-        Legs = 'Tali\'ah Sera. +2',
+        Legs = 'Gleti\'s Breeches',
         Feet = 'Gleti\'s Boots',
     },
 	
@@ -66,7 +66,7 @@ sets = T{
     Pet_Dt = {
         Head = 'Anwig Salade',
         Neck = 'Empath Necklace',
-        Ear1 = 'Rimeice Earring',
+        Ear1 = 'Enmerkar Earring',
         Ear2 = 'Handler\'s Earring +1',
         Body = 'Taeon Tabard',
         Hands = 'Taeon Gloves',
@@ -85,7 +85,7 @@ sets = T{
         Ear1 = 'Sherida Earring',
         Ear2 = 'Telos Earring',
         Body = 'Gleti\'s Cuirass',
-        Hands = 'Meg. Gloves +2',
+        Hands = 'Malignance Gloves',
         Ring1 = 'Epona\'s Ring',
         Ring2 = 'Gere Ring',
         Back = { Name = 'Artio\'s Mantle', Augment = { [1] = 'Pet: R.Acc.+20', [2] = 'Pet: R.Atk.+20', [3] = 'Pet: "Regen"+10', [4] = 'Pet: Acc.+20', [5] = 'Pet: Atk.+20' } },
@@ -107,7 +107,7 @@ sets = T{
         Ammo = 'Voluspa Tathlum',
         Head = 'Taeon Chapeau',
         Neck = 'Shulmanu Collar',
-        Ear1 = 'Rimeice Earring',
+        Ear1 = 'Enmerkar Earring',
         Ear2 = 'Domes. Earring',
         Back = { Name = 'Artio\'s Mantle', Augment = { [1] = 'Pet: R.Acc.+20', [2] = 'Pet: R.Atk.+20', [3] = 'Pet: "Regen"+10', [4] = 'Pet: Acc.+20', [5] = 'Pet: Atk.+20' } },
         Waist = 'Incarnation Sash',
@@ -144,6 +144,26 @@ sets = T{
     Ws_Acc = {
         Ammo = 'Voluspa Tathlum',
     },
+    Aedge_Default = {
+        Ammo = 'Knobkierrie',
+        Head = { Name = 'Valorous Mask', Augment = { [1] = 'Attack+16', [2] = 'Weapon skill damage +10%', [3] = 'Accuracy+16', [4] = 'Pet: Mag. Acc.+1', [5] = 'Pet: STR+4' } },
+        --Head = 'Nyame Helm',
+        Neck = 'Baetyl Pendant',
+        Ear1 = 'Thrud Earring',
+        Ear2 = 'Friomisi Earring',
+        Body = 'Nyame Mail',
+        Hands = 'Nyame Gauntlets',
+        Ring1 = 'Shiva Ring +1',
+        Ring2 = 'Karieyh Ring +1',
+        Back = { Name = 'Ankou\'s Mantle', Augment = { [1] = 'Accuracy+20', [2] = '"Dbl.Atk."+10', [3] = 'Attack+20', [4] = 'DEX+20' } },
+        Waist = 'Eschan Stone',
+        Legs = 'Nyame Flanchard',
+        Feet = 'Nyame Sollerets',
+    },
+    Aedge_Hybrid = {
+    },
+    Aedge_Acc = {
+    },
 	
 	Call = {
 		Hands = 'Ankusa Gloves +1',
@@ -152,6 +172,12 @@ sets = T{
 	Reward = {
 		Ammo = 'Pet Food Theta',
 	},
+    Killer = {
+		Body = 'Nukumi Gausape',
+	},
+    Spur = {
+		Feet = 'Nukumi Ocreae',
+	},
     Ready = {
 		Legs = 'Gleti\'s Breeches',
 	},
@@ -159,7 +185,7 @@ sets = T{
 		Ammo = 'Voluspa Tathlum',
 		Head = 'Nyame Helm',
         Neck = 'Shulmanu Collar',
-        Ear1 = 'Rimeice Earring',
+        Ear1 = 'Enmerkar Earring',
         Ear2 = 'Domes. Earring',
 		Body = 'Gleti\'s Cuirass',
         Hands = 'Nukumi Manoplas +1',
@@ -244,12 +270,11 @@ profile.HandleDefault = function()
 		gFunc.EquipSet(sets.Movement);
 	end
 	gcinclude.CheckDefault ();
-    if (pet ~= nil) then 
+    --[[if (pet ~= nil) then 
         if (player.Status == 'Engaged') and (pet.Status ~= 'Engaged') then
             AshitaCore:GetChatManager():QueueCommand(1, '/ja "Fight" <t>');
         end
-    end
-     
+    end]]
 end
 
 profile.HandleAbility = function()
@@ -258,6 +283,10 @@ profile.HandleAbility = function()
 		gFunc.EquipSet(sets.Call);
 	elseif string.match(ability.Name, 'Reward') then
 		gFunc.EquipSet(sets.Reward);
+    elseif string.match(ability.Type, 'Killer Instinct') then
+		gFunc.EquipSet(sets.Killer);
+    elseif string.match(ability.Type, 'Spur') then
+		gFunc.EquipSet(sets.Spur);
     elseif string.match(ability.Type, 'Ready') then
 		gFunc.EquipSet(sets.Ready);
 	end
@@ -298,6 +327,12 @@ profile.HandleWeaponskill = function()
         gFunc.EquipSet(sets.Ws_Default)
         if (gcdisplay.GetCycle('MeleeSet') ~= 'Default') then
         gFunc.EquipSet('Ws_' .. gcdisplay.GetCycle('MeleeSet')) end
+
+        if string.match(ws.Name, 'Aeolian Edge') then
+            gFunc.EquipSet(sets.Aedge_Default)
+            if (gcdisplay.GetCycle('MeleeSet') ~= 'Default') then
+            gFunc.EquipSet('Aedge_' .. gcdisplay.GetCycle('MeleeSet')); end
+        end
     end
 end
 

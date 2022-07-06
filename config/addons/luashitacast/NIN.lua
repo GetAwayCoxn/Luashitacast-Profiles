@@ -34,7 +34,7 @@ sets = T{
         Head = 'Mochi. Hatsuburi +2',
         Body = 'Mpaca\'s Doublet',
         Hands = 'Mpaca\'s Gloves',
-        Back = { Name = 'Smertrios\'s Mantle', Augment = { [1] = 'Damage taken-5%', [2] = 'Accuracy+30', [3] = 'Attack+20', [4] = '"Store TP"+10', [5] = 'DEX+20' } },
+        Back = { Name = 'Andartia\'s Mantle', Augment = { [1] = 'Damage taken-5%', [2] = '"Dbl.Atk."+10', [3] = 'Accuracy+20', [4] = 'Attack+20', [5] = 'DEX+20' } },
         Waist = 'Flume Belt +1',
         Legs = 'Mpaca\'s Hose',
         Feet = 'Mpaca\'s Boots',
@@ -50,7 +50,7 @@ sets = T{
         Hands = 'Malignance Gloves',
         Ring1 = 'Defending Ring',
         Ring2 = { Name = 'Gelatinous Ring +1', AugPath='A' },
-        Back = { Name = 'Smertrios\'s Mantle', Augment = { [1] = 'Damage taken-5%', [2] = 'Accuracy+30', [3] = 'Attack+20', [4] = '"Store TP"+10', [5] = 'DEX+20' } },
+        Back = { Name = 'Andartia\'s Mantle', Augment = { [1] = 'Damage taken-5%', [2] = '"Dbl.Atk."+10', [3] = 'Accuracy+20', [4] = 'Attack+20', [5] = 'DEX+20' } },
         Waist = 'Flume Belt +1',
         Legs = 'Nyame Flanchard',
         Feet = 'Nyame Sollerets',
@@ -91,18 +91,18 @@ sets = T{
     },
     Tp_Proc = { -- a set to force low dmg for things like Abyssea
         Ammo = { Name = 'Coiste Bodhar', AugPath='A' },
-        Head = 'Flam. Zucchetto +2',
+        Head = 'Rawhide Mask',
         Neck = { Name = 'Sam. Nodowa +1', AugPath='A' },
         Ear1 = 'Telos Earring',
         Ear2 = 'Cessance Earring',
         Body = 'Kasuga Domaru +1',
-        Hands = 'Flam. Manopolas +2',
+        Hands = 'Tatena. Gote +1',
         Ring1 = 'Petrov Ring',
         Ring2 = 'Epona\'s Ring',
-        Back = { Name = 'Smertrios\'s Mantle', Augment = { [1] = 'Damage taken-5%', [2] = 'Accuracy+30', [3] = 'Attack+20', [4] = '"Store TP"+10', [5] = 'DEX+20' } },
+        Back = { Name = 'Andartia\'s Mantle', Augment = { [1] = 'Damage taken-5%', [2] = '"Dbl.Atk."+10', [3] = 'Accuracy+20', [4] = 'Attack+20', [5] = 'DEX+20' } },
         Waist = { Name = 'Sailfi Belt +1', AugPath='A' },
         Legs = { Name = 'Tatena. Haidate +1', AugPath='A' },
-        Feet = 'Flam. Gambieras +2',
+        Feet = 'Tatena. Sune. +1',
     },
 
 
@@ -254,8 +254,9 @@ sets = T{
         Feet = 'Danzo Sune-Ate',
     },
 
-    TH = {--/th will force this set to equip for 10 seconds
+    TH = {
 		Waist = 'Chaac Belt',
+        Feet = { Name = 'Herculean Boots', Augment = { [1] = 'Potency of "Cure" effect received+5%', [2] = 'Mag. Acc.+19', [3] = 'Accuracy+21', [4] = '"Mag. Atk. Bns."+19', [5] = '"Treasure Hunter"+2' } },
 	},
     Movement = {
         Feet = 'Danzo Sune-Ate',
@@ -295,11 +296,9 @@ profile.HandleDefault = function()
     
     if (player.Status == 'Engaged') then
         gFunc.EquipSet(sets.Tp_Default);
-        if (gcdisplay.GetCycle('MeleeSet') ~= 'Default') then
-            gFunc.EquipSet('Tp_' .. gcdisplay.GetCycle('MeleeSet')); end
-            if (gcdisplay.GetToggle('TH') == true) then gFunc.EquipSet(sets.TH); end
-        if (gcdisplay.GetToggle('PROC') == true) then
-            gFunc.EquipSet(sets.Tp_Proc); end
+        if (gcdisplay.GetCycle('MeleeSet') ~= 'Default') then gFunc.EquipSet('Tp_' .. gcdisplay.GetCycle('MeleeSet')); end
+        if (gcdisplay.GetToggle('PROC') == true) then gFunc.EquipSet(sets.Tp_Proc); end
+        if (gcdisplay.GetToggle('TH') == true) then gFunc.EquipSet(sets.TH); end
     elseif (player.Status == 'Resting') then
         gFunc.EquipSet(sets.Resting);
     elseif (player.IsMoving == true) then

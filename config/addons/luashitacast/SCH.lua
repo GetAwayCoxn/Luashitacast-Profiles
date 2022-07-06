@@ -67,6 +67,21 @@ sets = T{
     },
 
     Tp_Default = {
+        Main = 'Kaja Rod',
+        Sub = 'Genmei Shield',
+        Ammo = 'Jukukik Feather',
+        Head = 'Agwu\'s Cap',
+        Neck = 'Sanctity Necklace',
+        Ear1 = 'Cessance Earring',
+        Ear2 = 'Telos Earring',
+        Body = 'Agwu\'s Robe',
+        Hands = 'Nyame Gauntlets',
+        Ring1 = 'Cacoethic Ring +1',
+        Ring2 = 'Chirich Ring +1',
+        Back = 'Aurist\'s Cape +1',
+        Waist = 'Eschan Stone',
+        Legs = 'Agwu\'s Slops',
+        Feet = 'Agwu\'s Pigaches',
     },
     Tp_Hybrid = {
     },
@@ -238,8 +253,7 @@ sets = T{
         Ring1 = 'Mujin Band', -- 0 and 5
         Waist = { Name = 'Acuity Belt +1', AugPath='A' },
         Legs = 'Agwu\'s Slops', -- 9 and 0
-        --Feet = 'Agwu\'s Pigaches', -- 6 and 0
-        Feet = 'Merlinic Crackows', -- 10 and 0
+        Feet = 'Agwu\'s Pigaches', -- 6 and 0
     },
     Helix = {
         Main = 'Bunzi\'s Rod',
@@ -264,7 +278,7 @@ sets = T{
         Feet = 'Amalric Nails +1',
     },
     Storm = {
-        Feet = 'Peda. Loafers +1',
+        Feet = 'Peda. Loafers +2',
     },
     Kaustra = {--need to refine this set
         Main = 'Marin Staff +1',
@@ -292,7 +306,23 @@ sets = T{
         Ear2 = 'Enervating Earring',
     },
 
-    Ws_Default = {--for me this is basically just mykyr
+    Ws_Default = {
+        Head = 'Nyame Helm',
+        Neck = 'Sanctity Necklace',
+        Ear1 = 'Moonshade Earring',
+        Ear2 = 'Malignance Earring',
+        Body = 'Nyame Mail',
+        Hands = 'Nyame Gauntlets',
+        Ring2 = 'Karieyh Ring +1',
+        Waist = 'Eschan Stone',
+        Legs = 'Nyame Flanchard',
+        Feet = 'Nyame Sollerets',
+    },
+    Ws_Hybrid = {
+    },
+    Ws_Acc = {
+    },
+    Mykyr_Default = {
         Ammo = 'Ghastly Tathlum +1',
         Head = 'Pixie Hairpin +1',
         Neck = 'Sanctity Necklace',
@@ -307,9 +337,9 @@ sets = T{
         Legs = 'Amalric Slops +1',
         Feet = 'Arbatel Loafers +1',
     },
-    Ws_Hybrid = {
+    Mykyr_Hybrid = {
     },
-    Ws_Acc = {
+    Mykyr_Acc = {
     },
     Cataclysm_Default = {
         Ammo = 'Pemphredo Tathlum',
@@ -517,6 +547,10 @@ profile.HandleWeaponskill = function()
             gFunc.EquipSet(sets.Cataclysm_Default)
             if (gcdisplay.GetCycle('MeleeSet') ~= 'Default') then
             gFunc.EquipSet('Cataclysm_' .. gcdisplay.GetCycle('MeleeSet')); end
+        elseif string.match(ws.Name, 'Mykyr') then
+            gFunc.EquipSet(sets.Mykyr_Default)
+            if (gcdisplay.GetCycle('MeleeSet') ~= 'Default') then
+            gFunc.EquipSet('Mykyr_' .. gcdisplay.GetCycle('MeleeSet')); end
         end
     end
 end

@@ -318,6 +318,10 @@ sets = T{
 		Waist = 'Chaac Belt',
         Feet = { Name = 'Herculean Boots', Augment = { [1] = 'Potency of "Cure" effect received+5%', [2] = 'Mag. Acc.+19', [3] = 'Accuracy+21', [4] = '"Mag. Atk. Bns."+19', [5] = '"Treasure Hunter"+2' } },
 	},
+    Salvage = {
+		Main = 'Naegling',
+        Sub = 'Bunzi\'s Rod',
+	},
 	Movement = {
 		Legs = 'Carmine Cuisses +1',
 	},
@@ -344,6 +348,7 @@ end
 profile.HandleDefault = function()
 	gFunc.EquipSet(sets.Idle);
 	
+    local zone = gData.GetEnvironment();
 	local player = gData.GetPlayer();
     if (player.Status == 'Engaged') then
         gFunc.EquipSet(sets.Tp_Default)
@@ -367,6 +372,11 @@ profile.HandleDefault = function()
 
     if (gcdisplay.GetToggle('CJmode') ~= true) then
         gcinclude.CheckDefault ();
+    end
+
+    --lazy equip weapons for salvage runs
+    if (zone.Area == 'Silver Sea Remnants') then
+        gFunc.EquipSet(sets.Salvage);
     end
 end
 
