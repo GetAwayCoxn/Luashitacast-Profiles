@@ -29,6 +29,24 @@ gcinclude.sets = T{
 		Ring1 = 'Artificer\'s Ring',
 		Ring2 = 'Craftmaster\'s Ring',
     },
+	Zeni = { -- this set is meant as a default set for pictures, equip using /zeniset
+		Main = 'Excalipoor',
+		Sub = 'Genmei Shield',
+		Range = 'Soultrapper 2000',
+		Ammo = 'Blank Soulplate',
+		Head = 'Malignance Chapeau',
+        Neck = 'Bathy Choker +1';
+        Ear1 = 'Eabani Earring',
+        Ear2 = 'Domes. Earring',
+        Body = 'Nyame Mail',
+        Hands = 'Malignance Gloves',
+        Ring1 = 'Vengeful Ring',
+        Ring2 = 'Ilabrat Ring',
+		Back = { Name = 'Rosmerta\'s Cape', Augment = { [1] = '"Fast Cast"+10', [2] = 'Evasion+15' } },
+        Waist = 'Kasiri Belt',
+        Legs = 'Nyame Flanchard',
+        Feet = 'Nyame Sollerets',
+    },
 	Fishing = { -- this set is meant as a default set for fishing, equip using /fishset
 		Range = 'Halcyon Rod',
 		Ring2 = 'Pelican Ring',
@@ -48,9 +66,9 @@ gcinclude.sets = T{
 };
 gcinclude.settings = {
 	AutoGear = true; --set to false if you dont want DT/Regen/Refresh/PetDT gear to come on automatically at the defined %'s here
-	RegenGearHPP = 75; -- set HPP to have your idle regen set to come on
+	RegenGearHPP = 60; -- set HPP to have your idle regen set to come on
 	RefreshGearMPP = 70; -- set MPP to have your idle refresh set to come on
-	DTGearHPP = 50; -- set HPP to have your DT set to come on
+	DTGearHPP = 40; -- set HPP to have your DT set to come on
 	PetDTGearHPP = 50; -- set pet HPP to have your PetDT set to come on
 };
 
@@ -69,7 +87,7 @@ gcinclude.BstPetMagicAttack = T{'Gloom Spray','Fireball','Acid Spray','Molting P
 gcinclude.BstPetMagicAccuracy = T{'Toxic Spit','Acid Spray','Leaf Dagger','Venom Spray','Venom','Dark Spore','Sandblast','Dust Cloud','Stink Bomb','Slug Family','Intimidate','Gloeosuccus','Spider Web','Filamented Hold','Choke Breath','Blaster','Snow Cloud','Roar','Palsy Pollen','Spore','Brain Crush','Choke Breath','Silence Gas','Chaotic Eye','Sheep Song','Soporific','Predatory Glare','Sudden Lunge','Numbing Noise','Jettatura','Bubble Shower','Spoil','Scream','Noisome Powder','Acid Mist','Rhinowrecker','Swooping Frenzy','Venom Shower','Corrosive Ooze','Spiral Spin','Infrasonics','Hi-Freq Field','Purulent Ooze','Foul Waters','Sandpit','Infected Leech','Pestilent Plume'};
 gcinclude.SmnSkill = T{'Shining Ruby','Glittering Ruby','Crimson Howl','Inferno Howl','Frost Armor','Crystal Blessing','Aerial Armor','Hastega II','Fleet Wind','Hastega','Earthen Ward','Earthen Armor','Rolling Thunder','Lightning Armor','Soothing Current','Ecliptic Growl','Heavenward Howl','Ecliptic Howl','Noctoshield','Dream Shroud','Altana\'s Favor','Reraise','Reraise II','Reraise III','Raise','Raise II','Raise III','Wind\'s Blessing'};
 gcinclude.SmnMagical = T{'Searing Light','Meteorite','Holy Mist','Inferno','Fire II','Fire IV','Meteor Strike','Conflag Strike','Diamond Dust','Blizzard II','Blizzard IV','Heavenly Strike','Aerial Blast','Aero II','Aero IV','Wind Blade','Earthen Fury','Stone II','Stone IV','Geocrush','Judgement Bolt','Thunder II','Thunder IV','Thunderstorm','Thunderspark','Tidal Wave','Water II','Water IV','Grand Fall','Howling Moon','Lunar Bay','Ruinous Omen','Somnolence','Nether Blast','Night Terror','Level ? Holy'};
-gcinclude.SmnHealing = T{'Healing Ruby','Whispering Wind','Spring Water'};
+gcinclude.SmnHealing = T{'Healing Ruby','Healing Ruby II','Whispering Wind','Spring Water'};
 gcinclude.SmnHybrid = T{'Flamming Crush','Burning Strike'};
 gcinclude.SmnEnfeebling = T{'Diamond Storm','Sleepga','Shock Squall','Slowga','Tidal Roar','Pavor Nocturnus','Ultimate Terror','Nightmare','Mewing Lullaby','Eerie Eye'};
 gcinclude.BluMagPhys = T{'Foot Kick','Sprout Smack','Wild Oats','Power Attack','Queasyshroom','Battle Dance','Feather Storm','Helldive','Bludgeon','Claw Cyclone','Screwdriver','Grand Slam','Smite of Rage','Pinecone Bomb','Jet Stream','Uppercut','Terror Touch','Mandibular Bite','Sickle Slash','Dimensional Death','Spiral Spin','Death Scissors','Seedspray','Body Slam','Hydro Shot','Frenetic Rip','Spinal Cleave','Hysteric Barrage','Asuran Claws','Cannonball','Disseverment','Ram Charge','Vertical Cleave','Final Sting','Goblin Rush','Vanity Dive','Whirl of Rage','Benthic Typhoon','Quad. Continuum','Empty Thrash','Delta Thrust','Heavy Strike','Quadrastrike','Tourbillion','Amorphic Spikes','Barbed Crescent','Bilgestorm','Bloodrake','Glutinous Dart','Paralyzing Triad','Thrashing Assault','Sinker Drill','Sweeping Gouge','Saurian Slide'};
@@ -90,6 +108,7 @@ gcinclude.Rolls = T{{'Fighter\'s Roll',5,9}, {'Monk\'s Roll',3,7}, {'Healer\'s R
 	{'Companion\'s Roll',2,10},{'Avenger\'s Roll',4,8},}; -- {name,lucky,unlucky}
 gcinclude.RRSET = false;
 gcinclude.CraftSet = false;
+gcinclude.ZeniSet = false;
 gcinclude.FishSet = false;
 gcinclude.CORmsg = true;
 
@@ -106,6 +125,7 @@ function gcinclude.SetAlias()
 	AshitaCore:GetChatManager():QueueCommand(-1, '/alias /telering /lac fwd telering');
 	AshitaCore:GetChatManager():QueueCommand(-1, '/alias /rrset /lac fwd rrset');
 	AshitaCore:GetChatManager():QueueCommand(-1, '/alias /craftset /lac fwd craftset');
+	AshitaCore:GetChatManager():QueueCommand(-1, '/alias /zeniset /lac fwd zeniset');
 	AshitaCore:GetChatManager():QueueCommand(-1, '/alias /fishset /lac fwd fishset');
 	AshitaCore:GetChatManager():QueueCommand(-1, '/alias /cormsg /lac fwd cormsg');
 	if (player.MainJob == 'RDM') or (player.MainJob == 'BLM') or (player.MainJob == 'SCH') or (player.MainJob == 'GEO') then
@@ -222,6 +242,12 @@ function gcinclude.SetCommands(args)
 		else
 			gcinclude.CraftSet = true;
 		end
+	elseif (args[1] == 'zeniset') then
+		if gcinclude.ZeniSet == true then
+			gcinclude.ZeniSet = false;
+		else
+			gcinclude.ZeniSet = true;
+		end
 	elseif (args[1] == 'fishset') then
 		if gcinclude.FishSet == true then
 			gcinclude.FishSet = false;
@@ -267,12 +293,14 @@ function gcinclude.SetCommands(args)
 			if (gcdisplay.GetToggle('Fight') == false) then
 				AshitaCore:GetChatManager():QueueCommand(-1, '/lac disable Main');
 				AshitaCore:GetChatManager():QueueCommand(-1, '/lac disable Sub');
-				if (player.MainJob == 'RDM') then AshitaCore:GetChatManager():QueueCommand(-1, '/lac disable Range') end
+				if (player.MainJob == 'RDM') or (player.MainJob == 'GEO') then AshitaCore:GetChatManager():QueueCommand(-1, '/lac disable Range') end
+				if (player.MainJob == 'GEO') then AshitaCore:GetChatManager():QueueCommand(-1, '/lac disable Ammo') end
 				gcdisplay.AdvanceToggle('Fight');
 			else
 				AshitaCore:GetChatManager():QueueCommand(-1, '/lac enable Main');
 				AshitaCore:GetChatManager():QueueCommand(-1, '/lac enable Sub');
-				if (player.MainJob == 'RDM') then AshitaCore:GetChatManager():QueueCommand(-1, '/lac enable Range') end
+				if (player.MainJob == 'RDM') or (player.MainJob == 'GEO') then AshitaCore:GetChatManager():QueueCommand(-1, '/lac enable Range') end
+				if (player.MainJob == 'GEO') then AshitaCore:GetChatManager():QueueCommand(-1, '/lac disable Ammo') end
 				gcdisplay.AdvanceToggle('Fight');
 			end
 		end
@@ -645,6 +673,7 @@ function gcinclude.CheckDefault()
     gcinclude.CheckCommonDebuffs();
 	gcinclude.CheckLockingRings();
 	if (gcinclude.CraftSet == true) then gFunc.EquipSet(gcinclude.sets.Crafting) end
+	if (gcinclude.ZeniSet == true) then gFunc.EquipSet(gcinclude.sets.Zeni) end
 	if (gcinclude.FishSet == true) then gFunc.EquipSet(gcinclude.sets.Fishing) end
 	if (gcinclude.RRSET == true) then gFunc.EquipSet(gcinclude.sets.Reraise) end
 end
