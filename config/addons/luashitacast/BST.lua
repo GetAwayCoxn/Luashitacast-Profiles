@@ -259,22 +259,20 @@ profile.HandleDefault = function()
 	if (player.IsMoving == true) then
 		gFunc.EquipSet(sets.Movement);
 	end
-	if (gcdisplay.GetToggle('DTset') == true) then
-         
+	
+	gcinclude.CheckDefault ();
+    if (gcdisplay.GetToggle('DTset') == true) then
 		gFunc.EquipSet(sets.Dt);
-        if (pet ~= nil) and (pet.HPP < 80) then
+        if (pet ~= nil) and (pet.HPP < 60) then
             gFunc.EquipSet(sets.Pet_Dt);
 		end
 	end
-	if (gcdisplay.GetToggle('Kite') == true) then
-		gFunc.EquipSet(sets.Movement);
-	end
-	gcinclude.CheckDefault ();
-    --[[if (pet ~= nil) then 
+    if (gcdisplay.GetToggle('Kite') == true) then gFunc.EquipSet(sets.Movement) end;
+    if (pet ~= nil) then 
         if (player.Status == 'Engaged') and (pet.Status ~= 'Engaged') then
             AshitaCore:GetChatManager():QueueCommand(1, '/ja "Fight" <t>');
         end
-    end]]
+    end
 end
 
 profile.HandleAbility = function()

@@ -229,11 +229,6 @@ profile.HandleDefault = function()
 		gFunc.EquipSet(sets.Movement);
     end
 	
-	
-	if (gcdisplay.GetToggle('DTset') == true) then
-		 
-		gFunc.EquipSet(sets.Dt);
-	end
     if (sa == 1) and (ta == 1) then
         gFunc.EquipSet('SATA');
     elseif (sa == 1) then
@@ -242,12 +237,9 @@ profile.HandleDefault = function()
         gFunc.EquipSet('TA');
     end
     
-	if (gcdisplay.GetToggle('Kite') == true) then
-		gFunc.EquipSet(sets.Movement);
-	end
-
     gcinclude.CheckDefault ();
-     
+    if (gcdisplay.GetToggle('DTset') == true) then gFunc.EquipSet(sets.Dt) end;
+    if (gcdisplay.GetToggle('Kite') == true) then gFunc.EquipSet(sets.Movement) end;
 end
 
 profile.HandleAbility = function()

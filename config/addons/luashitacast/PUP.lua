@@ -289,17 +289,6 @@ profile.HandleDefault = function()
 		gFunc.EquipSet(sets.Movement);
 	end
 
-	if (gcdisplay.GetToggle('DTset') == true) then
-        if (pet ~= nil) then
-            gFunc.EquipSet(sets.Pet_Dt);
-		end
-         
-        gFunc.EquipSet(sets.Dt);
-	end
-	if (gcdisplay.GetToggle('Kite') == true) then
-		gFunc.EquipSet(sets.Movement);
-	end
-	
     gcinclude.CheckDefault ();
     if (pet ~= nil) and (pet.TP > 950) and (pet.Status == 'Engaged') then 
         if (gcdisplay.GetCycle('PupMode') == 'Ranger') then
@@ -308,7 +297,13 @@ profile.HandleDefault = function()
             gFunc.EquipSet(sets.Pet_WS);
         end
     end
-     
+    if (gcdisplay.GetToggle('DTset') == true) then
+        if (pet ~= nil) then
+            gFunc.EquipSet(sets.Pet_Dt);
+		end
+        gFunc.EquipSet(sets.Dt);
+	end
+    if (gcdisplay.GetToggle('Kite') == true) then gFunc.EquipSet(sets.Movement) end;
 end
 
 profile.HandleAbility = function()

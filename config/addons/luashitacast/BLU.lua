@@ -45,8 +45,7 @@ sets = T{
         Head = 'Malignance Chapeau',
         Neck = 'Bathy Choker +1';
         Ear1 = 'Eabani Earring',
-        Ear2 = 'Domes. Earring',
-        --Ear2 = 'Infused Earring',--maybe send to wig
+        Ear2 = 'Infused Earring',
         Body = 'Nyame Mail',
         Hands = 'Malignance Gloves',
         Ring1 = 'Vengeful Ring',
@@ -362,18 +361,11 @@ profile.HandleDefault = function()
 		gFunc.EquipSet(sets.Movement);
     end
 	
-	
-	if (gcdisplay.GetToggle('DTset') == true) then
-		gFunc.EquipSet(sets.Dt);
-	end
-	if (gcdisplay.GetToggle('Kite') == true) then
-		gFunc.EquipSet(sets.Movement);
-	end
-
     if (gcdisplay.GetToggle('CJmode') ~= true) then
         gcinclude.CheckDefault ();
     end
-
+    if (gcdisplay.GetToggle('DTset') == true) then gFunc.EquipSet(sets.Dt) end;
+    if (gcdisplay.GetToggle('Kite') == true) then gFunc.EquipSet(sets.Movement) end;
     --lazy equip weapons for salvage runs
     if (zone.Area == 'Silver Sea Remnants') then
         gFunc.EquipSet(sets.Salvage);

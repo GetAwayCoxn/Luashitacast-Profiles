@@ -309,21 +309,15 @@ profile.HandleDefault = function()
         end
     end
 	
-	
-	if (gcdisplay.GetToggle('DTset') == true) then
-		 
-		gFunc.EquipSet(sets.Dt);
-	end
-	if (gcdisplay.GetToggle('Kite') == true) then
+    gcinclude.CheckDefault ();
+    if (gcdisplay.GetToggle('DTset') == true) then gFunc.EquipSet(sets.Dt) end;
+    if (gcdisplay.GetToggle('Kite') == true) then
         if (game.Time < 6.00) or (game.Time > 18.00) then
 		    gFunc.EquipSet(sets.Movement_Night);
         else
             gFunc.EquipSet(sets.Movement);
         end
 	end
-
-    gcinclude.CheckDefault ();
-     
 end
 
 profile.HandleAbility = function()

@@ -8,12 +8,12 @@ sets = T{
         Main = 'Bunzi\'s Rod',
         Sub = 'Ammurapi Shield',
         Ammo = 'Epitaph',
-        Head = 'Nyame Helm',
+        Head = 'Convoker\'s Horn',
         Neck = 'Loricate Torque +1',
         Ear1 = 'Odnowa Earring +1',
         Ear2 = 'Etiolation Earring',
-        Body = 'Nyame Mail',
-        Hands = 'Nyame Gauntlets',
+        Body = 'Shomonjijoe +1',
+        Hands = 'Asteria Mitts +1',
         Ring1 = 'Defending Ring',
         Ring2 = 'Stikini Ring +1',
         Back = 'Solemnity Cape',
@@ -447,18 +447,15 @@ profile.HandleDefault = function()
 	if (player.IsMoving == true) then
 		gFunc.EquipSet(sets.Movement);
 	end
-	if (gcdisplay.GetToggle('DTset') == true) then
-         
+	
+	gcinclude.CheckDefault ();
+    if (gcdisplay.GetToggle('DTset') == true) then
 		gFunc.EquipSet(sets.Dt);
         if (pet ~= nil) then
             gFunc.EquipSet(sets.Pet_Dt);
 		end
 	end
-	if (gcdisplay.GetToggle('Kite') == true) then
-		gFunc.EquipSet(sets.Movement);
-	end
-	gcinclude.CheckDefault ();
-     
+    if (gcdisplay.GetToggle('Kite') == true) then gFunc.EquipSet(sets.Movement) end;
 end
 
 profile.HandleAbility = function()

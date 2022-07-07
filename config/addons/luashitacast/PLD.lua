@@ -386,16 +386,10 @@ profile.HandleDefault = function()
 	if (cover >= 1) then
 		gFunc.EquipSet(sets.Fealty); -- same set as fealty
 	end
-	if (gcdisplay.GetToggle('DTset') == true) then
-		 
-		gFunc.EquipSet(sets.Dt);
-	end
-	if (gcdisplay.GetToggle('Kite') == true) then
-		gFunc.EquipSet(sets.Movement);
-	end
-
+	
     gcinclude.CheckDefault ();
-     
+    if (gcdisplay.GetToggle('DTset') == true) then gFunc.EquipSet(sets.Dt) end;
+    if (gcdisplay.GetToggle('Kite') == true) then gFunc.EquipSet(sets.Movement) end;
 end
 
 profile.HandleAbility = function()

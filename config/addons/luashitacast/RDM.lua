@@ -372,17 +372,9 @@ profile.HandleDefault = function()
 		gFunc.EquipSet(sets.Movement);
     end
 	
-	
-	if (gcdisplay.GetToggle('DTset') == true) then
-		 
-		gFunc.EquipSet(sets.Dt);
-	end
-	if (gcdisplay.GetToggle('Kite') == true) then
-		gFunc.EquipSet(sets.Movement);
-	end
-
     gcinclude.CheckDefault ();
-     
+    if (gcdisplay.GetToggle('DTset') == true) then gFunc.EquipSet(sets.Dt) end;
+    if (gcdisplay.GetToggle('Kite') == true) then gFunc.EquipSet(sets.Movement) end;
 end
 
 profile.HandleAbility = function()
