@@ -442,6 +442,7 @@ function gcinclude.CheckWsBailout()
 	else
 		return true;
 	end
+	gcdisplay.Update();
 end
 
 function gcinclude.CheckSpellBailout()
@@ -456,6 +457,7 @@ function gcinclude.CheckSpellBailout()
 	else
 		return true;
 	end
+	gcdisplay.Update();
 end
 
 function gcinclude.DoWarpRing()
@@ -664,6 +666,7 @@ function gcinclude.CheckCancels()
 		AshitaCore:GetChatManager():QueueCommand(1, '/cancel Stoneskin');
 		do_ss:once(1);
 	end
+	gcdisplay.Update();
 end
 
 function gcinclude.CheckDefault()
@@ -676,6 +679,7 @@ function gcinclude.CheckDefault()
 	if (gcinclude.ZeniSet == true) then gFunc.EquipSet(gcinclude.sets.Zeni) end
 	if (gcinclude.FishSet == true) then gFunc.EquipSet(gcinclude.sets.Fishing) end
 	if (gcinclude.RRSET == true) then gFunc.EquipSet(gcinclude.sets.Reraise) end
+	gcdisplay.Update();
 end
 
 function gcinclude.Unload()
