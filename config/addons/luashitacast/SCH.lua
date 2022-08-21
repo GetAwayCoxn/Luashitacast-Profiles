@@ -103,7 +103,7 @@ sets = T{
         Ring2 = 'Mallquis Ring',
         Back = 'Swith Cape +1',
         Waist = 'Embla Sash',
-        Legs = 'Agwu\'s Slops',
+        Legs = 'Pinga Pants',--11
         Feet = 'Acad. Loafers +2',
     },
     Cure_Precast = {
@@ -120,24 +120,22 @@ sets = T{
     },
 
 
-    Cure = {
-        Main = 'Bunzi\'s Rod',
+    Cure = {--I cap is 50, II cap is 30
+        Main = 'Bunzi\'s Rod',--I 30
         Sub = 'Ammurapi Shield',
         Ammo = 'Pemphredo Tathlum',
-        Head = { Name = 'Vanya Hood', AugPath='C' },
-        Neck = 'Nodens Gorget',
-        Ear1 = 'Mendi. Earring',
+        Neck = 'Nodens Gorget',--I 5
+        Ear1 = 'Mendi. Earring',--I 5
         Ear2 = 'Regal Earring',
-        Body = 'Gende. Bliaut +1',
-        Hands = 'Peda. Bracers +2',
+        Hands = 'Peda. Bracers +2',--II 2 and skill
         Ring1 = 'Stikini Ring +1',
         Ring2 = { Name = 'Metamor. Ring +1', AugPath='A' },
-        Back = 'Solemnity Cape',
+        Back = 'Solemnity Cape',--I 7
         Waist = 'Rumination Sash',
-        Legs = 'Vanya Slops',
-        Feet = 'Vanya Clogs',
+        Legs = 'Pinga Pants',--11
+        Feet = 'Vanya Clogs',--I 10
     },
-    Self_Cure = {
+    Self_Cure = {--cap 30
         Waist = 'Gishdubar Sash',
     },
     Regen = {
@@ -170,7 +168,7 @@ sets = T{
         Ring2 = { Name = 'Metamor. Ring +1', AugPath='A' },
         Back = 'Solemnity Cape',
         Waist = 'Embla Sash',
-        Legs = { Name = 'Telchine Braconi', Augment = { [1] = 'Enh. Mag. eff. dur. +8', [2] = '"Conserve MP"+4' } },
+        Legs = 'Telchine Braconi',
         Feet = 'Telchine Pigaches',
     },
     Self_Enhancing = {},
@@ -278,7 +276,7 @@ sets = T{
         Feet = 'Amalric Nails +1',
     },
     Storm = {
-        Feet = 'Peda. Loafers +2',
+        Feet = 'Peda. Loafers +3',
     },
     Kaustra = {--need to refine this set
         Main = 'Marin Staff +1',
@@ -303,13 +301,12 @@ sets = T{
     },
     Midshot = {
         Ear1 = 'Telos Earring',
-        Ear2 = 'Enervating Earring',
+        Ear2 = 'Crep. Earring',
     },
 
     Ws_Default = {
         Head = 'Nyame Helm',
         Neck = 'Sanctity Necklace',
-        Ear1 = 'Moonshade Earring',
         Ear2 = 'Malignance Earring',
         Body = 'Nyame Mail',
         Hands = 'Nyame Gauntlets',
@@ -345,8 +342,8 @@ sets = T{
         Ammo = 'Pemphredo Tathlum',
         Head = 'Pixie Hairpin +1',
         Neck = 'Sanctity Necklace',
-        Ear1 = 'Moonshade Earring',
-        Ear2 = 'Malignance Earring',
+        Ear1 = 'Malignance Earring',
+        Ear2 = 'Crematio Earring',
         Body = 'Nyame Mail',
         Hands = 'Nyame Gauntlets',
         Ring1 = 'Shiva Ring +1',
@@ -362,6 +359,7 @@ sets = T{
     },
 
     TH = {--/th will force this set to equip for 10 seconds
+        Ammo = 'Per. Lucky Egg',
 		Waist = 'Chaac Belt',
 	},
     Movement = {
@@ -371,9 +369,14 @@ sets = T{
 
 sets = sets:merge(gcinclude.sets, false);profile.Sets = sets;
 
+profile.Packer = {
+    {Name = 'Tropical Crepe', Quantity = 'all'},
+    {Name = 'Rolan. Daifuku', Quantity = 'all'},
+};
+
 profile.OnLoad = function()
     gSettings.AllowAddSet = false;
-    gcinclude.Initialize:once(3);
+    gcinclude.Initialize();
 
     AshitaCore:GetChatManager():QueueCommand(1, '/macro book 8');
     AshitaCore:GetChatManager():QueueCommand(1, '/macro set 2');
@@ -463,6 +466,8 @@ profile.HandleMidcast = function()
             gFunc.EquipSet(sets.Stoneskin);
         elseif string.contains(spell.Name, 'Regen') then
             gFunc.EquipSet(sets.Regen);
+        elseif string.contains(spell.Name, 'storm') then
+            gFunc.EquipSet(sets.Storm);
         elseif string.contains(spell.Name, 'Refresh') then
             gFunc.EquipSet(sets.Refresh);
             if (target.Name == me) then
