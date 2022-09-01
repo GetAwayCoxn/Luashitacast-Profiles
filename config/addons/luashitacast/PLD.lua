@@ -10,7 +10,7 @@ sets = T{
         Neck ='Unmoving Collar +1',
         Ear1 = 'Odnowa Earring +1',
         Ear2 = 'Etiolation Earring',
-        Body = 'Hjarrandi Breast.',
+        Body = 'Nyame Mail',
         Hands = 'Volte Moufles',
         Ring1 = 'Moonbeam Ring',
         Ring2 = 'Gelatinous Ring +1',
@@ -27,7 +27,6 @@ sets = T{
         Ring2 = 'Chirich Ring +1',
     },
     Idle_Refresh = {
-        Ammo = 'Homiliary',
         Head = 'Jumalik Helm',
         Ring1 = 'Stikini Ring +1',
     },
@@ -48,7 +47,7 @@ sets = T{
         Neck ='Loricate Torque +1',
         Ear1 = 'Odnowa Earring +1',
         Ear2 = 'Etiolation Earring',
-        Body = 'Hjarrandi Breast.',
+        Body = 'Nyame Mail',
         Hands = 'Sakpata\'s Gauntlets',
         Ring1 = 'Moonbeam Ring',
         Ring2 = 'Gelatinous Ring +1',
@@ -96,7 +95,7 @@ sets = T{
     --These will overwrite any above TP sets if /tankset is used
     Tank_Main = {--Default Tanking,  dt 
         Ammo = 'Staunch Tathlum',
-        Head = 'Souv. Schaller +1',
+        Head = 'Chev. Armet +1',
         Neck = 'Unmoving Collar +1',
         Ear1 = 'Odnowa Earring +1',
         Ear2 = 'Ethereal Earring',
@@ -112,7 +111,7 @@ sets = T{
     Tank_MEVA = {
         Ammo = 'Staunch Tathlum',
         Head = 'Nyame Helm',
-        Neck = 'Moonlight Necklace', -- 15
+        Neck = 'Warder\'s Charm +1',
         Ear1 = 'Eabani Earring',
         Ear2 = 'Etiolation Earring',
         Body = 'Nyame Mail',
@@ -120,7 +119,7 @@ sets = T{
         Ring1 = 'Vengeful Ring',
         Ring2 = 'Purity Ring',
         Back = { Name = 'Rudianos\'s Mantle', Augment = { [1] = 'Phys. dmg. taken -10%', [2] = 'Mag. Eva.+20', [3] = 'Eva.+20', [4] = 'HP+60', [5] = 'Enmity+10' } },
-        Waist = 'Asklepian Belt',
+        Waist = 'Carrier\'s Sash',
         Legs = 'Nyame Flanchard',
         Feet = 'Nyame Sollerets',
     },
@@ -129,12 +128,13 @@ sets = T{
         Ammo = 'Sapience Orb',--2
         Head = 'Chev. Armet +1',--7
         Neck = 'Baetyl Pendant',--4
-        Ear1 = 'Tuisto Earring',
+        --Ear1 = 'Tuisto Earring',
+        Ear1 = 'Odnowa Earring +1',
         Ear2 = 'Etiolation Earring',--1
         Body = 'Rev. Surcoat +2',--5
         Hands = 'Leyline Gloves',--6
         Ring2 = 'Kishar Ring',--4
-        Back = { Name = 'Rudianos\'s Mantle', Augment = { [1] = 'Phys. dmg. taken -10%', [2] = 'Mag. Eva.+20', [3] = 'Eva.+20', [4] = 'HP+60', [5] = 'Enmity+10' } },--10
+        Back = { Name = 'Rudianos\'s Mantle', Augment = { [1] = 'Phys. dmg. taken -10%', [2] = 'Mag. Eva.+20', [3] = 'Eva.+20', [4] = 'HP+60', [5] = 'Enmity+10' } },
         Waist = 'Creed Baudrier',
         Legs = 'Enif Cosciales',--8
         Feet = 'Carmine Greaves +1',--7
@@ -150,7 +150,7 @@ sets = T{
         Ammo = 'Staunch Tathlum', -- 10
         Head = 'Souv. Schaller +1', --20
         Neck = 'Moonlight Necklace', -- 15
-        --Body = 'Yorium Cuirass', -- 10
+        Body = 'Yorium Cuirass', -- 10
         Waist = 'Creed Baudrier',
         Legs = 'Founder\'s Hose', -- 30
         Feet = 'Odyssean Greaves', -- 26
@@ -166,6 +166,7 @@ sets = T{
         Ear2 = 'Cryptic Earring',--4
         Back = { Name = 'Rudianos\'s Mantle', Augment = { [1] = 'Phys. dmg. taken -10%', [2] = 'Mag. Eva.+20', [3] = 'Eva.+20', [4] = 'HP+60', [5] = 'Enmity+10' } },--10
         Waist = 'Creed Baudrier',--5
+        Legs = 'Cab. Breeches +1',--7
         Feet = 'Eschite Greaves',--15
     },
 
@@ -186,14 +187,15 @@ sets = T{
         Feet = 'Odyssean Greaves', -- 7
     },
     Phalanx = {
-        Neck = 'Moonlight Necklace', -- 15
+        Head = 'Souv. Schaller +1',
+        Neck = 'Moonlight Necklace',
         Ear1 = 'Odnowa Earring +1',
         Ear2 = 'Etiolation Earring',
         Body = 'Yorium Cuirass', -- 3
         Hands = 'Odyssean Gauntlets', --3
         Ring1 = 'Moonbeam Ring',
-        Ring2 = 'Gelatinous Ring +1',
-        Back = { Name = 'Rudianos\'s Mantle', Augment = { [1] = 'Phys. dmg. taken -10%', [2] = 'Mag. Eva.+20', [3] = 'Eva.+20', [4] = 'HP+60', [5] = 'Enmity+10' } },--10
+        Ring2 = 'Kishar Ring',
+        Back = { Name = 'Rudianos\'s Mantle', Augment = { [1] = 'Phys. dmg. taken -10%', [2] = 'Mag. Eva.+20', [3] = 'Eva.+20', [4] = 'HP+60', [5] = 'Enmity+10' } },
         Waist = 'Audumbla Sash',
         Legs = 'Sakpata\'s Cuisses', -- 5
         Feet = 'Odyssean Greaves',
@@ -230,18 +232,18 @@ sets = T{
     Preshot = {},
     Midshot = {
         Ear1 = 'Telos Earring',
-        Ear2 = 'Enervating Earring',
+        Ear2 = 'Crep. Earring',
     },
 
     Ws_Default = {
-        Ammo = 'Ginsen',
+        Ammo = 'Coiste Bodhar',
         Head = 'Nyame Helm',
         Neck = 'Fotia Gorget',
         Ear1 = 'Thrud Earring',
-        Ear2 = 'Moonshade Earring',
+        Ear2 = 'Telos Earring',
         Body = 'Nyame Mail',
         Hands = 'Sakpata\'s Gauntlets',
-        Ring1 = 'Petrov Ring',
+        Ring1 = 'Beithir Ring',
         Ring2 = 'Karieyh Ring +1',
         Back = { Name = 'Rudianos\'s Mantle', Augment = { [1] = 'Accuracy+20', [2] = '"Dbl.Atk."+10', [3] = 'Attack+20', [4] = 'DEX+20' } },
         Waist = 'Fotia Belt',
@@ -256,10 +258,9 @@ sets = T{
         Ammo = 'Jukukik Feather',
         Head = 'Blistering Sallet +1',
         Ear1 = 'Mache Earring +1',
-        Ear2 = 'Moonshade Earring',
+        Ear2 = 'Digni. Earring',
         Body = 'Hjarrandi Breast.',
         Hands = 'Flam. Manopolas +2',
-        Ring1 = 'Petrov Ring',
         Ring2 = 'Begrudging Ring',
         Back = { Name = 'Rudianos\'s Mantle', Augment = { [1] = 'Accuracy+20', [2] = 'Crit.hit rate+10', [3] = 'Attack+20', [4] = 'DEX+20' } },
         Feet = 'Thereoid Greaves',
@@ -272,9 +273,10 @@ sets = T{
         Head = 'Nyame Helm',
         Neck = 'Fotia Gorget',
         Ear1 = 'Thrud Earring',
-        Ear2 = 'Moonshade Earring',
+        Ear2 = 'Digni. Earring',
         Body = 'Nyame Mail',
         Hands = 'Sakpata\'s Gauntlets',
+        Ring1 = 'Beithir Ring',
         Ring2 = 'Karieyh Ring +1',
         Waist = 'Sailfi Belt +1',
         Legs = 'Sakpata\'s Cuisses',
@@ -289,7 +291,7 @@ sets = T{
         Head = 'Souv. Schaller +1',
         Neck = 'Moonlight Necklace', -- 15
         Ear1 = 'Odnowa Earring +1',
-        Ear2 = 'Moonshade Earring',
+        Ear2 = 'Digni. Earring',
         Body = 'Hjarrandi Breast.',
         Hands = 'Sakpata\'s Gauntlets',
         Ring1 = 'Eihwaz Ring',
@@ -306,7 +308,7 @@ sets = T{
     Aedge_Default = {
         Ammo = 'Pemphredo Tathlum',
         Head = 'Nyame Helm',
-        Neck = 'Baetyl Necklace',
+        Neck = 'Baetyl Pendant',
         Ear1 = 'Friomisi Earring',
         Ear2 = 'Crematio Earring',
         Body = 'Nyame Mail',
@@ -327,10 +329,10 @@ sets = T{
         Feet = 'Cab. Leggings +1',
     },
     Bash = {
-        Hands = 'Cab. Gauntlets',
+        Hands = 'Cab. Gauntlets +2',
     },
     Invincible = {
-        Legs = 'Cab. Breeches',
+        Legs = 'Cab. Breeches +1',
     },
     Cover = {
         Body = 'Cab. Surcoat +3',
@@ -341,14 +343,32 @@ sets = T{
     },
     
     TH = {--/th will force this set to equip for 10 seconds
+        Ammo = 'Per. Lucky Egg',
 		Waist = 'Chaac Belt',
 	},
     Movement = {
+        Ammo = 'Staunch Tathlum',
+        Head = 'Nyame Helm',
+        Neck ='Bathy Choker +1',
+        Ear1 = 'Odnowa Earring +1',
+        Ear2 = 'Etiolation Earring',
+        Body = 'Nyame Mail',
+        Hands = 'Volte Moufles',
+        Ring1 = 'Moonbeam Ring',
+        Ring2 = 'Gelatinous Ring +1',
+        Back = { Name = 'Rudianos\'s Mantle', Augment = { [1] = 'Phys. dmg. taken -10%', [2] = 'Mag. Eva.+20', [3] = 'Eva.+20', [4] = 'HP+60', [5] = 'Enmity+10' } },
+        Waist = 'Flume Belt +1',
         Legs = 'Carmine Cuisses +1',
+        Feet = 'Nyame Sollerets',
 	},
 };
 
 sets = sets:merge(gcinclude.sets, false);profile.Sets = sets;
+
+profile.Packer = {
+    {Name = 'Om. Sandwich', Quantity = 'all'},
+    {Name = 'Black Curry Bun', Quantity = 'all'},
+};
 
 profile.OnLoad = function()
     gSettings.AllowAddSet = false;
@@ -399,7 +419,7 @@ profile.HandleAbility = function()
 		gFunc.EquipSet(sets.Fealty);
     elseif string.match(ability.Name, 'Sentinel') then
 		gFunc.EquipSet(sets.Sentinel);
-    elseif string.match(ability.Name, 'Sheild Bash') or string.match(ability.Name, 'Chivalry') then
+    elseif string.match(ability.Name, 'Shield Bash') or string.match(ability.Name, 'Chivalry') then
 		gFunc.EquipSet(sets.Bash);
     elseif string.match(ability.Name, 'Invincible') then
 		gFunc.EquipSet(sets.Invincible);
@@ -441,6 +461,7 @@ profile.HandleMidcast = function()
         gFunc.EquipSet(sets.Phalanx);
     elseif string.match(spell.Name, 'Reprisal') then
         gFunc.EquipSet(sets.Reprisal);
+        return;--dont want to override this with SIR even with SIR toggle
     elseif string.match(spell.Name, 'Flash') then
         gFunc.EquipSet(sets.Flash);
     else
