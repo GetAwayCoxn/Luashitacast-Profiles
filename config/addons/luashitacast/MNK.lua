@@ -2,21 +2,21 @@ local profile = {};
 gcdisplay = gFunc.LoadFile('common\\gcdisplay.lua');
 gcinclude = gFunc.LoadFile('common\\gcinclude.lua');
 
-sets = T{
+local sets = {
     Idle = {
         Ammo = 'Staunch Tathlum',
         Head = 'Malignance Chapeau',
-        Neck = 'Sanctity Necklace',
+        Neck = 'Bathy Choker +1',
         Ear1 = 'Telos Earring',
         Ear2 = 'Eabani Earring',
         Body = 'Hiza. Haramaki +2',
         Hands = 'Malignance Gloves',
         Ring1 = 'Defending Ring',
-        Ring2 = { Name = 'Gelatinous Ring +1', AugPath='A' },
+        Ring2 = 'Chirich Ring +1',
         Back = 'Solemnity Cape',
         Waist = 'Moonbow Belt',
         Legs = 'Mummu Kecks +2',
-        Feet = { Name = 'Herculean Boots', Augment = { [1] = 'Accuracy+30', [2] = 'Weapon skill damage +8%', [3] = 'Attack+6', [4] = 'Mag. Acc.+2' } },
+        Feet = 'Mpaca\'s Boots',
     },
     Resting = {},
     Idle_Regen = {
@@ -30,12 +30,8 @@ sets = T{
     Town = {
         Main = 'Sakpata\'s Fists',
         Ammo = 'Staunch Tathlum',
-        Head = 'Wakido Kabuto +2',
-        Body = 'Hiza. Haramaki +2',
-        Hands = 'Flam. Manopolas +2',
-        Back = { Name = 'Smertrios\'s Mantle', Augment = { [1] = 'Damage taken-5%', [2] = 'Accuracy+30', [3] = 'Attack+20', [4] = '"Store TP"+10', [5] = 'DEX+20' } },
+        Body = 'Malignance Tabard',
         Legs = 'Mpaca\'s Hose',
-        Feet = 'Mpaca\'s Boots',
     },
 
     Dt = {
@@ -44,7 +40,7 @@ sets = T{
         Neck = { Name = 'Loricate Torque +1', AugPath='A' },
         Ear1 = { Name = 'Odnowa Earring +1', AugPath='A' },
         Ear2 = 'Etiolation Earring',
-        Body = 'Mpaca\'s Doublet',
+        Body = 'Malignance Tabard',
         Hands = 'Nyame Gauntlets',
         Ring1 = 'Defending Ring',
         Ring2 = { Name = 'Gelatinous Ring +1', AugPath='A' },
@@ -59,7 +55,7 @@ sets = T{
         Neck = 'Anu Torque',
         Ear1 = 'Sherida Earring',
         Ear2 = 'Telos Earring',
-        Body = 'Hiza. Haramaki +2',
+        Body = 'Malignance Tabard',
         Hands = { Name = 'Adhemar Wrist. +1', AugPath='B' },
         Ring1 = 'Niqmaddu Ring',
         Ring2 = 'Gere Ring',
@@ -77,7 +73,6 @@ sets = T{
         Feet = 'Mpaca\'s Boots',
     },
     Tp_Acc = {
-        Ammo = 'Ginsen',
         Ear1 = 'Mache Earring +1',
         Hands = 'Tatena. Gote +1',
         Ring1 = 'Cacoethic Ring +1',
@@ -97,19 +92,19 @@ sets = T{
     },
     Midshot = {
         Ear1 = 'Telos Earring',
-        Ear2 = 'Enervating Earring',
+        Ear2 = 'Crep. Earring',
     },
 
     Ws_Default = {
         Ammo = 'Knobkierrie',
         Head = 'Mpaca\'s Cap',
         Neck = 'Fotia Gorget',
-        Ear1 = 'Moonshade Earring',
+        Ear1 = 'Telos Earring',
         Ear2 = 'Odr Earring',
         Body = 'Mummu Jacket +2',
         Hands = 'Malignance Gloves',
-        Ring1 = 'Niqmaddu Ring',
-        Ring2 = 'Epona\'s Ring',
+        Ring1 = 'Beithir Ring',
+        Ring2 = 'Karieyh Ring +1',
         Back = { Name = 'Segomo\'s Mantle', Augment = { [1] = 'STR+20', [2] = 'Weapon skill damage +10%', [3] = 'Attack+20', [4] = 'Accuracy+20' } },
         Waist = 'Moonbow Belt',
         Legs = 'Hiza. Hizayoroi +2',
@@ -136,18 +131,23 @@ sets = T{
     },
 
     TH = {--/th will force this set to equip for 10 seconds
+		Ammo = 'Per. Lucky Egg',
 		Waist = 'Chaac Belt',
+        Feet = { Name = 'Herculean Boots', Augment = { [1] = 'Potency of "Cure" effect received+5%', [2] = 'Mag. Acc.+19', [3] = 'Accuracy+21', [4] = '"Mag. Atk. Bns."+19', [5] = '"Treasure Hunter"+2' } },
 	},
     Movement = {
         Feet = 'Herald\'s Gaiters',
 	},
 };
+profile.Sets = sets;
 
-sets = sets:merge(gcinclude.sets, false);profile.Sets = sets;
+profile.Packer = {
+    --{Name = 'Chonofuda', Quantity = 'all'},
+};
 
 profile.OnLoad = function()
-    gSettings.AllowAddSet = false;
-    gcinclude.Initialize:once(3);
+	gSettings.AllowAddSet = true;
+    gcinclude.Initialize();
 
     AshitaCore:GetChatManager():QueueCommand(1, '/macro book 4');
     AshitaCore:GetChatManager():QueueCommand(1, '/macro set 10');
@@ -170,8 +170,9 @@ profile.HandleDefault = function()
     if (player.Status == 'Engaged') then
         gFunc.EquipSet(sets.Tp_Default);
         if (gcdisplay.GetCycle('MeleeSet') ~= 'Default') then
-            gFunc.EquipSet('Tp_' .. gcdisplay.GetCycle('MeleeSet')); end
+            gFunc.EquipSet('Tp_' .. gcdisplay.GetCycle('MeleeSet')) end
         if (impetus >= 1) then gFunc.EquipSet(sets.Impetus) end
+		if (gcdisplay.GetToggle('TH') == true) then gFunc.EquipSet(sets.TH) end
     elseif (player.Status == 'Resting') then
         gFunc.EquipSet(sets.Resting);
     elseif (player.IsMoving == true) then
@@ -206,6 +207,7 @@ end
 
 profile.HandleMidcast = function()
     local spell = gData.GetAction();
+	if (gcdisplay.GetToggle('TH') == true) then gFunc.EquipSet(sets.TH) end
 end
 
 profile.HandlePreshot = function()
@@ -214,6 +216,7 @@ end
 
 profile.HandleMidshot = function()
     gFunc.EquipSet(sets.Midshot);
+	if (gcdisplay.GetToggle('TH') == true) then gFunc.EquipSet(sets.TH) end
 end
 
 profile.HandleWeaponskill = function()

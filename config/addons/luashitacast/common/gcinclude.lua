@@ -30,20 +30,18 @@ gcinclude.sets = T{
 		Ring2 = 'Craftmaster\'s Ring',
     },
 	Zeni = { -- this set is meant as a default set for pictures, equip using /zeniset
-		Main = 'Excalipoor',
-		Sub = 'Genmei Shield',
 		Range = 'Soultrapper 2000',
 		Ammo = 'Blank Soulplate',
 		Head = 'Malignance Chapeau',
         Neck = 'Bathy Choker +1';
         Ear1 = 'Eabani Earring',
-        Ear2 = 'Domes. Earring',
+        Ear2 = 'Infused Earring',
         Body = 'Nyame Mail',
         Hands = 'Malignance Gloves',
         Ring1 = 'Vengeful Ring',
         Ring2 = 'Ilabrat Ring',
-		Back = { Name = 'Rosmerta\'s Cape', Augment = { [1] = '"Fast Cast"+10', [2] = 'Evasion+15' } },
-        Waist = 'Kasiri Belt',
+		Back = 'Solemnity Cape',
+        Waist = 'Svelt. Gouriz +1',
         Legs = 'Nyame Flanchard',
         Feet = 'Nyame Sollerets',
     },
@@ -51,25 +49,19 @@ gcinclude.sets = T{
 		Range = 'Halcyon Rod',
 		Ring2 = 'Pelican Ring',
     },
-	Warp_Ring = { -- leave alone
-		Ring2 = 'Warp Ring',
-	},
-	Tele_Ring1 = { -- leave alone
-		Ring2 = 'Dim. Ring (Dem)',
-	},
-	Tele_Ring2 = { -- leave alone
-		Ring2 = 'Dim. Ring (Holla)',
-	},
-	Tele_Ring3 = { -- leave alone
-		Ring2 = 'Dim. Ring (Mea)',
-	},
 };
 gcinclude.settings = {
+	--[[
+	You can also set any of these on a per job basis in the job file in the OnLoad function. See my COR job file to see how this is done
+	but as an example you can just put 'gcinclude.settings.RefreshGearMPP = 50;' in your job files OnLoad function to modify for that job only
+	]]
 	AutoGear = true; --set to false if you dont want DT/Regen/Refresh/PetDT gear to come on automatically at the defined %'s here
 	RegenGearHPP = 60; -- set HPP to have your idle regen set to come on
 	RefreshGearMPP = 70; -- set MPP to have your idle refresh set to come on
 	DTGearHPP = 40; -- set HPP to have your DT set to come on
 	PetDTGearHPP = 50; -- set pet HPP to have your PetDT set to come on
+	MoonshadeTP = 2250; -- this to the TP amount you want to equip EAR2 with moonshade earring, set to 0 if you dont want to use at all
+	Tele_Ring = 'Dim. Ring (Dem)'; -- put your tele ring in here
 };
 
 --[[
@@ -79,6 +71,7 @@ the rest here are various functions and arrays etc
 ]]
 gcdisplay = gFunc.LoadFile('common\\gcdisplay.lua');
 
+gcinclude.AliasList = T{'dt','th','kite','meleeset','gcdrain','gcaspir','nukeset','burst','weapon','elecycle','helix','weather','nuke','death','fight','sir','tankset','proc','cj','pupmode','tpgun','cormsg','forcestring','siphon','warpring','telering','rrset','craftset','zeniset','fishset'};
 gcinclude.Towns = T{'Tavnazian Safehold','Al Zahbi','Aht Urhgan Whitegate','Nashmau','Southern San d\'Oria [S]','Bastok Markets [S]','Windurst Waters [S]','San d\'Oria-Jeuno Airship','Bastok-Jeuno Airship','Windurst-Jeuno Airship','Kazham-Jeuno Airship','Southern San d\'Oria','Northern San d\'Oria','Port San d\'Oria','Chateau d\'Oraguille','Bastok Mines','Bastok Markets','Port Bastok','Metalworks','Windurst Waters','Windurst Walls','Port Windurst','Windurst Woods','Heavens Tower','Ru\'Lude Gardens','Upper Jeuno','Lower Jeuno','Port Jeuno','Rabao','Selbina','Mhaura','Kazham','Norg','Mog Garden','Celennia Memorial Library','Western Adoulin','Eastern Adoulin'};
 gcinclude.LockingRings = T{'Echad Ring', 'Trizek Ring', 'Endorsement Ring', 'Capacity Ring', 'Warp Ring','Facility Ring','Dim. Ring (Dem)','Dim. Ring (Mea)','Dim. Ring (Holla)'};
 gcinclude.DistanceWS = T{'Flaming Arrow','Piercing Arrow','Dulling Arrow','Sidewinder','Blast Arrow','Arching Arrow','Empyreal Arrow','Refulgent Arrow','Apex Arrow','Namas Arrow','Jishnu\'s Randiance','Hot Shot','Split Shot','Sniper Shot','Slug Shot','Blast Shot','Heavy Shot','Detonator','Numbing Shot','Last Stand','Coronach','Wildfire','Trueflight','Leaden Salute','Myrkr','Dagan','Moonlight','Starlight'};
@@ -91,7 +84,7 @@ gcinclude.SmnHealing = T{'Healing Ruby','Healing Ruby II','Whispering Wind','Spr
 gcinclude.SmnHybrid = T{'Flaming Crush','Burning Strike'};
 gcinclude.SmnEnfeebling = T{'Diamond Storm','Sleepga','Shock Squall','Slowga','Tidal Roar','Pavor Nocturnus','Ultimate Terror','Nightmare','Mewing Lullaby','Eerie Eye'};
 gcinclude.BluMagPhys = T{'Foot Kick','Sprout Smack','Wild Oats','Power Attack','Queasyshroom','Battle Dance','Feather Storm','Helldive','Bludgeon','Claw Cyclone','Screwdriver','Grand Slam','Smite of Rage','Pinecone Bomb','Jet Stream','Uppercut','Terror Touch','Mandibular Bite','Sickle Slash','Dimensional Death','Spiral Spin','Death Scissors','Seedspray','Body Slam','Hydro Shot','Frenetic Rip','Spinal Cleave','Hysteric Barrage','Asuran Claws','Cannonball','Disseverment','Ram Charge','Vertical Cleave','Final Sting','Goblin Rush','Vanity Dive','Whirl of Rage','Benthic Typhoon','Quad. Continuum','Empty Thrash','Delta Thrust','Heavy Strike','Quadrastrike','Tourbillion','Amorphic Spikes','Barbed Crescent','Bilgestorm','Bloodrake','Glutinous Dart','Paralyzing Triad','Thrashing Assault','Sinker Drill','Sweeping Gouge','Saurian Slide'};
-gcinclude.BluMagDebuff = T{'Filamented Hold','Cimicine Discharge','Demoralizing Roar','Venom Shell','Light of Penance','Sandspray','Auroral Drape','Frightful Roar','Enervation','Infrasonics','Lowing','CMain Wave','Awful Eye','Voracious Trunk','Sheep Song','Soporific','Yawn','Dream Flower','Chaotic Eye','Sound Blast','Blank Gaze','Stinking Gas','Geist Wall','Feather Tickle','Reaving Wind','Mortal Ray','Absolute Terror','Blistering Roar'};
+gcinclude.BluMagDebuff = T{'Filamented Hold','Cimicine Discharge','Demoralizing Roar','Venom Shell','Light of Penance','Sandspray','Auroral Drape','Frightful Roar','Enervation','Infrasonics','Lowing','CMain Wave','Awful Eye','Voracious Trunk','Sheep Song','Soporific','Yawn','Dream Flower','Chaotic Eye','Sound Blast','Blank Gaze','Stinking Gas','Geist Wall','Feather Tickle','Reaving Wind','Mortal Ray','Absolute Terror','Blistering Roar','Cruel Joke'};
 gcinclude.BluMagStun = T{'Head Butt','Frypan','Tail Slap','Sub-zero Smash','Sudden Lunge'};
 gcinclude.BluMagBuff = T{'Cocoon','Refueling','Feather Barrier','Memento Mori','Zephyr Mantle','Warm-Up','Amplification','Triumphant Roar','Saline Coat','Reactor Cool','Plasma Charge','Regeneration','Animating Wail','Battery Charge','Winds of Promy.','Barrier Tusk','Orcish Counterstance','Pyric Bulwark','Nat. Meditation','Restoral','Erratic Flutter','Carcharian Verve','Harden Shell','Mighty Guard'};
 gcinclude.BluMagSkill = T{'Metallic Body','Diamondhide','Magic Barrier','Occultation','Atra. Libations'};
@@ -113,59 +106,14 @@ gcinclude.FishSet = false;
 gcinclude.CORmsg = true;
 
 function gcinclude.SetAlias()
-	local player = gData.GetPlayer();
+	for _, v in ipairs(gcinclude.AliasList) do
+		AshitaCore:GetChatManager():QueueCommand(-1, '/alias /' .. v .. ' /lac fwd ' .. v);
+	end
+end
 
-	AshitaCore:GetChatManager():QueueCommand(-1, '/alias /dt /lac fwd dt');
-	AshitaCore:GetChatManager():QueueCommand(-1, '/alias /kite /lac fwd kite');
-	AshitaCore:GetChatManager():QueueCommand(-1, '/alias /th /lac fwd th');
-	AshitaCore:GetChatManager():QueueCommand(-1, '/alias /meleeset /lac fwd meleeset');
-	AshitaCore:GetChatManager():QueueCommand(-1, '/alias /aspir /lac fwd aspir');
-	AshitaCore:GetChatManager():QueueCommand(-1, '/alias /drain /lac fwd drain');
-	AshitaCore:GetChatManager():QueueCommand(-1, '/alias /warpring /lac fwd warpring');
-	AshitaCore:GetChatManager():QueueCommand(-1, '/alias /telering /lac fwd telering');
-	AshitaCore:GetChatManager():QueueCommand(-1, '/alias /rrset /lac fwd rrset');
-	AshitaCore:GetChatManager():QueueCommand(-1, '/alias /craftset /lac fwd craftset');
-	AshitaCore:GetChatManager():QueueCommand(-1, '/alias /zeniset /lac fwd zeniset');
-	AshitaCore:GetChatManager():QueueCommand(-1, '/alias /fishset /lac fwd fishset');
-	AshitaCore:GetChatManager():QueueCommand(-1, '/alias /cormsg /lac fwd cormsg');
-	if (player.MainJob == 'RDM') or (player.MainJob == 'BLM') or (player.MainJob == 'SCH') or (player.MainJob == 'GEO') then
-		AshitaCore:GetChatManager():QueueCommand(-1, '/alias /nukeset /lac fwd nukeset');
-		AshitaCore:GetChatManager():QueueCommand(-1, '/alias /burst /lac fwd burst');
-		if (player.MainJob == 'BLM') or (player.MainJob == 'SCH') then
-			AshitaCore:GetChatManager():QueueCommand(-1, '/alias /weapon /lac fwd weapon');
-			AshitaCore:GetChatManager():QueueCommand(-1, '/alias /elecycle /lac fwd elecycle');
-			AshitaCore:GetChatManager():QueueCommand(-1, '/alias /helix /lac fwd helix');
-			AshitaCore:GetChatManager():QueueCommand(-1, '/alias /weather /lac fwd weather');
-			AshitaCore:GetChatManager():QueueCommand(-1, '/alias /nuke /lac fwd nuke');
-			if (player.MainJob == 'BLM') then
-				AshitaCore:GetChatManager():QueueCommand(-1, '/alias /death /lac fwd death');
-			end
-		end
-	end
-	if (player.MainJob == 'RDM') or (player.MainJob == 'BRD') or (player.MainJob == 'GEO') then
-		AshitaCore:GetChatManager():QueueCommand(-1, '/alias /fight /lac fwd fight');
-	end
-	if (player.MainJob == 'PLD') or (player.MainJob == 'RUN') then
-		AshitaCore:GetChatManager():QueueCommand(-1, '/alias /sir /lac fwd sir');
-		AshitaCore:GetChatManager():QueueCommand(-1, '/alias /tankset /lac fwd tankset');
-	end
-	if (player.MainJob == 'SAM') or (player.MainJob == 'NIN') then
-		AshitaCore:GetChatManager():QueueCommand(-1, '/alias /proc /lac fwd proc');
-	end
-	if (player.MainJob == 'PUP') then
-		AshitaCore:GetChatManager():QueueCommand(-1, '/alias /pupmode /lac fwd pupmode');
-	end
-	if (player.MainJob == 'BRD') then
-		AshitaCore:GetChatManager():QueueCommand(-1, '/alias /forcestring /lac fwd forcestring');
-	end
-	if (player.MainJob == 'COR') then
-		AshitaCore:GetChatManager():QueueCommand(-1, '/alias /tpgun /lac fwd tpgun');
-	end
-	if (player.MainJob == 'BLU') then
-		AshitaCore:GetChatManager():QueueCommand(-1, '/alias /cjmode /lac fwd cj');
-	end
-	if (player.MainJob == 'SMN') then
-		AshitaCore:GetChatManager():QueueCommand(-1, '/alias /siphon /lac fwd siphon');
+function gcinclude.ClearAlias()
+	for _, v in ipairs(gcinclude.AliasList) do
+		AshitaCore:GetChatManager():QueueCommand(-1, '/alias del /' .. v);
 	end
 end
 
@@ -174,6 +122,7 @@ function gcinclude.SetVariables()
 
 	gcdisplay.CreateToggle('DTset', false);
 	gcdisplay.CreateToggle('Kite', false);
+	gcdisplay.CreateToggle('TH', false);
 	gcdisplay.CreateCycle('MeleeSet', {[1] = 'Default', [2] = 'Hybrid', [3] = 'Acc'});
 	if (player.MainJob == 'RDM') or (player.MainJob == 'BLM') or (player.MainJob == 'SCH') or (player.MainJob == 'GEO') then
 		gcdisplay.CreateToggle('Burst', true);
@@ -186,15 +135,12 @@ function gcinclude.SetVariables()
 			end
 		end
 	end
-	if (player.MainJob == 'RDM') or (player.MainJob == 'BRD') or (player.MainJob == 'GEO') then
+	if (player.MainJob == 'RDM') or (player.MainJob == 'BRD') or (player.MainJob == 'GEO') or (player.MainJob == 'WHM') then
 		gcdisplay.CreateToggle('Fight', false);
 	end
 	if (player.MainJob == 'PLD') or (player.MainJob == 'RUN') then
-		gcdisplay.CreateToggle('SIR', false);
+		gcdisplay.CreateToggle('SIR', true);
 		gcdisplay.CreateCycle('TankSet', {[1] = 'Main', [2] = 'MEVA', [3] = 'None'});
-	end
-	if (player.MainJob == 'THF') or (player.MainJob == 'BLU') or (player.MainJob == 'NIN') then
-		gcdisplay.CreateToggle('TH', false);
 	end
 	if (player.MainJob == 'SAM') or (player.MainJob == 'NIN') then
 		gcdisplay.CreateToggle('PROC', false);
@@ -222,46 +168,24 @@ function gcinclude.SetCommands(args)
 		gcdisplay.AdvanceCycle('MeleeSet');
 	elseif (args[1] == 'kite') then
 		gcdisplay.AdvanceToggle('Kite');
-	elseif (args[1] == 'aspir') then
+	elseif (args[1] == 'th') then
+		gcdisplay.AdvanceToggle('TH');
+	elseif (args[1] == 'gcaspir') then
 		gcinclude.DoAspir();
-	elseif (args[1] == 'drain') then
+	elseif (args[1] == 'gcdrain') then
 		gcinclude.DoDrain();
 	elseif (args[1] == 'warpring') then
 		gcinclude.DoWarpRing();
 	elseif (args[1] == 'telering') then
 		gcinclude.DoTeleRing();
 	elseif (args[1] == 'rrset') then
-		if gcinclude.RRSET == true then
-			gcinclude.RRSET = false;
-		else
-			gcinclude.RRSET = true;
-		end
+		gcinclude.RRSET = not gcinclude.RRSET;
 	elseif (args[1] == 'craftset') then
-		if gcinclude.CraftSet == true then
-			gcinclude.CraftSet = false;
-		else
-			gcinclude.CraftSet = true;
-		end
+		gcinclude.CraftSet = not gcinclude.CraftSet;
 	elseif (args[1] == 'zeniset') then
-		if gcinclude.ZeniSet == true then
-			gcinclude.ZeniSet = false;
-		else
-			gcinclude.ZeniSet = true;
-		end
+		gcinclude.ZeniSet = not gcinclude.ZeniSet;
 	elseif (args[1] == 'fishset') then
-		if gcinclude.FishSet == true then
-			gcinclude.FishSet = false;
-		else
-			gcinclude.FishSet = true;
-		end
-	elseif (args[1] == 'cormsg') then
-		if gcinclude.CORmsg == true then
-			gcinclude.CORmsg = false;
-			print(chat.header('GCinclude'):append(chat.message('COR Roll message will no longer show')));
-		else
-			gcinclude.CORmsg = true;
-			print(chat.header('GCinclude'):append(chat.message('COR Roll message will now show')));
-		end
+		gcinclude.FishSet = not gcinclude.FishSet;
     end
 	if (player.MainJob == 'RDM') or (player.MainJob == 'BLM') or (player.MainJob == 'SCH') or (player.MainJob == 'GEO') then
 		if (args[1] == 'nukeset') then
@@ -294,13 +218,13 @@ function gcinclude.SetCommands(args)
 				AshitaCore:GetChatManager():QueueCommand(-1, '/lac disable Main');
 				AshitaCore:GetChatManager():QueueCommand(-1, '/lac disable Sub');
 				if (player.MainJob == 'RDM') or (player.MainJob == 'GEO') then AshitaCore:GetChatManager():QueueCommand(-1, '/lac disable Range') end
-				if (player.MainJob == 'GEO') then AshitaCore:GetChatManager():QueueCommand(-1, '/lac disable Ammo') end
+				if (player.MainJob == 'GEO') or (player.MainJob == 'WHM') then AshitaCore:GetChatManager():QueueCommand(-1, '/lac disable Ammo') end
 				gcdisplay.AdvanceToggle('Fight');
 			else
 				AshitaCore:GetChatManager():QueueCommand(-1, '/lac enable Main');
 				AshitaCore:GetChatManager():QueueCommand(-1, '/lac enable Sub');
 				if (player.MainJob == 'RDM') or (player.MainJob == 'GEO') then AshitaCore:GetChatManager():QueueCommand(-1, '/lac enable Range') end
-				if (player.MainJob == 'GEO') then AshitaCore:GetChatManager():QueueCommand(-1, '/lac disable Ammo') end
+				if (player.MainJob == 'GEO') or (player.MainJob == 'WHM') then AshitaCore:GetChatManager():QueueCommand(-1, '/lac disable Ammo') end
 				gcdisplay.AdvanceToggle('Fight');
 			end
 		end
@@ -313,16 +237,16 @@ function gcinclude.SetCommands(args)
 			gcdisplay.AdvanceCycle('TankSet');
 		end
 	end
-	if (args[1] == 'th') then
-		if (player.MainJob == 'THF') or (player.MainJob == 'BLU') or (player.MainJob == 'NIN') then
-			gcdisplay.AdvanceToggle('TH');
-		else
-			AshitaCore:GetChatManager():QueueCommand(-1, '/lac set TH 10');
-		end
-	end
 	if (player.MainJob == 'SAM') or (player.MainJob == 'NIN') then
 		if (args[1] == 'proc') then
 			gcdisplay.AdvanceToggle('PROC');
+			if (player.MainJob == 'NIN') then
+				if gcdisplay.GetToggle('PROC') == true then
+					AshitaCore:GetChatManager():QueueCommand(-1, '/lac disable ammo');
+				else
+					AshitaCore:GetChatManager():QueueCommand(-1, '/lac enable ammo');
+				end
+			end
 		end
 	end
 	if (player.MainJob == 'PUP') then
@@ -338,6 +262,14 @@ function gcinclude.SetCommands(args)
 	if (player.MainJob == 'COR') then
 		if (args[1] == 'tpgun') then
 			gcdisplay.AdvanceToggle('TPgun');
+		elseif (args[1] == 'cormsg') then
+			if gcinclude.CORmsg == true then
+				gcinclude.CORmsg = false;
+				print(chat.header('GCinclude'):append(chat.message('COR Roll messages will no longer show')));
+			else
+				gcinclude.CORmsg = true;
+				print(chat.header('GCinclude'):append(chat.message('COR Roll messages will show now')));
+			end
 		end
 	end
 	if (player.MainJob == 'BLU') then
@@ -350,14 +282,12 @@ function gcinclude.SetCommands(args)
 			gcinclude.DoSiphon();
 		end
 	end
-
 end
 
 function gcinclude.CheckCommonDebuffs()
 	local weakened = gData.GetBuffCount('Weakened');
 	local sleep = gData.GetBuffCount('Sleep');
 	local doom = (gData.GetBuffCount('Doom'))+(gData.GetBuffCount('Bane'));
-	local cover = gData.GetBuffCount('Cover');
 
 	if (sleep >= 1) then gFunc.EquipSet(gcinclude.sets.Sleeping) end
 	if (doom >= 1) then	gFunc.EquipSet(gcinclude.sets.Doomed) end
@@ -397,11 +327,7 @@ end
 
 function gcinclude.SetTownGear()
 	local zone = gData.GetEnvironment();
-	local rings = gData.GetEquipment();
-
-	if (zone.Area ~= nil) and (gcinclude.Towns:contains(zone.Area)) then
-		gFunc.EquipSet(sets.Town);
-	end
+	if (zone.Area ~= nil) and (gcinclude.Towns:contains(zone.Area)) then gFunc.EquipSet('Town') end
 end
 
 function gcinclude.SetRegenRefreshGear()
@@ -410,20 +336,12 @@ function gcinclude.SetRegenRefreshGear()
 	local player = gData.GetPlayer();
 	local pet = gData.GetPet();
 	if (player.Status == 'Idle') then
-		if (player.HPP < gcinclude.settings.RegenGearHPP ) then
-			gFunc.EquipSet(sets.Idle_Regen);
-		end
-		if (player.MPP < gcinclude.settings.RefreshGearMPP ) then
-			gFunc.EquipSet(sets.Idle_Refresh);
-		end
+		if (player.HPP < gcinclude.settings.RegenGearHPP ) then gFunc.EquipSet('Idle_Regen') end
+		if (player.MPP < gcinclude.settings.RefreshGearMPP ) then gFunc.EquipSet('Idle_Refresh') end
 	end
-	if (player.HPP < gcinclude.settings.DTGearHPP) then
-		gFunc.EquipSet(sets.Dt);
-	end
+	if (player.HPP < gcinclude.settings.DTGearHPP) then gFunc.EquipSet('Dt') end
 	if pet ~= nil then
-		if (pet.HPP < gcinclude.settings.PetDTGearHPP) then
-			gFunc.EquipSet(sets.Pet_Dt);
-		end
+		if (pet.HPP < gcinclude.settings.PetDTGearHPP) then gFunc.EquipSet('Pet_Dt') end
 	end
 end
 
@@ -436,13 +354,13 @@ function gcinclude.CheckWsBailout()
 	local stun = gData.GetBuffCount('Stun');
 	local terror = gData.GetBuffCount('Terror');
 	local amnesia = gData.GetBuffCount('Amnesia');
+	local charm = gData.GetBuffCount('Charm');
 
-	if (sleep+petrify+stun+terror+amnesia >= 1) or (player.TP <= 999) then
+	if (sleep+petrify+stun+terror+amnesia+charm >= 1) or (player.TP <= 999) then
 		return false;
 	else
 		return true;
 	end
-	gcdisplay.Update();
 end
 
 function gcinclude.CheckSpellBailout()
@@ -451,17 +369,18 @@ function gcinclude.CheckSpellBailout()
 	local stun = gData.GetBuffCount('Stun');
 	local terror = gData.GetBuffCount('Terror');
 	local silence = gData.GetBuffCount('Silence');
+	local charm = gData.GetBuffCount('Charm');
 
-	if (sleep+petrify+stun+terror+silence >= 1) then
+	if (sleep+petrify+stun+terror+silence+charm >= 1) then
 		return false;
 	else
 		return true;
 	end
-	gcdisplay.Update();
 end
 
 function gcinclude.DoWarpRing()
-	AshitaCore:GetChatManager():QueueCommand(1, '/lac set Warp_Ring');
+	AshitaCore:GetChatManager():QueueCommand(1, '/lac equip ring2 "Warp Ring"');
+
 	local function usering()
 		local function forceidleset()
 			AshitaCore:GetChatManager():QueueCommand(1, '/lac set Idle');
@@ -471,20 +390,16 @@ function gcinclude.DoWarpRing()
 	end
 	
 	usering:once(11);
-	
 end
 
 function gcinclude.DoTeleRing()
-	AshitaCore:GetChatManager():QueueCommand(1, '/lac set Tele_Ring1');
-	AshitaCore:GetChatManager():QueueCommand(1, '/lac set Tele_Ring2');
-	AshitaCore:GetChatManager():QueueCommand(1, '/lac set Tele_Ring3');
+	AshitaCore:GetChatManager():QueueCommand(1, '/lac equip ring2 "' .. gcinclude.settings.Tele_Ring .. '"');
 	
 	local function usering()
-		local ring = gData.GetEquipment();
 		local function forceidleset()
 			AshitaCore:GetChatManager():QueueCommand(1, '/lac set Idle');
 		end
-		AshitaCore:GetChatManager():QueueCommand(1, '/item "' .. ring.Ring2.Name .. '" <me>');	
+		AshitaCore:GetChatManager():QueueCommand(1, '/item "' .. gcinclude.settings.Tele_Ring .. '" <me>');	
 		forceidleset:once(8);
 	end
 	usering:once(11);
@@ -511,7 +426,7 @@ function gcinclude.DoAspir()
 	local recast2 = AshitaCore:GetMemoryManager():GetRecast():GetSpellTimer(248);
 	local recast3 = AshitaCore:GetMemoryManager():GetRecast():GetSpellTimer(881);
 	
-	if (player:GetMainJob() == 4 and player:GetJobPointsSpent(4) > 550) or (player:GetMainJob() == 21 and player:GetJobPointsSpent(21) > 550) then
+	if (player:GetMainJob() == 4 and player:GetJobPointsSpent(4) >= 550) or (player:GetMainJob() == 21 and player:GetJobPointsSpent(21) >= 550) then
 		if (recast3 == 0) then
 			AshitaCore:GetChatManager():QueueCommand(1, '/ma "Aspir III" <t>');
 		elseif (recast2 == 0) then
@@ -636,7 +551,12 @@ function gcinclude.DoSiphon()
 	end
 end
 
-function gcinclude.CheckCancels()
+function gcinclude.DoMoonshade()
+	local player = gData.GetPlayer();
+	if player.TP < gcinclude.settings.MoonshadeTP then gFunc.Equip('Ear2', 'Moonshade Earring') end
+end
+
+function gcinclude.CheckCancels()--tossed Stoneskin in here too
 	local action = gData.GetAction();
 	local sneak = gData.GetBuffCount('Sneak');
 	local stoneskin = gData.GetBuffCount('Stoneskin');
@@ -656,7 +576,7 @@ function gcinclude.CheckCancels()
 	if (action.Name == 'Spectral Jig' and sneak ~=0) then
 		gFunc.CancelAction();
 		AshitaCore:GetChatManager():QueueCommand(1, '/cancel Sneak');
-		do_jig:once(1);
+		do_jig:once(2);
 	elseif (action.Name == 'Sneak' and sneak ~= 0 and target.Name == me) then
 		gFunc.CancelAction();
 		AshitaCore:GetChatManager():QueueCommand(1, '/cancel Sneak');
@@ -666,11 +586,9 @@ function gcinclude.CheckCancels()
 		AshitaCore:GetChatManager():QueueCommand(1, '/cancel Stoneskin');
 		do_ss:once(1);
 	end
-	gcdisplay.Update();
 end
 
 function gcinclude.CheckDefault()
-
 	gcinclude.SetRegenRefreshGear();
 	gcinclude.SetTownGear();
     gcinclude.CheckCommonDebuffs();
@@ -683,13 +601,14 @@ function gcinclude.CheckDefault()
 end
 
 function gcinclude.Unload()
+	gcinclude.ClearAlias();
 	gcdisplay.Unload();
 end
 
 function gcinclude.Initialize()
-	gcdisplay.Initialize();
-	gcinclude.SetVariables();
-	gcinclude.SetAlias();
+	gcdisplay.Initialize:once(2);
+	gcinclude.SetVariables:once(2);
+	gcinclude.SetAlias:once(2);
 end
 
 return gcinclude;

@@ -2,7 +2,7 @@ local profile = {};
 gcdisplay = gFunc.LoadFile('common\\gcdisplay.lua');
 gcinclude = gFunc.LoadFile('common\\gcinclude.lua');
 
-sets = T{
+local sets = {
     Idle = {
         Ammo = 'Yamarang',
         Head = 'Malignance Chapeau',
@@ -91,7 +91,7 @@ sets = T{
     },
     Midshot = {
         Ear1 = 'Telos Earring',
-        Ear2 = 'Enervating Earring',
+        Ear2 = 'Crep. Earring',
     },
 
     Ws_Default = {
@@ -99,10 +99,10 @@ sets = T{
         Head = { Name = 'Adhemar Bonnet +1', AugPath='B' },
         Neck = 'Fotia Gorget',
         Ear1 = 'Odr Earring',
-        Ear2 = 'Moonshade Earring',
+        Ear2 = 'Telos Earring',
         Body = 'Nyame Mail',
         Hands = 'Meg. Gloves +2',
-        Ring1 = 'Ilabrat Ring',
+        Ring1 = 'Beithir Ring',
         Ring2 = 'Karieyh Ring +1',
         Waist = 'Fotia Belt',
         Legs = 'Nyame Flanchard',
@@ -116,7 +116,7 @@ sets = T{
     Aedge_Default = {
         Ammo = 'Pemphredo Tathlum',
         Head = 'Nyame Helm',
-        Neck = 'Baetyl Necklace',
+        Neck = 'Baetyl Pendant',
         Ear1 = 'Friomisi Earring',
         Ear2 = 'Crematio Earring',
         Body = 'Nyame Mail',
@@ -135,18 +135,23 @@ sets = T{
     },
 
     TH = {--/th will force this set to equip for 10 seconds
+        Ammo = 'Per. Lucky Egg',
 		Waist = 'Chaac Belt',
+        Feet = { Name = 'Herculean Boots', Augment = { [1] = 'Potency of "Cure" effect received+5%', [2] = 'Mag. Acc.+19', [3] = 'Accuracy+21', [4] = '"Mag. Atk. Bns."+19', [5] = '"Treasure Hunter"+2' } },
 	},
     Movement = {
         Feet = 'Herald\'s Gaiters',
 	},
 };
+profile.Sets = sets;
 
-sets = sets:merge(gcinclude.sets, false);profile.Sets = sets;
+profile.Packer = {
+    --{Name = 'Chonofuda', Quantity = 'all'},
+};
 
 profile.OnLoad = function()
-    gSettings.AllowAddSet = false;
-    gcinclude.Initialize:once(3);
+	gSettings.AllowAddSet = true;
+    gcinclude.Initialize();
 
     AshitaCore:GetChatManager():QueueCommand(1, '/macro book 3');
     AshitaCore:GetChatManager():QueueCommand(1, '/macro set 7');
@@ -162,15 +167,14 @@ end
 
 profile.HandleDefault = function()
     gFunc.EquipSet(sets.Idle);
-    local impetus = gData.GetBuffCount('Impetus');
 	
 	local player = gData.GetPlayer();
     
     if (player.Status == 'Engaged') then
         gFunc.EquipSet(sets.Tp_Default);
         if (gcdisplay.GetCycle('MeleeSet') ~= 'Default') then
-            gFunc.EquipSet('Tp_' .. gcdisplay.GetCycle('MeleeSet')); end
-        if (impetus >= 1) then gFunc.EquipSet(sets.Impetus) end
+            gFunc.EquipSet('Tp_' .. gcdisplay.GetCycle('MeleeSet')) end
+		if (gcdisplay.GetToggle('TH') == true) then gFunc.EquipSet(sets.TH) end
     elseif (player.Status == 'Resting') then
         gFunc.EquipSet(sets.Resting);
     elseif (player.IsMoving == true) then
@@ -206,6 +210,7 @@ end
 
 profile.HandleMidcast = function()
     local spell = gData.GetAction();
+	if (gcdisplay.GetToggle('TH') == true) then gFunc.EquipSet(sets.TH) end
 end
 
 profile.HandlePreshot = function()
@@ -214,6 +219,7 @@ end
 
 profile.HandleMidshot = function()
     gFunc.EquipSet(sets.Midshot);
+	if (gcdisplay.GetToggle('TH') == true) then gFunc.EquipSet(sets.TH) end
 end
 
 profile.HandleWeaponskill = function()

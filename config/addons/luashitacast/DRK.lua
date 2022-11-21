@@ -2,7 +2,7 @@ local profile = {};
 gcdisplay = gFunc.LoadFile('common\\gcdisplay.lua');
 gcinclude = gFunc.LoadFile('common\\gcinclude.lua');
 
-sets = T{
+local sets = {
     Idle = {
         Ammo = 'Staunch Tathlum',
         Head = 'Jumalik Helm',
@@ -181,18 +181,18 @@ sets = T{
     },
     Midshot = {
         Ear1 = 'Telos Earring',
-        Ear2 = 'Enervating Earring',
+        Ear2 = 'Crep. Earring',
     },
 
     Ws_Default = { -- WSD for all scythe basically
         Ammo = 'Knobkierrie',
         Head = { Name = 'Valorous Mask', Augment = { [1] = 'Attack+16', [2] = 'Weapon skill damage +10%', [3] = 'Accuracy+16', [4] = 'Pet: Mag. Acc.+1', [5] = 'Pet: STR+4' } },
         Neck = 'Fotia Gorget',
-        Ear1 = 'Moonshade Earring',
+        Ear1 = 'Telos Earring',
         Ear2 = 'Thrud Earring',
         Body = 'Hjarrandi Breast.', -- af+3
-        Hands = { Name = 'Valorous Mitts', Augment = { [1] = '"Mag. Atk. Bns."+1', [2] = 'Attack+9', [3] = 'Mag. Acc.+1', [4] = 'STR+5', [5] = 'Weapon skill damage +5%', [6] = 'AGI+2', [7] = 'Accuracy+9' } },
-        Ring1 = 'Petrov Ring', --regal ring
+        Hands = 'Valorous Mitts',
+        Ring1 = 'Beithir Ring',
         Ring2 = 'Karieyh Ring +1',
         Back = { Name = 'Ankou\'s Mantle', Augment = { [1] = 'Accuracy+20', [2] = '"Dbl.Atk."+10', [3] = 'Attack+20', [4] = 'DEX+20' } },
         Waist = 'Fotia Belt',
@@ -231,18 +231,22 @@ sets = T{
         Body = 'Fall. Cuirass +3',
     },
     TH = {--/th will force this set to equip for 10 seconds
+        Ammo = 'Per. Lucky Egg',
 		Waist = 'Chaac Belt',
 	},
     Movement = {
         Legs = 'Carmine Cuisses +1',
 	},
 };
+profile.Sets = sets;
 
-sets = sets:merge(gcinclude.sets, false);profile.Sets = sets;
+profile.Packer = {
+    --{Name = 'Chonofuda', Quantity = 'all'},
+};
 
 profile.OnLoad = function()
-    gSettings.AllowAddSet = false;
-    gcinclude.Initialize:once(3);
+	gSettings.AllowAddSet = true;
+    gcinclude.Initialize();
 
     AshitaCore:GetChatManager():QueueCommand(1, '/macro book 7');
     AshitaCore:GetChatManager():QueueCommand(1, '/macro set 10');
@@ -264,7 +268,8 @@ profile.HandleDefault = function()
     if (player.Status == 'Engaged') then
         gFunc.EquipSet(sets.Tp_Default)
         if (gcdisplay.GetCycle('MeleeSet') ~= 'Default') then
-        gFunc.EquipSet('Tp_' .. gcdisplay.GetCycle('MeleeSet')); end
+			gFunc.EquipSet('Tp_' .. gcdisplay.GetCycle('MeleeSet')) end
+		if (gcdisplay.GetToggle('TH') == true) then gFunc.EquipSet(sets.TH) end
     elseif (player.Status == 'Resting') then
         gFunc.EquipSet(sets.Resting);
     elseif (player.IsMoving == true) then
@@ -325,6 +330,7 @@ profile.HandleMidcast = function()
             gFunc.EquipSet(sets.Dread_Spikes);
         end
     end
+	if (gcdisplay.GetToggle('TH') == true) then gFunc.EquipSet(sets.TH) end
 end
 
 profile.HandlePreshot = function()
@@ -333,6 +339,7 @@ end
 
 profile.HandleMidshot = function()
     gFunc.EquipSet(sets.Midshot);
+	if (gcdisplay.GetToggle('TH') == true) then gFunc.EquipSet(sets.TH) end
 end
 
 profile.HandleWeaponskill = function()

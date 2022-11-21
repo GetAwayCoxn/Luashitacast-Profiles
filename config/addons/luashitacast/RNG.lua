@@ -2,21 +2,18 @@ local profile = {};
 gcdisplay = gFunc.LoadFile('common\\gcdisplay.lua');
 gcinclude = gFunc.LoadFile('common\\gcinclude.lua');
 
-sets = T{
+local sets = {
     Idle = {
-        Main = 'Naegling',
-        Sub = 'Nusku Shield',
         Range = 'Holliday',
         Ammo = 'Decimating Bullet',
-        Head = { Name = 'Adhemar Bonnet +1', AugPath='B' },
+        Head = 'Malignance Chapeau',
         Neck = 'Bathy Choker +1',
         Ear1 = 'Infused Earring',
         Ear2 = 'Telos Earring',
-        Body = 'Herculean Vest',
-        Hands = { Name = 'Adhemar Wrist. +1', AugPath='B' },
+        Body = 'Malignance Tabard',
+        Hands = 'Malignance Gloves',
         Ring1 = 'Petrov Ring',
         Ring2 = 'Karieyh Ring +1',
-        Back = { Name = 'Mecisto. Mantle', Augment = { [1] = 'Cap. Point+41%', [2] = 'Attack+1', [3] = 'DEF+10' } },
         Waist = { Name = 'Sailfi Belt +1', AugPath='A' },
         Legs = 'Ikenga\'s Trousers',
         Feet = { Name = 'Herculean Boots', Augment = { [1] = 'Accuracy+20', [2] = 'Attack+6', [3] = 'AGI+1', [4] = '"Triple Atk."+3' } },
@@ -27,23 +24,26 @@ sets = T{
         Ear1 = 'Infused Earring',
         Ring2 = 'Chirich Ring +1',
     },
-    Idle_Refresh = {},
+    Idle_Refresh = {
+        Head = 'Rawhide Mask',
+        Ring1 = 'Stikini Ring +1',
+        Waist = 'Fucho-no-Obi',
+    },
     Town = {
         Main = 'Naegling',
         Sub = 'Nusku Shield',
         Range = 'Holliday',
         Ammo = 'Decimating Bullet',
-        Head = { Name = 'Adhemar Bonnet +1', AugPath='B' },
-        Neck = 'Anu Torque',
+        Head = 'Rawhide Mask',
+        Neck = 'Iskur Gorget',
         Ear1 = 'Mache Earring +1',
         Ear2 = 'Telos Earring',
         Body = 'Herculean Vest',
         Hands = { Name = 'Adhemar Wrist. +1', AugPath='B' },
-        Ring1 = 'Petrov Ring',
-        Ring2 = 'Epona\'s Ring',
+        Ring1 = 'Stikini Ring +1',
+        Ring2 = 'Chirich Ring +1',
         Back = 'Solemnity Cape',
         Waist = { Name = 'Sailfi Belt +1', AugPath='A' },
-        Legs = 'Carmine Cuisses +1',
         Feet = { Name = 'Herculean Boots', Augment = { [1] = 'Accuracy+20', [2] = 'Attack+6', [3] = 'AGI+1', [4] = '"Triple Atk."+3' } },
     },
 
@@ -76,6 +76,9 @@ sets = T{
         Feet = { Name = 'Herculean Boots', Augment = { [1] = 'Accuracy+20', [2] = 'Attack+6', [3] = 'AGI+1', [4] = '"Triple Atk."+3' } },
     },
     Tp_Hybrid = {
+        Head = 'Malignance Chapeau',
+        Body = 'Malignance Tabard',
+        Hands = 'Malignance Gloves',
     },
     Tp_Acc = {
         Ear1 = 'Mache Earring +1',
@@ -158,9 +161,10 @@ sets = T{
     },
     Midshot = {
         Head = 'Malignance Chapeau',
-        Neck = 'Sanctity Necklace',
+        Neck = 'Iskur Gorget',
         Ear1 = 'Telos Earring',
-        Ear2 = 'Crep. Earring',
+        Ear2 = 'Enervating Earring',
+        Body = 'Malignance Tabard',
         Hands = 'Malignance Gloves',
         Ring1 = 'Dingir Ring',
         Ring2 = 'Ilabrat Ring',
@@ -169,24 +173,33 @@ sets = T{
         Feet = 'Nyame Sollerets',
     },
     Barrage = {
-        Neck = 'Sanctity Necklace',
-        Ring1 = 'Crepuscular Ring',--3
-        Ring2 = 'Cacoethic Ring +1',
+        Hands = 'Orion Bracers',
     },
-    Midshot_Acc = {--including with barrage up
+    Midshot_Acc = {--will be over written by barrage set still 
+        Head = 'Malignance Chapeau',
+        Neck = 'Iskur Gorget',
+        Ear1 = 'Telos Earring',
         Ear2 = 'Crep. Earring',
-        Ring2 = 'Crepuscular Ring',
+        Body = 'Malignance Tabard',
+        Hands = 'Malignance Gloves',
+        Ring1 = 'Crepuscular Ring',
+        Ring2 = 'Cacoethic Ring +1',
+        Waist = 'Eschan Stone',
         Legs = 'Ikenga\'s Trousers',
+        Feet = 'Nyame Sollerets',
     },
     DoubleShot = {
     },
 
     Ws_Default = {
         Head = 'Nyame Helm',
+        Neck = 'Fotia Gorget',
         Body = 'Nyame Mail',
         Hands = 'Nyame Gauntlets',
         Ring1 = 'Beithir Ring',
         Ring2 = 'Karieyh Ring +1',
+        Back = 'Belenus\'s Cape',
+        Waist = 'Fotia Belt',
         Legs = 'Nyame Flanchard',
         Feet = { Name = 'Herculean Boots', Augment = { [1] = 'Accuracy+30', [2] = 'Weapon skill damage +8%', [3] = 'Attack+6', [4] = 'Mag. Acc.+2' } },
     },
@@ -239,8 +252,9 @@ sets = T{
         Hands = 'Carmine Fin. Ga. +1',
         Ring1 = 'Dingir Ring',
         Ring2 = 'Karieyh Ring +1',
+        Back = 'Belenus\'s Cape',
         Waist = 'Eschan Stone',
-        Legs = 'Nyame Flanchard',
+        Legs = 'Nyame Flanchard',--relic+3
         Feet = { Name = 'Herculean Boots', Augment = { [1] = 'Accuracy+30', [2] = 'Weapon skill damage +8%', [3] = 'Attack+6', [4] = 'Mag. Acc.+2' } },
     },
     TrueFlight_Hybrid = {
@@ -248,6 +262,12 @@ sets = T{
     TrueFlight_Acc = {
     },
 
+    Scavenge = {
+        Feet = 'Orion Socks',
+    },
+    Sharpshot = {
+        Legs = 'Orion Braccae',
+    },
     TH = {--/th will force this set to equip for 10 seconds
 		Waist = 'Chaac Belt',
         Feet = { Name = 'Herculean Boots', Augment = { [1] = 'Potency of "Cure" effect received+5%', [2] = 'Mag. Acc.+19', [3] = 'Accuracy+21', [4] = '"Mag. Atk. Bns."+19', [5] = '"Treasure Hunter"+2' } },
@@ -256,8 +276,7 @@ sets = T{
         Legs = 'Carmine Cuisses +1',
 	},
 };
-
-sets = sets:merge(gcinclude.sets, false);profile.Sets = sets;
+profile.Sets = sets;
 
 profile.Packer = {
     {Name = 'Decimating Bullet', Quantity = 'all'},
@@ -265,11 +284,13 @@ profile.Packer = {
 };
 
 profile.OnLoad = function()
-    gSettings.AllowAddSet = false;
+	gSettings.AllowAddSet = true;
     gcinclude.Initialize();
 
     AshitaCore:GetChatManager():QueueCommand(1, '/macro book 10');
     AshitaCore:GetChatManager():QueueCommand(1, '/macro set 1');
+
+    gcinclude.settings.RefreshGearMPP = 35;
 end
 
 profile.OnUnload = function()
@@ -287,7 +308,8 @@ profile.HandleDefault = function()
     if (player.Status == 'Engaged') then
         gFunc.EquipSet(sets.Tp_Default)
         if (gcdisplay.GetCycle('MeleeSet') ~= 'Default') then
-        gFunc.EquipSet('Tp_' .. gcdisplay.GetCycle('MeleeSet')); end
+			gFunc.EquipSet('Tp_' .. gcdisplay.GetCycle('MeleeSet')) end
+		if (gcdisplay.GetToggle('TH') == true) then gFunc.EquipSet(sets.TH) end
     elseif (player.Status == 'Resting') then
         gFunc.EquipSet(sets.Resting);
     elseif (player.IsMoving == true) then
@@ -301,6 +323,9 @@ end
 
 profile.HandleAbility = function()
     local ability = gData.GetAction();
+
+    if string.match(ability.Name, 'Scavenge') then gFunc.EquipSet(sets.Scavenge);
+    elseif string.match(ability.Name, 'Sharpshot') then gFunc.EquipSet(sets.Sharpshot) end
 
     gcinclude.CheckCancels();
 end
@@ -340,6 +365,7 @@ profile.HandleMidcast = function()
             gFunc.EquipSet(sets.Drain);
         end
     end
+	if (gcdisplay.GetToggle('TH') == true) then gFunc.EquipSet(sets.TH) end
 end
 
 profile.HandlePreshot = function()
@@ -362,13 +388,17 @@ profile.HandleMidshot = function()
 
     if double > 0 then
         gFunc.EquipSet(sets.DoubleShot);
-    elseif barrage > 0 then
-        gFunc.EquipSet(sets.Barrage);
     end
 
     if (gcdisplay.GetCycle('MeleeSet') == 'Acc') then
         gFunc.EquipSet(sets.Midshot_Acc);
     end
+
+    if barrage > 0 then--ensure acc as base if barrage up
+        gFunc.EquipSet(sets.Midshot_Acc);
+        gFunc.EquipSet(sets.Barrage);
+    end
+	if (gcdisplay.GetToggle('TH') == true) then gFunc.EquipSet(sets.TH) end
 end
 
 profile.HandleWeaponskill = function()

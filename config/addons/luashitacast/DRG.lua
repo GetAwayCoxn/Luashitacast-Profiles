@@ -2,19 +2,19 @@ local profile = {};
 gcdisplay = gFunc.LoadFile('common\\gcdisplay.lua');
 gcinclude = gFunc.LoadFile('common\\gcinclude.lua');
 
-sets = T{
+local sets = {
     Idle = {
-        Ammo = { Name = 'Coiste Bodhar', AugPath='A' },
-        Head = 'Flam. Zucchetto +2',
-        Neck = 'Anu Torque',
+        Ammo = 'Staunch Tathlum',
+        Head = 'Crepuscular Helm',
+        Neck = 'Shulmanu Collar',
         Ear1 = 'Mache Earring +1',
         Ear2 = 'Telos Earring',
         Body = 'Gleti\'s Cuirass',
         Hands = 'Flam. Manopolas +2',
-        Ring1 = 'Petrov Ring',
+        Ring1 = 'Defending Ring',
         Ring2 = 'Karieyh Ring +1',
         Back = { Name = 'Brigantia\'s Mantle', Augment = { [1] = 'STR+30', [2] = '"Dbl.Atk."+10', [3] = 'Attack+20', [4] = 'Accuracy+20' } },
-        Waist = { Name = 'Sailfi Belt +1', AugPath='A' },
+        Waist = 'Isa Belt',
         Legs = 'Gleti\'s Breeches',
         Feet = 'Gleti\'s Boots',
     },
@@ -33,14 +33,14 @@ sets = T{
         Main = 'Shining One',
         Sub = 'Utu Grip',
         Ammo = { Name = 'Coiste Bodhar', AugPath='A' },
-        Head = 'Flam. Zucchetto +2',
-        Neck = 'Anu Torque',
-        Ear1 = 'Mache Earring +1',
+        Head = 'Crepuscular Helm',
+        Neck = 'Bathy Choker +1',
+        Ear1 = 'Infused Earring',
         Ear2 = 'Telos Earring',
-        Body = 'Hjarrandi Breast.',
+        Body = 'Gleti\'s Cuirass',
         Hands = 'Flam. Manopolas +2',
-        Ring1 = 'Petrov Ring',
-        Ring2 = 'Niqmaddu Ring',
+        Ring1 = 'Stikini Ring +1',
+        Ring2 = 'Chirich Ring +1',
         Back = { Name = 'Brigantia\'s Mantle', Augment = { [1] = 'STR+30', [2] = '"Dbl.Atk."+10', [3] = 'Attack+20', [4] = 'Accuracy+20' } },
         Waist = { Name = 'Sailfi Belt +1', AugPath='A' },
         Legs = 'Gleti\'s Breeches',
@@ -54,7 +54,7 @@ sets = T{
         Ear1 = { Name = 'Odnowa Earring +1', AugPath='A' },
         Ear2 = 'Etiolation Earring',
         Body = 'Nyame Mail',
-        Hands = 'Volte Moufles',
+        Hands = 'Nyame Gauntlets',
         Ring1 = 'Defending Ring',
         Ring2 = { Name = 'Gelatinous Ring +1', AugPath='A' },
         Back = 'Solemnity Cape',
@@ -66,7 +66,7 @@ sets = T{
     Tp_Default = {
         Ammo = { Name = 'Coiste Bodhar', AugPath='A' },
         Head = 'Flam. Zucchetto +2',
-        Neck = 'Anu Torque',
+        Neck = 'Shulmanu Collar',
         Ear1 = 'Sherida Earring',
         Ear2 = 'Telos Earring',
         Body = 'Gleti\'s Cuirass',
@@ -144,7 +144,7 @@ sets = T{
     },
     Midshot = {
         Ear1 = 'Telos Earring',
-        Ear2 = 'Enervating Earring',
+        Ear2 = 'Crep. Earring',
     },
 
     Ws_Default = {
@@ -152,15 +152,15 @@ sets = T{
         Head = { Name = 'Valorous Mask', Augment = { [1] = 'Attack+16', [2] = 'Weapon skill damage +10%', [3] = 'Accuracy+16', [4] = 'Pet: Mag. Acc.+1', [5] = 'Pet: STR+4' } },
         Neck = 'Fotia Gorget',
         Ear1 = 'Thrud Earring',
-        Ear2 = 'Moonshade Earring',
+        Ear2 = 'Telos Earring',
         Body = 'Gleti\'s Cuirass',
-        Hands = { Name = 'Valorous Mitts', Augment = { [1] = '"Mag. Atk. Bns."+1', [2] = 'Attack+9', [3] = 'Mag. Acc.+1', [4] = 'STR+5', [5] = 'Weapon skill damage +5%', [6] = 'AGI+2', [7] = 'Accuracy+9' } },
-        Ring1 = 'Petrov Ring',
+        Hands = 'Valorous Mitts',
+        Ring1 = 'Beithir Ring',
         Ring2 = 'Karieyh Ring +1',
         Back = { Name = 'Brigantia\'s Mantle', Augment = { [1] = 'STR+30', [2] = '"Dbl.Atk."+10', [3] = 'Attack+20', [4] = 'Accuracy+20' } },
         Waist = 'Fotia Belt',
         Legs = 'Gleti\'s Breeches',
-        Feet = { Name = 'Valorous Greaves', Augment = { [1] = 'Weapon skill damage +5%', [2] = 'Accuracy+8' } },
+        Feet = 'Sulev. Leggings +2',
     },
     Ws_Hybrid = {
         Body = 'Hjarrandi Breast.',
@@ -186,22 +186,34 @@ sets = T{
     Aedge_Acc = {
     },
 
+    Jumps_Default = {
+    },
+    Jumps_Hybrid = {},
+    Jumps_Acc = {},
+
     TH = {--/th will force this set to equip for 10 seconds
+        Ammo = 'Per. Lucky Egg',
 		Waist = 'Chaac Belt',
 	},
     Movement = {
         Legs = 'Carmine Cuisses +1',
 	},
 };
+profile.Sets = sets;
 
-sets = sets:merge(gcinclude.sets, false);profile.Sets = sets;
+profile.Packer = {
+    --{Name = 'Chonofuda', Quantity = 'all'},
+};
 
 profile.OnLoad = function()
-    gSettings.AllowAddSet = false;
-    gcinclude.Initialize:once(3);
+	gSettings.AllowAddSet = true;
+    gcinclude.Initialize();
 
     AshitaCore:GetChatManager():QueueCommand(1, '/macro book 7');
     AshitaCore:GetChatManager():QueueCommand(1, '/macro set 1');
+
+    gcinclude.settings.RefreshGearMPP = 40;
+    gcinclude.settings.PetDTGearHPP = 0; --remove/edit this line if you care about your wyvern, I clearly do not care about mine.
 end
 
 profile.OnUnload = function()
@@ -219,7 +231,8 @@ profile.HandleDefault = function()
     if (player.Status == 'Engaged') then
         gFunc.EquipSet(sets.Tp_Default)
         if (gcdisplay.GetCycle('MeleeSet') ~= 'Default') then
-        gFunc.EquipSet('Tp_' .. gcdisplay.GetCycle('MeleeSet')); end
+			gFunc.EquipSet('Tp_' .. gcdisplay.GetCycle('MeleeSet')) end
+		if (gcdisplay.GetToggle('TH') == true) then gFunc.EquipSet(sets.TH) end
     elseif (player.Status == 'Resting') then
         gFunc.EquipSet(sets.Resting);
     elseif (player.IsMoving == true) then
@@ -233,6 +246,12 @@ end
 
 profile.HandleAbility = function()
     local ability = gData.GetAction();
+
+    if (string.contains(ability.Name, 'Jump')) then
+        gFunc.EquipSet(sets.Jumps_Default);
+        if (gcdisplay.GetCycle('MeleeSet') ~= 'Default') then
+        gFunc.EquipSet('Jumps_' .. gcdisplay.GetCycle('MeleeSet')); end
+    end
 
     gcinclude.CheckCancels();
 end
@@ -272,6 +291,7 @@ profile.HandleMidcast = function()
             gFunc.EquipSet(sets.Drain);
         end
     end
+	if (gcdisplay.GetToggle('TH') == true) then gFunc.EquipSet(sets.TH) end
 end
 
 profile.HandlePreshot = function()
@@ -280,6 +300,7 @@ end
 
 profile.HandleMidshot = function()
     gFunc.EquipSet(sets.Midshot);
+	if (gcdisplay.GetToggle('TH') == true) then gFunc.EquipSet(sets.TH) end
 end
 
 profile.HandleWeaponskill = function()

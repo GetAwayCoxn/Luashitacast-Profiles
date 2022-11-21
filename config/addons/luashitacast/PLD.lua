@@ -3,7 +3,7 @@ gcdisplay = gFunc.LoadFile('common\\gcdisplay.lua');
 gcinclude = gFunc.LoadFile('common\\gcinclude.lua');
 
 
-sets = T{
+local sets = {
     Idle = {
         Ammo = 'Staunch Tathlum',
         Head = 'Nyame Helm',
@@ -27,6 +27,7 @@ sets = T{
         Ring2 = 'Chirich Ring +1',
     },
     Idle_Refresh = {
+        --Ammo = 'Homiliary',
         Head = 'Jumalik Helm',
         Ring1 = 'Stikini Ring +1',
     },
@@ -92,7 +93,7 @@ sets = T{
         Ring2 = 'Chirich Ring +1',
     },
 
-    --These will overwrite any above TP sets if /tankset is used
+    --These will overwrite any above TP profile.Sets if /tankset is used
     Tank_Main = {--Default Tanking,  dt 
         Ammo = 'Staunch Tathlum',
         Head = 'Chev. Armet +1',
@@ -362,8 +363,7 @@ sets = T{
         Feet = 'Nyame Sollerets',
 	},
 };
-
-sets = sets:merge(gcinclude.sets, false);profile.Sets = sets;
+profile.Sets = sets;
 
 profile.Packer = {
     {Name = 'Om. Sandwich', Quantity = 'all'},
@@ -371,8 +371,8 @@ profile.Packer = {
 };
 
 profile.OnLoad = function()
-    gSettings.AllowAddSet = false;
-    gcinclude.Initialize:once(3);
+	gSettings.AllowAddSet = true;
+    gcinclude.Initialize();
 
     AshitaCore:GetChatManager():QueueCommand(1, '/macro book 11');
     AshitaCore:GetChatManager():QueueCommand(1, '/macro set 10');
@@ -393,9 +393,10 @@ profile.HandleDefault = function()
     if (player.Status == 'Engaged') then
         gFunc.EquipSet(sets.Tp_Default)
         if (gcdisplay.GetCycle('MeleeSet') ~= 'Default') then
-        gFunc.EquipSet('Tp_' .. gcdisplay.GetCycle('MeleeSet')); end
+			gFunc.EquipSet('Tp_' .. gcdisplay.GetCycle('MeleeSet')) end
+		if (gcdisplay.GetToggle('TH') == true) then gFunc.EquipSet(sets.TH) end
         if (gcdisplay.GetCycle('TankSet') ~= 'None') then
-        gFunc.EquipSet('Tank_' .. gcdisplay.GetCycle('TankSet')); end
+			gFunc.EquipSet('Tank_' .. gcdisplay.GetCycle('TankSet')) end
     elseif (player.Status == 'Resting') then
         gFunc.EquipSet(sets.Resting);
     elseif (player.IsMoving == true) then
@@ -471,6 +472,7 @@ profile.HandleMidcast = function()
     if (gcdisplay.GetToggle('SIR') == true) then
         gFunc.EquipSet(sets.SIR);
     end
+	if (gcdisplay.GetToggle('TH') == true) then gFunc.EquipSet(sets.TH) end
 end
 
 profile.HandlePreshot = function()
@@ -479,6 +481,7 @@ end
 
 profile.HandleMidshot = function()
     gFunc.EquipSet(sets.Midshot);
+	if (gcdisplay.GetToggle('TH') == true) then gFunc.EquipSet(sets.TH) end
 end
 
 profile.HandleWeaponskill = function()

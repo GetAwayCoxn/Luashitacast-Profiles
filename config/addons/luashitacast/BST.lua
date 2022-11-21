@@ -3,11 +3,13 @@ gcdisplay = gFunc.LoadFile('common\\gcdisplay.lua');
 gcinclude = gFunc.LoadFile('common\\gcinclude.lua');
 
 
-sets = T{
+local sets = {
     Idle = {
-        Ammo = 'Staunch Tathlum',
+        Main = 'Naegling',
+        Sub = 'Adapa Shield',
+        Ammo = 'Voluspa Tathlum',
         Head = 'Malignance Chapeau',
-        Neck = 'Empath Necklace',
+        Neck = 'Bathy Choker +1',
         Ear1 = 'Odnowa Earring +1',
         Ear2 = 'Etiolation Earring',
         Body = 'Gleti\'s Cuirass',
@@ -15,7 +17,7 @@ sets = T{
         Ring1 = 'Defending Ring',
         Ring2 = 'Gelatinous Ring +1',
         Back = { Name = 'Artio\'s Mantle', Augment = { [1] = 'Pet: R.Acc.+20', [2] = 'Pet: R.Atk.+20', [3] = 'Pet: "Regen"+10', [4] = 'Pet: Acc.+20', [5] = 'Pet: Atk.+20' } },
-        Waist = 'Gishdubar Sash',
+        Waist = 'Isa Belt',
         Legs = 'Gleti\'s Breeches',
         Feet = 'Gleti\'s Boots',
     },
@@ -73,7 +75,7 @@ sets = T{
         Ring1 = 'Defending Ring',
         Ring2 = 'Gelatinous Ring +1',
         Back = { Name = 'Artio\'s Mantle', Augment = { [1] = 'Pet: R.Acc.+20', [2] = 'Pet: R.Atk.+20', [3] = 'Pet: "Regen"+10', [4] = 'Pet: Acc.+20', [5] = 'Pet: Atk.+20' } },
-        Waist = 'Incarnation Sash',
+        Waist = 'Isa Belt',
         Legs = 'Taeon Tights',
         Feet = 'Gleti\'s Boots',
 	},
@@ -97,7 +99,8 @@ sets = T{
         Neck = 'Empath Necklace',
         Ear1 = 'Mache Earring +1',
         Hands = 'Malignance Gloves',
-        Ring1 = 'Cacoethic Ring +1',
+        Ring1 = 'Varar Ring +1',
+        Ring2 = 'C. Palug Ring',
     },
 	Tp_Acc = {
         Ring1 = 'Cacoethic Ring +1',
@@ -109,6 +112,8 @@ sets = T{
         Neck = 'Shulmanu Collar',
         Ear1 = 'Enmerkar Earring',
         Ear2 = 'Domes. Earring',
+        Ring1 = 'Varar Ring +1',
+        Ring2 = 'C. Palug Ring',
         Back = { Name = 'Artio\'s Mantle', Augment = { [1] = 'Pet: R.Acc.+20', [2] = 'Pet: R.Atk.+20', [3] = 'Pet: "Regen"+10', [4] = 'Pet: Acc.+20', [5] = 'Pet: Atk.+20' } },
         Waist = 'Incarnation Sash',
         Legs = 'Taeon Tights',
@@ -123,17 +128,31 @@ sets = T{
         Ring2 = 'Prolix Ring',
     },
 
+    Enhancing = {
+    },
+    Phalanx = {
+    },
+    Stoneskin = {
+    },
+    Refresh = {
+    },
+
+    Cure = {
+    },
+
+    Enfeebling = {
+    },
+
 	Ws_Default = {
         Ammo = 'Coiste Bodhar',
         Head = { Name = 'Valorous Mask', Augment = { [1] = 'Attack+16', [2] = 'Weapon skill damage +10%', [3] = 'Accuracy+16', [4] = 'Pet: Mag. Acc.+1', [5] = 'Pet: STR+4' } },
         Neck = 'Fotia Gorget',
         Ear1 = 'Thrud Earring',
-        Ear2 = 'Moonshade Earring',
+        Ear2 = 'Telos Earring',
         Body = 'Gleti\'s Cuirass',
         Hands = 'Meg. Gloves +2',
+        Ring1 = 'Beithir Ring',
         Ring2 = 'Karieyh Ring +1',
-        Ring1 = 'Petrov Ring',
-        Back = '',
         Waist = 'Fotia Belt',
         Legs = 'Gleti\'s Breeches',
         Feet = 'Gleti\'s Boots',
@@ -189,6 +208,8 @@ sets = T{
         Ear2 = 'Domes. Earring',
 		Body = 'Gleti\'s Cuirass',
         Hands = 'Nukumi Manoplas +1',
+        Ring1 = 'Varar Ring +1',
+        Ring2 = 'C. Palug Ring',
 		Waist = 'Incarnation Sash',
         Legs = 'Taeon Tights',
         Feet = 'Gleti\'s Boots',
@@ -198,13 +219,22 @@ sets = T{
 	PetMagicAccuracy = {},
 	
     TH = {--/th will force this set to equip for 10 seconds
+        Ammo = 'Per. Lucky Egg',
 		Waist = 'Chaac Belt',
 	},
 	Movement = {
 	},
 };
+profile.Sets = sets;
 
-sets = sets:merge(gcinclude.sets, false);profile.Sets = sets;
+profile.Packer = {
+    {Name = 'Pet Food Theta', Quantity = 'all'},
+    {Name = 'Furious Broth', Quantity = 'all'},
+    {Name = 'Poisonous Broth', Quantity = 'all'},
+    {Name = 'Livid Broth', Quantity = 'all'},
+    {Name = 'Crackling Broth', Quantity = 'all'},
+    {Name = 'Dire Broth', Quantity = 'all'},
+};
 
 local function HandlePetAction(PetAction)
     gFunc.EquipSet(sets.PetReadyDefault);
@@ -219,12 +249,14 @@ local function HandlePetAction(PetAction)
 end
 
 profile.OnLoad = function()
-    gSettings.AllowAddSet = false;
-	gcinclude.Initialize:once(3);
+	gSettings.AllowAddSet = true;
+    gcinclude.Initialize();
 
     --[[ Set you job macro defaults here]]
     AshitaCore:GetChatManager():QueueCommand(1, '/macro book 9');
     AshitaCore:GetChatManager():QueueCommand(1, '/macro set 10');
+
+    gcinclude.settings.RefreshGearMPP = 50;
 end
 
 profile.OnUnload = function()
@@ -246,8 +278,10 @@ profile.HandleDefault = function()
 	local player = gData.GetPlayer();
     if (player.Status == 'Engaged') then
         gFunc.EquipSet('Tp_' .. gcdisplay.GetCycle('MeleeSet'));
+		if (gcdisplay.GetToggle('TH') == true) then gFunc.EquipSet(sets.TH) end
     elseif (pet ~= nil) and (player.Status == 'Engaged') and (pet.Status == 'Engaged') then
         gFunc.EquipSet(sets.Tp_Hybrid);
+		if (gcdisplay.GetToggle('TH') == true) then gFunc.EquipSet(sets.TH) end
     elseif (pet ~= nil and pet.Status == 'Engaged') then
         gFunc.EquipSet(sets.Pet_Only_Tp);
     elseif (player.Status == 'Resting') then
@@ -306,6 +340,25 @@ profile.HandlePrecast = function()
 end
 
 profile.HandleMidcast = function()
+    local player = gData.GetPlayer();
+    local spell = gData.GetAction();
+
+    if (spell.Skill == 'Enhancing Magic') then
+        gFunc.EquipSet(sets.Enhancing);
+
+        if string.match(spell.Name, 'Phalanx') then
+            gFunc.EquipSet(sets.Phalanx);
+        elseif string.match(spell.Name, 'Stoneskin') then
+            gFunc.EquipSet(sets.Stoneskin);
+        elseif string.contains(spell.Name, 'Refresh') then
+            gFunc.EquipSet(sets.Refresh);
+        end
+    elseif (spell.Skill == 'Healing Magic') then
+        gFunc.EquipSet(sets.Cure);
+    elseif (spell.Skill == 'Enfeebling Magic') then
+        gFunc.EquipSet(sets.Enfeebling);
+    end
+	if (gcdisplay.GetToggle('TH') == true) then gFunc.EquipSet(sets.TH) end
 end
 
 profile.HandlePreshot = function()
@@ -314,6 +367,7 @@ end
 
 profile.HandleMidshot = function()
     gFunc.EquipSet(sets.Midshot);
+	if (gcdisplay.GetToggle('TH') == true) then gFunc.EquipSet(sets.TH) end
 end
 
 profile.HandleWeaponskill = function()

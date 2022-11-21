@@ -3,9 +3,9 @@ gcdisplay = gFunc.LoadFile('common\\gcdisplay.lua');
 gcinclude = gFunc.LoadFile('common\\gcinclude.lua');
 
 
-sets = T{
+local sets = {
     Idle = {
-        Main = 'Bunzi\'s Rod',
+        Main = 'Bolelabunga',
         Sub = 'Ammurapi Shield',
         Ammo = 'Epitaph',
         Head = 'Convoker\'s Horn',
@@ -23,7 +23,7 @@ sets = T{
     },
     Pet_Idle = {--only need 14, rest 512|575|670 skill for favor then refresh
         Main = 'Gridarvor',--5
-        Sub = 'Enki Strap',
+        Sub = 'Elan Strap',
         Ammo = 'Epitaph',
         Head = 'Beckoner\'s Horn +1',
         Neck = 'Caller\'s Pendant',--1,
@@ -34,7 +34,7 @@ sets = T{
         Ring1 = 'Evoker\'s Ring',--1
         Ring2 = 'Stikini Ring +1',
         Back = 'Campestres\'s Cape',
-        Waist = 'Gishdubar Sash',
+        Waist = 'Isa Belt',
         Legs = 'Assid. Pants +1',
         Feet = 'Volte Gaiters',
     },
@@ -60,10 +60,10 @@ sets = T{
         Head = 'Beckoner\'s Horn +1',
         Body = 'Shomonjijoe +1',
         Hands = 'Asteria Mitts +1',
-        Ring1 = 'Evoker\'s Ring',
-        Ring2 = 'Stikini Ring +1',
+        Ring1 = 'Varar Ring +1',
+        Ring2 = 'Varar Ring +1',
         Back = 'Solemnity Cape',
-        Waist = 'Fucho-no-Obi',
+        Waist = 'Regal Belt',
         Legs = 'Assid. Pants +1',
         Feet = 'Herald\'s Gaiters',
     },
@@ -78,7 +78,7 @@ sets = T{
         Ring1 = 'Defending Ring',
         Ring2 = 'Gelatinous Ring +1',
         Back = 'Solemnity Cape',
-        Waist = 'Gishdubar Sash',
+        Waist = 'Isa Belt',
         Legs = 'Nyame Flanchard',
         Feet = 'Nyame Sollerets',
 	},
@@ -86,11 +86,12 @@ sets = T{
         Neck = 'Empath Necklace',
         Ear1 = 'Enmerkar Earring',
         Ear2 = 'Handler\'s Earring +1',
+        Waist = 'Isa Belt',
 	},
 	
 	Tp_Default = {
         Main = 'Marin Staff +1',
-        Sub = 'Enki Strap',
+        Sub = 'Elan Strap',
         Head = 'Nyame Helm',
         Neck = 'Sanctity Necklace',
         Ear1 = 'Mache Earring +1',
@@ -115,7 +116,7 @@ sets = T{
     },
     Pet_Only_Tp = {
         Main = 'Gridarvor',
-        Sub = 'Enki Strap',
+        Sub = 'Elan Strap',
         Ammo = 'Epitaph',
         Head = 'Beckoner\'s Horn +1',
         Neck = 'Shulmanu Collar',
@@ -125,14 +126,14 @@ sets = T{
         Ring1 = 'Evoker\'s Ring',
         Ring2 = 'Varar Ring +1',
         Back = 'Campestres\'s Cape',
-        Waist = 'Incarnation Sash',
+        Waist = 'Regal Belt',
         Legs = 'Taeon Tights',
         Feet = 'Gleti\'s Boots',
     },
 
     Precast = {
         Ammo = 'Sapience Orb',
-        Head = 'Haruspex',
+        Head = 'Haruspex Hat',
         Neck = 'Baetyl Pendant',
         Ear1 = 'Malignance Earring',
         Ear2 = 'Etiolation Earring',
@@ -140,7 +141,6 @@ sets = T{
         Ring1 = 'Kishar Ring',
         Ring2 = 'Prolix Ring',
         Waist = 'Embla Sash',
-        Legs = 'Lengo Pants',
         Feet = 'Amalric Nails +1',
     },
     Cure_Precast = {
@@ -155,44 +155,48 @@ sets = T{
         Waist = 'Siegel Sash',
     },
 
-    Cure = {
-        Main = 'Bunzi\'s Rod',
+    Cure = {--I cap is 50, II cap is 30
+        Main = 'Bunzi\'s Rod',--I 30
         Sub = 'Ammurapi Shield',
         Ammo = 'Pemphredo Tathlum',
-        Head = { Name = 'Vanya Hood', AugPath='C' },
-        Neck = 'Incanter\'s Torque',
-        Ear1 = 'Mendi. Earring',
+        Neck = 'Nodens Gorget',--I 5
+        Ear1 = 'Mendi. Earring',--I 5
         Ear2 = 'Regal Earring',
-        Body = { Name = 'Gende. Bliaut +1', Augment = { [1] = 'Magic dmg. taken -3%', [2] = 'Phys. dmg. taken -3%', [3] = '"Cure" potency +5%' } },
-        Hands = 'Weath. Cuffs +1',
+        Hands = 'Telchine Gloves',--I 9
         Ring1 = 'Stikini Ring +1',
         Ring2 = { Name = 'Metamor. Ring +1', AugPath='A' },
-        Back = 'Solemnity Cape',
+        Back = 'Solemnity Cape',--I 7
         Waist = 'Rumination Sash',
         Feet = { Name = 'Medium\'s Sabots', Augment = { [1] = 'MND+6', [2] = '"Conserve MP"+5', [3] = 'MP+40', [4] = '"Cure" potency +3%' } },
     },
     Regen = {
         Main = 'Bolelabunga',
         Sub = 'Ammurapi Shield',
+        Body = 'Telchine Chas.',
+        Waist = 'Embla Sash',
+        Legs = 'Telchine Braconi',
+        Feet = 'Telchine Pigaches',
     },
     Cursna = {
         Ring1 = 'Purity Ring',
 		Waist = 'Gishdubar Sash',
+        Feet = 'Vanya Clogs',
     },
 
     Enhancing = {
-        Main = 'Bolelabunga',
+        Main = 'Bunzi\'s Rod',
         Sub = 'Ammurapi Shield',
         Ammo = 'Pemphredo Tathlum',
         Head = 'Befouled Crown',
         Neck = 'Incanter\'s Torque',
         Ear1 = 'Mendi. Earring',
         Ear2 = 'Andoaa Earring',
-        Body = 'Telchine Chas.',
         Ring1 = 'Stikini Ring +1',
         Ring2 = { Name = 'Metamor. Ring +1', AugPath='A' },
+        Back = 'Solemnity Cape',
         Waist = 'Embla Sash',
-        Legs = { Name = 'Telchine Braconi', Augment = { [1] = 'Enh. Mag. eff. dur. +8', [2] = '"Conserve MP"+4' } },
+        Legs = 'Telchine Braconi',
+        Feet = 'Telchine Pigaches',
     },
     Stoneskin = {
         Neck = 'Nodens Gorget',
@@ -204,11 +208,9 @@ sets = T{
 
     SIR = {--77
         Ammo = 'Staunch Tathlum',--10
-        Head = 'Vanya Hood',--15
         Neck = 'Loricate Torque +1',--5
         Hands = 'Amalric Gages +1',--11
         Waist = 'Rumination Sash',--10
-        Legs ='Lengo Pants',--10
         Feet = 'Amalric Nails +1',--16
     },
 
@@ -230,7 +232,7 @@ sets = T{
 	Ws_Default = {
         Ammo = 'Pemphredo Tathlum',
         Head = 'Pixie Hairpin +1',
-        Neck = 'Baetyl Necklace',
+        Neck = 'Baetyl Pendant',
         Ear1 = 'Friomisi Earring',
         Ear2 = 'Crematio Earring',
         Body = 'Nyame Mail',
@@ -256,6 +258,7 @@ sets = T{
         Hands = 'Con. Bracers',--I 5
         Ring1 = 'Evoker\'s Ring',
         Ring2 = 'Stikini Ring +1',
+        Back = 'Conveyance Cape',--II 3
     },
     Siphon = {
         Ammo = 'Epitaph',
@@ -273,32 +276,35 @@ sets = T{
 
 	SmnPhysical = {
         Main = 'Gridarvor',
-        Sub = 'Khonsu',
+        Sub = 'Elan Strap',
         Ammo = 'Epitaph',
+        Head ='Helios Band',
         Neck = 'Shulmanu Collar',
         Ear1 = 'Enmerkar Earring',
         Ear2 = 'Lugalbanda Earring',
-        Body = 'Convo. Doublet',
+        Body = 'Con. Doublet +2',
+        Ring1 = 'Varar Ring +1',
         Ring2 = 'Varar Ring +1',
         Waist = 'Incarnation Sash',
-        Legs = 'Enticer\'s Pants',
-        Feet = 'Inyan. Crackows +2',
+        Legs = 'Apogee Slacks +1',
+        Feet = 'Helios Boots',
     },
 	SmnMagical = {
         Main = 'Espiritus',
-        Sub = 'Khonsu',
+        Sub = 'Elan Strap',
         Ammo = 'Epitaph',
-        Head = 'Nyame Helm',
+        Head = 'Nyame Helm',--cait head
         Neck = 'Adad Amulet',
         Ear1 = 'Enmerkar Earring',
         Ear2 = 'Lugalbanda Earring',
-        Body = 'Convo. Doublet',
+        Body = 'Con. Doublet +2',
         Hands = 'Asteria Mitts +1',
-        Ring1 = 'Evoker\'s Ring',
+        Ring1 = 'Varar Ring +1',
         Ring2 = 'Varar Ring +1',
         Back = 'Campestres\'s Cape',
-        Legs = 'Enticer\'s Pants',
-        Feet = 'Inyan. Crackows +2',
+        Waist = 'Regal Belt',
+        Legs = 'Apogee Slacks +1',
+        Feet = 'Helios Boots',--replace these
     },
 	SmnSkill = {
         Ammo = 'Epitaph',
@@ -310,6 +316,7 @@ sets = T{
         Ring1 = 'Evoker\'s Ring',
         Ring2 = 'Stikini Ring +1',
         Back = 'Campestres\'s Cape',
+        Waist = 'Regal Belt',
         Legs = 'Beck. Spats +1',
     },
     SmnAttributes = {--mostly for Wind's Blessing'
@@ -321,6 +328,7 @@ sets = T{
         Ring1 = 'Evoker\'s Ring',
         Ring2 = 'Stikini Ring +1',
         Back = 'Campestres\'s Cape',
+        Waist = 'Regal Belt',
         Legs = 'Assid. Pants +1',--need to Augment
     },
     SmnHealing = {--avatar HP+
@@ -337,49 +345,55 @@ sets = T{
     },
 	SmnEnfeebling = {
         Main = 'Espiritus',
-        Sub = 'Khonsu',
-        Ammo = 'Epitaph',
-        Neck = 'Adad Amulet',
-        Ear1 = 'Enmerkar Earring',
-        Ear2 = 'Lugalbanda Earring',
-        Body = 'Nyame Mail',
-        --Body = 'Convo. Doublet',--after +2
-        Hands = 'Lamassu Mitts +1',
-        Ring1 = 'Evoker\'s Ring',
-        Ring2 = 'Stikini Ring +1',--cait sith ring
-        Back = 'Campestres\'s Cape',
-        Waist = 'Incarnation Sash',--regal belt
-        Legs = 'Nyame Flanchard',
-        Feet = 'Nyame Sollerets',
-        --Feet = 'Con. Pigaches',--after +2
-    },
-    SmnHybrid = {--special set for flamming crush and burning strike (for now)
-        Main = 'Gridarvor',
-        Sub = 'Khonsu',
+        Sub = 'Elan Strap',
         Ammo = 'Epitaph',
         Head = 'Nyame Helm',
         Neck = 'Adad Amulet',
         Ear1 = 'Enmerkar Earring',
         Ear2 = 'Lugalbanda Earring',
         Body = 'Nyame Mail',
-        --Body = 'Convo. Doublet',-- after +2
+        --Body = 'Con. Doublet +2',--after +2
+        Hands = 'Lamassu Mitts +1',
+        Ring1 = 'Evoker\'s Ring',
+        Ring2 = 'C. Palug Ring',
+        Back = 'Campestres\'s Cape',
+        Waist = 'Regal Belt',
+        Legs = 'Nyame Flanchard',
+        Feet = 'Nyame Sollerets',
+        --Feet = 'Con. Pigaches',--after +2
+    },
+    SmnHybrid = {--special set for flamming crush and burning strike (for now)
+        Main = 'Gridarvor',
+        Sub = 'Elan Strap',
+        Ammo = 'Epitaph',
+        Head ='Helios Band',--replace this
+        Neck = 'Adad Amulet',
+        Ear1 = 'Enmerkar Earring',
+        Ear2 = 'Lugalbanda Earring',
+        Body = 'Con. Doublet +2',
+        --Body = 'Con. Doublet +2',-- after +2
         Hands = 'Nyame Gauntlets',
+        Ring1 = 'Varar Ring +1',
         Ring2 = 'Varar Ring +1',
         Back = 'Campestres\'s Cape',
-        Waist = 'Incarnation Sash',
-        Legs = 'Nyame Flanchard',
-        Feet = 'Inyan. Crackows +2',
+        Waist = 'Regal Belt',
+        Legs = 'Apogee Slacks +1',
+        Feet = 'Helios Boots',
     },
 	
     TH = {--/th will force this set to equip for 10 seconds
+        Ammo = 'Per. Lucky Egg',
 		Waist = 'Chaac Belt',
 	},
 	Movement = {
         Feet = 'Herald\'s Gaiters',
 	},
 };
+profile.Sets = sets;
 
-sets = sets:merge(gcinclude.sets, false);profile.Sets = sets;
+profile.Packer = {
+    --{Name = 'Chonofuda', Quantity = 'all'},
+};
 
 local function HandlePetAction(PetAction)
 	if (gcinclude.SmnSkill:contains(PetAction.Name)) then
@@ -401,8 +415,8 @@ local function HandlePetAction(PetAction)
 end
 
 profile.OnLoad = function()
-    gSettings.AllowAddSet = false;
-	gcinclude.Initialize:once(3);
+	gSettings.AllowAddSet = true;
+    gcinclude.Initialize();
     gcinclude.settings.RegenGearHPP = 50;
     gcinclude.settings.RefreshGearMPP = 60;
     gcinclude.settings.PetDTGearHPP = 30;
@@ -431,7 +445,8 @@ profile.HandleDefault = function()
     if (player.Status == 'Engaged') then
         gFunc.EquipSet(sets.Tp_Default);
         if (gcdisplay.GetCycle('MeleeSet') ~= 'Default') then
-            gFunc.EquipSet('Tp_' .. gcdisplay.GetCycle('MeleeSet')); end
+            gFunc.EquipSet('Tp_' .. gcdisplay.GetCycle('MeleeSet')) end
+		if (gcdisplay.GetToggle('TH') == true) then gFunc.EquipSet(sets.TH) end
     elseif (pet ~= nil and pet.Status == 'Engaged') then
         gFunc.EquipSet(sets.Pet_Only_Tp);
     elseif (player.Status == 'Resting') then
@@ -522,6 +537,7 @@ profile.HandleMidcast = function()
     elseif (spell.Skill == 'Dark Magic') then
         gFunc.EquipSet(sets.Drain);
     end
+	if (gcdisplay.GetToggle('TH') == true) then gFunc.EquipSet(sets.TH) end
 end
 
 profile.HandlePreshot = function()
@@ -530,6 +546,7 @@ end
 
 profile.HandleMidshot = function()
     gFunc.EquipSet(sets.Midshot);
+	if (gcdisplay.GetToggle('TH') == true) then gFunc.EquipSet(sets.TH) end
 end
 
 profile.HandleWeaponskill = function()

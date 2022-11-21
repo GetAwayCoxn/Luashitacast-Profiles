@@ -2,8 +2,10 @@ local profile = {};
 gcdisplay = gFunc.LoadFile('common\\gcdisplay.lua');
 gcinclude = gFunc.LoadFile('common\\gcinclude.lua');
 
-sets = T{
+local sets = {
     Idle = {
+        Main = 'Masamune',
+        Sub = 'Utu Grip',
         Ammo = 'Staunch Tathlum',
         Head = 'Wakido Kabuto +2',
         Neck = 'Loricate Torque +1',
@@ -12,11 +14,11 @@ sets = T{
         Body = 'Mpaca\'s Doublet',
         Hands = 'Macabre Gaunt. +1',
         Ring1 = 'Defending Ring',
-        Ring2 = { Name = 'Gelatinous Ring +1', AugPath='A' },
+        Ring2 = 'Karieyh Ring +1',
         Back = { Name = 'Smertrios\'s Mantle', Augment = { [1] = 'Damage taken-5%', [2] = 'Accuracy+30', [3] = 'Attack+20', [4] = '"Store TP"+10', [5] = 'DEX+20' } },
         Waist = 'Flume Belt +1',
         Legs = 'Mpaca\'s Hose',
-        Feet = 'Flam. Gambieras +2',
+        Feet = 'Mpaca\'s Boots',
     },
     Resting = {},
     Idle_Regen = {
@@ -110,50 +112,27 @@ sets = T{
 
 
     Precast = {
-        Ammo = 'Staunch Tathlum',
+        Ammo = 'Sapience Orb',
         Neck = 'Baetyl Pendant',
         Ear1 = 'Etiolation Earring',
-        Ear2 = 'Malignance Earring',
+        Ear2 = 'Loquac. Earring',
         Hands = 'Leyline Gloves',
         Ring2 = 'Prolix Ring',
     },
 
 
     Cure = {
-        Ammo = 'Pemphredo Tathlum',
-        Head = { Name = 'Vanya Hood', AugPath='C' },
-        Neck = 'Incanter\'s Torque',
-        Ear1 = 'Mendi. Earring',
-        Ear2 = 'Regal Earring',
-        Body = { Name = 'Gende. Bliaut +1', Augment = { [1] = 'Magic dmg. taken -3%', [2] = 'Phys. dmg. taken -3%', [3] = '"Cure" potency +5%' } },
-        Hands = 'Weath. Cuffs +1',
-        Ring1 = 'Stikini Ring +1',
-        Ring2 = { Name = 'Metamor. Ring +1', AugPath='A' },
-        Back = 'Solemnity Cape',
-        Waist = 'Gishdubar Sash',
-        Legs = 'Atrophy Tights',
-        Feet = { Name = 'Medium\'s Sabots', Augment = { [1] = 'MND+6', [2] = '"Conserve MP"+5', [3] = 'MP+40', [4] = '"Cure" potency +3%' } },
     },
 
     Enhancing = {
-        Ammo = 'Pemphredo Tathlum',
-        Head = 'Befouled Crown',
-        Neck = 'Incanter\'s Torque',
-        Ear1 = 'Mendi. Earring',
-        Ear2 = 'Andoaa Earring',
-        Hands = 'Malignance Gloves',
-        Ring1 = 'Defending Ring',
-        Ring2 = { Name = 'Metamor. Ring +1', AugPath='A' },
-        Back = { Name = 'Sucellos\'s Cape', Augment = { [1] = 'Accuracy+20', [2] = 'Attack+20', [3] = 'DEX+20' } },
-        Waist = 'Embla Sash',
-        Legs = { Name = 'Telchine Braconi', Augment = { [1] = 'Enh. Mag. eff. dur. +8', [2] = '"Conserve MP"+4' } },
     },
 
     Preshot = {
+        Ring1 = 'Crepuscular Ring',
     },
     Midshot = {
         Ear1 = 'Telos Earring',
-        Ear2 = 'Enervating Earring',
+        Ear2 = 'Crep. Earring',
     },
 
     Ws_Default = {
@@ -161,15 +140,15 @@ sets = T{
         Head = 'Mpaca\'s Cap',
         Neck = { Name = 'Sam. Nodowa +1', AugPath='A' },
         Ear1 = 'Thrud Earring',
-        Ear2 = 'Moonshade Earring',
+        Ear2 = 'Schere Earring',
         Body = { Name = 'Sakonji Domaru +3', AugTrial=5483 },
-        Hands = { Name = 'Valorous Mitts', Augment = { [1] = '"Mag. Atk. Bns."+1', [2] = 'Attack+9', [3] = 'Mag. Acc.+1', [4] = 'STR+5', [5] = 'Weapon skill damage +5%', [6] = 'AGI+2', [7] = 'Accuracy+9' } },
-        Ring1 = 'Karieyh Ring +1',
-        Ring2 = 'Niqmaddu Ring',
-        Back = { Name = 'Smertrios\'s Mantle', Augment = { [1] = 'STR+20', [2] = 'Weapon skill damage +10%', [3] = 'Attack+20', [4] = 'Accuracy+20' } },
+        Hands = 'Valorous Mitts',
+        Ring1 = 'Beithir Ring',
+        Ring2 = 'Karieyh Ring +1',
+        Back = { Name = 'Smertrios\'s Mantle', Augment = { [1] = 'STR+30', [2] = 'Weapon skill damage +10%', [3] = 'Attack+20', [4] = 'Accuracy+20' } },
         Waist = { Name = 'Sailfi Belt +1', AugPath='A' },
         Legs = 'Hiza. Hizayoroi +2',
-        Feet = { Name = 'Valorous Greaves', Augment = { [1] = 'Weapon skill damage +5%', [2] = 'Accuracy+8' } },
+        Feet = 'Valorous Greaves',
     },
     Ws_Hybrid = {
         Body = 'Nyame Mail',
@@ -187,7 +166,7 @@ sets = T{
         Body = 'Kasuga Domaru +1',
         Hands = 'Wakido Kote +3',
         Ring1 = 'Defending Ring',
-        Ring2 = 'Karieyh Ring +1',
+        Ring2 = 'Beithir Ring',
         Back = 'Solemnity Cape',
         Waist = 'Flume Belt +1',
         Legs = 'Mpaca\'s Hose',
@@ -198,16 +177,16 @@ sets = T{
         Ammo = 'Knobkierrie',
         Head = 'Mpaca\'s Cap',
         Neck = 'Fotia Gorget',
-        Ear1 = 'Moonshade Earring',
+        Ear1 = 'Schere Earring',
         Ear2 = 'Telos Earring',
         Body = { Name = 'Sakonji Domaru +3', AugTrial=5483 },
-        Hands = { Name = 'Valorous Mitts', Augment = { [1] = '"Mag. Atk. Bns."+1', [2] = 'Attack+9', [3] = 'Mag. Acc.+1', [4] = 'STR+5', [5] = 'Weapon skill damage +5%', [6] = 'AGI+2', [7] = 'Accuracy+9' } },
-        Ring1 = 'Petrov Ring',
+        Hands = 'Valorous Mitts',
+        Ring1 = 'Beithir Ring',
         Ring2 = 'Karieyh Ring +1',
-        Back = 'Solemnity Cape',
+        Back = { Name = 'Smertrios\'s Mantle', Augment = { [1] = 'STR+30', [2] = 'Weapon skill damage +10%', [3] = 'Attack+20', [4] = 'Accuracy+20' } },
         Waist = { Name = 'Sailfi Belt +1', AugPath='A' },
         Legs = 'Mpaca\'s Hose',
-        Feet = { Name = 'Valorous Greaves', Augment = { [1] = 'Weapon skill damage +5%', [2] = 'Accuracy+8' } },
+        Feet = 'Valorous Greaves',
     },
     Savage_Hybrid = {
         Body = 'Nyame Mail',
@@ -221,12 +200,12 @@ sets = T{
         Head = 'Nyame Helm',
         Neck = { Name = 'Sam. Nodowa +1', AugPath='A' },
         Ear1 = 'Friomisi Earring',
-        Ear2 = 'Moonshade Earring',
+        Ear2 = 'Crematio Earring',
         Body = { Name = 'Sakonji Domaru +3', AugTrial=5483 },
-        Hands = { Name = 'Valorous Mitts', Augment = { [1] = '"Mag. Atk. Bns."+1', [2] = 'Attack+9', [3] = 'Mag. Acc.+1', [4] = 'STR+5', [5] = 'Weapon skill damage +5%', [6] = 'AGI+2', [7] = 'Accuracy+9' } },
+        Hands = 'Valorous Mitts',
         Ring2 = 'Karieyh Ring +1',
         Ring1 = 'Metamor. Ring +1',
-        Back = { Name = 'Smertrios\'s Mantle', Augment = { [1] = 'STR+20', [2] = 'Weapon skill damage +10%', [3] = 'Attack+20', [4] = 'Accuracy+20' } },
+        Back = { Name = 'Smertrios\'s Mantle', Augment = { [1] = 'STR+30', [2] = 'Weapon skill damage +10%', [3] = 'Attack+20', [4] = 'Accuracy+20' } },
         Waist = 'Eschan Stone',
         Legs = 'Hiza. Hizayoroi +2',
         Feet = 'Nyame Sollerets',
@@ -248,7 +227,7 @@ sets = T{
         Hands = 'Mpaca\'s Gloves',
         Ring1 = 'Stikini Ring +1',
         Ring2 = { Name = 'Metamor. Ring +1', AugPath='A' },
-        Back = { Name = 'Smertrios\'s Mantle', Augment = { [1] = 'STR+20', [2] = 'Weapon skill damage +10%', [3] = 'Attack+20', [4] = 'Accuracy+20' } },
+        Back = { Name = 'Smertrios\'s Mantle', Augment = { [1] = 'STR+30', [2] = 'Weapon skill damage +10%', [3] = 'Attack+20', [4] = 'Accuracy+20' } },
         Waist = 'Eschan Stone',
         Legs = 'Mpaca\'s Hose',
         Feet = 'Nyame Sollerets',
@@ -265,15 +244,15 @@ sets = T{
         Head = 'Mpaca\'s Cap',
         Neck = { Name = 'Sam. Nodowa +1', AugPath='A' },
         Ear1 = 'Thrud Earring',
-        Ear2 = 'Moonshade Earring',
+        Ear2 = 'Schere Earring',
         Body = { Name = 'Sakonji Domaru +3', AugTrial=5483 },
         Hands = 'Mpaca\'s Gloves',
-        Ring1 = 'Petrov Ring',
+        Ring1 = 'Beithir Ring',
         Ring2 = 'Karieyh Ring +1',
-        Back = { Name = 'Smertrios\'s Mantle', Augment = { [1] = 'STR+20', [2] = 'Weapon skill damage +10%', [3] = 'Attack+20', [4] = 'Accuracy+20' } },
+        Back = { Name = 'Smertrios\'s Mantle', Augment = { [1] = 'STR+30', [2] = 'Weapon skill damage +10%', [3] = 'Attack+20', [4] = 'Accuracy+20' } },
         Waist = 'Fotia Belt',
         Legs = 'Mpaca\'s Hose',
-        Feet = { Name = 'Valorous Greaves', Augment = { [1] = 'Weapon skill damage +5%', [2] = 'Accuracy+8' } },
+        Feet = 'Valorous Greaves',
     },
     Stardiver_Hybrid = {
         Body = 'Nyame Mail',
@@ -287,6 +266,15 @@ sets = T{
     },
     ThirdEye = {
         Legs = 'Sakonji Haidate +1',
+    },
+    Seigan = {
+        Head = 'Kasuga Kabuto +1',
+    },
+    Sekkanoki = {
+        Hands = 'Kasuga Kote +1',
+    },
+    Sengikori = {
+        Feet = 'Kas. Sune-Ate +1',
     },
     Meditate = {
         Head = 'Wakido Kabuto +2',
@@ -302,18 +290,22 @@ sets = T{
     },
 
     TH = {--/th will force this set to equip for 10 seconds
+        Ammo = 'Per. Lucky Egg',
 		Waist = 'Chaac Belt',
 	},
     Movement = {
         Feet = 'Danzo Sune-Ate',
 	},
 };
+profile.Sets = sets;
 
-sets = sets:merge(gcinclude.sets, false);profile.Sets = sets;
+profile.Packer = {
+    {Name = 'Red Curry Bun', Quantity = 'all'},
+};
 
 profile.OnLoad = function()
-    gSettings.AllowAddSet = false;
-    gcinclude.Initialize:once(3);
+	gSettings.AllowAddSet = true;
+    gcinclude.Initialize();
 
     AshitaCore:GetChatManager():QueueCommand(1, '/macro book 4');
     AshitaCore:GetChatManager():QueueCommand(1, '/macro set 8');
@@ -331,14 +323,20 @@ profile.HandleDefault = function()
     gFunc.EquipSet(sets.Idle);
     local hasso = gData.GetBuffCount('Hasso');
     local thirdeye = gData.GetBuffCount('Third Eye');
+    local seigan = gData.GetBuffCount('Seigan');
 	local player = gData.GetPlayer();
 
     if (player.Status == 'Engaged') then
         gFunc.EquipSet(sets.Tp_Default);
         if (gcdisplay.GetCycle('MeleeSet') ~= 'Default') then
-            gFunc.EquipSet('Tp_' .. gcdisplay.GetCycle('MeleeSet')); end
+            gFunc.EquipSet('Tp_' .. gcdisplay.GetCycle('MeleeSet')) end
         if (hasso >= 1) then gFunc.EquipSet(sets.Hasso) end
-        if (thirdeye >= 1) then gFunc.EquipSet(sets.ThirdEye) end
+        if (thirdeye >= 1) and (seigan >= 1) then 
+            gFunc.EquipSet(sets.ThirdEye);
+        elseif (seigan >= 1) then
+            gFunc.EquipSet(sets.Seigan);
+        end
+		if (gcdisplay.GetToggle('TH') == true) then gFunc.EquipSet(sets.TH) end
         if (gcdisplay.GetToggle('PROC') == true) then
             gFunc.EquipSet(sets.Tp_Proc); end
     elseif (player.Status == 'Resting') then
@@ -357,6 +355,8 @@ profile.HandleAbility = function()
 
     if string.match(ability.Name, 'Provoke') then gFunc.EquipSet(sets.Enmity);
     elseif string.match(ability.Name, 'Meditate') then gFunc.EquipSet(sets.Meditate);
+    elseif string.match(ability.Name, 'Third Eye') then gFunc.EquipSet(sets.ThirdEye);
+    elseif string.match(ability.Name, 'Sengikori') then gFunc.EquipSet(sets.Sengikori);
     elseif string.contains(ability.Name, 'Meikyo') then gFunc.EquipSet(sets.Meikyo) end
 
     gcinclude.CheckCancels();
@@ -383,6 +383,7 @@ profile.HandleMidcast = function()
     elseif (spell.Skill == 'Healing Magic') then
         gFunc.EquipSet(sets.Cure);
     end
+	if (gcdisplay.GetToggle('TH') == true) then gFunc.EquipSet(sets.TH) end
 end
 
 profile.HandlePreshot = function()
@@ -391,10 +392,12 @@ end
 
 profile.HandleMidshot = function()
     gFunc.EquipSet(sets.Midshot);
+	if (gcdisplay.GetToggle('TH') == true) then gFunc.EquipSet(sets.TH) end
 end
 
 profile.HandleWeaponskill = function()
     local meikyo = gData.GetBuffCount('Meikyo Shisui');
+    local sekkanoki = gData.GetBuffCount('Sekkanoki');
     local canWS = gcinclude.CheckWsBailout();
     if (canWS == false) then gFunc.CancelAction() return;
     elseif (gcdisplay.GetToggle('PROC') == true) then
@@ -425,6 +428,7 @@ profile.HandleWeaponskill = function()
         end
 
         if (meikyo >= 1) then gFunc.EquipSet(sets.Meikyo) end
+        if (sekkanoki >= 1) then gFunc.EquipSet(sets.Sekkanoki) end
     end
 end
 

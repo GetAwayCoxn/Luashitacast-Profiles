@@ -2,7 +2,7 @@ local profile = {};
 gcdisplay = gFunc.LoadFile('common\\gcdisplay.lua');
 gcinclude = gFunc.LoadFile('common\\gcinclude.lua');
 
-sets = T{
+local sets = {
     Idle = {
         Main = 'Naegling',
         Range = 'Holliday',
@@ -46,7 +46,7 @@ sets = T{
         Ammo = 'Decimating Bullet',
         Head = 'Chass. Tricorne +1',
         Neck = 'Bathy Choker +1',
-        Body = 'Laksa. Frac +2',
+        Body = 'Chasseur\'s Frac +1',
         Hands = 'Malignance Gloves',
         Ring1 = 'Stikini Ring +1',
         Ring2 = 'Chirich Ring +1',
@@ -156,7 +156,8 @@ sets = T{
         Ring1 = 'Crepuscular Ring',--3
         Back = { Name = 'Camulus\'s Mantle', Augment = '"Snapshot"+10' },--10
         Waist = 'Impulse Belt',--3
-        Legs = 'Ikenga\'s Trousers',--8
+        -- Legs = 'Ikenga\'s Trousers',--8
+        Legs = 'Lanun Trews +3',--10
         Feet = 'Meg. Jam. +2',--10
     },
     Preshot_FlurryI = {--with flurry I on, gives 15
@@ -167,9 +168,9 @@ sets = T{
     Midshot = {
         Ammo = 'Decimating Bullet',
         Head = 'Malignance Chapeau',
-        Neck = 'Comm. Charm +1',
+        Neck = 'Iskur Gorget',
         Ear1 = 'Telos Earring',
-        Ear2 = 'Crep. Earring',
+        Ear2 = 'Enervating Earring',
         Body = 'Laksa. Frac +2',
         Hands = 'Malignance Gloves',
         Ring1 = 'Dingir Ring',
@@ -180,6 +181,7 @@ sets = T{
         Feet = 'Nyame Sollerets',
     },
     Midshot_Acc = {
+        Ear1 = 'Telos Earring',
         Ear2 = 'Crep. Earring',
         Body = 'Laksa. Frac +2',
         Ring2 = 'Crepuscular Ring',
@@ -365,15 +367,14 @@ sets = T{
     Fold = {Hands = 'Lanun Gants +3'},
     WildCard = {Feet = 'Lanun Bottes +3'},
     RandomDeal = {Body = 'Lanun Frac +2'},
-    SnakeEye = {Legs = 'Lanun Trews +2'},
+    SnakeEye = {Legs = 'Lanun Trews +3'},
     TH = {--/th will force this set to equip for 10 seconds
 		Waist = 'Chaac Belt',
         Feet = { Name = 'Herculean Boots', Augment = { [1] = 'Potency of "Cure" effect received+5%', [2] = 'Mag. Acc.+19', [3] = 'Accuracy+21', [4] = '"Mag. Atk. Bns."+19', [5] = '"Treasure Hunter"+2' } },
 	},
     Movement = {Legs = 'Carmine Cuisses +1'},
 };
-
-sets = sets:merge(gcinclude.sets, false);profile.Sets = sets;
+profile.Sets = sets;
 
 profile.Packer = {
     {Name = 'Decimating Bullet', Quantity = 'all'},
@@ -383,7 +384,7 @@ profile.Packer = {
 };
 
 profile.OnLoad = function()
-    gSettings.AllowAddSet = false;
+	gSettings.AllowAddSet = true;
     gcinclude.Initialize();
 
     AshitaCore:GetChatManager():QueueCommand(1, '/macro book 10');
@@ -411,7 +412,8 @@ profile.HandleDefault = function()
     if (player.Status == 'Engaged') then
         gFunc.EquipSet(sets.Tp_Default)
         if (gcdisplay.GetCycle('MeleeSet') ~= 'Default') then
-        gFunc.EquipSet('Tp_' .. gcdisplay.GetCycle('MeleeSet')); end
+			gFunc.EquipSet('Tp_' .. gcdisplay.GetCycle('MeleeSet')) end
+		if (gcdisplay.GetToggle('TH') == true) then gFunc.EquipSet(sets.TH) end
     elseif (player.Status == 'Resting') then
         gFunc.EquipSet(sets.Resting);
     elseif (player.IsMoving == true) then
@@ -479,6 +481,7 @@ profile.HandleMidcast = function()
             gFunc.EquipSet(sets.Drain);
         end
     end
+	if (gcdisplay.GetToggle('TH') == true) then gFunc.EquipSet(sets.TH) end
 end
 
 profile.HandlePreshot = function()
@@ -505,6 +508,7 @@ profile.HandleMidshot = function()
     if (gcdisplay.GetCycle('MeleeSet') == 'Acc') then
         gFunc.EquipSet(sets.Midshot_Acc);
     end
+	if (gcdisplay.GetToggle('TH') == true) then gFunc.EquipSet(sets.TH) end
 end
 
 profile.HandleWeaponskill = function()
@@ -539,7 +543,6 @@ profile.HandleWeaponskill = function()
             gFunc.EquipSet(sets.Wildfire_Default)
             if (gcdisplay.GetCycle('MeleeSet') ~= 'Default') then
             gFunc.EquipSet('Wildfire_' .. gcdisplay.GetCycle('MeleeSet')); end
-            if (gcdisplay.GetCycle('MeleeSet') == 'Default') then gcinclude.DoMoonshade() end;
             if (weather.DayElement == 'Fire' or weather.RawWeatherElement == 'Fire') then gFunc.EquipSet(sets.WsObi) end
         elseif string.match(ws.Name, 'Leaden Salute') then
             gFunc.EquipSet(sets.Leaden_Default)

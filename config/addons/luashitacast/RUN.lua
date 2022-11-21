@@ -3,21 +3,23 @@ gcdisplay = gFunc.LoadFile('common\\gcdisplay.lua');
 gcinclude = gFunc.LoadFile('common\\gcinclude.lua');
 
 
-sets = T{
+local sets = {
     Idle = {
-        Ammo = 'Staunch Tathlum',
-        Head = 'Nyame Helm',
-        Neck ='Unmoving Collar +1',
-        Ear1 = 'Odnowa Earring +1',
-        Ear2 = 'Etiolation Earring',
-        Body = 'Nyame Mail',
-        Hands = 'Nyame Gauntlets',
-        Ring1 = 'Moonbeam Ring',
-        Ring2 = 'Gelatinous Ring +1',
+        Main = 'Epeolatry',
+        Sub = 'Utu Grip',
+        Ammo = 'Staunch Tathlum',--2
+        Head = 'Nyame Helm',--7
+        Neck ='Futhark Torque +1',--2 currently
+        Ear1 = 'Odnowa Earring +1',--3
+        Ear2 = 'Eabani Earring',
+        Body = 'Agwu\'s Robe',
+        Hands = 'Nyame Gauntlets',--7
+        Ring1 = 'Moonbeam Ring',--4
+        Ring2 = 'Defending Ring',--10
         Back = { Name = 'Ogma\'s Cape', Augment = { [1] = 'Parrying rate+5%', [2] = 'Mag. Eva.+20', [3] = 'Eva.+20', [4] = 'HP+80', [5] = 'Enmity+10' } },
-        Waist = 'Gishdubar Sash',
-        Legs = 'Nyame Flanchard',
-        Feet = 'Nyame Sollerets',
+        Waist = 'Carrier\'s Sash',
+        Legs = 'Nyame Flanchard',----8
+        Feet = 'Nyame Sollerets',--7
     },
     Resting = {},
     Idle_Regen = {
@@ -39,25 +41,26 @@ sets = T{
         Main = 'Epeolatry',
         Sub = 'Utu Grip',
         Ammo = 'Staunch Tathlum',
-        Head = 'Erilaz Galea +1',
+        Head = 'Erilaz Galea +2',
         Body = 'Agwu\'s Robe',
         Hands = 'Nyame Gauntlets',
         Legs = 'Carmine Cuisses +1',
         Feet = 'Nyame Sollerets',
     },
 
-    Dt = {--43 dt, 11 pdt, 3mdt
+    Dt = {
         Ammo = 'Staunch Tathlum',--2
         Head = 'Nyame Helm',--7
-        Neck ='Loricate Torque +1',--6
-        Ear1 = 'Odnowa Earring +1',--2 currently
-        Ear2 = 'Etiolation Earring',--3mdt
-        Body = 'Agwu\'s Robe',
+        Neck ='Futhark Torque +1',--4 currently
+        Ear1 = 'Odnowa Earring +1',--3
+        Ear2 = 'Eabani Earring',
+        --Body = 'Nyame Mail',--9
+        Body = 'Agwu\'s Robe',--replace with Runeist coat +3
         Hands = 'Nyame Gauntlets',--7
         Ring1 = 'Moonbeam Ring',--4
-        Ring2 = 'Gelatinous Ring +1',--7pdt
+        Ring2 = 'Defending Ring',--10
         Back = { Name = 'Ogma\'s Cape', Augment = { [1] = 'Parrying rate+5%', [2] = 'Mag. Eva.+20', [3] = 'Eva.+20', [4] = 'HP+80', [5] = 'Enmity+10' } },
-        Waist = 'Flume Belt +1',--4pdt
+        Waist = 'Carrier\'s Sash',
         Legs = 'Nyame Flanchard',----8
         Feet = 'Nyame Sollerets',--7
     },
@@ -102,27 +105,42 @@ sets = T{
         Waist = 'Ioskeha Belt +1',
     },
 
-    --These will overwrite any above TP sets if /tankset is used
+    --These will overwrite any above TP profile.Sets if /tankset is used
     Tank_Main = {--Default Tanking,  dt 
         Main = 'Epeolatry',
-        Sub = 'Refined Grip +1',--3
+        --Sub = 'Refined Grip +1',--3
         Ammo = 'Staunch Tathlum',--2
         Head ='Nyame Helm',--7
-        --Neck = 'Unmoving Collar +1',
-        Neck = 'Loricate Torque +1',
+        Neck = 'Futhark Torque +1',
         Ear1 = 'Odnowa Earring +1',--2
         Ear2 = 'Ethereal Earring',--3kinda
         --Ear2 = 'Hermodr Earring',--dragon points, 10 parry skill
         Body = 'Futhark Coat +3',--9
         Hands = 'Turms Mittens',
         Ring1 = 'Moonbeam Ring',--4
-        Ring2 = 'Gelatinous Ring +1',--7
+        Ring2 = 'Defending Ring',--7
         Back = { Name = 'Ogma\'s Cape', Augment = { [1] = 'Parrying rate+5%', [2] = 'Mag. Eva.+20', [3] = 'Eva.+20', [4] = 'HP+80', [5] = 'Enmity+10' } },
         Waist = 'Flume Belt +1',
         Legs = 'Eri. Leg Guards +1',-- PDT 7
         Feet = 'Turms Leggings',--7
         },
-    Tank_MEVA = {},
+    Tank_MEVA = {
+        Main = 'Epeolatry',--Aettir technically better here
+        --Sub = 'Refined Grip +1',
+        Ammo = 'Staunch Tathlum',
+        Head ='Nyame Helm',
+        Neck = 'Warder\'s Charm +1',
+        Ear1 = 'Odnowa Earring +1',
+        Ear2 = 'Eabani Earring',
+        Body = 'Nyame Mail',
+        Hands = 'Nyame Gauntlets',
+        Ring1 = 'Defending Ring',
+        Ring2 = 'Purity Ring',
+        Back = { Name = 'Ogma\'s Cape', Augment = { [1] = 'Parrying rate+5%', [2] = 'Mag. Eva.+20', [3] = 'Eva.+20', [4] = 'HP+80', [5] = 'Enmity+10' } },--want diff cape here
+        Waist = 'Carrier\'s Sash',
+        Legs = 'Agwu\'s Slops',
+        Feet = 'Nyame Sollerets',
+    },
 
 
     Precast = {
@@ -135,7 +153,7 @@ sets = T{
         Hands = 'Leyline Gloves', -- 6
         Ring1 = 'Prolix Ring', -- 2
         Ring2 = 'Kishar Ring', -- 4
-        Waist = 'Kasiri Belt',
+        Waist = 'Audumbla Sash',
         Legs = 'Aya. Cosciales +2', -- 6
         Feet = 'Carmine Greaves +1',--7
     },
@@ -149,8 +167,8 @@ sets = T{
         Hands = 'Nyame Gauntlets',
         Ring1 = 'Eihwaz Ring',
         Ring2 = 'Gelatinous Ring +1',
-        Waist = 'Kasiri Belt',
-        Legs = 'Futhark Trousers +1',
+        Waist = 'Audumbla Sash',
+        Legs = 'Futhark Trousers +2',
         Feet = 'Agwu\'s Pigaches',
     },
     Cure_Precast = {
@@ -158,16 +176,16 @@ sets = T{
     },
     Enhancing_Precast = {
         Waist = 'Siegel Sash', -- 8
-        Legs = 'Futhark Trousers +1', -- 13
+        Legs = 'Futhark Trousers +2', -- 13
     },
-    SIR = {--10 merits + 88 
+    SIR = {--10 merits + 90
         Ammo = 'Staunch Tathlum', -- 10
-        Head = 'Agwu\'s Cap', -- 10
+        Head = 'Erilaz Galea +2', -- 15
         Neck = 'Moonlight Necklace', -- 15
         Hands = 'Rawhide Gloves', -- 15
         Waist = 'Audumbla Sash', -- 10
         Legs = 'Carmine Cuisses +1', -- 20
-        Feet = 'Taeon Boots', -- 8
+        Feet = 'Taeon Boots', -- 10
     },
     Enmity = {
         Neck = 'Unmoving Collar +1',
@@ -177,13 +195,12 @@ sets = T{
         Ring1 = 'Eihwaz Ring',
         Ring2 = 'Supershear Ring',
         Back = { Name = 'Ogma\'s Cape', Augment = { [1] = 'Parrying rate+5%', [2] = 'Mag. Eva.+20', [3] = 'Eva.+20', [4] = 'HP+80', [5] = 'Enmity+10' } },
-        Waist = 'Kasiri Belt',
         Legs = 'Eri. Leg Guards +1',
         Feet = 'Erilaz Greaves +1',
     },
     SIRenmity = { -- Foil and blue spells mostly
         Ammo = 'Staunch Tathlum', -- 10
-        Head = 'Agwu\'s Cap', -- 10
+        Head = 'Erilaz Galea +2', -- 15
         Neck = 'Moonlight Necklace', -- 15
         Ear1 = 'Odnowa Earring +1',
         Ear2 = 'Cryptic Earring',
@@ -200,22 +217,21 @@ sets = T{
     Cure = {
         Neck = 'Sacro Gorget', -- 10
         Ear1 = 'Mendi. Earring', -- 5
-        Hands = 'Weath. Cuffs +1', -- 9
         Back = 'Solemnity Cape', -- 7
         Waist = 'Gishdubar Sash', --10rec
     },
     Regen = {
         Neck = 'Sacro Gorget',
-        Legs = 'Futhark Trousers +1',
+        Legs = 'Futhark Trousers +2',
     },
     Enhancing = {
-        Head = 'Erilaz Galea +1',
-        --Neck = 'Incanter\'s Torque',--not gonna push me into next teir atm anyways
-        Legs = 'Futhark Trousers +1',
+        Head = 'Erilaz Galea +2',
+        Neck = 'Incanter\'s Torque',
+        Legs = 'Futhark Trousers +2',
     },
     Phalanx = {
         Head = 'Fu. Bandeau +1', -- 5
-        --Neck = 'Incanter\'s Torque',--not gonna push me into next teir atm anyways
+        Neck = 'Incanter\'s Torque',
     },
     Stoneskin = {
         Waist = 'Siegel Sash',
@@ -224,24 +240,29 @@ sets = T{
         Neck = 'Incanter\'s Torque',
         Ear1 = 'Andoaa Earring',
         Ring1 = 'Stikini Ring +1',
-        Back = 'Merciful Cape',
+        --Back = 'Merciful Cape',
         Legs = 'Carmine Cuisses +1',
     },
 
     Preshot = {},
     Midshot = {
         Ear1 = 'Telos Earring',
-        Ear2 = 'Enervating Earring',
+        Ear2 = 'Crep. Earring',
     },
 
     Ws_Default = {
         Ammo = 'Knobkierrie',
-        Head = 'Adhemar Bonnet +1',
+        Head = 'Nyame Helm',
         Neck = 'Fotia Gorget',
         Ear1 = 'Sherida Earring',
-        Ear2 = 'Moonshade Earring',
+        Ear2 = 'Telos Earring',
+        Body = 'Nyame Mail',
+        Hands = 'Nyame Gauntlets',
+        Ring1 = 'Petrov Ring',
+        Ring2 = 'Karieyh Ring +1',
         Back = { Name = 'Ogma\'s Cape', Augment = { [1] = '"Dbl.Atk."+10', [2] = 'Phys. dmg. taken -10%', [3] = 'Accuracy+20', [4] = 'Attack+20', [5] = 'DEX+20' } },
         Waist = 'Fotia Belt',
+        Legs = 'Nyame Flanchard',
         Feet = { Name = 'Herculean Boots', Augment = { [1] = 'Accuracy+30', [2] = 'Weapon skill damage +8%', [3] = 'Attack+6', [4] = 'Mag. Acc.+2' } },
     },
     Ws_Hybrid = {
@@ -250,14 +271,15 @@ sets = T{
     },
     Dimi_Default = {
         Ammo = 'Knobkierrie',
-        Head = 'Adhemar Bonnet +1',
+        Head = 'Blistering Sallet +1',
         Neck = 'Fotia Gorget',
         Ear1 = 'Sherida Earring',
-        Ear2 = 'Moonshade Earring',
+        Ear2 = 'Telos Earring',
         Body = 'Nyame Mail',
         Hands = 'Meg. Gloves +2',
         Ring1 = 'Ilabrat Ring',
         Ring2 = 'Karieyh Ring +1',
+        Back = { Name = 'Ogma\'s Cape', Augment = { [1] = '"Dbl.Atk."+10', [2] = 'Phys. dmg. taken -10%', [3] = 'Accuracy+20', [4] = 'Attack+20', [5] = 'DEX+20' } },
         Waist = 'Fotia Belt',
         Legs = 'Lustratio Subligar',
         Feet = { Name = 'Herculean Boots', Augment = { [1] = 'Accuracy+30', [2] = 'Weapon skill damage +8%', [3] = 'Attack+6', [4] = 'Mag. Acc.+2' } },
@@ -271,7 +293,7 @@ sets = T{
         Head = 'Lustratio Cap',
         Neck = 'Fotia Gorget',
         Ear1 = 'Sherida Earring',
-        Ear2 = 'Moonshade Earring',
+        Ear2 = 'Telos Earring',
         Body = 'Nyame Mail',
         Hands = 'Adhemar Wrist. +1',
         Ring1 = 'Niqmaddu Ring',
@@ -311,7 +333,6 @@ sets = T{
         Ammo = 'Seeth. Bomblet +1',
         Head = 'Agwu\'s Cap',
         Neck = 'Baetyl Pendant',
-        Ear1 = 'Crematio Earring',
         Ear2 = 'Crematio Earring',
         Body = 'Agwu\'s Robe',
         Hands = 'Nyame Gauntlets',
@@ -322,7 +343,7 @@ sets = T{
         Feet = 'Agwu\'s Pigaches',
     },
     Pulse = {
-        Head = 'Erilaz Galea +1',
+        Head = 'Erilaz Galea +2',
     },
     Vallation = {
         Body = 'Runeist Coat +1',
@@ -332,18 +353,24 @@ sets = T{
     },
 
     TH = {--/th will force this set to equip for 10 seconds
+        Ammo = 'Per. Lucky Egg',
 		Waist = 'Chaac Belt',
+        Feet = { Name = 'Herculean Boots', Augment = { [1] = 'Potency of "Cure" effect received+5%', [2] = 'Mag. Acc.+19', [3] = 'Accuracy+21', [4] = '"Mag. Atk. Bns."+19', [5] = '"Treasure Hunter"+2' } },
 	},
     Movement = {
         Legs = 'Carmine Cuisses +1',
 	},
 };
+profile.Sets = sets;
 
-sets = sets:merge(gcinclude.sets, false);profile.Sets = sets;
+profile.Packer = {
+    {Name = 'Om. Sandwich', Quantity = 'all'},
+    {Name = 'Black Curry Bun', Quantity = 'all'},
+};
 
 profile.OnLoad = function()
-    gSettings.AllowAddSet = false;
-    gcinclude.Initialize:once(3);
+	gSettings.AllowAddSet = true;
+    gcinclude.Initialize();
 
     AshitaCore:GetChatManager():QueueCommand(1, '/macro book 11');
     AshitaCore:GetChatManager():QueueCommand(1, '/macro set 1');
@@ -364,9 +391,10 @@ profile.HandleDefault = function()
     if (player.Status == 'Engaged') then
         gFunc.EquipSet(sets.Tp_Default)
         if (gcdisplay.GetCycle('MeleeSet') ~= 'Default') then
-        gFunc.EquipSet('Tp_' .. gcdisplay.GetCycle('MeleeSet')); end
+			gFunc.EquipSet('Tp_' .. gcdisplay.GetCycle('MeleeSet')) end
+		if (gcdisplay.GetToggle('TH') == true) then gFunc.EquipSet(sets.TH) end
         if (gcdisplay.GetCycle('TankSet') ~= 'None') then
-        gFunc.EquipSet('Tank_' .. gcdisplay.GetCycle('TankSet')); end
+			gFunc.EquipSet('Tank_' .. gcdisplay.GetCycle('TankSet')) end
     elseif (player.Status == 'Resting') then
         gFunc.EquipSet(sets.Resting);
     elseif (player.IsMoving == true) then
@@ -380,6 +408,10 @@ end
 
 profile.HandleAbility = function()
     local ability = gData.GetAction();
+    local runes = T{'Ignis','Gelus','Flabra','Tellus','Sulpor','Unda','Lux','Tenebrae',};
+    
+    if runes:contains(ability.Name) then return end
+
     gFunc.EquipSet(sets.Enmity);
 
     if string.match(ability.Name, 'Swipe') or string.match(ability.Name, 'Lunge') then
@@ -409,14 +441,12 @@ profile.HandlePrecast = function()
     local vall = gData.GetBuffCount('Vallation');
     gFunc.EquipSet(sets.Precast)
 
-    if (spell.Skill == 'Enhancing Magic') then
+    if (val >= 1) or (vall >= 1) then
+        gFunc.EquipSet(sets.Precast_Inspiration);
+    elseif (spell.Skill == 'Enhancing Magic') then
         gFunc.EquipSet(sets.Enhancing_Precast);
     elseif (spell.Skill == 'Healing Magic') then
         gFunc.EquipSet(sets.Cure_Precast);
-    end
-
-    if (val >= 1) or (vall >= 1) then
-        gFunc.EquipSet(sets.Precast_Inspiration);
     end
 
     gcinclude.CheckCancels();
@@ -424,7 +454,7 @@ end
 
 profile.HandleMidcast = function()--sloppy set handling here, need to clean this up
     local spell = gData.GetAction();
-    local bat = gData.GetBuffCount('Battuta');
+
     gFunc.EquipSet(sets.SIR);
     gFunc.EquipSet(sets.Enhancing);
 
@@ -442,9 +472,10 @@ profile.HandleMidcast = function()--sloppy set handling here, need to clean this
         gFunc.EquipSet(sets.SIRenmity);
     end
 
-    if (bat == 0) and (gcdisplay.GetToggle('SIR') == true) then
+    if (gcdisplay.GetToggle('SIR') == true) then
         gFunc.EquipSet(sets.SIR);
     end
+	if (gcdisplay.GetToggle('TH') == true) then gFunc.EquipSet(sets.TH) end
 end
 
 profile.HandlePreshot = function()
@@ -453,6 +484,7 @@ end
 
 profile.HandleMidshot = function()
     gFunc.EquipSet(sets.Midshot);
+	if (gcdisplay.GetToggle('TH') == true) then gFunc.EquipSet(sets.TH) end
 end
 
 profile.HandleWeaponskill = function()
@@ -469,10 +501,12 @@ profile.HandleWeaponskill = function()
             gFunc.EquipSet(sets.Dimi_Default)
             if (gcdisplay.GetCycle('MeleeSet') ~= 'Default') then
             gFunc.EquipSet('Dimi_' .. gcdisplay.GetCycle('MeleeSet')); end
+            gcinclude.DoMoonshade()
 	    elseif string.match(ws.Name, 'Resolution') then
             gFunc.EquipSet(sets.Reso_Default)
             if (gcdisplay.GetCycle('MeleeSet') ~= 'Default') then
             gFunc.EquipSet('Reso_' .. gcdisplay.GetCycle('MeleeSet')); end
+            gcinclude.DoMoonshade()
         elseif string.match(ws.Name, 'Shockwave') then
             gFunc.EquipSet(sets.Shockwave_Default)
             if (gcdisplay.GetCycle('MeleeSet') ~= 'Default') then

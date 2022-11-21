@@ -2,7 +2,7 @@ local profile = {};
 gcdisplay = gFunc.LoadFile('common\\gcdisplay.lua');
 gcinclude = gFunc.LoadFile('common\\gcinclude.lua');
 
-sets = T{
+local sets = {
     Idle = {
         Main = 'Bolelabunga',
         Sub = 'Genmei Shield',
@@ -11,13 +11,12 @@ sets = T{
         Neck = 'Loricate Torque +1',
         Ear1 = 'Eabani Earring',
         Ear2 = 'Etiolation Earring',
-        Body = 'Agwu\'s Robe',
+        Body = 'Witching Robe',
         Hands = 'Nyame Gauntlets',
         Ring1 = 'Stikini Ring +1',
         Ring2 = { Name = 'Metamor. Ring +1', AugPath='A' },
-        Back = 'Lugh\'s Cape',
         Waist = 'Gishdubar Sash',
-        Legs = 'Agwu\'s Slops',
+        Legs = 'Assid. Pants +1',
         Feet = 'Volte Gaiters',
     },
     Resting = {},
@@ -36,14 +35,6 @@ sets = T{
     Town = {
         Main = 'Bunzi\'s Rod',
         Sub = 'Culminus',
-        Ammo = 'Pemphredo Tathlum',
-        Head = 'Acad. Mortar. +2',
-        Neck = 'Bathy Choker +1',
-        Body = 'Agwu\'s Robe',
-        Hands = 'Acad. Bracers +2',
-        Back = 'Lugh\'s Cape',
-        Legs = 'Agwu\'s Slops',
-        Feet = 'Volte Gaiters',
     },
 
     Dt = {
@@ -52,11 +43,10 @@ sets = T{
         Neck = 'Loricate Torque +1',
         Ear1 = 'Odnowa Earring +1',
         Ear2 = 'Etiolation Earring',
-        Body = 'Agwu\'s Robe',
+        Body = 'Nyame Mail',
         Hands = 'Nyame Gauntlets',
         Ring1 = 'Defending Ring',
         Ring2 = 'Gelatinous Ring +1',
-        Back = 'Lugh\'s Cape',
         Waist = 'Gishdubar Sash',
         Legs = 'Nyame Flanchard',
         Feet = 'Nyame Sollerets',
@@ -78,14 +68,13 @@ sets = T{
         Neck = 'Baetyl Pendant',
         Ear1 = 'Etiolation Earring',
         Ear2 = 'Malignance Earring',
-        --Body = '',
         Hands = 'Gende. Gages +1',
-        Ring1 = 'Kishar Ring',
-        Ring2 = 'Prolix Ring',
+        Ring1 = 'Kishar Ring',--4
+        Ring2 = 'Prolix Ring',--2
         Back = 'Swith Cape +1',
         Waist = 'Embla Sash',
-        Legs = 'Lengo Pants',
-        Feet = 'Volte Gaiters',
+        Legs = 'Pinga Pants',--11
+        Feet = 'Volte Gaiters',--6
     },
     Cure_Precast = {
         Ear1 = 'Mendi. Earring',
@@ -101,33 +90,28 @@ sets = T{
     },
 
 
-    Cure = {
-        Main = 'Bunzi\'s Rod',
+    Cure = {--I cap is 50, II cap is 30
+        Main = 'Bunzi\'s Rod',--I 30
         Sub = 'Ammurapi Shield',
         Ammo = 'Pemphredo Tathlum',
-        Head = { Name = 'Vanya Hood', AugPath='C' },
-        Neck = 'Nodens Gorget',
-        Ear1 = 'Mendi. Earring',
-        Ear2 = 'Regal Earring',
-        Body = 'Gende. Bliaut +1',
-        Hands = 'Weath. Cuffs +1',
+        Neck = 'Nodens Gorget',--I 5
+        Ear1 = 'Mendi. Earring',--I 5
+        Ear2 = 'Glorious Earring',--II 2
+        Hands = 'Telchine Gloves',--I 9
         Ring1 = 'Stikini Ring +1',
         Ring2 = { Name = 'Metamor. Ring +1', AugPath='A' },
-        Back = 'Solemnity Cape',
+        Back = 'Aurist\'s Cape +1',
         Waist = 'Rumination Sash',
-        Legs = 'Vanya Slops',
-        Feet = 'Vanya Clogs',
+        Legs = 'Pinga Pants',--I 11
+        Feet = 'Vanya Clogs',--I 10
     },
-    Self_Cure = {
+    Self_Cure = {--cap 30
         Waist = 'Gishdubar Sash',
     },
     Regen = {
         Main = 'Bolelabunga',
         Sub = 'Ammurapi Shield',
-        Head = 'Arbatel Bonnet +1',
         Body = 'Telchine Chas.',
-        Hands = 'Arbatel Bracers +1',
-        Back = 'Lugh\'s Cape',
         Waist = 'Embla Sash',
         Legs = 'Telchine Braconi',
         Feet = 'Telchine Pigaches',
@@ -135,6 +119,7 @@ sets = T{
     Cursna = {
         Ring1 = 'Purity Ring',
 		Waist = 'Gishdubar Sash',
+        Feet = 'Vanya Clogs',
     },
 
     Enhancing = {
@@ -145,13 +130,11 @@ sets = T{
         Neck = 'Incanter\'s Torque',
         Ear1 = 'Mendi. Earring',
         Ear2 = 'Andoaa Earring',
-        Body = 'Peda. Gown +3',
-        Hands = 'Arbatel Bracers +1',
         Ring1 = 'Stikini Ring +1',
         Ring2 = { Name = 'Metamor. Ring +1', AugPath='A' },
         Back = 'Solemnity Cape',
         Waist = 'Embla Sash',
-        Legs = { Name = 'Telchine Braconi', Augment = { [1] = 'Enh. Mag. eff. dur. +8', [2] = '"Conserve MP"+4' } },
+        Legs = 'Telchine Braconi',
         Feet = 'Telchine Pigaches',
     },
     Self_Enhancing = {},
@@ -174,49 +157,36 @@ sets = T{
         Neck = 'Erra Pendant',
         Ear1 = 'Regal Earring',
         Ear2 = 'Malignance Earring',
-        Body = 'Acad. Gown +2',
-        Hands = 'Peda. Bracers +2',
         Ring1 = 'Stikini Ring +1',
         Ring2 = { Name = 'Metamor. Ring +1', AugPath='A' },
         Back = { Name = 'Aurist\'s Cape +1', AugPath='A' },
         Waist = { Name = 'Acuity Belt +1', AugPath='A' },
-        Legs = 'Acad. Pants +2',
-        Feet = 'Acad. Loafers +2',
     },
 
     Drain = {
         Main = 'Bunzi\'s Rod',
         Sub = 'Ammurapi Shield',
         Ammo = 'Pemphredo Tathlum',
-        Head = 'Acad. Mortar. +2',
         Neck = 'Erra Pendant',
         Ear1 = 'Regal Earring',
         Ear2 = 'Malignance Earring',
-        Body = 'Acad. Gown +2',
         Ring1 = 'Kishar Ring',
         Ring2 = 'Metamor. Ring +1',
         Back = 'Aurist\'s Cape +1',
         Waist = 'Fucho-no-Obi',
-        Legs = 'Acad. Pants +2',
-        Feet = 'Agwu\'s Pigaches',
     },
 
     Nuke = {
         Main = 'Bunzi\'s Rod',
         Sub = 'Ammurapi Shield',
         Ammo = 'Pemphredo Tathlum',
-        Head = 'Jhakri Coronal +2',
         Neck = 'Baetyl Pendant',
         Ear1 = 'Regal Earring',
         Ear2 = 'Malignance Earring',
-        Body = 'Agwu\'s Robe',
-        Hands = 'Amalric Gages +1',
         Ring1 = 'Shiva Ring +1',
         Ring2 = { Name = 'Metamor. Ring +1', AugPath='A' },
-        Back = 'Lugh\'s Cape',
         Waist = 'Eschan Stone',
-        Legs = 'Amalric Slops +1',
-        Feet = 'Amalric Nails +1',
+        Feet = 'Volte Gaiters',
     },
     NukeACC = {
         Waist = { Name = 'Acuity Belt +1', AugPath='A' },
@@ -226,7 +196,7 @@ sets = T{
     },
     Midshot = {
         Ear1 = 'Telos Earring',
-        Ear2 = 'Enervating Earring',
+        Ear2 = 'Crep. Earring',
     },
 
     Ws_Default = {
@@ -234,7 +204,7 @@ sets = T{
         Head = 'Nyame Helm',
         Neck = 'Fotia Gorget',
         Ear1 = 'Telos Earring',
-        Ear2 = 'Moonshade Earring',
+        Ear2 = 'Digni. Earring',
         Body = 'Nyame Mail',
         Hands = 'Nyame Gauntlets',
         Ring2 = 'Karieyh Ring +1',
@@ -247,23 +217,46 @@ sets = T{
     },
     Ws_Acc = {
     },
+    Cataclysm_Default = {
+        Ammo = 'Pemphredo Tathlum',
+        Head = 'Pixie Hairpin +1',
+        Neck = 'Sanctity Necklace',
+        Ear1 = 'Malignance Earring',
+        Ear2 = 'Crematio Earring',
+        Body = 'Nyame Mail',
+        Hands = 'Nyame Gauntlets',
+        Ring1 = 'Shiva Ring +1',
+        Ring2 = 'Karieyh Ring +1',
+        Back = 'Lugh\'s Cape',
+        Waist = 'Eschan Stone',
+        Legs = 'Nyame Flanchard',
+        Feet = 'Nyame Sollerets',
+    },
+    Cataclysm_Hybrid = {
+    },
+    Cataclysm_Acc = {
+    },
 
     TH = {--/th will force this set to equip for 10 seconds
+        Ammo = 'Per. Lucky Egg',
 		Waist = 'Chaac Belt',
 	},
     Movement = {
         Feet = 'Herald\'s Gaiters',
 	},
 };
+profile.Sets = sets;
 
-sets = sets:merge(gcinclude.sets, false);profile.Sets = sets;
+profile.Packer = {
+    
+};
 
 profile.OnLoad = function()
-    gSettings.AllowAddSet = false;
-    gcinclude.Initialize:once(3);
+	gSettings.AllowAddSet = true;
+    gcinclude.Initialize();
 
     AshitaCore:GetChatManager():QueueCommand(1, '/macro book 8');
-    AshitaCore:GetChatManager():QueueCommand(1, '/macro set 2');
+    AshitaCore:GetChatManager():QueueCommand(1, '/macro set 9');
 end
 
 profile.OnUnload = function()
@@ -282,8 +275,8 @@ profile.HandleDefault = function()
     if (player.Status == 'Engaged') then
         gFunc.EquipSet(sets.Tp_Default)
         if (gcdisplay.GetCycle('MeleeSet') ~= 'Default') then
-            gFunc.EquipSet('Tp_' .. gcdisplay.GetCycle('MeleeSet'));
-        end
+            gFunc.EquipSet('Tp_' .. gcdisplay.GetCycle('MeleeSet')) end
+		if (gcdisplay.GetToggle('TH') == true) then gFunc.EquipSet(sets.TH) end
     elseif (player.Status == 'Resting') then
         gFunc.EquipSet(sets.Resting);
     elseif (player.IsMoving == true) then
@@ -375,6 +368,7 @@ profile.HandleMidcast = function()
             gFunc.EquipSet(sets.Drain);
         end
     end
+	if (gcdisplay.GetToggle('TH') == true) then gFunc.EquipSet(sets.TH) end
 end
 
 profile.HandlePreshot = function()
@@ -383,6 +377,7 @@ end
 
 profile.HandleMidshot = function()
     gFunc.EquipSet(sets.Midshot);
+	if (gcdisplay.GetToggle('TH') == true) then gFunc.EquipSet(sets.TH) end
 end
 
 profile.HandleWeaponskill = function()
@@ -394,6 +389,12 @@ profile.HandleWeaponskill = function()
         gFunc.EquipSet(sets.Ws_Default)
         if (gcdisplay.GetCycle('MeleeSet') ~= 'Default') then
         gFunc.EquipSet('Ws_' .. gcdisplay.GetCycle('MeleeSet')) end
+
+        if string.match(ws.Name, 'Cataclysm') then
+            gFunc.EquipSet(sets.Cataclysm_Default)
+            if (gcdisplay.GetCycle('MeleeSet') ~= 'Default') then
+            gFunc.EquipSet('Cataclysm_' .. gcdisplay.GetCycle('MeleeSet')); end
+        end
     end
 end
 

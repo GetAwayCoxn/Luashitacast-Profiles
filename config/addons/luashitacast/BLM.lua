@@ -2,7 +2,7 @@ local profile = {};
 gcdisplay = gFunc.LoadFile('common\\gcdisplay.lua');
 gcinclude = gFunc.LoadFile('common\\gcinclude.lua');
 
-sets = T{
+local sets = {
     Idle = {
         Main = 'Bolelabunga',
         Sub = 'Genmei Shield',
@@ -103,35 +103,35 @@ sets = T{
     },
 
 
-    Cure = {
-        Main = 'Bunzi\'s Rod',
+    Cure = {--I cap is 50, II cap is 30
+        Main = 'Bunzi\'s Rod',--I 30
         Sub = 'Ammurapi Shield',
         Ammo = 'Pemphredo Tathlum',
-        Head = { Name = 'Vanya Hood', AugPath='C' },
-        Neck = 'Nodens Gorget',
-        Ear1 = 'Mendi. Earring',
+        Neck = 'Nodens Gorget',--I 5
+        Ear1 = 'Mendi. Earring',--I 5
         Ear2 = 'Regal Earring',
-        Hands = 'Weath. Cuffs +1',
+        Hands = 'Telchine Gloves',--I 9
         Ring1 = 'Stikini Ring +1',
         Ring2 = { Name = 'Metamor. Ring +1', AugPath='A' },
-        Back = 'Solemnity Cape',
+        Back = 'Aurist\'s Cape +1',
         Waist = 'Rumination Sash',
-        Legs = 'Vanya Slops',
-        Feet = 'Vanya Clogs',
+        Feet = 'Vanya Clogs',--I 10
     },
-    Self_Cure = {
+    Self_Cure = {--cap 30
         Waist = 'Gishdubar Sash',
     },
     Regen = {
         Main = 'Bolelabunga',
         Sub = 'Ammurapi Shield',
         Body = 'Telchine Chas.',
+        Waist = 'Embla Sash',
         Legs = 'Telchine Braconi',
         Feet = 'Telchine Pigaches',
     },
     Cursna = {
         Ring1 = 'Purity Ring',
 		Waist = 'Gishdubar Sash',
+        Feet = 'Vanya Clogs',
     },
 
     Enhancing = {
@@ -148,7 +148,7 @@ sets = T{
         Ring2 = { Name = 'Metamor. Ring +1', AugPath='A' },
         Back = 'Solemnity Cape',
         Waist = 'Embla Sash',
-        Legs = { Name = 'Telchine Braconi', Augment = { [1] = 'Enh. Mag. eff. dur. +8', [2] = '"Conserve MP"+4' } },
+        Legs = 'Telchine Braconi',
         Feet = 'Telchine Pigaches',
     },
     Self_Enhancing = {},
@@ -228,7 +228,7 @@ sets = T{
         Ring2 = { Name = 'Metamor. Ring +1', AugPath='A' },
         Back = 'Taranus\'s Cape',
         Waist = 'Eschan Stone',
-        Legs = 'Amalric Slops +1',
+        Legs = 'Wicce Chausses +2',
         Feet = 'Amalric Nails +1',
     },
     NukeACC = {
@@ -276,13 +276,13 @@ sets = T{
         Feet = 'Agwu\'s Pigaches',
     },
     Af_Body = {Body = 'Spaekona\'s Coat +2'},
-    EmpyLegs = {Legs ='Wicce Chausses +1'},
+    EmpyLegs = {Legs ='Wicce Chausses +2'},
 
     Preshot = {
     },
     Midshot = {
         Ear1 = 'Telos Earring',
-        Ear2 = 'Enervating Earring',
+        Ear2 = 'Crep. Earring',
     },
 
     Ws_Default = {--myrkr mostly
@@ -297,7 +297,7 @@ sets = T{
         Ring2 = 'Metamor. Ring +1',
         Back = 'Aurist\'s Cape +1',
         Waist = 'Shinjutsu-no-Obi +1',
-        Legs = 'Amalric Slops +1',
+        Legs = 'Wicce Chausses +2',
         Feet = 'Nyame Sollerets',
     },
     Ws_Hybrid = {
@@ -306,18 +306,23 @@ sets = T{
     },
 
     TH = {--/th will force this set to equip for 10 seconds
+        Ammo = 'Per. Lucky Egg',
 		Waist = 'Chaac Belt',
 	},
     Movement = {
         Feet = 'Herald\'s Gaiters',
 	},
 };
+profile.Sets = sets;
 
-sets = sets:merge(gcinclude.sets, false);profile.Sets = sets;
+profile.Packer = {
+    {Name = 'Tropical Crepe', Quantity = 'all'},
+    {Name = 'Rolan. Daifuku', Quantity = 'all'},
+};
 
 profile.OnLoad = function()
-    gSettings.AllowAddSet = false;
-    gcinclude.Initialize:once(3);
+	gSettings.AllowAddSet = true;
+    gcinclude.Initialize();
 
     AshitaCore:GetChatManager():QueueCommand(1, '/macro book 1');
     AshitaCore:GetChatManager():QueueCommand(1, '/macro set 5');
@@ -344,8 +349,8 @@ profile.HandleDefault = function()
     if (player.Status == 'Engaged') then
         gFunc.EquipSet(sets.Tp_Default)
         if (gcdisplay.GetCycle('MeleeSet') ~= 'Default') then
-            gFunc.EquipSet('Tp_' .. gcdisplay.GetCycle('MeleeSet'));
-        end
+            gFunc.EquipSet('Tp_' .. gcdisplay.GetCycle('MeleeSet')) end
+		if (gcdisplay.GetToggle('TH') == true) then gFunc.EquipSet(sets.TH) end
     elseif (player.Status == 'Resting') then
         gFunc.EquipSet(sets.Resting);
     elseif (player.IsMoving == true) then
@@ -403,6 +408,7 @@ profile.HandleMidcast = function()
     local spell = gData.GetAction();
     local target = gData.GetActionTarget();
     local me = AshitaCore:GetMemoryManager():GetParty():GetMemberName(0);
+    local mw = gData.GetBuffCount('Manawell');
 
     if (gcdisplay.GetToggle('Death') == true) then
         gFunc.EquipSet(sets.Death);
@@ -454,7 +460,7 @@ profile.HandleMidcast = function()
                     gFunc.EquipSet(sets.Burst);
                 end
             end
-            if (player.MPP <= 40) then
+            if (player.MPP <= 40) and (mw == 0) then
                 gFunc.EquipSet(sets.Af_Body);
             end
             if string.contains(spell.Name, 'ja') then
@@ -476,6 +482,7 @@ profile.HandleMidcast = function()
             gFunc.EquipSet(sets.Idle_Staff);
         end
     end
+	if (gcdisplay.GetToggle('TH') == true) then gFunc.EquipSet(sets.TH) end
 end
 
 profile.HandlePreshot = function()
@@ -484,6 +491,7 @@ end
 
 profile.HandleMidshot = function()
     gFunc.EquipSet(sets.Midshot);
+	if (gcdisplay.GetToggle('TH') == true) then gFunc.EquipSet(sets.TH) end
 end
 
 profile.HandleWeaponskill = function()

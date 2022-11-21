@@ -2,12 +2,12 @@ local profile = {};
 gcdisplay = gFunc.LoadFile('common\\gcdisplay.lua');
 gcinclude = gFunc.LoadFile('common\\gcinclude.lua');
 
-sets = T{
+local sets = {
     Idle = {
         Main = 'Bolelabunga',
         Sub = 'Genmei Shield',
         Ammo = 'Staunch Tathlum',
-        Head = 'Agwu\'s Cap',
+        Head = 'Arbatel Bonnet +2',
         Neck = 'Loricate Torque +1',
         Ear1 = 'Eabani Earring',
         Ear2 = 'Etiolation Earring',
@@ -41,7 +41,7 @@ sets = T{
         Main = 'Bunzi\'s Rod',
         Sub = 'Culminus',
         Ammo = 'Pemphredo Tathlum',
-        Head = 'Acad. Mortar. +2',
+        Head = 'Arbatel Bonnet +2',
         Neck = 'Bathy Choker +1',
         Body = 'Agwu\'s Robe',
         Hands = 'Acad. Bracers +3',
@@ -141,7 +141,7 @@ sets = T{
     Regen = {
         Main = 'Bolelabunga',
         Sub = 'Ammurapi Shield',
-        Head = 'Arbatel Bonnet +1',
+        Head = 'Arbatel Bonnet +2',
         Body = 'Telchine Chas.',
         Hands = 'Arbatel Bracers +1',
         Back = 'Lugh\'s Cape',
@@ -244,7 +244,7 @@ sets = T{
         Main = 'Bunzi\'s Rod', -- 10 and 0
         Sub = 'Ammurapi Shield',
         Ammo = 'Ghastly Tathlum +1',
-        Head = 'Peda. M.Board +3', -- 0 and 2
+        Head = 'Peda. M.Board +3', -- 0 and 4
         Neck = 'Argute Stole +1', -- 7 and 0
         Body = 'Agwu\'s Robe', -- 10 and 0
         Hands = 'Amalric Gages +1', -- 0 and 6
@@ -259,8 +259,8 @@ sets = T{
         Ammo = 'Ghastly Tathlum +1',
         Head = 'Agwu\'s Cap',
         Neck = 'Argute Stole +1',
-        Ear1 = 'Regal Earring',
-        Ear2 = 'Malignance Earring',
+        Ear1 = 'Crematio Earring',
+        Ear2 = 'Arbatel Earring',
         Body = 'Agwu\'s Robe',
         Hands = 'Amalric Gages +1',
         Ring1 = 'Shiva Ring +1',
@@ -271,9 +271,8 @@ sets = T{
         Feet = 'Amalric Nails +1',
     },
     HelixBurst = {
-        Ear1 = 'Crematio Earring',
         Ring1 = 'Mujin Band',
-        Feet = 'Amalric Nails +1',
+        Feet = 'Agwu\'s Pigaches', -- 6 and 0
     },
     Storm = {
         Feet = 'Peda. Loafers +3',
@@ -285,7 +284,7 @@ sets = T{
         Head = 'Pixie Hairpin +1',
         Neck = 'Argute Stole +1',
         Ear1 = 'Regal Earring',
-        Ear2 = 'Malignance Earring',
+        Ear2 = 'Arbatel Earring',
         Body = 'Seidr Cotehardie',
         Hands = 'Amalric Gages +1',
         Ring1 = 'Stikini Ring +1',--freke ring
@@ -358,6 +357,17 @@ sets = T{
     Cataclysm_Acc = {
     },
 
+    Sublimation = {
+        Head = 'Acad. Mortar. +2',
+        Body = 'Peda. Gown +3',
+        Waist = 'Embla Sash',
+    },
+    Power = {--rapture/ebullience
+        Head = 'Arbatel Bonnet +2',
+	},
+    Klimaform = {--klimaform dmg boost
+        Feet = 'Arbatel Loafers +1',
+	},
     TH = {--/th will force this set to equip for 10 seconds
         Ammo = 'Per. Lucky Egg',
 		Waist = 'Chaac Belt',
@@ -366,8 +376,7 @@ sets = T{
         Feet = 'Herald\'s Gaiters',
 	},
 };
-
-sets = sets:merge(gcinclude.sets, false);profile.Sets = sets;
+profile.Sets = sets;
 
 profile.Packer = {
     {Name = 'Tropical Crepe', Quantity = 'all'},
@@ -375,7 +384,7 @@ profile.Packer = {
 };
 
 profile.OnLoad = function()
-    gSettings.AllowAddSet = false;
+	gSettings.AllowAddSet = true;
     gcinclude.Initialize();
 
     AshitaCore:GetChatManager():QueueCommand(1, '/macro book 8');
@@ -392,14 +401,14 @@ end
 
 profile.HandleDefault = function()
     local player = gData.GetPlayer();
-
+    local sub = gData.GetBuffCount('Sublimation: Activated');
     gFunc.EquipSet(sets.Idle);
 
     if (player.Status == 'Engaged') then
         gFunc.EquipSet(sets.Tp_Default)
         if (gcdisplay.GetCycle('MeleeSet') ~= 'Default') then
-            gFunc.EquipSet('Tp_' .. gcdisplay.GetCycle('MeleeSet'));
-        end
+            gFunc.EquipSet('Tp_' .. gcdisplay.GetCycle('MeleeSet')) end
+		if (gcdisplay.GetToggle('TH') == true) then gFunc.EquipSet(sets.TH) end
     elseif (player.Status == 'Resting') then
         gFunc.EquipSet(sets.Resting);
     elseif (player.IsMoving == true) then
@@ -409,6 +418,9 @@ profile.HandleDefault = function()
     gcinclude.CheckDefault ();
     if (gcdisplay.GetCycle('Weapon') == 'Staff') then
         gFunc.EquipSet(sets.Idle_Staff);
+    end
+    if (sub > 0) then
+        gFunc.EquipSet(sets.Sublimation);
     end
     if (gcdisplay.GetToggle('DTset') == true) then gFunc.EquipSet(sets.Dt) end;
     if (gcdisplay.GetToggle('Kite') == true) then gFunc.EquipSet(sets.Movement) end;
@@ -453,6 +465,8 @@ profile.HandleMidcast = function()
     local spell = gData.GetAction();
     local target = gData.GetActionTarget();
     local me = AshitaCore:GetMemoryManager():GetParty():GetMemberName(0);
+    local power = gData.GetBuffCount('Ebullience') +  gData.GetBuffCount('Rapture');
+    local klimaform = gData.GetBuffCount('Klimaform');
 
     if (spell.Skill == 'Enhancing Magic') then
         gFunc.EquipSet(sets.Enhancing);
@@ -491,8 +505,16 @@ profile.HandleMidcast = function()
         if (gcdisplay.GetToggle('Burst') == true) then
             gFunc.EquipSet(sets.Burst);
         end
-        if (spell.Element == weather.WeatherElement) or (spell.Element == weather.DayElement) then
+        if (spell.Element == weather.WeatherElement) then
             gFunc.Equip('Waist', 'Hachirin-no-Obi');
+            if klimaform > 0 then
+                gFunc.EquipSet(sets.Klimaform);
+            end
+        elseif (spell.Element == weather.DayElement) then
+            gFunc.Equip('Waist', 'Hachirin-no-Obi');
+        end
+        if (player.MPP <= 40) then
+            gFunc.EquipSet(sets.Mp_Body);
         end
         if string.contains(spell.Name, 'helix') then
             gFunc.EquipSet(sets.Helix);
@@ -502,9 +524,6 @@ profile.HandleMidcast = function()
             if string.contains(spell.Name, 'Nocto') then
                 gFunc.Equip('Head', 'Pixie Hairpin +1');
             end
-        end
-        if (player.MPP <= 40) then
-            gFunc.EquipSet(sets.Mp_Body);
         end
     elseif (spell.Skill == 'Enfeebling Magic') then
         gFunc.EquipSet(sets.Enfeebling);
@@ -517,9 +536,13 @@ profile.HandleMidcast = function()
         end
     end
 
+    if (power > 0) then
+        gFunc.EquipSet(sets.Power);
+    end
     if (gcdisplay.GetCycle('Weapon') == 'Staff') then
         gFunc.EquipSet(sets.Idle_Staff);
     end
+	if (gcdisplay.GetToggle('TH') == true) then gFunc.EquipSet(sets.TH) end
 end
 
 profile.HandlePreshot = function()
@@ -528,6 +551,7 @@ end
 
 profile.HandleMidshot = function()
     gFunc.EquipSet(sets.Midshot);
+	if (gcdisplay.GetToggle('TH') == true) then gFunc.EquipSet(sets.TH) end
 end
 
 profile.HandleWeaponskill = function()
