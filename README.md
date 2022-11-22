@@ -11,7 +11,7 @@ The biggest issue at the moment is that the profiles will not always load proper
 
 ## Summary of Tools:
 
-Some of the things that my profiles will do is automatically equip idle regen or refresh gear below a predefined % amount. The same can be done with DT gear or Pet DT gear as well. You can customize this % amounts globally or on a per job basis. See the notes in the GCinclude file for more info. These profiles will also auto cancel stoneskin for spell casting and spectral jig. They will lock in various rings for use such as tele/warp/exp rings. They will also do things like abort a WS before the gear swaps in cases where you may be amnesia'd or what not so you dont get wacked in your WS gear when your not even actually doing the WS. All jobs have some sort of basic TH gear functionality but THF,BLU, and NIN have specialized uses for this. See below for more.
+Some of the things that my profiles will do is automatically equip idle regen or refresh gear below a predefined % amount. The same can be done with DT gear or Pet DT gear as well. You can customize this % amounts globally or on a per job basis. See the notes in the GCinclude file for more info. These profiles will also auto cancel stoneskin for spell casting and spectral jig/sneak. They will lock in various rings for use such as tele/warp/exp rings. They will also do things like abort a WS before the gear swaps in cases where you may be amnesia'd or what not so you dont get wacked in your WS gear when your not even actually doing the WS. All jobs have basic TH gear functionality.
 
 Some Jobs have very specific tools as well. For example COR will display lucky/unlucky numbers when you roll and this can also be turned off. BLU has loads of custom stuff like a specific Cruel Joke "mode" and set. See below for more.
 
@@ -33,10 +33,10 @@ Some Jobs have very specific tools as well. For example COR will display lucky/u
 |/craftset|Will force the Crafting set defined in gcinclude to equip|
 |/fishset|Will force the Fishing set defined in gcinclude to equip|
 |/zeniset|Will force the Zeni set defined in gcinclude to equip|
-|/drain|Will use Drain II if you have access to it and its not on cool down, else it will cast Drain if you have it and not on cooldown. This really just saves you one in game macro as I chose to not include Drain III here because that has very specific timing uses|
-|/aspir|Same as /drain but for aspir spells, order in which it will try and use is Aspir III > Aspir II > Aspir checking for spell availability and cooldown for each|
+|/gcdrain|Will use Drain II if you have access to it and its not on cool down, else it will cast Drain if you have it and not on cooldown. This really just saves you one in game macro as I chose to not include Drain III here because that has very specific timing uses|
+|/gcaspir|Same as /drain but for aspir spells, order in which it will try and use is Aspir III > Aspir II > Aspir checking for spell availability and cooldown for each|
 |/proc|I have specific low dmg output sets for SAM and NIN that are activated with this toggle, intended to kill things slowly for procs like in abyssea or vagary|
-|/th|TH gear sets are in each job lua. For THF/NIN it will lock that gear set on. For BLU it will put TH gear on for Dream Flower, Subduction and A. Burst currently. For any other job it will look for a TH gear set inside that job lua and equip it for 10 seconds each time you use this command|
+|/th|TH gear sets are in each job lua, this will force those sets while engaged or casting a spell or ranged attacks|
 |/dt|Will equip the dt set you define in the individual job file|
 |/kite|Will equip the movement set you define in the individual job file to stay on even over DT gear|
 |/warpring|Will equip and then use your warp ring. Does not currently check for cooldown|
@@ -52,7 +52,7 @@ Some Jobs have very specific tools as well. For example COR will display lucky/u
 |/burst|Will use burst nuke/helix sets over regular sets if toggle on|
 |/death|Will force equip your death set on BLM|
 |/weapon|This will force staff to stay equipped for BLM,SCH, and GEO jobs for TP/mykyr use|
-|/fight|This will prevent TP loss on mage jobs thats sometimes melee, BRD,RDM, and GEO for now|
+|/fight|This will prevent TP loss on mage jobs thats sometimes melee, BRD, RDM, and GEO for now|
 |/pupmode|Will cycle through my tank, melee, rng, mage gear TP sets on PUP main|
 |/forcestring|Will force harp on BRD although I just use paeon for my dummy songs I left this variable available|
 |/cormsg|When playing cor messages will appear telling you lucky/unlucky, use this to toggle off or can set to off as default inside the COR.lua|
