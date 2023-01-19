@@ -3,7 +3,7 @@ local gcinclude = T{};
 --[[
 Only edit the next two small sections here. See the readme on my github for more information on usages for my profiles.
 
-These are universal sets for things like doomed or asleep; avoid main/sub/range/ammo here. Also avoid calling out any specific augments on gear in here, merge function doesnt play nice with augments.
+These are universal sets for things like doomed or asleep; avoid main/sub/range/ammo here.
 The second section is a couple basic settings to decide on whether or not to use you the automatic equiping function of idle regen, idle refresh, DT gear etc.
 More details in each section.
 ]]
@@ -55,23 +55,25 @@ gcinclude.settings = {
 	You can also set any of these on a per job basis in the job file in the OnLoad function. See my COR job file to see how this is done
 	but as an example you can just put 'gcinclude.settings.RefreshGearMPP = 50;' in your job files OnLoad function to modify for that job only
 	]]
+	Messages = false; --set to true if you want chat log messages to appear on any /gc command used such as DT, TH, or KITE gear toggles, certain messages will always appear
 	AutoGear = true; --set to false if you dont want DT/Regen/Refresh/PetDT gear to come on automatically at the defined %'s here
+	WScheck = true; --set to false if you dont want to use the WSdistance safety check
+	WSdistance = 4.3; --default max distance (yalms) to allow non-ranged WS to go off at if the above WScheck is true
 	RegenGearHPP = 60; -- set HPP to have your idle regen set to come on
 	RefreshGearMPP = 70; -- set MPP to have your idle refresh set to come on
 	DTGearHPP = 40; -- set HPP to have your DT set to come on
 	PetDTGearHPP = 50; -- set pet HPP to have your PetDT set to come on
-	MoonshadeTP = 2250; -- this to the TP amount you want to equip EAR2 with moonshade earring, set to 0 if you dont want to use at all
+	MoonshadeTP = 2250; -- this is the TP amount you want to equip EAR2 with moonshade earring when you have less than this amount, set to 0 if you dont want to use at all
 	Tele_Ring = 'Dim. Ring (Dem)'; -- put your tele ring in here
 };
 
 --[[
 Everything else in this file should not be editted by anyone trying to use my profiles. You really just want to update the various gear sets
-in each individual job lua file. Unless you know what you're doing then it is best to leave everything below this line alone, 
-the rest here are various functions and arrays etc
+in each individual job lua file. Unless you know what you're doing then it is best to leave everything below this line alone, the rest here are various functions and arrays etc.
 ]]
 gcdisplay = gFunc.LoadFile('common\\gcdisplay.lua');
 
-gcinclude.AliasList = T{'dt','th','kite','meleeset','gcdrain','gcaspir','nukeset','burst','weapon','elecycle','helix','weather','nuke','death','fight','sir','tankset','proc','cj','pupmode','tpgun','cormsg','forcestring','siphon','warpring','telering','rrset','craftset','zeniset','fishset'};
+gcinclude.AliasList = T{'gcmessages','wsdistance','dt','th','kite','meleeset','gcdrain','gcaspir','nukeset','burst','weapon','elecycle','helix','weather','nuke','death','fight','sir','tankset','proc','cj','pupmode','tpgun','cormsg','forcestring','siphon','warpring','telering','rrset','craftset','zeniset','fishset'};
 gcinclude.Towns = T{'Tavnazian Safehold','Al Zahbi','Aht Urhgan Whitegate','Nashmau','Southern San d\'Oria [S]','Bastok Markets [S]','Windurst Waters [S]','San d\'Oria-Jeuno Airship','Bastok-Jeuno Airship','Windurst-Jeuno Airship','Kazham-Jeuno Airship','Southern San d\'Oria','Northern San d\'Oria','Port San d\'Oria','Chateau d\'Oraguille','Bastok Mines','Bastok Markets','Port Bastok','Metalworks','Windurst Waters','Windurst Walls','Port Windurst','Windurst Woods','Heavens Tower','Ru\'Lude Gardens','Upper Jeuno','Lower Jeuno','Port Jeuno','Rabao','Selbina','Mhaura','Kazham','Norg','Mog Garden','Celennia Memorial Library','Western Adoulin','Eastern Adoulin'};
 gcinclude.LockingRings = T{'Echad Ring', 'Trizek Ring', 'Endorsement Ring', 'Capacity Ring', 'Warp Ring','Facility Ring','Dim. Ring (Dem)','Dim. Ring (Mea)','Dim. Ring (Holla)'};
 gcinclude.DistanceWS = T{'Flaming Arrow','Piercing Arrow','Dulling Arrow','Sidewinder','Blast Arrow','Arching Arrow','Empyreal Arrow','Refulgent Arrow','Apex Arrow','Namas Arrow','Jishnu\'s Randiance','Hot Shot','Split Shot','Sniper Shot','Slug Shot','Blast Shot','Heavy Shot','Detonator','Numbing Shot','Last Stand','Coronach','Wildfire','Trueflight','Leaden Salute','Myrkr','Dagan','Moonlight','Starlight'};
@@ -104,6 +106,12 @@ gcinclude.CraftSet = false;
 gcinclude.ZeniSet = false;
 gcinclude.FishSet = false;
 gcinclude.CORmsg = true;
+
+function gcinclude.Message(toggle, status)
+	if toggle ~= nil and status ~= nil then
+		print(chat.header('GCinclude'):append(chat.message(toggle .. ' is now ' .. tostring(status))))
+	end
+end
 
 function gcinclude.SetAlias()
 	for _, v in ipairs(gcinclude.AliasList) do
@@ -160,16 +168,46 @@ function gcinclude.SetVariables()
 end
 
 function gcinclude.SetCommands(args)
-	local player = gData.GetPlayer();
+	if not gcinclude.AliasList:contains(args[1]) then return end
 
-	if (args[1] == 'dt') then
+	local player = gData.GetPlayer();
+	local toggle = nil;
+	local status = nil;
+	
+	if args[1] == 'gcmessages' then
+		if gcinclude.settings.Messages then
+			gcinclude.settings.Messages = false;
+			print(chat.header('GCinclude'):append(chat.message('Chat messanges are disabled')));
+		else
+			gcinclude.settings.Messages = true;
+			print(chat.header('GCinclude'):append(chat.message('Chat messanges are enabled')));
+		end
+	elseif (args[1] == 'wsdistance') then
+		if (tonumber(args[2])) then 
+			gcinclude.settings.WScheck = true;
+			gcinclude.settings.WSdistance = tonumber(args[2]);
+			print(chat.header('GCinclude'):append(chat.message('WS Distance is on and set to ' .. gcinclude.settings.WSdistance)));
+		else
+			gcinclude.settings.WScheck = not gcinclude.settings.WScheck;
+			print(chat.header('GCinclude'):append(chat.message('WS distance check is now ' .. tostring(gcinclude.settings.WScheck))));
+			print(chat.header('GCinclude'):append(chat.message('Can change WS distance allowed by using /wsdistance ##')));
+		end
+	elseif (args[1] == 'dt') then
 		gcdisplay.AdvanceToggle('DTset');
+		toggle = 'DT Set';
+		status = gcdisplay.GetToggle('DTset');
     elseif (args[1] == 'meleeset') then
 		gcdisplay.AdvanceCycle('MeleeSet');
+		toggle = 'Melee Set';
+		status = gcdisplay.GetCycle('MeleeSet');
 	elseif (args[1] == 'kite') then
 		gcdisplay.AdvanceToggle('Kite');
+		toggle = 'Kite Set';
+		status = gcdisplay.GetToggle('Kite');
 	elseif (args[1] == 'th') then
 		gcdisplay.AdvanceToggle('TH');
+		toggle = 'TH Set';
+		status = gcdisplay.GetToggle('TH');
 	elseif (args[1] == 'gcaspir') then
 		gcinclude.DoAspir();
 	elseif (args[1] == 'gcdrain') then
@@ -180,24 +218,40 @@ function gcinclude.SetCommands(args)
 		gcinclude.DoTeleRing();
 	elseif (args[1] == 'rrset') then
 		gcinclude.RRSET = not gcinclude.RRSET;
+		toggle = 'Reraise Set';
+		status = gcinclude.RRSET;
 	elseif (args[1] == 'craftset') then
 		gcinclude.CraftSet = not gcinclude.CraftSet;
+		toggle = 'Crafting Set';
+		status = gcinclude.CraftSet;
 	elseif (args[1] == 'zeniset') then
 		gcinclude.ZeniSet = not gcinclude.ZeniSet;
+		toggle = 'Zeni Pictures Set';
+		status = gcinclude.ZeniSet;
 	elseif (args[1] == 'fishset') then
 		gcinclude.FishSet = not gcinclude.FishSet;
+		toggle = 'Fishing Set';
+		status = gcinclude.FishSet;
     end
 	if (player.MainJob == 'RDM') or (player.MainJob == 'BLM') or (player.MainJob == 'SCH') or (player.MainJob == 'GEO') then
 		if (args[1] == 'nukeset') then
 			gcdisplay.AdvanceCycle('NukeSet');
+			toggle = 'Nuking Gear Set';
+			status = gcdisplay.GetCycle('NukeSet');
 		elseif (args[1] == 'burst') then
 			gcdisplay.AdvanceToggle('Burst');
+			toggle = 'Magic Burst Set';
+			status = gcdisplay.GetToggle('Burst');
 		end
 		if (player.MainJob == 'BLM') or (player.MainJob == 'SCH') then
 			if (args[1] == 'weapon') then
 				gcdisplay.AdvanceCycle('Weapon');
+				toggle = 'Mage Weapon';
+				status = gcdisplay.GetCycle('Weapon');
 			elseif (args[1] == 'elecycle') then
 				gcdisplay.AdvanceCycle('Element');
+				toggle = 'Spell Element';
+				status = gcdisplay.GetCycle('Element');
 			elseif (args[1] == 'helix') then
 				gcinclude.DoSCHspells('helix');
 			elseif (args[1] == 'weather') then
@@ -208,11 +262,13 @@ function gcinclude.SetCommands(args)
 			if (player.MainJob == 'BLM') then
 				if (args[1] == 'death') then
 					gcdisplay.AdvanceToggle('Death');
+					toggle = 'BLM Death Set';
+					status = gcdisplay.GetToggle('Death');
 				end
 			end
 		end
 	end
-	if (player.MainJob == 'RDM') or (player.MainJob == 'BRD') or (player.MainJob == 'GEO') then
+	if (player.MainJob == 'RDM') or (player.MainJob == 'BRD') or (player.MainJob == 'GEO') or (player.MainJob == 'WHM') then
 		if (args[1] == 'fight') then
 			if (gcdisplay.GetToggle('Fight') == false) then
 				AshitaCore:GetChatManager():QueueCommand(-1, '/lac disable Main');
@@ -220,26 +276,36 @@ function gcinclude.SetCommands(args)
 				if (player.MainJob == 'RDM') or (player.MainJob == 'GEO') then AshitaCore:GetChatManager():QueueCommand(-1, '/lac disable Range') end
 				if (player.MainJob == 'GEO') or (player.MainJob == 'WHM') then AshitaCore:GetChatManager():QueueCommand(-1, '/lac disable Ammo') end
 				gcdisplay.AdvanceToggle('Fight');
+				toggle = 'Mage Weapon Lock';
+				status = gcdisplay.GetToggle('Fight');
 			else
 				AshitaCore:GetChatManager():QueueCommand(-1, '/lac enable Main');
 				AshitaCore:GetChatManager():QueueCommand(-1, '/lac enable Sub');
 				if (player.MainJob == 'RDM') or (player.MainJob == 'GEO') then AshitaCore:GetChatManager():QueueCommand(-1, '/lac enable Range') end
 				if (player.MainJob == 'GEO') or (player.MainJob == 'WHM') then AshitaCore:GetChatManager():QueueCommand(-1, '/lac disable Ammo') end
 				gcdisplay.AdvanceToggle('Fight');
+				toggle = 'Mage Weapon Lock';
+				status = gcdisplay.GetToggle('Fight');
 			end
 		end
 	end
 	if (player.MainJob == 'PLD') or (player.MainJob == 'RUN') then
 		if (args[1] == 'sir') then
 			gcdisplay.AdvanceToggle('SIR');
+			toggle = 'Spell Interupt Set';
+			status = gcdisplay.GetToggle('SIR');
 		end
 		if (args[1] == 'tankset') then
 			gcdisplay.AdvanceCycle('TankSet');
+			toggle = 'Tank Gear Set';
+			status = gcdisplay.GetCycle('TankSet');
 		end
 	end
 	if (player.MainJob == 'SAM') or (player.MainJob == 'NIN') then
 		if (args[1] == 'proc') then
 			gcdisplay.AdvanceToggle('PROC');
+			toggle = 'Low Damage PROC Set';
+			status = gcdisplay.GetToggle('PROC');
 			if (player.MainJob == 'NIN') then
 				if gcdisplay.GetToggle('PROC') == true then
 					AshitaCore:GetChatManager():QueueCommand(-1, '/lac disable ammo');
@@ -252,16 +318,22 @@ function gcinclude.SetCommands(args)
 	if (player.MainJob == 'PUP') then
 		if (args[1] == 'pupmode') then
 			gcdisplay.AdvanceCycle('PupMode');
+			toggle = 'Puppet Mode';
+			status = gcdisplay.GetCycle('PupMode');
 		end
 	end
 	if (player.MainJob == 'BRD') then
 		if (args[1] == 'forcestring') then
 			gcdisplay.AdvanceToggle('String');
+			toggle = 'BRD Forced Harp';
+			status = gcdisplay.GetToggle('String');
 		end
 	end
 	if (player.MainJob == 'COR') then
 		if (args[1] == 'tpgun') then
 			gcdisplay.AdvanceToggle('TPgun');
+			toggle = 'COR Forced TP Gun';
+			status = gcdisplay.GetToggle('TPgun');
 		elseif (args[1] == 'cormsg') then
 			if gcinclude.CORmsg == true then
 				gcinclude.CORmsg = false;
@@ -275,12 +347,18 @@ function gcinclude.SetCommands(args)
 	if (player.MainJob == 'BLU') then
 		if (args[1] == 'cj') then
 			gcdisplay.AdvanceToggle('CJmode');
+			toggle = 'BLU Cruel Joke Set';
+			status = gcdisplay.GetToggle('CJmode');
 		end
 	end
 	if (player.MainJob == 'SMN') then
 		if (args[1] == 'siphon') then
 			gcinclude.DoSiphon();
 		end
+	end
+
+	if gcinclude.settings.Messages then
+		gcinclude.Message(toggle, status)
 	end
 end
 
@@ -356,11 +434,15 @@ function gcinclude.CheckWsBailout()
 	local amnesia = gData.GetBuffCount('Amnesia');
 	local charm = gData.GetBuffCount('Charm');
 
-	if (sleep+petrify+stun+terror+amnesia+charm >= 1) or (player.TP <= 999) then
+	if gcinclude.settings.WScheck and not gcinclude.DistanceWS:contains(ws.Name) and (tonumber(target.Distance) > gcinclude.settings.WSdistance) then
+		print(chat.header('GCinclude'):append(chat.message('Distance to mob is too far! Move closer or increase WS distance')));
+		print(chat.header('GCinclude'):append(chat.message('Can change WS distance allowed by using /wsdistance ##')));
 		return false;
-	else
-		return true;
+	elseif (player.TP <= 999) or (sleep+petrify+stun+terror+amnesia+charm >= 1) then
+		return false;
 	end
+		
+	return true;
 end
 
 function gcinclude.CheckSpellBailout()
