@@ -1,5 +1,4 @@
 local profile = {};
-gcdisplay = gFunc.LoadFile('common\\gcdisplay.lua');
 gcinclude = gFunc.LoadFile('common\\gcinclude.lua');
 
 local sets = {
@@ -158,7 +157,7 @@ local sets = {
         Ear1 = 'Thrud Earring',
         Ear2 = 'Schere Earring',
         Body = 'Hjarrandi Breast.',
-        Hands = 'Valorous Mitts',
+        Hands = 'Boii Mufflers +2',
         Ring1 = 'Beithir Ring',
         Ring2 = 'Karieyh Ring +1',
         Back = { Name = 'Cichol\'s Mantle', Augment = { [1] = 'STR+20', [2] = 'Weapon skill damage +10%', [3] = 'Attack+20', [4] = 'Accuracy+20' } },
@@ -198,7 +197,7 @@ local sets = {
         Ear1 = 'Thrud Earring',
         Ear2 = 'Schere Earring',
         Body = 'Nyame Mail',--AF+3
-        Hands = 'Valorous Mitts',
+        Hands = 'Boii Mufflers +2',
         Ring1 = 'Beithir Ring',
         Ring2 = 'Karieyh Ring +1',
         Back = { Name = 'Cichol\'s Mantle', Augment = { [1] = 'STR+20', [2] = 'Weapon skill damage +10%', [3] = 'Attack+20', [4] = 'Accuracy+20' } },
@@ -217,7 +216,7 @@ local sets = {
         Ear1 = 'Thrud Earring',
         Ear2 = 'Schere Earring',
         Body = 'Nyame Mail',--AF+3
-        Hands = 'Valorous Mitts',
+        Hands = 'Boii Mufflers +2',
         Ring1 = 'Beithir Ring',
         Ring2 = 'Karieyh Ring +1',
         Back = { Name = 'Cichol\'s Mantle', Augment = { [1] = 'STR+20', [2] = 'Weapon skill damage +10%', [3] = 'Attack+20', [4] = 'Accuracy+20' } },
@@ -234,7 +233,7 @@ local sets = {
         Ammo = 'Thr. Tomahawk',
 	},
     Warcry = {
-        Head = 'Agoge Mask +1',
+        Head = 'Agoge Mask',
 	},
     Aggressor = {
         Head = 'Pumm. Mask +1',
@@ -251,7 +250,7 @@ local sets = {
         Body = 'Boii Lorica +1',
 	},
 
-    TH = {--/th will force this set to equip for 10 seconds
+    TH = {
         Ammo = 'Per. Lucky Egg',
 		Waist = 'Chaac Belt',
 	},
@@ -282,7 +281,7 @@ profile.OnUnload = function()
 end
 
 profile.HandleCommand = function(args)
-    gcinclude.SetCommands(args);
+    gcinclude.HandleCommands(args);
 end
 
 profile.HandleDefault = function()

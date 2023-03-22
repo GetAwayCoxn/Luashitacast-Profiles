@@ -1,13 +1,14 @@
+local gcdisplay = {};
+
+local fonts = require('fonts');
 local Toggles = {};
 local Cycles = {};
-local fonts = require('fonts');
-
-local gcdisplay = {
-	Toggles = {},
-	Values = {},
-};
-
-
+local Def = 0;
+local Attk = 0;
+local MainLV = 0;
+local SubLV = 0;
+local Main = 'FOO';
+local Sub = 'BAR';
 
 local fontSettings = T{
 	visible = true,
@@ -32,6 +33,21 @@ function gcdisplay.AdvanceCycle(name)
 	if (ctable.Index > #ctable.Array) then
 		ctable.Index = 1;
 	end
+end
+
+function gcdisplay.SetCycle(name,val)
+	local ctable = Cycles[name];
+	if (type(ctable) ~= 'table') then
+		return;
+	end
+	
+	for k,v in pairs(ctable.Array) do
+		if val == v then
+			ctable.Index = k
+			return true
+		end
+	end
+	return false
 end
 
 function gcdisplay.AdvanceToggle(name)
@@ -92,6 +108,7 @@ function gcdisplay.Unload()
 		gcdisplay.FontObject:destroy();
 	end
 	ashita.events.unregister('d3d_present', 'gcdisplay_present_cb');
+	ashita.events.unregister('command', 'gcdisplay_cb');
 end
 
 function gcdisplay.Initialize()
@@ -110,9 +127,21 @@ function gcdisplay.Initialize()
 		for key, value in pairs(Cycles) do
 			display = display .. '  ' .. key .. ': ' .. '|cFF00FF00|' .. value.Array[value.Index] .. '|r';
 		end
-		if (gcauto ~= nil) then display = display .. '  WStp:' .. wstp end
 		gcdisplay.FontObject.text = display;
 	end);
 end
+
+ashita.events.register('command', 'gcdisplay_cb', function (e)
+	local args = e.command:args()
+    if #args == 0 or args[1] ~= '/gcdisplay' then
+        return
+    end
+
+    e.blocked = true
+
+    if #args == 1 then
+        gcdisplay.FontObject.visible = not gcdisplay.FontObject.visible;
+    end
+end)
 
 return gcdisplay;

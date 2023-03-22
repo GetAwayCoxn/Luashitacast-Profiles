@@ -1,5 +1,4 @@
 local profile = {};
-gcdisplay = gFunc.LoadFile('common\\gcdisplay.lua');
 gcinclude = gFunc.LoadFile('common\\gcinclude.lua');
 
 
@@ -192,10 +191,10 @@ local sets = {
 		Ammo = 'Pet Food Theta',
 	},
     Killer = {
-		Body = 'Nukumi Gausape',
+		Body = 'Nukumi Gausape +1',
 	},
     Spur = {
-		Feet = 'Nukumi Ocreae',
+		Feet = 'Nukumi Ocreae +1',
 	},
     Ready = {
 		Legs = 'Gleti\'s Breeches',
@@ -218,7 +217,7 @@ local sets = {
 	PetMagicAttack = {},
 	PetMagicAccuracy = {},
 	
-    TH = {--/th will force this set to equip for 10 seconds
+    TH = {
         Ammo = 'Per. Lucky Egg',
 		Waist = 'Chaac Belt',
 	},
@@ -264,7 +263,7 @@ profile.OnUnload = function()
 end
 
 profile.HandleCommand = function(args)
-	gcinclude.SetCommands(args);
+	gcinclude.HandleCommands(args);
 end
 
 profile.HandleDefault = function()

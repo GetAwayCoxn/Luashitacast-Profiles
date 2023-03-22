@@ -1,5 +1,4 @@
 local profile = {};
-gcdisplay = gFunc.LoadFile('common\\gcdisplay.lua');
 gcinclude = gFunc.LoadFile('common\\gcinclude.lua');
 
 
@@ -145,7 +144,7 @@ local sets = {
 
     Precast = {
         Ammo = 'Sapience Orb', -- 2
-        Head = 'Haruspex Hat', -- 8
+        Head = 'Rune. Bandeau +2', -- 12
         Neck = 'Baetyl Pendant', -- 4
         Ear1 = 'Loquac. Earring', -- 2
         Ear2 = 'Etiolation Earring', -- 1
@@ -221,6 +220,7 @@ local sets = {
         Waist = 'Gishdubar Sash', --10rec
     },
     Regen = {
+        Head = 'Rune. Bandeau +2',
         Neck = 'Sacro Gorget',
         Legs = 'Futhark Trousers +2',
     },
@@ -257,7 +257,7 @@ local sets = {
         Ear1 = 'Sherida Earring',
         Ear2 = 'Telos Earring',
         Body = 'Nyame Mail',
-        Hands = 'Nyame Gauntlets',
+        Hands = 'Futhark Mitons +3',
         Ring1 = 'Petrov Ring',
         Ring2 = 'Karieyh Ring +1',
         Back = { Name = 'Ogma\'s Cape', Augment = { [1] = '"Dbl.Atk."+10', [2] = 'Phys. dmg. taken -10%', [3] = 'Accuracy+20', [4] = 'Attack+20', [5] = 'DEX+20' } },
@@ -351,8 +351,11 @@ local sets = {
     Battuta = {
         Head = 'Fu. Bandeau +1',
     },
+    Swordplay = {
+        Hands = 'Futhark Mitons +3',
+    },
 
-    TH = {--/th will force this set to equip for 10 seconds
+    TH = {
         Ammo = 'Per. Lucky Egg',
 		Waist = 'Chaac Belt',
         Feet = { Name = 'Herculean Boots', Augment = { [1] = 'Potency of "Cure" effect received+5%', [2] = 'Mag. Acc.+19', [3] = 'Accuracy+21', [4] = '"Mag. Atk. Bns."+19', [5] = '"Treasure Hunter"+2' } },
@@ -381,7 +384,7 @@ profile.OnUnload = function()
 end
 
 profile.HandleCommand = function(args)
-    gcinclude.SetCommands(args);
+    gcinclude.HandleCommands(args);
 end
 
 profile.HandleDefault = function()
@@ -420,6 +423,8 @@ profile.HandleAbility = function()
 		gFunc.EquipSet(sets.Vallation);
     elseif string.contains(ability.Name, 'Pulse') then
 		gFunc.EquipSet(sets.Pulse);
+    elseif string.contains(ability.Name, 'Swordplay') then
+		gFunc.EquipSet(sets.Swordplay);
     elseif string.contains(ability.Name, 'Sforzo') then
 		gFunc.EquipSet(sets.Sforzo);
     elseif string.match(ability.Name, 'Battuta') then

@@ -1,6 +1,9 @@
 # Luashitacast-Profiles
 These are my luashitacast profiles for FFXI Ashita v4, all jobs available, built for current retail. Keep in mind I made these for myself and I am simply sharing them for others to have at least a good starting off point if they want since Luashitacast and Ashita v4 in general is so new and there is not a widely available library of different profiles yet.
 
+## IMPORTANT NOTICE AS OF MARCH 22, 2023
+I have made a major name change in all files. If you are using any of my profiles from before this date and you never update then you're fine. If you are using any of my profiles and modified them for your use then awesome. If you are going to use any of my profiles going forward you will need to make sure to have the gcinclude.lua, gcdisplay.lua, and any/all jobs files from this date or after otherwise they will not load/work. You will not be able to mix and match older job files with newer includes and vise versa. As always, take care to save your current gear sets if you choose to upgrade to the newer files. If your starting from scratch with any of these profiles on or after this date, then congrats, read the reset of this readme and hit me up on here or discord if you have any questions. I added a command to toggle the gcdisplay output visibility, fixed bugs with the SCH spell handler and the /nuke spell handler, and added the ability to /setcycle directly so you dont have to cycle through all the elements to get the one you want. See the updated commands below.
+
 ## Overview:
 
 First, a LOT of the gear sets in these job files are copied and pasted and you so will need to edit them for your own use case and gear sets. That is why you might see something like BLM gear in the SAM file for example. I edit the sets as I play the jobs and if I do not play it very much it will have very weird looking gear sets for that job. Along the same lines some jobs I do not play at all (lolwhm) the profile will have the bare minimum to work and you will have more things to add to suit your needs. If you do not want to use or do not know how to use a particular set it is best to just leave the set there but remove any/all gear from it. If you delete any set you may get error messages when using the profile. I encourage anyone using these profiles to generate an issue here on the github repository for issues/recommendations/requests/etc.
@@ -9,7 +12,7 @@ Second, be aware that I use two custom files that need to be in your Ashita/conf
 
 Third, there are several settings that can be set globally in the gcinclude.lua file. Those settings are at the top of the file and there are notes in the file to explain more and give examples. Almost all of those settings can be overridden in any job file if a particular job needs a different default for some reason. There are also global sets in the gcinclude.lua however those are not meant to be overridden currently and truly are global to all jobs and characters on your account at this time. I am talking about things like the crafting set and fishing set for example.
 
-Last, I am leaving this note here although this has not been an issue for me in a long time. The stability around the profiles loading when the equiped gear has not fully loaded seems better after I put in a two second delay. The big thing here is try not to change jobs and zone immediately, also dont just zone immediately on first log in. Zoning out during that very short window could cause the luashitacast addon to crash, basically if you do not see the text overlay on your screen showing you your basic job info and the status of your meleeset etc., then try not to zone. If you get any errors/crashes or anything weird on log in or on zone just reload with /lac load or /addon load luashitacast if the addon itself crashed.
+Last, I am leaving this note here although this has not been an issue for me in a long time. The stability around the profiles loading when the equiped gear has not fully loaded seems better after I put in a two second delay. The big thing here is try not to change jobs and zone immediately, also dont just zone immediately on first log in. Zoning out during that very short window could cause the luashitacast addon to crash (when using my profiles). Basically if you do not see the text overlay on your screen showing you your basic job info and the status of your meleeset etc., then try not to zone. If you get any errors/crashes or anything weird on log in or on zone just reload with /lac load or /addon load luashitacast if the addon itself crashed.
 
 ## Quick Summary:
 
@@ -19,7 +22,7 @@ Several jobs have very specific tools as well. For example COR will display luck
 
 ## Things in the works:
 
-- [ ] I'll sort out some automatic ninja shadows canceling in the near future
+- [X] I'll sort out some automatic ninja shadows canceling in the near future
 - [ ] Add a similar function to prevent swapping gear for spells if your silenced/terror'd/etc like I do for WS's
 - [X] Thinking about adding a distance check to non-ranged WS's to avoid TP loss
 - [ ] Will add to all jobs all relic gear JA checks/sets, so far been adding as I go, need to just do them all
@@ -33,6 +36,7 @@ Several jobs have very specific tools as well. For example COR will display luck
 
 |**Command**|**Description**|
 |------------:|:---|
+|/gcdisplay|Will toggle the text/info bar visibility|
 |/gcmessages|Will toggle the chat messages when using various commands, default to off, some messages will always show|
 |/wsdistance|Will toggle whether or not to apply distance check to non-ranged WS's, default is 4 yalms since I am a taru, can update in gcinclude.settings to adjust for your liking, can also add a number to this command to update on the fly in case of fighting larger mob etc. (example: /wsdistance 6)|
 |/th|TH gear sets are in each job lua, this will force those sets while engaged or casting a spell or ranged attacks|
@@ -55,6 +59,7 @@ Several jobs have very specific tools as well. For example COR will display luck
 |/sir|For RUN and PLD only right now, forces spell interupt set|
 |/nukeset|Each of the mage job files have a default and acc nuking set. This will cycle through which one you want to use|
 |/elecycle|This will cycle a variable through all the elements and allow me to cast a nuke/weather/helix of that same element very easily using the same macro set|
+|/setcycle|This will take a second argument and set to that element so you dont have to cycle. "/setcycle Fire" for example|
 |/nuke #|Will cast the teir nuke of the element that /elecycle is currently on (e.g. /nuke 6 will attempt to cast FIRE VI if elecycle on fire)|
 |/helix|Will cast the helix (II if sch main job) of the element that /elecycle is currently on (e.g. will attempt to cast pyrohelix if elecycle on fire)|
 |/weather|Will cast the highest teir weatherspell available of the element that /elecycle is currently on (e.g. will attempt to cast firestorm if elecycle on fire)|

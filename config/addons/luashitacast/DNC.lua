@@ -1,5 +1,4 @@
 local profile = {};
-gcdisplay = gFunc.LoadFile('common\\gcdisplay.lua');
 gcinclude = gFunc.LoadFile('common\\gcinclude.lua');
 
 local sets = {
@@ -7,8 +6,8 @@ local sets = {
         Ammo = 'Yamarang',
         Head = 'Malignance Chapeau',
         Neck = 'Loricate Torque +1',
-        Ear1 = 'Eabani Earring',
-        Ear2 = 'Etiolation Earring',
+        Ear1 = 'Etiolation Earring',
+        Ear2 = 'Eabani Earring',
         Body = 'Gleti\'s Cuirass',
         Hands = 'Malignance Gloves',
         Ring1 = 'Defending Ring',
@@ -23,13 +22,15 @@ local sets = {
         Neck = 'Bathy Choker +1',
         Ear1 = 'Infused Earring',
         Ring2 = 'Chirich Ring +1',
+        Feet = 'Turms Leggings',
     },
     Idle_Refresh = {},
     Town = {
-        Main = 'Acrontica',
-        Sub = 'Tauret',
+        Main = 'Tauret',
+        Sub = 'Acrontica',
         Ammo = 'Yamarang',
-        Body = 'Gleti\'s Cuirass',
+        Head = 'Maculele Tiara +1',
+        Body = 'Macu. Casaque +1',
         Hands = 'Malignance Gloves',
         Legs = 'Gleti\'s Breeches',
         Feet = 'Gleti\'s Boots',
@@ -56,25 +57,36 @@ local sets = {
         Head = { Name = 'Adhemar Bonnet +1', AugPath='B' },
         Neck = 'Anu Torque',
         Ear1 = 'Sherida Earring',
-        Ear2 = 'Telos Earring',
+        Ear2 = 'Eabani Earring',
         Body = 'Gleti\'s Cuirass',
-        Hands = 'Malignance Gloves',
+        Hands = 'Adhemar Wrist. +1',
         Ring1 = 'Gere Ring',
         Ring2 = 'Epona\'s Ring',
-        Back = 'Mecisto. Mantle',
+        Back = 'Senuna\'s Mantle',
         Waist = { Name = 'Sailfi Belt +1', AugPath='A' },
-        Legs = 'Gleti\'s Breeches',
+        Legs = 'Samnuha Tights',
         Feet = { Name = 'Herculean Boots', Augment = { [1] = 'Accuracy+20', [2] = 'Attack+6', [3] = 'AGI+1', [4] = '"Triple Atk."+3' } },
     },
     Tp_Hybrid = {
         Head = 'Malignance Chapeau',
         Neck = 'Sanctity Necklace',
+        Body = 'Malignance Tabard',
+        Hands = 'Malignance Gloves',
+        Legs = 'Gleti\'s Breeches',
+        Feet = 'Gleti\'s Boots',
     },
     Tp_Acc = {
         Ammo = 'Yamarang',
+        Head = 'Malignance Chapeau',
+        Neck = 'Sanctity Necklace',
         Ear1 = 'Mache Earring +1',
+        Ear2 = 'Telos Earring',
+        Body = 'Malignance Tabard',
+        Hands = 'Malignance Gloves',
         Ring1 = 'Cacoethic Ring +1',
         Ring2 = 'Chirich Ring +1',
+        Legs = 'Gleti\'s Breeches',
+        Feet = 'Gleti\'s Boots',
     },
 
 
@@ -98,8 +110,8 @@ local sets = {
         Ammo = 'Voluspa Tathlum',
         Head = { Name = 'Adhemar Bonnet +1', AugPath='B' },
         Neck = 'Fotia Gorget',
-        Ear1 = 'Odr Earring',
-        Ear2 = 'Telos Earring',
+        Ear1 = 'Sherida Earring',
+        Ear2 = 'Mache Earring +1',
         Body = 'Nyame Mail',
         Hands = 'Meg. Gloves +2',
         Ring1 = 'Beithir Ring',
@@ -111,6 +123,60 @@ local sets = {
     Ws_Hybrid = {
     },
     Ws_Acc = {
+    },
+
+    Evis_Default = {
+        Head = 'Adhemar Bonnet +1',
+        Neck = 'Fotia Gorget',
+        Ear1 = 'Sherida Earring',
+        Ear2 = 'Odr Earring',
+        Body = 'Meg. Cuirie +2',
+        Hands = 'Mummu Wrists +2',
+        Ring1 = 'Gere Ring',
+        Ring2 = 'Ilabrat Ring',
+        Waist = 'Fotia Belt',
+        Legs = 'Mummu Kecks +2',
+        Feet = 'Gleti\'s Boots',
+    },
+    Evis_Hybrid = {
+    },
+    Evis_Acc = {
+
+    },
+
+    Rudra_Default = {
+        Head = 'Blistering Sallet +1',
+        Neck = 'Sanctity Necklace',
+        Body = 'Meg. Cuirie +2',
+        Hands = 'Meg. Gloves +2',
+        Ring1 = 'Beithir Ring',
+        Ring2 = 'Karieyh Ring +1',
+        Waist = 'Sailfi Belt +1',
+        Legs = 'Mummu Kecks +2',
+        Feet = { Name = 'Herculean Boots', Augment = { [1] = 'Accuracy+30', [2] = 'Weapon skill damage +8%', [3] = 'Attack+6', [4] = 'Mag. Acc.+2' } },
+    },
+    Rudra_Hybrid = {
+    },
+    Rudra_Acc = {
+
+    },
+
+    Pyrrhic_Default = {
+        Ammo = 'Coiste Bodhar',
+        Head = 'Adhemar Bonnet +1',
+        Neck = 'Fotia Gorget',
+        Body = 'Herculean Vest',
+        Hands = 'Adhemar Wrist. +1',
+        Ring1 = 'Gere Ring',
+        Ring2 = 'Epona\'s Ring',
+        Waist = 'Fotia Belt',
+        Legs = 'Samnuha Tights',
+        Feet = { Name = 'Herculean Boots', Augment = { [1] = 'Accuracy+20', [2] = 'Attack+6', [3] = 'AGI+1', [4] = '"Triple Atk."+3' } },
+    },
+    Pyrrhic_Hybrid = {
+    },
+    Pyrrhic_Acc = {
+
     },
 
     Aedge_Default = {
@@ -134,7 +200,14 @@ local sets = {
         Ammo = 'Yamarang',
     },
 
-    TH = {--/th will force this set to equip for 10 seconds
+    Climactic = {-- on JA and while buff is active
+        Head = 'Maculele Tiara +1',
+    },
+    Striking = {-- on JA and while buff is active
+        Body = 'Macu. Casaque +1',
+    },
+
+    TH = {
         Ammo = 'Per. Lucky Egg',
 		Waist = 'Chaac Belt',
         Feet = { Name = 'Herculean Boots', Augment = { [1] = 'Potency of "Cure" effect received+5%', [2] = 'Mag. Acc.+19', [3] = 'Accuracy+21', [4] = '"Mag. Atk. Bns."+19', [5] = '"Treasure Hunter"+2' } },
@@ -162,13 +235,14 @@ profile.OnUnload = function()
 end
 
 profile.HandleCommand = function(args)
-    gcinclude.SetCommands(args);
+    gcinclude.HandleCommands(args);
 end
 
 profile.HandleDefault = function()
     gFunc.EquipSet(sets.Idle);
 	
 	local player = gData.GetPlayer();
+    local climactic = gData.GetBuffCount('Climactic Flourish');
     
     if (player.Status == 'Engaged') then
         gFunc.EquipSet(sets.Tp_Default);
@@ -182,6 +256,7 @@ profile.HandleDefault = function()
     end
 	
     gcinclude.CheckDefault ();
+    if climactic > 0 then gFunc.EquipSet(sets.Climactic); end
     if (gcdisplay.GetToggle('DTset') == true) then gFunc.EquipSet(sets.Dt) end;
     if (gcdisplay.GetToggle('Kite') == true) then gFunc.EquipSet(sets.Movement) end;
 end
@@ -190,6 +265,7 @@ profile.HandleAbility = function()
     local ability = gData.GetAction();
 
     if string.match(ability.Name, 'Provoke') then gFunc.EquipSet(sets.Enmity);
+    elseif string.contains(ability.Name, 'Climactic') then gFunc.EquipSet(sets.Climactic);
     elseif string.contains(ability.Name, 'Waltz') then gFunc.EquipSet(sets.Waltz) end
 
     gcinclude.CheckCancels();
@@ -229,6 +305,8 @@ profile.HandleWeaponskill = function()
         gFunc.EquipSet(sets.Ws_Proc);
     else
         local ws = gData.GetAction();
+        local climactic = gData.GetBuffCount('Climactic Flourish');
+        local striking = gData.GetBuffCount('Striking Flourish');
     
         gFunc.EquipSet(sets.Ws_Default)
         if (gcdisplay.GetCycle('MeleeSet') ~= 'Default') then
@@ -238,6 +316,21 @@ profile.HandleWeaponskill = function()
             gFunc.EquipSet(sets.Aedge_Default)
             if (gcdisplay.GetCycle('MeleeSet') ~= 'Default') then
             gFunc.EquipSet('Aedge_' .. gcdisplay.GetCycle('MeleeSet')); end
+        elseif string.match(ws.Name, 'Evisceration') then
+            gFunc.EquipSet(sets.Evis_Default)
+            if (gcdisplay.GetCycle('MeleeSet') ~= 'Default') then
+            gFunc.EquipSet('Evis_' .. gcdisplay.GetCycle('MeleeSet')); end
+            if striking > 0 then gFunc.EquipSet(sets.Striking); end
+        elseif string.match(ws.Name, 'Rudra\'s Storm') then
+            gFunc.EquipSet(sets.Rudra_Default)
+            if (gcdisplay.GetCycle('MeleeSet') ~= 'Default') then
+            gFunc.EquipSet('Rudra_' .. gcdisplay.GetCycle('MeleeSet')); end
+            if climactic > 0 then gFunc.EquipSet(sets.Climactic); end
+        elseif string.match(ws.Name, 'Pyrrhic Kleos') then
+            gFunc.EquipSet(sets.Pyrrhic_Default)
+            if (gcdisplay.GetCycle('MeleeSet') ~= 'Default') then
+            gFunc.EquipSet('Pyrrhic_' .. gcdisplay.GetCycle('MeleeSet')); end
+            if striking > 0 then gFunc.EquipSet(sets.Striking); end
         end
     end
 end

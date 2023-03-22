@@ -1,5 +1,4 @@
 local profile = {};
-gcdisplay = gFunc.LoadFile('common\\gcdisplay.lua');
 gcinclude = gFunc.LoadFile('common\\gcinclude.lua');
 
 local sets = {
@@ -154,7 +153,7 @@ local sets = {
         Ear1 = 'Thrud Earring',
         Ear2 = 'Telos Earring',
         Body = 'Gleti\'s Cuirass',
-        Hands = 'Valorous Mitts',
+        Hands = 'Nyame Gauntlets',
         Ring1 = 'Beithir Ring',
         Ring2 = 'Karieyh Ring +1',
         Back = { Name = 'Brigantia\'s Mantle', Augment = { [1] = 'STR+30', [2] = '"Dbl.Atk."+10', [3] = 'Attack+20', [4] = 'Accuracy+20' } },
@@ -191,7 +190,7 @@ local sets = {
     Jumps_Hybrid = {},
     Jumps_Acc = {},
 
-    TH = {--/th will force this set to equip for 10 seconds
+    TH = {
         Ammo = 'Per. Lucky Egg',
 		Waist = 'Chaac Belt',
 	},
@@ -221,7 +220,7 @@ profile.OnUnload = function()
 end
 
 profile.HandleCommand = function(args)
-    gcinclude.SetCommands(args);
+    gcinclude.HandleCommands(args);
 end
 
 profile.HandleDefault = function()

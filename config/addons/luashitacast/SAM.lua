@@ -1,5 +1,4 @@
 local profile = {};
-gcdisplay = gFunc.LoadFile('common\\gcdisplay.lua');
 gcinclude = gFunc.LoadFile('common\\gcinclude.lua');
 
 local sets = {
@@ -8,13 +7,13 @@ local sets = {
         Sub = 'Utu Grip',
         Ammo = 'Staunch Tathlum',
         Head = 'Wakido Kabuto +2',
-        Neck = 'Loricate Torque +1',
+        Neck = 'Bathy Choker +1',
         Ear1 = { Name = 'Odnowa Earring +1', AugPath='A' },
         Ear2 = 'Eabani Earring',
         Body = 'Mpaca\'s Doublet',
         Hands = 'Macabre Gaunt. +1',
-        Ring1 = 'Defending Ring',
-        Ring2 = 'Karieyh Ring +1',
+        Ring1 = 'Karieyh Ring +1',
+        Ring2 = 'Chirich Ring +1',
         Back = { Name = 'Smertrios\'s Mantle', Augment = { [1] = 'Damage taken-5%', [2] = 'Accuracy+30', [3] = 'Attack+20', [4] = '"Store TP"+10', [5] = 'DEX+20' } },
         Waist = 'Flume Belt +1',
         Legs = 'Mpaca\'s Hose',
@@ -70,7 +69,7 @@ local sets = {
         Neck = { Name = 'Sam. Nodowa +1', AugPath='A' },
         Ear1 = 'Telos Earring',
         Ear2 = 'Schere Earring',
-        Body = 'Kasuga Domaru +1',
+        Body = 'Kasuga Domaru +2',
         Hands = 'Flam. Manopolas +2',
         Ring1 = 'Niqmaddu Ring',
         Ring2 = 'Chirich Ring +1',
@@ -100,7 +99,7 @@ local sets = {
         Neck = { Name = 'Sam. Nodowa +1', AugPath='A' },
         Ear1 = 'Telos Earring',
         Ear2 = 'Schere Earring',
-        Body = 'Kasuga Domaru +1',
+        Body = 'Kasuga Domaru +2',
         Hands = 'Flam. Manopolas +2',
         Ring1 = 'Petrov Ring',
         Ring2 = 'Karieyh Ring +1',
@@ -142,7 +141,7 @@ local sets = {
         Ear1 = 'Thrud Earring',
         Ear2 = 'Schere Earring',
         Body = { Name = 'Sakonji Domaru +3', AugTrial=5483 },
-        Hands = 'Valorous Mitts',
+        Hands = 'Kasuga Kote +2',
         Ring1 = 'Beithir Ring',
         Ring2 = 'Karieyh Ring +1',
         Back = { Name = 'Smertrios\'s Mantle', Augment = { [1] = 'STR+30', [2] = 'Weapon skill damage +10%', [3] = 'Attack+20', [4] = 'Accuracy+20' } },
@@ -163,7 +162,7 @@ local sets = {
         Neck = { Name = 'Loricate Torque +1', AugPath='A' },
         Ear1 = 'Telos Earring',
         Ear2 = 'Cessance Earring',
-        Body = 'Kasuga Domaru +1',
+        Body = 'Kasuga Domaru +2',
         Hands = 'Wakido Kote +3',
         Ring1 = 'Defending Ring',
         Ring2 = 'Beithir Ring',
@@ -180,7 +179,7 @@ local sets = {
         Ear1 = 'Schere Earring',
         Ear2 = 'Telos Earring',
         Body = { Name = 'Sakonji Domaru +3', AugTrial=5483 },
-        Hands = 'Valorous Mitts',
+        Hands = 'Kasuga Kote +2',
         Ring1 = 'Beithir Ring',
         Ring2 = 'Karieyh Ring +1',
         Back = { Name = 'Smertrios\'s Mantle', Augment = { [1] = 'STR+30', [2] = 'Weapon skill damage +10%', [3] = 'Attack+20', [4] = 'Accuracy+20' } },
@@ -202,7 +201,7 @@ local sets = {
         Ear1 = 'Friomisi Earring',
         Ear2 = 'Crematio Earring',
         Body = { Name = 'Sakonji Domaru +3', AugTrial=5483 },
-        Hands = 'Valorous Mitts',
+        Hands = 'Kasuga Kote +2',
         Ring2 = 'Karieyh Ring +1',
         Ring1 = 'Metamor. Ring +1',
         Back = { Name = 'Smertrios\'s Mantle', Augment = { [1] = 'STR+30', [2] = 'Weapon skill damage +10%', [3] = 'Attack+20', [4] = 'Accuracy+20' } },
@@ -271,7 +270,7 @@ local sets = {
         Head = 'Kasuga Kabuto +1',
     },
     Sekkanoki = {
-        Hands = 'Kasuga Kote +1',
+        Hands = 'Kasuga Kote +2',
     },
     Sengikori = {
         Feet = 'Kas. Sune-Ate +1',
@@ -289,7 +288,7 @@ local sets = {
         Ring1 = 'Petrov Ring',
     },
 
-    TH = {--/th will force this set to equip for 10 seconds
+    TH = {
         Ammo = 'Per. Lucky Egg',
 		Waist = 'Chaac Belt',
 	},
@@ -316,7 +315,7 @@ profile.OnUnload = function()
 end
 
 profile.HandleCommand = function(args)
-    gcinclude.SetCommands(args);
+    gcinclude.HandleCommands(args);
 end
 
 profile.HandleDefault = function()

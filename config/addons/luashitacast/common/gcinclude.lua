@@ -58,7 +58,7 @@ gcinclude.settings = {
 	Messages = false; --set to true if you want chat log messages to appear on any /gc command used such as DT, TH, or KITE gear toggles, certain messages will always appear
 	AutoGear = true; --set to false if you dont want DT/Regen/Refresh/PetDT gear to come on automatically at the defined %'s here
 	WScheck = true; --set to false if you dont want to use the WSdistance safety check
-	WSdistance = 4.3; --default max distance (yalms) to allow non-ranged WS to go off at if the above WScheck is true
+	WSdistance = 4.7; --default max distance (yalms) to allow non-ranged WS to go off at if the above WScheck is true
 	RegenGearHPP = 60; -- set HPP to have your idle regen set to come on
 	RefreshGearMPP = 70; -- set MPP to have your idle refresh set to come on
 	DTGearHPP = 40; -- set HPP to have your DT set to come on
@@ -73,7 +73,7 @@ in each individual job lua file. Unless you know what you're doing then it is be
 ]]
 gcdisplay = gFunc.LoadFile('common\\gcdisplay.lua');
 
-gcinclude.AliasList = T{'gcmessages','wsdistance','dt','th','kite','meleeset','gcdrain','gcaspir','nukeset','burst','weapon','elecycle','helix','weather','nuke','death','fight','sir','tankset','proc','cj','pupmode','tpgun','cormsg','forcestring','siphon','warpring','telering','rrset','craftset','zeniset','fishset'};
+gcinclude.AliasList = T{'gcmessages','wsdistance','setcycle','dt','th','kite','meleeset','gcdrain','gcaspir','nukeset','burst','weapon','elecycle','helix','weather','nuke','death','fight','sir','tankset','proc','cj','pupmode','tpgun','cormsg','forcestring','siphon','warpring','telering','rrset','craftset','zeniset','fishset'};
 gcinclude.Towns = T{'Tavnazian Safehold','Al Zahbi','Aht Urhgan Whitegate','Nashmau','Southern San d\'Oria [S]','Bastok Markets [S]','Windurst Waters [S]','San d\'Oria-Jeuno Airship','Bastok-Jeuno Airship','Windurst-Jeuno Airship','Kazham-Jeuno Airship','Southern San d\'Oria','Northern San d\'Oria','Port San d\'Oria','Chateau d\'Oraguille','Bastok Mines','Bastok Markets','Port Bastok','Metalworks','Windurst Waters','Windurst Walls','Port Windurst','Windurst Woods','Heavens Tower','Ru\'Lude Gardens','Upper Jeuno','Lower Jeuno','Port Jeuno','Rabao','Selbina','Mhaura','Kazham','Norg','Mog Garden','Celennia Memorial Library','Western Adoulin','Eastern Adoulin'};
 gcinclude.LockingRings = T{'Echad Ring', 'Trizek Ring', 'Endorsement Ring', 'Capacity Ring', 'Warp Ring','Facility Ring','Dim. Ring (Dem)','Dim. Ring (Mea)','Dim. Ring (Holla)'};
 gcinclude.DistanceWS = T{'Flaming Arrow','Piercing Arrow','Dulling Arrow','Sidewinder','Blast Arrow','Arching Arrow','Empyreal Arrow','Refulgent Arrow','Apex Arrow','Namas Arrow','Jishnu\'s Randiance','Hot Shot','Split Shot','Sniper Shot','Slug Shot','Blast Shot','Heavy Shot','Detonator','Numbing Shot','Last Stand','Coronach','Wildfire','Trueflight','Leaden Salute','Myrkr','Dagan','Moonlight','Starlight'};
@@ -167,7 +167,7 @@ function gcinclude.SetVariables()
 	end
 end
 
-function gcinclude.SetCommands(args)
+function gcinclude.HandleCommands(args)
 	if not gcinclude.AliasList:contains(args[1]) then return end
 
 	local player = gData.GetPlayer();
@@ -200,6 +200,11 @@ function gcinclude.SetCommands(args)
 		gcdisplay.AdvanceCycle('MeleeSet');
 		toggle = 'Melee Set';
 		status = gcdisplay.GetCycle('MeleeSet');
+	elseif (#args == 3 and args[1] == 'setcycle') then
+		if gcdisplay.SetCycle(args[2], args[3]) then
+			toggle = args[2];
+			status = gcdisplay.GetCycle(args[2]);
+		end
 	elseif (args[1] == 'kite') then
 		gcdisplay.AdvanceToggle('Kite');
 		toggle = 'Kite Set';
@@ -489,7 +494,19 @@ end
 
 function gcinclude.DoNukes(tier)
 	local cast = gcdisplay.GetCycle('Element');
-	AshitaCore:GetChatManager():QueueCommand(1, '/ma "' .. cast .. ' ' .. tier .. '" <t>');
+	if tier == "1" then tier = 'I'
+	elseif tier == "2" then tier = 'II'
+	elseif tier == "3" then tier = 'III'
+	elseif tier == "4" then tier = 'IV'
+	elseif tier == "5" then tier = 'V'
+	elseif tier == "6" then tier = 'VI'
+	end
+
+	if tier == "I" then
+		AshitaCore:GetChatManager():QueueCommand(1, '/ma "' .. cast .. '" <t>');
+	else
+		AshitaCore:GetChatManager():QueueCommand(1, '/ma "' .. cast .. ' ' .. tier .. '" <t>');
+	end
 end
 
 function gcinclude.DoCORmsg(roll)
@@ -545,18 +562,22 @@ end
 
 function gcinclude.DoSCHspells(spell)
 	local player = gData.GetPlayer();
+	local playerCore = AshitaCore:GetMemoryManager():GetPlayer();
 	local e = gcdisplay.GetCycle('Element');
 	local key = 0;
 	local cast = 'cast';
 	local type = {};
 	local target = 'me';
+	local points = 100;
 
 	if (spell == 'helix') then 
 		type = gcinclude.HelixSpells;
 		target = '<t>';
+		points = 1200;
 	elseif (spell == 'weather') then
 		type = gcinclude.StormSpells;
-		target = '<me>'
+		target = '<me>';
+		points = 100;
 	end
 
 	if (player.MainJob == "BLM") then
@@ -574,17 +595,31 @@ function gcinclude.DoSCHspells(spell)
 			AshitaCore:GetChatManager():QueueCommand(1, '/ma "' .. cast .. '" ' .. target);
 		end
 	elseif (player.MainJob == "SCH") then
-		for k, v in pairs(gcinclude.Elements) do
-			if (v == e) then
-				key = k;
+		if playerCore:GetJobPointsSpent(20) >= points then
+			for k, v in pairs(gcinclude.Elements) do
+				if (v == e) then
+					key = k;
+				end
 			end
-		end
-		for a, b in pairs(type) do
-			if (a == key) then
-				cast = b;
+			for a, b in pairs(type) do
+				if (a == key) then
+					cast = b;
+				end
 			end
+			AshitaCore:GetChatManager():QueueCommand(1, '/ma "' .. cast .. ' II" ' .. target);
+		else
+			for k, v in pairs(gcinclude.Elements) do
+				if (v == e) then
+					key = k;
+				end
+			end
+			for a, b in pairs(type) do
+				if (a == key) then
+					cast = b;
+				end
+			end
+			AshitaCore:GetChatManager():QueueCommand(1, '/ma "' .. cast .. '" ' .. target);
 		end
-		AshitaCore:GetChatManager():QueueCommand(1, '/ma "' .. cast .. ' II" ' .. target);
 	end
 end
 
@@ -629,6 +664,34 @@ function gcinclude.DoSiphon()
 				spirit = v;
 				castspirit:once(3);
 			end
+		end
+	end
+end
+
+function gcinclude.DoShadows(spell) -- 1000% credit to zach2good for this function, copy and paste (mostly) from his ashita discord post
+	if spell.Name == 'Utsusemi: Ichi' then
+		local delay = 2.4
+		if gData.GetBuffCount(66) == 1 then
+			(function() AshitaCore:GetChatManager():QueueCommand(-1, '/cancel 66') end):once(delay)
+		elseif gData.GetBuffCount(444) == 1 then
+			(function() AshitaCore:GetChatManager():QueueCommand(-1, '/cancel 444') end):once(delay)
+		elseif gData.GetBuffCount(445) == 1 then
+			(function() AshitaCore:GetChatManager():QueueCommand(-1, '/cancel 445') end):once(delay)
+		elseif gData.GetBuffCount(446) == 1 then
+			(function() AshitaCore:GetChatManager():QueueCommand(-1, '/cancel 446') end):once(delay)
+		end
+	end
+
+	if spell.Name == 'Utsusemi: Ni' then
+		local delay = 0.5
+		if gData.GetBuffCount(66) == 1 then
+			(function() AshitaCore:GetChatManager():QueueCommand(-1, '/cancel 66') end):once(delay)
+		elseif gData.GetBuffCount(444) == 1 then
+			(function() AshitaCore:GetChatManager():QueueCommand(-1, '/cancel 444') end):once(delay)
+		elseif gData.GetBuffCount(445) == 1 then
+			(function() AshitaCore:GetChatManager():QueueCommand(-1, '/cancel 445') end):once(delay)
+		elseif gData.GetBuffCount(446) == 1 then
+			(function() AshitaCore:GetChatManager():QueueCommand(-1, '/cancel 446') end):once(delay)
 		end
 	end
 end

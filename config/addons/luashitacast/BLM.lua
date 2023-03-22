@@ -1,5 +1,4 @@
 local profile = {};
-gcdisplay = gFunc.LoadFile('common\\gcdisplay.lua');
 gcinclude = gFunc.LoadFile('common\\gcinclude.lua');
 
 local sets = {
@@ -15,7 +14,7 @@ local sets = {
         Hands = 'Amalric Gages +1',
         Ring1 = 'Stikini Ring +1',
         Ring2 = { Name = 'Metamor. Ring +1', AugPath='A' },
-        Back = 'Solemnity Cape',
+        Back = { Name = 'Taranus\'s Cape', Augment = { [1] = 'Damage taken-5%', [2] = '"Mag. Atk. Bns."+10', [3] = 'Mag. Acc+20', [4] = 'INT+20', [5] = 'Magic Damage +20' } },
         Waist = 'Gishdubar Sash',
         Legs = 'Agwu\'s Slops',
         Feet = 'Volte Gaiters',
@@ -43,7 +42,7 @@ local sets = {
         Neck = 'Bathy Choker +1',
         Body = 'Agwu\'s Robe',
         Hands = 'Amalric Gages +1',
-        Back = 'Solemnity Cape',
+        Back = { Name = 'Taranus\'s Cape', Augment = { [1] = 'Damage taken-5%', [2] = '"Mag. Atk. Bns."+10', [3] = 'Mag. Acc+20', [4] = 'INT+20', [5] = 'Magic Damage +20' } },
         Legs = 'Agwu\'s Slops',
         Feet = 'Herald\'s Gaiters',
     },
@@ -58,7 +57,7 @@ local sets = {
         Hands = 'Nyame Gauntlets',
         Ring1 = 'Defending Ring',
         Ring2 = 'Gelatinous Ring +1',
-        Back = 'Solemnity Cape',
+        Back = { Name = 'Taranus\'s Cape', Augment = { [1] = 'Damage taken-5%', [2] = '"Mag. Atk. Bns."+10', [3] = 'Mag. Acc+20', [4] = 'INT+20', [5] = 'Magic Damage +20' } },
         Waist = 'Gishdubar Sash',
         Legs = 'Nyame Flanchard',
         Feet = 'Nyame Sollerets',
@@ -78,8 +77,8 @@ local sets = {
         Ammo = 'Sapience Orb',
         Head = 'Haruspex Hat',
         Neck = 'Baetyl Pendant',
-        Ear1 = 'Etiolation Earring',
-        Ear2 = 'Malignance Earring',
+        Ear1 = 'Malignance Earring',
+        Ear2 = 'Etiolation Earring',
         Body = 'Agwu\'s Robe',
         Hands = 'Mallquis Cuffs +2',
         Ring1 = 'Kishar Ring',
@@ -169,8 +168,8 @@ local sets = {
         Ammo = 'Pemphredo Tathlum',
         Head = 'Befouled Crown',
         Neck = 'Erra Pendant',
-        Ear1 = 'Regal Earring',
-        Ear2 = 'Malignance Earring',
+        Ear1 = 'Malignance Earring',
+        Ear2 = 'Regal Earring',
         Body = 'Arch. Coat +3',
         Hands = 'Nyame Gauntlets',
         Ring1 = 'Kishar Ring',
@@ -186,8 +185,8 @@ local sets = {
         Ammo = 'Pemphredo Tathlum',
         Head = 'Nyame Helm',
         Neck = 'Src. Stole +1',
-        Ear1 = 'Regal Earring',
-        Ear2 = 'Malignance Earring',
+        Ear1 = 'Malignance Earring',
+        Ear2 = 'Regal Earring',
         Body = 'Spaekona\'s Coat +2',
         Hands = 'Nyame Gauntlets',
         Ring1 = 'Kishar Ring',
@@ -203,8 +202,8 @@ local sets = {
         Sub = 'Ammurapi Shield',
         Ammo = 'Pemphredo Tathlum',
         Neck = 'Erra Pendant',
-        Ear1 = 'Regal Earring',
-        Ear2 = 'Malignance Earring',
+        Ear1 = 'Malignance Earring',
+        Ear2 = 'Regal Earring',
         Body = 'Spaekona\'s Coat +2',
         Ring1 = 'Kishar Ring',
         Ring2 = 'Metamor. Ring +1',
@@ -220,13 +219,13 @@ local sets = {
         Ammo = 'Pemphredo Tathlum',
         Head = 'Jhakri Coronal +2',
         Neck = 'Baetyl Pendant',
-        Ear1 = 'Regal Earring',
-        Ear2 = 'Malignance Earring',
+        Ear1 = 'Malignance Earring',
+        Ear2 = 'Regal Earring',
         Body = 'Arch. Coat +3',
         Hands = 'Amalric Gages +1',
         Ring1 = 'Shiva Ring +1',
         Ring2 = { Name = 'Metamor. Ring +1', AugPath='A' },
-        Back = 'Taranus\'s Cape',
+        Back = { Name = 'Taranus\'s Cape', Augment = { [1] = 'Damage taken-5%', [2] = '"Mag. Atk. Bns."+10', [3] = 'Mag. Acc+20', [4] = 'INT+20', [5] = 'Magic Damage +20' } },
         Waist = 'Eschan Stone',
         Legs = 'Wicce Chausses +2',
         Feet = 'Amalric Nails +1',
@@ -242,7 +241,7 @@ local sets = {
         Body = 'Ea Houppelande', -- 8 and 9
         Hands = 'Amalric Gages +1', -- 0 and 6
         Ring1 = 'Mujin Band', -- 0 and 5
-        Back = 'Taranus\'s Cape', -- 5 and 0
+        Back = { Name = 'Taranus\'s Cape', Augment = { [1] = 'Damage taken-5%', [2] = '"Mag. Atk. Bns."+10', [3] = 'Mag. Acc+20', [4] = 'INT+20', [5] = 'Magic Damage +20' } }, -- 5 and 0
         Waist = { Name = 'Acuity Belt +1', AugPath='A' },
         Legs = 'Agwu\'s Slops', -- 9 and 0
         Feet = 'Ea Pigaches', -- 4 and 4
@@ -251,9 +250,11 @@ local sets = {
         Main = 'Bunzi\'s Rod',
         Sub = 'Ammurapi Shield',
         Head = 'Mall. Chapeau +2',
+        Ear1 = 'Malignance Earring',
+        Ear2 = 'Wicce Earring +1',
         Body = 'Agwu\'s Robe',
         Hands = 'Amalric Gages +1',
-        Back = 'Taranus\'s Cape',
+        Back = { Name = 'Taranus\'s Cape', Augment = { [1] = 'Damage taken-5%', [2] = '"Mag. Atk. Bns."+10', [3] = 'Mag. Acc+20', [4] = 'INT+20', [5] = 'Magic Damage +20' } },
         Waist = { Name = 'Acuity Belt +1', AugPath='A' },
         Legs = 'Agwu\'s Slops',
         Feet = 'Amalric Nails +1',
@@ -305,7 +306,7 @@ local sets = {
     Ws_Acc = {
     },
 
-    TH = {--/th will force this set to equip for 10 seconds
+    TH = {
         Ammo = 'Per. Lucky Egg',
 		Waist = 'Chaac Belt',
 	},
@@ -333,7 +334,7 @@ profile.OnUnload = function()
 end
 
 profile.HandleCommand = function(args)
-    gcinclude.SetCommands(args);
+    gcinclude.HandleCommands(args);
 end
 
 profile.HandleDefault = function()

@@ -1,5 +1,4 @@
 local profile = {};
-gcdisplay = gFunc.LoadFile('common\\gcdisplay.lua');
 gcinclude = gFunc.LoadFile('common\\gcinclude.lua');
 
 
@@ -21,7 +20,7 @@ local sets = {
     },
     Idle_Pet = {
         Main = 'Sakpata\'s Fists',
-        Head = 'Rawhide Mask',
+        Head = 'Taeon Chapeau',
         Neck = 'Empath Necklace',
         Ear1 = 'Burana Earring',
         Ear2 = 'Kara. Earring +1',
@@ -34,7 +33,9 @@ local sets = {
         Legs = 'Taeon Tights',
         Feet = 'Mpaca\'s Boots',
     },
-	Resting = {},
+	Resting = {
+        Head = 'Foire Taj +1',
+    },
     Idle_Regen = {
         Neck = 'Bathy Choker +1',
         Ear1 = 'Infused Earring',
@@ -51,7 +52,7 @@ local sets = {
         Main = 'Sakpata\'s Fists',
         Range = 'Neo Animator',
         Ammo = 'Automat. Oil +3',
-        Head = 'Karagoz Capello +1',
+        Head = 'Kara. Cappello +2',
         Neck = 'Bathy Choker +1',
         Ear1 = 'Burana Earring',
         Ear2 = 'Kara. Earring +1',
@@ -97,7 +98,7 @@ local sets = {
 	
     Pet_Only_Tp_Default = {
         Ammo = 'Automat. Oil +3',
-        Head = 'Taeon Chapeau',
+        Head = 'Foire Taj +1',
         Neck = 'Shulmanu Collar',
         Ear1 = 'Domes. Earring',
         Ear2 = 'Kara. Earring +1',
@@ -147,6 +148,7 @@ local sets = {
     -- These following profile.Sets are intended for one off items to equip while the pet is engaged (or both of you) based on the PupMode. An example would be Pet HP+ pieces for Tank mode. Can be empty but do not delete.
     Tank = {
         Range = 'Animator P +1',
+        Head = 'Taeon Chapeau',
         Ear1 = 'Domes. Earring',
         Ring1 = 'Overbearing Ring',
         Ring2 = 'C. Palug Ring',
@@ -207,11 +209,11 @@ local sets = {
         Head = 'Blistering Sallet +1',
         Neck = 'Fotia Gorget',
         Ear1 = 'Schere Earring',
-        Ear2 = 'Telos Earring',
+        Ear2 = 'Mache Earring +1',
         Body = 'Mpaca\'s Doublet',
         Hands = 'Ryuo Tekko',
-        Ring1 = 'Beithir Ring',
-        Ring2 = 'Karieyh Ring +1',
+        Ring1 = 'Niqmaddu Ring',
+        Ring2 = 'Gere Ring',
         Waist = 'Fotia Belt',
         Legs = 'Mpaca\'s Hose',
         Feet = 'Mpaca\'s Boots',
@@ -228,8 +230,8 @@ local sets = {
         Ear2 = 'Mache Earring +1',
         Body = 'Herculean Vest',
         Hands = 'Malignance Gloves',
-        Ring2 = 'Karieyh Ring +1',
         Ring1 = 'Niqmaddu Ring',
+        Ring2 = 'Gere Ring',
         Waist = 'Moonbow Belt',
         Legs = 'Samnuha Tights',
         Feet = { Name = 'Herculean Boots', Augment = { [1] = 'Accuracy+20', [2] = 'Attack+6', [3] = 'AGI+1', [4] = '"Triple Atk."+3' } },
@@ -240,7 +242,7 @@ local sets = {
     },
 
     Pet_WS = {
-        Head = 'Karagoz Capello +1',
+        Head = 'Kara. Cappello +2',
         Neck = 'Shulmanu Collar',
         Ear1 = 'Burana Earring',
         Ear2 = 'Domes. Earring',
@@ -253,7 +255,7 @@ local sets = {
         Feet = 'Mpaca\'s Boots',
 	},
     Pet_RNGWS = {
-        Head = 'Karagoz Capello +1',
+        Head = 'Kara. Cappello +2',
         Neck = 'Shulmanu Collar',
         Ear1 = 'Burana Earring',
         Ear2 = 'Crep. Earring',
@@ -268,6 +270,7 @@ local sets = {
 	
 	Repair = {
 		Ammo = 'Automat. Oil +3',
+        Ear1 = 'Guignol Earring',
         Body = 'Foire Tobe +2',
         Hands = 'Rao Kote',
         Ring1 = 'Overbearing Ring',
@@ -282,7 +285,7 @@ local sets = {
     Overdrive = {-- this set will force on the ability AND stay on for the duration of OD, dont change the body out because of that
         Range = 'Animator P +1',
         Ammo = 'Automat. Oil +3',
-        Head = 'Karagoz Capello +1',
+        Head = 'Kara. Cappello +2',
         Neck = 'Shulmanu Collar',
         Ear1 = 'Enmerkar Earring',
         Ear2 = 'Domes. Earring',
@@ -296,7 +299,7 @@ local sets = {
         Feet = 'Mpaca\'s Boots',
     },
 
-	TH = {--/th will force this set to equip for 10 seconds
+	TH = {
 		Waist = 'Chaac Belt',
         Feet = { Name = 'Herculean Boots', Augment = { [1] = 'Potency of "Cure" effect received+5%', [2] = 'Mag. Acc.+19', [3] = 'Accuracy+21', [4] = '"Mag. Atk. Bns."+19', [5] = '"Treasure Hunter"+2' } },
 	},
@@ -327,7 +330,7 @@ profile.OnUnload = function()
 end
 
 profile.HandleCommand = function(args)
-	gcinclude.SetCommands(args);
+	gcinclude.HandleCommands(args);
 end
 
 profile.HandleDefault = function()

@@ -1,11 +1,10 @@
 local profile = {};
-gcdisplay = gFunc.LoadFile('common\\gcdisplay.lua');
 gcinclude = gFunc.LoadFile('common\\gcinclude.lua');
 
 local sets = {
     Idle = {
         Main = 'Naegling',
-        Range = 'Holliday',
+        Range = 'Death Penalty',
         Ammo = 'Decimating Bullet',
         Head = 'Malignance Chapeau',
         Neck = 'Loricate Torque +1',
@@ -30,7 +29,6 @@ local sets = {
         Neck = 'Bathy Choker +1',
         Ear1 = 'Infused Earring',
         Body = 'Meg. Cuirie +2',
-        Hands = 'Meg. Gloves +2',
         Ring2 = 'Chirich Ring +1',
         Legs = 'Meg. Chausses +2',
         Feet = 'Meg. Jam. +2',
@@ -42,8 +40,8 @@ local sets = {
     Town = {
         Main = 'Naegling',
         Sub = 'Nusku Shield',
-        Range = 'Holliday',
-        Ammo = 'Decimating Bullet',
+        Range = 'Death Penalty',
+        Ammo = 'Living Bullet',
         Head = 'Chass. Tricorne +1',
         Neck = 'Bathy Choker +1',
         Body = 'Chasseur\'s Frac +1',
@@ -149,6 +147,7 @@ local sets = {
     },
 
     Preshot = {--base preshot, no flurry, 70cap, 10 from gifts (only 1200 JP needed)
+        Ammo = 'Decimating Bullet',
         Head = 'Chass. Tricorne +1',
         Neck = 'Comm. Charm +1',
         Body = 'Laksa. Frac +2',
@@ -217,7 +216,7 @@ local sets = {
         Neck = 'Fotia Gorget',
         Ear1 = 'Telos Earring',
         Ear2 = 'Moonshade Earring',
-        Hands = 'Meg. Gloves +2',
+        Hands = 'Chasseur\'s Gants +2',
         Ring1 = 'Petrov Ring',
         Ring2 = 'Karieyh Ring +1',
         Back = { Name = 'Camulus\'s Mantle', Augment = { [1] = 'Weapon skill damage +10%', [2] = 'Mag. Acc+20', [3] = 'AGI+30', [4] = 'Magic Damage +20' } },
@@ -236,13 +235,13 @@ local sets = {
         Neck = 'Fotia Gorget',
         Ear1 = 'Odr Earring',
         Ear2 = 'Mache Earring +1',
-        Body = 'Mummu Jacket +2',
-        Hands = 'Mummu Wrists +2',
-        Ring1 = 'Mummu Ring',
+        -- Body = 'Mummu Jacket +2',
+        Hands = 'Adhemar Wrist. +1',
+        Ring1 = 'Ilabrat Ring',
         Ring2 = 'Begrudging Ring',
         Waist = 'Fotia Belt',
-        Legs = 'Mummu Kecks +2',
-        Feet = 'Mummu Gamash. +2',
+        -- Legs = 'Mummu Kecks +2',
+        -- Feet = 'Mummu Gamash. +2',
     },
     Evisceration_Hybrid = {
     },
@@ -276,7 +275,7 @@ local sets = {
         Ear1 = 'Telos Earring',
         Ear2 = 'Moonshade Earring',
         Body = 'Meg. Cuirie +2',
-        Hands = 'Meg. Gloves +2',
+        Hands = 'Chasseur\'s Gants +2',
         Ring1 = 'Dingir Ring',
         Ring2 = 'Karieyh Ring +1',
         Back = { Name = 'Camulus\'s Mantle', Augment = { [1] = 'Weapon skill damage +10%', [2] = 'Mag. Acc+20', [3] = 'AGI+30', [4] = 'Magic Damage +20' } },
@@ -290,11 +289,12 @@ local sets = {
     },
 
     Wildfire_Default = {
+        Ammo = 'Living Bullet',
         Head = 'Adhemar Bonnet +1',
         Neck = 'Comm. Charm +1',
         Ear1 = 'Friomisi Earring',
         Ear2 = 'Crematio Earring',
-        Body = 'Lanun Frac +2',
+        Body = 'Lanun Frac +3',
         Hands = 'Carmine Fin. Ga. +1',
         Ring1 = 'Dingir Ring',
         Ring2 = 'Karieyh Ring +1',
@@ -310,17 +310,18 @@ local sets = {
     },
 
     Leaden_Default = {
+        Ammo = 'Living Bullet',
         Head = 'Pixie Hairpin +1',
         Neck = 'Comm. Charm +1',
         Ear1 = 'Friomisi Earring',
         Ear2 = 'Moonshade Earring',
-        Body = 'Lanun Frac +2',
+        Body = 'Lanun Frac +3',
         Hands = 'Carmine Fin. Ga. +1',
         Ring1 = 'Dingir Ring',
         Ring2 = 'Archon Ring',
         Back = { Name = 'Camulus\'s Mantle', Augment = { [1] = 'Weapon skill damage +10%', [2] = 'Mag. Acc+20', [3] = 'AGI+30', [4] = 'Magic Damage +20' } },
         Waist = 'Eschan Stone',
-        --Waist = 'Svelt. Gouriz +1',
+        -- Waist = 'Svelt. Gouriz +1',
         Legs = 'Nyame Flanchard',
         Feet = 'Lanun Bottes +3',
     },
@@ -332,12 +333,12 @@ local sets = {
     },
 
     QD = {
-        Ammo = 'Animikii Bullet',
+        Ammo = 'Living Bullet',
         Head = 'Laksa. Tricorne +1',
         Neck = 'Baetyl Pendant',
         Ear1 = 'Friomisi Earring',
         Ear2 = 'Crematio Earring',
-        Body = 'Lanun Frac +2',
+        Body = 'Lanun Frac +3',
         Hands = 'Carmine Fin. Ga. +1',
         Ring1 = 'Dingir Ring',
         Ring2 = 'Metamor. Ring +1',
@@ -347,6 +348,7 @@ local sets = {
         Feet = 'Chass. Bottes +1',
     },
     QD_Acc = {--with AF 2/3 and regal is better
+        Ammo = 'Living Bullet',
         Head = 'Malignance Chapeau',
         Neck = 'Sanctity Necklace',
         Ear2 = 'Crep. Earring',
@@ -361,14 +363,14 @@ local sets = {
         Main = 'Lanun Knife',
         Range = 'Compensator',
         Head = 'Lanun Tricorne +2',
-        Hands = 'Chasseur\'s Gants +1',
+        Hands = 'Chasseur\'s Gants +2',
         Back = 'Camulus\'s Mantle',
     },
     Fold = {Hands = 'Lanun Gants +3'},
     WildCard = {Feet = 'Lanun Bottes +3'},
-    RandomDeal = {Body = 'Lanun Frac +2'},
+    RandomDeal = {Body = 'Lanun Frac +3'},
     SnakeEye = {Legs = 'Lanun Trews +3'},
-    TH = {--/th will force this set to equip for 10 seconds
+    TH = {
 		Waist = 'Chaac Belt',
         Feet = { Name = 'Herculean Boots', Augment = { [1] = 'Potency of "Cure" effect received+5%', [2] = 'Mag. Acc.+19', [3] = 'Accuracy+21', [4] = '"Mag. Atk. Bns."+19', [5] = '"Treasure Hunter"+2' } },
 	},
@@ -391,7 +393,7 @@ profile.OnLoad = function()
     AshitaCore:GetChatManager():QueueCommand(1, '/macro set 10');
 
     gcinclude.settings.RefreshGearMPP = 50;
-    gcinclude.CORmsg = true; -- set this to false if you do not want to see lucky/unlucky # messages, can also do /cormsg in game to change on the fly
+    gcinclude.CORmsg = false; -- set this to false if you do not want to see lucky/unlucky # messages, can also do /cormsg in game to change on the fly
 end
 
 profile.OnUnload = function()
@@ -399,7 +401,7 @@ profile.OnUnload = function()
 end
 
 profile.HandleCommand = function(args)
-    gcinclude.SetCommands(args);
+    gcinclude.HandleCommands(args);
 end
 
 profile.HandleDefault = function()

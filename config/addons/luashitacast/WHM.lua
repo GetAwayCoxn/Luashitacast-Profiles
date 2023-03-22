@@ -1,5 +1,4 @@
 local profile = {};
-gcdisplay = gFunc.LoadFile('common\\gcdisplay.lua');
 gcinclude = gFunc.LoadFile('common\\gcinclude.lua');
 
 local sets = {
@@ -28,6 +27,7 @@ local sets = {
     Idle_Refresh = {
         Ammo = 'Homiliary',
         Head = 'Befouled Crown',
+        Body = 'Witching Robe',
         Ring1 = 'Stikini Ring +1',
         Waist = 'Fucho-no-Obi',
         Legs = 'Assid. Pants +1',
@@ -53,10 +53,25 @@ local sets = {
     },
 
     Tp_Default = {
+        Main = 'Kaja Rod',
+        Sub = 'Genmei Shield',
+        Ammo = 'Staunch Tathlum',
+        Head = 'Blistering Sallet +1',
+        Neck = 'Sanctity Necklace',
+        Ear1 = 'Brutal Earring',
+        Ear2 = 'Telos Earring',
+        Body = 'Nyame Mail',
+        Hands = 'Nyame Gauntlets',
+        Ring1 = 'Cacoethic Ring +1',
+        Ring2 = 'Chirich Ring +1',
+        Waist = 'Eschan Stone',
+        Legs = 'Nyame Flanchard',
+        Feet = 'Nyame Sollerets',
     },
     Tp_Hybrid = {
     },
     Tp_Acc = {
+        Ear1 = 'Digni. Earring',
         Ring1 = 'Cacoethic Ring +1',
         Ring2 = 'Chirich Ring +1',
     },
@@ -68,7 +83,7 @@ local sets = {
         Neck = 'Baetyl Pendant',
         Ear1 = 'Etiolation Earring',
         Ear2 = 'Malignance Earring',
-        Hands = 'Gende. Gages +1',
+        Hands = 'Leyline Gloves', --6
         Ring1 = 'Kishar Ring',--4
         Ring2 = 'Prolix Ring',--2
         Back = 'Swith Cape +1',
@@ -207,6 +222,7 @@ local sets = {
         Ear2 = 'Digni. Earring',
         Body = 'Nyame Mail',
         Hands = 'Nyame Gauntlets',
+        Ring1 = 'Cacoethic Ring +1',
         Ring2 = 'Karieyh Ring +1',
         Back = 'Solemnity Cape',
         Waist = 'Fotia Belt',
@@ -237,7 +253,7 @@ local sets = {
     Cataclysm_Acc = {
     },
 
-    TH = {--/th will force this set to equip for 10 seconds
+    TH = {
         Ammo = 'Per. Lucky Egg',
 		Waist = 'Chaac Belt',
 	},
@@ -264,7 +280,7 @@ profile.OnUnload = function()
 end
 
 profile.HandleCommand = function(args)
-    gcinclude.SetCommands(args);
+    gcinclude.HandleCommands(args);
 end
 
 profile.HandleDefault = function()

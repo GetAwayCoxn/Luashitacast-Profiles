@@ -1,5 +1,4 @@
 local profile = {};
-gcdisplay = gFunc.LoadFile('common\\gcdisplay.lua');
 gcinclude = gFunc.LoadFile('common\\gcinclude.lua');
 
 
@@ -14,13 +13,13 @@ local sets = {
         Hands = 'Malignance Gloves',
         Ring1 = 'Defending Ring',
         Ring2 = 'Chirich Ring +1',
-		Back = { Name = 'Rosmerta\'s Cape', Augment = { [1] = 'Damage taken-5%', [2] = '"Dbl.Atk."+10', [3] = 'Accuracy+30', [4] = 'Attack+20', [5] = 'DEX+20' } },
+		Back = { Name = 'Rosmerta\'s Cape', Augment = { [1] = '"Fast Cast"+10', [2] = 'Mag. Eva.+20', [3] = 'Eva.+20', [4] = 'AGI+20', [5] = 'Evasion+25' } },
         Waist = 'Flume Belt +1',
         Legs = 'Gleti\'s Breeches',
         Feet = 'Gleti\'s Boots',
     },
 	Resting = {
-        Body = 'Jhakri Robe +2',
+        Body = 'Hashishin Mintan +2',
         Waist = 'Fucho-no-Obi',
     },
     Idle_Regen = {
@@ -30,13 +29,14 @@ local sets = {
     },
     Idle_Refresh = {
         Head = 'Rawhide Mask',
-        Body = 'Jhakri Robe +2',
+        Body = 'Hashishin Mintan +2',
         Ring1 = 'Stikini Ring +1',
         Waist = 'Fucho-no-Obi',
     },
 	Town = {
         Main = 'Tizona',
         Sub ='Sakpata\'s Sword',
+        Head = 'Hashishin Kavuk +2',
     },
 
     Evasion = {--this set will be my idle set when in /cj mode for evasion pulling
@@ -123,6 +123,9 @@ local sets = {
         Legs = 'Pinga Pants',--11
         Feet = 'Carmine Greaves +1',--7
     },
+    Blu_Precast = {
+        Body = 'Hashishin Mintan +2',
+    },
     Stoneskin_Precast = {
         Waist = 'Siegel Sash',
     },
@@ -160,14 +163,15 @@ local sets = {
     BluSkill = {
         Body = 'Assim. Jubbah +2',
         Back = { Name = 'Rosmerta\'s Cape', Augment = { [1] = 'Phys. dmg. taken -10%', [2] = '"Mag. Atk. Bns."+10', [3] = 'Mag. Acc+20', [4] = 'INT+20', [5] = 'Magic Damage +20' } },
+        Legs = 'Hashishin Tayt +1',
     },
     BluMagical = {
         Ammo = 'Ghastly Tathlum +1',
-        Head = 'Jhakri Coronal +2',
+        Head = 'Hashishin Kavuk +2',
         Neck = 'Baetyl Pendant',
         Ear1 = 'Crematio Earring',
         Ear2 = 'Regal Earring',
-        Body = 'Jhakri Robe +2',
+        Body = 'Hashishin Mintan +2',
         Hands = 'Amalric Gages +1',
         Ring1 = 'Metamor. Ring +1',
         Ring2 = 'Shiva Ring +1',
@@ -182,7 +186,7 @@ local sets = {
     },
     BluMagicAccuracy = {
         Ammo = 'Pemphredo Tathlum',
-        Head = 'Jhakri Coronal +2',--af +2/3
+        Head = 'Hashishin Kavuk +2',--af +2/3
         Neck = 'Erra Pendant',--JSE neck +1/2
         Ear1 = 'Crep. Earring',
         --Ear2 = 'Regal Earring',--use this after getting AF legs +2/3
@@ -200,7 +204,7 @@ local sets = {
         Main = 'Sakpata\'s Sword',
         Sub = 'Bunzi\'s Rod',
         Ammo = 'Pemphredo Tathlum',
-        Head = 'Jhakri Coronal +2',--af +2/3
+        Head = 'Hashishin Kavuk +2',--af +2/3
         Neck = 'Erra Pendant',--JSE neck +1/2
         Ear1 = 'Crep. Earring',
         --Ear2 = 'Regal Earring',--use this after getting AF legs +2/3
@@ -216,11 +220,11 @@ local sets = {
     },
     BluStun = {
         Ammo = 'Pemphredo Tathlum',
-        Head = 'Jhakri Coronal +2',
+        Head = 'Hashishin Kavuk +2',
         Neck = 'Sanctity Necklace',
         Ear1 = 'Crep. Earring',
         Ear2 = 'Digni. Earring',
-        Body = 'Jhakri Robe +2',
+        Body = 'Hashishin Mintan +2',
         Hands = 'Jhakri Cuffs +2',
         Ring1 = 'Metamor. Ring +1',
         Ring2 = 'Crepuscular Ring',
@@ -266,7 +270,7 @@ local sets = {
 
     Ws_Default = {
         Ammo = 'Coiste Bodhar',
-        Head = 'Adhemar Bonnet +1',
+        Head = 'Hashishin Kavuk +2',
         Neck = 'Fotia Gorget',
         Ear1 = 'Telos Earring',
         Ear2 = 'Digni. Earring',
@@ -308,7 +312,7 @@ local sets = {
     Chant_Acc = {
     },
     Savage_Default = {
-        Head = 'Adhemar Bonnet +1',
+        Head = 'Hashishin Kavuk +2',
         Ear1 = 'Telos Earring',
         Ear2 = 'Digni. Earring',
         Body = 'Assim. Jubbah +2',
@@ -326,7 +330,7 @@ local sets = {
     },
     Expiacion_Default = {
         Ammo = 'Ghastly Tathlum +1',--crep pebble
-        Head = 'Nyame Helm',
+        Head = 'Hashishin Kavuk +2',
         Neck = 'Sanctity Necklace',--jse neck
         Ear1 = 'Regal Earring',
         Ear2 = 'Moonshade Earring',
@@ -345,11 +349,11 @@ local sets = {
     Expiacion_Acc = {
     },
     Requiescat_Default = {
-        Head = 'Jhakri Coronal +2',
+        Head = 'Hashishin Kavuk +2',
         Neck = 'Fotia Gorget',
         Ear1 = 'Brutal Earring',
         Ear2 = 'Moonshade Earring',
-        Body = 'Jhakri Robe +2',
+        Body = 'Hashishin Mintan +2',
         Hands = 'Jhakri Cuffs +2',
         Ring1 = 'Beithir Ring',
         Ring2 = 'Karieyh Ring +1',
@@ -363,13 +367,17 @@ local sets = {
     },
 	
     Ca = {
+        Head = 'Hashishin Kavuk +2',
         Feet = 'Assim. Charuqs +1',
     },
     Ba = {
         Feet = 'Hashi. Basmak +1',
     },
     Diffusion = {
-        Feet = 'Luhlaza Charuqs +1'
+        Feet = 'Luhlaza Charuqs +1',
+    },
+    Efflux = {
+        Legs = 'Hashishin Tayt +1',
     },
 
     Enmity = {
@@ -411,7 +419,7 @@ profile.OnUnload = function()
 end
 
 profile.HandleCommand = function(args)
-	gcinclude.SetCommands(args);
+	gcinclude.HandleCommands(args);
 end
 
 profile.HandleDefault = function()
@@ -461,7 +469,9 @@ profile.HandlePrecast = function()
     local spell = gData.GetAction();
     gFunc.EquipSet(sets.Precast);
 
-    if string.contains(spell.Name, 'Stoneskin') then
+    if string.contains(spell.Skill, 'Blue Magic') then
+        gFunc.EquipSet(sets.Blu_Precast);
+    elseif string.contains(spell.Name, 'Stoneskin') then
         gFunc.EquipSet(sets.Stoneskin_Precast);
     end 
 
@@ -472,6 +482,7 @@ profile.HandleMidcast = function()
     local diff = gData.GetBuffCount('Diffusion');
     local ca = gData.GetBuffCount('Chain Affinity');
     local ba = gData.GetBuffCount('Burst Affinity');
+    local ef = gData.GetBuffCount('Efflux');
     local spell = gData.GetAction();
 
     gFunc.EquipSet(sets.BluMagical);
@@ -487,6 +498,7 @@ profile.HandleMidcast = function()
 
     if (ca>=1) then gFunc.EquipSet(sets.Ca) end
     if (ba>=1) then gFunc.EquipSet(sets.Ba) end
+    if (ef>=1) then gFunc.EquipSet(sets.Efflux) end
     if (diff>=1) then gFunc.EquipSet(sets.Diffusion) end
     
     if (gcdisplay.GetToggle('CJmode') == true) then
